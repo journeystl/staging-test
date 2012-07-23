@@ -14,6 +14,7 @@ web1: #component type & number
   name: drupal #component settings
   document_root: /drupal
   shared_writable_dirs:
+    - drupal/sites/default/files
     - drupal/files
     - tmp
     - private
