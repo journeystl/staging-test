@@ -1,0 +1,36 @@
+web1: #component type & number
+
+  php_version: 5.3.8
+  php_max_execution_time: 60
+  php_max_input_time: 60
+  php_post_max_size: "50M"
+  php_upload_max_filesize: "50M"
+  php_file_uploads: "1"
+  php_max_file_uploads: 10
+  php_display_errors: "0"
+  php_date_timezone: "US/central"
+  php_default_locale: "en_US"
+
+  name: drupal #component settings
+  document_root: /drupal
+  shared_writable_dirs:
+    - drupal/files
+    - tmp
+    - private
+  php_extensions:
+    - mysqli
+    - gd
+    - curl
+    - hash
+    - json
+    - xml
+    - ftp
+    - pdo
+    - pdo_mysql
+    - mcrypt
+    - mbstring
+    - eaccelerator #recommended, but optional
+    - uploadprogress
+  db1: #component type & number
+    name: drupal-db #component settings
+    type: mysql
