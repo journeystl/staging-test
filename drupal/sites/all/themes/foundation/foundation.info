@@ -1,0 +1,27 @@
+
+name = Foundation
+description = http://foundation.zurb.com/
+screenshot = screenshot.png
+version = "7.0-1.0"
+core = 7.x
+
+; Regions
+regions[sidebar_first] = Right Sidebar
+regions[content_top] = Content Top
+regions[content] = Content
+regions[content_bottom] = Content Bottom
+regions[footer] = Footer
+
+; Stylesheets
+stylesheets[all][] = css/index.css
+
+; Scripts
+scripts[] = js/modernizr.foundation.js
+scripts[] = js/jquery.min.js
+scripts[] = js/jquery.reveal.js
+scripts[] = js/jquery.reveal.js
+scripts[] = js/jquery.orbit-1.4.0.js
+scripts[] = js/jquery.customforms.js
+scripts[] = js/jquery.placeholder.min.js
+scripts[] = js/jquery.tooltips.js
+scripts[] = js/app.js
