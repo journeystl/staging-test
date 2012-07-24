@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
+<html class="no-js <?php print $classes; ?>" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>>
+<head profile="<?php print $grddl_profile; ?>">
   <meta charset="utf-8" />
+
+  <?php echo $head; ?>
 
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <?php print $head; ?>
-  <title><?php print $head_title; ?></title>
-  <?php print $styles; ?>
-  <?php print $scripts; ?>
+  <title><?php echo $head_title; ?></title>
 
-  <!-- IE Fix for HTML5 Tags -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+  <!-- Included CSS Files -->
+  <?php echo $styles; ?>
+
+  <!-- Included JS Files -->
+  <?php echo $scripts; ?>
 
 </head>
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
 
-  <?php print $page_top; ?>
+<body <?php print $attributes;?>>
+	<?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-
 </body>
 </html>
