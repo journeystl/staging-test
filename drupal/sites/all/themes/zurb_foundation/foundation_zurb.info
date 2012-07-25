@@ -1,0 +1,45 @@
+name = ZURB Foundation
+description = Drupal implemenation of the framework by <a href="http://ishmaelsanchez.com">Ishmael Sanchez</a>
+core = 7.x
+engine = phptemplate
+
+; Image appears on admin/appearance
+screenshot = images/screenshot.png
+
+; Foundation framework stylesheets
+stylesheets[all][] = css/framework/foundation.css 
+
+; Base theme specific CSS
+stylesheets[all][] = css/drupal.css
+
+; Default theme scripts.
+scripts[] = js/modernizr.foundation.js
+scripts[] = js/jquery.reveal.js
+scripts[] = js/jquery.orbit-1.4.0.js
+scripts[] = js/jquery.customforms.js
+scripts[] = js/jquery.placeholder.min.js
+scripts[] = js/jquery.tooltips.js
+scripts[] = js/app.js
+scripts[] = js/jquery.offcanvas.js
+
+; Regions are output in the page.tpl.php
+regions[header]          = Header
+regions[navigation]      = Navigation
+regions[help]            = Help
+regions[highlighted]     = Highlighted
+regions[content]         = Content
+regions[sidebar_first]   = Left Sidebar
+regions[sidebar_second]  = Right Sidebar
+regions[footer_first]    = Footer first
+regions[footer_middle]   = Footer middle
+regions[footer_last]     = Footer last
+
+; Hidden regions
+regions_hidden[] = Page top
+regions_hidden[] = Page bottom
+
+; Possible theme settings
+; settings[foundation_zurb_copyright] = 1
+; settings[foundation_zurb_credit] = ''
+; settings[foundation_zurb_font_fallback] = 'sans-serif'
+; settings[foundation_zurb_font_selectors] = 'body'
