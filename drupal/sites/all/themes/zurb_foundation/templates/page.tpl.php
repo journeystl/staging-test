@@ -1,24 +1,20 @@
 <div class="top-bar">
   <div class="row">
-    <?php if ($linked_site_name || $linked_logo): ?>
-      <div class="two columns">
-        <?php if ($linked_logo): ?>
-          <?php print $linked_logo; ?>
-        <?php endif; ?>
+      <div class="three columns">
+      	<p>
+        	<a href="/">
+        		<img src="<?php print path_to_theme(); ?>/jnet5/images/navigation/JourneyLogo_05.png">
+        	</a>
+        </p>
       </div>
-      <div class="four columns">
-        <?php if ($is_front): ?>
-          <h1 id="site-name"><?php print $linked_site_name; ?></h1>
-        <?php else: ?>
-          <div id="site-name"><?php print $linked_site_name; ?></div>
-        <?php endif; ?>
-      </div>
-    <?php endif; ?>
-      <?php if ($main_menu_links): ?>
-        <nav class="six columns">
-          <?php print $main_menu_links; ?>
-        </nav>
-      <?php endif; ?>
+      
+  <?php if (!empty($page['header'])): ?>
+    <div id=header class="nine columns">
+      <?php print render($page['header']); ?>
+    </div>
+  <?php endif; ?>
+      
+ 
   </div>
 </div>
 <div class="row">

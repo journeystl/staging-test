@@ -134,7 +134,9 @@ function foundation_zurb_preprocess_page(&$variables) {
     ));
   }
 
+
   // Site navigation links.
+ 
   $variables['main_menu_links'] = '';
   if (isset($variables['main_menu'])) {
     $variables['main_menu_links'] = theme('links__system_main_menu', array(
@@ -165,6 +167,8 @@ function foundation_zurb_preprocess_page(&$variables) {
       ),
     ));
   }
+  
+
 
   // Convenience variables
   $left = $variables['page']['sidebar_first'];
@@ -438,3 +442,4 @@ function foundation_zurb_menu_local_task(&$variables) {
 
   return '<dd' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($link_text, $link['href'], $link['localized_options']) . "</dd>\n";
 }
+
