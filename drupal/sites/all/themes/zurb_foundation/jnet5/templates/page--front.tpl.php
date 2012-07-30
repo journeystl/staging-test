@@ -8,11 +8,11 @@
         </p>
       </div>
 
-      <?php if ($main_menu_links): ?>
-        <nav class="nine columns">
-          <?php print $main_menu_links; ?>
-        </nav>
-      <?php endif; ?>
+  <?php if (!empty($page['header'])): ?>
+    <div id=header class="nine columns">
+      <?php print render($page['header']); ?>
+    </div>
+  <?php endif; ?>
 
   </div>
 </div>
