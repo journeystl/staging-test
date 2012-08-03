@@ -5,90 +5,93 @@
  */
 ?>
 
-<h1> <?php print($title); ?>
-<h5>BY <?php print($node->field_speaker); ?>
-
-
 <div class="row">
-	<div class="twevlve columns">
-		<p><img src="http://placehold.it/1200x500&text=sermon+clip+about+Jesus"></p>
-		<p class="lead">We are a people who love Jesus, have had our lives made brand new by him, and want others to meet him too. We believe Jesus is our:</p>
+	<div class="eight columns">
+		<h1> <?php print($title); ?></h1>
+		<h5 style="display:inline">By <?php print render($content['field_speaker']); ?></h5>
+		
+
 	</div>
-</div>
 	
+	<div class="four columns">
+		<ul class="button-group [radius, rounded]">
+		  <li><a href="#" class="button tiny secondary radius">Like  <span class="label round secondary" style="top:1px;margin-left:5px;background-color:#D0D0D0;">10</span></a></li>
+		  <li><a href="#" class="button tiny radius">Tweet  <span class="label round secondary" style="top:1px;margin-left:5px;background-color:#96d5e8;">2</span></a></li>
+		  <li><a href="#" class="button tiny alert radius">+1  <span class="label round secondary" style="top:1px;margin-left:5px;background-color:#f4787b;">1</span></a></li>
+		</ul>
+		
+		<!-- Lockerz Share BEGIN -->
+		<div class="a2a_kit a2a_default_style">
+		<a class="a2a_dd" href="http://www.addtoany.com/share_save">Share</a>
+		<span class="a2a_divider"></span>
+		<a class="a2a_button_facebook"></a>
+		<a class="a2a_button_twitter"></a>
+		<a class="a2a_button_email"></a>
+		</div>
+		<script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
+		<!-- Lockerz Share END -->
 	
-<div class="row">
-	<div id="savior" class="six columns">
-		<h2>Living Savior</h2>
-		<p>Jesus is the Living Savior, sent by God to overcome the separation between God and man caused by sin.  We believe that Jesus lived an earthly life free of sin, dying on the cross to ultimately atone for the sins of all mankind;  that he rose again on the third day as testified to by numerous accounts and eye-witnesses, and that he is alive and at work today through his Holy Spirit, sent to lead us into all truth.  He is the Living Savior in that he is actively drawing people to himself to this day with the free offer of forgiveness to anyone who will believe in and trust in him.
-</p>
 	</div>
-	<div id="lord" class="six columns">
-		<h2>Risen Lord</h2>
-		<p>When Jesus rose from the dead, he appeared to many, bearing witness to the truth of his testimony.  When we say he is the Risen Lord, we acknowledge that his resurrection was the greatest miracle in human history, and that through it those who believe in him are brought into a state of peace with God.  
-</p>
-	</div>
-</div>
+</div> <!--/.row-->
 
 <div class="row">
-	<div id="friend" class="six columns">
-		<h2>Friend</h2>
-		<p>We believe that Jesus is available to all that would seek him.  The Bible teaches that he loves us unconditionally and desires fellowship with us.  He asks us to trust him, to cast our anxieties on him, and to seek him for direction in our lives.  He promises to guide us through the seasons of life, never leaving nor forsaking us. The Bible say that when we believe, he begins a process of transformation within us, making us more and more like him and even allowing us to "bear fruit" for him as we become his disciples; reflecting his love and living out his specific will for us. 
-
-</p>
-	</div>
-	<div id="god" class="six columns">
-		<h2>God</h2>
-		<p>Jesus is, and always has been God.  According to the Bible, he was with God and he was God before the Earth was even created.   He was "begotten", not conceived, and though fully man while on this earth, he never ceased to also fully be God.  To truly atone for our sins, he had to bear the weight of flesh, temptation, and suffering; thus making him a God who is able to sympathize with us in our weaknesses, and intercede on our behalf.</p>
-	</div>
-</div>
-
-<div class="row margin-bottom-med">
-	<div class="span12">
-		<hr>
-	</div>
-	<div id="learn" class="six columns">
-		<h2>Learn More</h2>
-		<p>If you don't know who Jesus is, we encourage you to read more about him in the New Testament gospels (LINK), which detail his life and earthly ministry.   Additional resources that we highly recommend include:</p>
-		<div class="row">
-			<div class="three columns">
-				<ul class="nav nav-list well margin-bottom-small">
-					<li class="nav-header"><strong>Books</strong></li>
-					<li><a href="#">Mere Christianity by C.S. Lewis</a></li>
-					<li><a href="#">Reason for God by Tim Keller</a></li>
-				</ul>
-			</div>
-			<div class="three columns">
-				<ul class="nav nav-list well margin-bottom-small">
-					<li class="nav-header"><strong>Bible Reading Plan</strong></li>
-					<li><a href="#">Engage Scripture</a></li>
-					<li class="nav-header"><strong>Sermons and Videos</strong></li>
-					<li><a href="#">Jesus & sermon series</a></li>
-				</ul>
-			</div>
+	<div class="eight columns">
+		<div class="flex-video">
+			<iframe width="560" height="315" src="<?php print $node->field_youtube_url['nl'][0]['safe_value']; ?>" frameborder="0" allowfullscreen></iframe>
+			
+			
 		</div>
 		
-				
+		<dl class="tabs">
+		  <dd class="active"><a href="#description">Description</a></dd>
+		  <dd><a href="#scripture">Scripture</a></dd>
+		  <dd><a href="#audio">Audio</a></dd>
+		</dl>
 		
-		
-		
+		<ul class="tabs-content">
+		  <li class="active" id="description">
+		  	<dl>
+		  		<dt>Speaker</dt>
+		  		    <dd>Darrin Patrick</dd>
+		  		<dt>Date</dt>
+		  		    <dd>09-10-2011</dd>
+		  		<dt>Length</dt>
+		  		    <dd>45 Minutes, 28 Seconds</dd>
+		  		<dt>Scripture</dt>
+		  		    <dd><a href="http://www.esvbible.org/Mark+1.1-20/">Mark 1:1-20 (ESV)</a></dd>
+		  	</dl>
+	    	<div>
+	    		<p>In this message, Pastor Darrin talks about how Jesus' example shows us how to be the Church in our city.</p>
+	    	
+	    	</div>
 
+		  </li>
+		  <li id="scripture">This is simple tab 2's content. Now you see it!</li>
+		  <li id="audio">This is simple tab 3's content. It's, you know...okay.</li>
+		</ul>
+	
+	
 	</div>
-	<div id="visit" class="six columns">
-		<h2>Vist a Church</h2>
-		<p>Attend one of our churches and meet us at Connection Point to learn more about Jesus and get your questions answered.</p>
-		  	<div class="btn-group">
-		    	<a class="btn dropdown-toggle btn-large btn-primary" data-toggle="dropdown" href="#">
-		        		Visit A Church
-		        	<b class="caret"></b>
-		      	</a>
-		    	<ul class="dropdown-menu">
-		    		<!-- links -->
-		    		<li><a href="/tg/visit">Tower Grove</a></li>
-		    		<li><a href="/hr/visit">Hanley Road</a></li>
-		    		<li><a href="/wc/visit">West County</a></li>
-		    		<li><a href="/bl/visit">Belleville</a></li>
-		    	</ul>
-		  	</div>
+
+	<div class="four columns">
+		<h2>Jesus &amp;</h2>
+		<dl class="tabs vertical hide-on-phones">
+			<dd class="active"><a href="index.php"><h5>Part 1</h5><h6>Jesus &amp; Mission</h6></a></dd>
+			<dd><a href="index.php"><h5>Part 2</h5><h6>Jesus &amp; Church</h6></a></dd>
+			<dd><a href="index.php"><h5>Part 3</h5><h6>Jesus &amp; Sabbath</h6></a></dd>
+		</dl>
+		<dl class="tabs vertical hide-on-phones">
+			<dd><a href="index.php"><h5>All Sermons</h5></a></dd>
+		</dl>
 	</div>
+
+
+</div>
+
+
+
+
+
+
+
 </div>
