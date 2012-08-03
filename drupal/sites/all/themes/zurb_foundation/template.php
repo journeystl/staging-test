@@ -136,7 +136,7 @@ function foundation_zurb_preprocess_page(&$variables) {
 
 
   // Site navigation links.
- 
+
   $variables['main_menu_links'] = '';
   if (isset($variables['main_menu'])) {
     $variables['main_menu_links'] = theme('links__system_main_menu', array(
@@ -167,7 +167,7 @@ function foundation_zurb_preprocess_page(&$variables) {
       ),
     ));
   }
-  
+
 
 
   // Convenience variables
@@ -261,21 +261,21 @@ function foundation_zurb_preprocess_field(&$variables) {
   $title_classes = &$vars['title_attributes_array']['class'];
   $content_classes = &$vars['content_attributes_array']['class'];
   $item_classes = array();
- 
+
   // Global field classes
   $classes[] = 'field-wrapper';
   $title_classes[] = 'field-label';
   $content_classes[] = 'field-items';
   $item_classes[] = 'field-item';
- 
+
   // Uncomment the lines below to see variables you can use to target a field
   // print '<strong>Name:</strong> ' . $name . '<br/>';
   // print '<strong>Bundle:</strong> ' . $bundle  . '<br/>';
   // print '<strong>Mode:</strong> ' . $mode .'<br/>';
- 
-  ///* Add specific classes to targeted fields 
+
+  ///* Add specific classes to targeted fields
   switch ($mode) {
-    // All teasers 
+    // All teasers
     case 'teaser':
       switch ($field) {
         // Teaser read more links
@@ -290,7 +290,7 @@ function foundation_zurb_preprocess_field(&$variables) {
       }
       break;
   }
- 
+
   switch ($field) {
     case 'field_authors':
       $title_classes[] = 'inline';
@@ -298,7 +298,7 @@ function foundation_zurb_preprocess_field(&$variables) {
       $item_classes[] = 'author';
       break;
   }
- 
+
   // Apply odd or even classes along with our custom classes to each item
   foreach ($vars['items'] as $delta => $item) {
     $item_classes[] = $delta % 2 ? 'odd' : 'even';
@@ -332,12 +332,12 @@ function foundation_zurb_preprocess_block(&$vars) {
 //  $classes = &$vars['classes_array'];
 //  $title_classes = &$vars['title_attributes_array']['class'];
 //  $content_classes = &$vars['content_attributes_array']['class'];
- 
-  // Add global classes to all blocks 
+
+  // Add global classes to all blocks
 //  $title_classes[] = 'block-title';
 //  $content_classes[] = 'block-content';
 
-  // Add classes based on the block delta. 
+  // Add classes based on the block delta.
 //  switch ($block_id) {
 //    // System Navigation block
 //    case 'system-navigation':

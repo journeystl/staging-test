@@ -12,8 +12,8 @@
 		<p class="lead">We are a people who love Jesus, have had our lives made brand new by him, and want others to meet him too. We believe Jesus is our:</p>
 	</div>
 </div>
-	
-	
+
+
 <div class="row">
 	<div id="savior" class="six columns">
 		<h2>Living Savior</h2>
@@ -22,7 +22,7 @@
 	</div>
 	<div id="lord" class="six columns">
 		<h2>Risen Lord</h2>
-		<p>When Jesus rose from the dead, he appeared to many, bearing witness to the truth of his testimony.  When we say he is the Risen Lord, we acknowledge that his resurrection was the greatest miracle in human history, and that through it those who believe in him are brought into a state of peace with God.  
+		<p>When Jesus rose from the dead, he appeared to many, bearing witness to the truth of his testimony.  When we say he is the Risen Lord, we acknowledge that his resurrection was the greatest miracle in human history, and that through it those who believe in him are brought into a state of peace with God.
 </p>
 	</div>
 </div>
@@ -30,7 +30,7 @@
 <div class="row">
 	<div id="friend" class="six columns">
 		<h2>Friend</h2>
-		<p>We believe that Jesus is available to all that would seek him.  The Bible teaches that he loves us unconditionally and desires fellowship with us.  He asks us to trust him, to cast our anxieties on him, and to seek him for direction in our lives.  He promises to guide us through the seasons of life, never leaving nor forsaking us. The Bible say that when we believe, he begins a process of transformation within us, making us more and more like him and even allowing us to "bear fruit" for him as we become his disciples; reflecting his love and living out his specific will for us. 
+		<p>We believe that Jesus is available to all that would seek him.  The Bible teaches that he loves us unconditionally and desires fellowship with us.  He asks us to trust him, to cast our anxieties on him, and to seek him for direction in our lives.  He promises to guide us through the seasons of life, never leaving nor forsaking us. The Bible say that when we believe, he begins a process of transformation within us, making us more and more like him and even allowing us to "bear fruit" for him as we become his disciples; reflecting his love and living out his specific will for us.
 
 </p>
 	</div>
@@ -64,11 +64,11 @@
 				</ul>
 			</div>
 		</div>
-		
-				
-		
-		
-		
+
+
+
+
+
 
 	</div>
 	<div id="visit" class="six columns">
