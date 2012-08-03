@@ -8,18 +8,16 @@
 <div class="row">
 	<div class="eight columns">
 		<h1> <?php print($title); ?></h1>
-		<h5 style="display:inline">By <?php print render($content['field_speaker']); ?></h5>
-		
-
+		<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 	</div>
-	
+
 	<div class="four columns">
 		<ul class="button-group [radius, rounded]">
 		  <li><a href="#" class="button tiny secondary radius">Like  <span class="label round secondary" style="top:1px;margin-left:5px;background-color:#D0D0D0;">10</span></a></li>
 		  <li><a href="#" class="button tiny radius">Tweet  <span class="label round secondary" style="top:1px;margin-left:5px;background-color:#96d5e8;">2</span></a></li>
 		  <li><a href="#" class="button tiny alert radius">+1  <span class="label round secondary" style="top:1px;margin-left:5px;background-color:#f4787b;">1</span></a></li>
 		</ul>
-		
+
 		<!-- Lockerz Share BEGIN -->
 		<div class="a2a_kit a2a_default_style">
 		<a class="a2a_dd" href="http://www.addtoany.com/share_save">Share</a>
@@ -30,24 +28,24 @@
 		</div>
 		<script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
 		<!-- Lockerz Share END -->
-	
+
 	</div>
 </div> <!--/.row-->
 
 <div class="row">
 	<div class="eight columns">
 		<div class="flex-video">
-			<iframe width="560" height="315" src="<?php print $node->field_youtube_url['nl'][0]['safe_value']; ?>" frameborder="0" allowfullscreen></iframe>
-			
-			
+			<iframe width="560" height="315" src="<?php print $content['field_youtube_url'][0]['#markup']; ?>" frameborder="0" allowfullscreen></iframe>
+
+
 		</div>
-		
+
 		<dl class="tabs">
 		  <dd class="active"><a href="#description">Description</a></dd>
 		  <dd><a href="#scripture">Scripture</a></dd>
 		  <dd><a href="#audio">Audio</a></dd>
 		</dl>
-		
+
 		<ul class="tabs-content">
 		  <li class="active" id="description">
 		  	<dl>
@@ -62,15 +60,15 @@
 		  	</dl>
 	    	<div>
 	    		<p>In this message, Pastor Darrin talks about how Jesus' example shows us how to be the Church in our city.</p>
-	    	
+
 	    	</div>
 
 		  </li>
 		  <li id="scripture">This is simple tab 2's content. Now you see it!</li>
 		  <li id="audio">This is simple tab 3's content. It's, you know...okay.</li>
 		</ul>
-	
-	
+
+
 	</div>
 
 	<div class="four columns">
