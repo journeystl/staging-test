@@ -1,7 +1,7 @@
 <?php
 
 /**
- * STATIC CODE
+ * MEET JESUS -- STATIC CODE
  */
 ?>
 

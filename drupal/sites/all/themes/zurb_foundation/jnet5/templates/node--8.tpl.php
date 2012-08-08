@@ -1,31 +1,9 @@
-<div class="top-bar">
-  <div class="row">
-      <div class="three columns">
-      	<p>
-        	<a href="/">
-        		<img src="<?php print path_to_theme(); ?>/jnet5/images/navigation/JourneyLogo_05.png">
-        	</a>
-        </p>
-      </div>
+<?php
 
-  <?php if (!empty($page['header'])): ?>
-    <div id=header class="nine columns">
-      <?php print render($page['header']); ?>
-    </div>
-  <?php endif; ?>
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
+/**
+ * FRONT PAGE -- STATIC CODE
+ */
+?>
 
 
 <!-- Desktop & Tablet -->
