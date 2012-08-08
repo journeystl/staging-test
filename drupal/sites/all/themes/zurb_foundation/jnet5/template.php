@@ -8,6 +8,38 @@ function jnet5_js_alter(&$javascript) {
 }
 
 /**
+ * Impements template_preprocess().
+ */
+function jnet5_preprocess(&$vars, $hook) {
+  // Set the PURL active campus ID.
+  // This allows the active campus ID to be used easily, for example in a Views block:
+  // print views_embed_view('view_name', 'block_1', $active_campus);
+  // Setting this in template_preprocess() allows it to be available in html, page, and node tpl's.
+  if (in_array($hook, array('html', 'page', 'node'))) {
+    $purls = purl_active()->get('path');
+    $vars['active_campus'] = (isset($purls[0])) ? $purls[0]->id : NULL;
+  }
+}
+
+/**
+ * Impements template_preprocess_html().
+ */
+function jnet5_preprocess_html(&$vars) {
+}
+
+/**
+ * Impements template_preprocess_page().
+ */
+function jnet5_preprocess_page(&$vars) {
+}
+
+/**
+ * Impements template_preprocess_node().
+ */
+function jnet5_preprocess_node(&$vars) {
+}
+
+/**
  * Theme main links menu.
  */
 function jnet5_preprocess_menu_block_wrapper(&$vars) {

@@ -48,7 +48,7 @@ Any modules using the PURL API must define one or more providers.
   id, like ['mygroup', 5] (where 'mygroup' is the group's path and 5 is the
   group's node id). Other times, there is no reasonable mapping and a provider
   will want the literal value found in the request. These modifiers simply use
-  the same string for the id and value, e.g. ['mozilla', 'mozilla']. 
+  the same string for the id and value, e.g. ['mozilla', 'mozilla'].
 
 One of PURLs goals is to make it possible for providers to be written to be
 independent of the method that it uses. For example, `spaces_og` can activate
