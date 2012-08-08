@@ -3,7 +3,7 @@
       <div class="three columns">
       	<p>
         	<a href="/">
-        		<img src="<?php print path_to_theme(); ?>/jnet5/images/navigation/JourneyLogo_05.png">
+        		<img src="/<?php print path_to_theme(); ?>/images/navigation/JourneyLogo_05.png">
         	</a>
         </p>
       </div>
