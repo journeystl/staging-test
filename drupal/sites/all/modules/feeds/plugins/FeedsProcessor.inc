@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * Contains FeedsProcessor and related classes.
+ */
 
 // Update mode for existing items.
 define('FEEDS_SKIP_EXISTING', 0);
@@ -128,7 +132,7 @@ abstract class FeedsProcessor extends FeedsPlugin {
           $this->entityValidate($entity);
 
           // Allow modules to alter the entity before saving.
-          module_invoke_all('feeds_presave', $source, $entity);
+          module_invoke_all('feeds_presave', $source, $entity, $item);
           if (module_exists('rules')) {
             rules_invoke_event('feeds_import_'. $source->importer()->id, $entity);
           }
