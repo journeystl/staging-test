@@ -45,7 +45,7 @@
 		  			</tr>
 		  			<tr>
 		  				<td>Date:</td>
-		  				<td><?php print $content['field_date'][0]['#markup']; ?></td>
+		  				<td><?php print $content['field_sermondate'][0]['#markup']; ?></td>
 		  			<tr>
 		  				<td>Length:</td>
 		  				<td><?php print $content['field_length'][0]['#markup']; ?></td>
