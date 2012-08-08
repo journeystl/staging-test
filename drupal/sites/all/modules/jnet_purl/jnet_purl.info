@@ -1,0 +1,4 @@
+name = Jnet - Persistent URL Support
+description = Provides integration of PURL module.
+package = Jnet
+core = 7.x

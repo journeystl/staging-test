@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Implements hook_purl_provider().
+ */
+function jnet_purl_purl_provider() {
+  return array(
+    'campus_provider' => array(
+      'name' => t('Campus'),
+      'description' => t(''),
+      'callback' => 'jnet_purl_campus_provider',
+      'example' => 'campus',
+    ),
+  );
+}
+
+/**
+ * Implements hook_purl_modifiers().
+ */
+function jnet_purl_purl_modifiers() {
+  return array(
+    'campus_provider' => array(
+      array('value' => 'tg', 'id' => 1),
+      array('value' => 'wc', 'id' => 2),
+      array('value' => 'hr', 'id' => 3),
+      array('value' => 'bl', 'id' => 4),
+    ),
+  );
+}
+
+/**
+ * CTools plugin API hook for PURL. Note that a proper entry in
+ * hook_ctools_plugin_api() must exist for this hook to be called.
+ */
+function jnet_purl_purl_processor() {
+  $plugins = array();
+  $plugins['cookie'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'jnet_purl') . '/plugins',
+      'file' => 'purl_cookie.inc',
+      'class' => 'purl_cookie',
+    ),
+  );
+  return $plugins;
+}
+
+
+function jnet_purl_campus_provider($id) {
+  // Set the root level breadcrumb.
+  $breadcrumbs = drupal_get_breadcrumb();
+  $breadcrumbs[0] = l('Tower Grove', '<front>');
+  drupal_set_breadcrumb($breadcrumbs);
+}
+/**
+ * Implements hook_node_view().
+ */
+function jnet_purl_node_view($node, $view_mode, $langcode) {
+  // Forward user to campus-specific node view if necessary.
+  if (isset($node->field_campus_id) && isset($node->field_campus_id[$node->language][0]['value'])) {
+    $campus_id = $node->field_campus_id[$node->language][0]['value'];
+    purl_goto('node/43', array('purl' => array('provider' => 'campus_provider', 'id' => $campus_id)));
+  }
+}

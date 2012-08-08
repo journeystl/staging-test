@@ -7,14 +7,13 @@
         	</a>
         </p>
       </div>
-      
+
   <?php if (!empty($page['header'])): ?>
     <div id=header class="nine columns">
       <?php print render($page['header']); ?>
     </div>
   <?php endif; ?>
-      
- 
+
   </div>
 </div>
 <div class="row">
@@ -22,7 +21,7 @@
     <p>
       <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
       <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
-    </p>  
+    </p>
   </div>
   <?php if ($site_slogan): ?>
     <div class="six columns panel radius hide-for-small">
@@ -39,6 +38,7 @@
   </div>
 </div>
 <div class="row">
+  <?php print $breadcrumb; ?>
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
   <div id="main" class="<?php print $main_grid; ?> columns">
