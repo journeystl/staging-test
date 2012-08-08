@@ -35,10 +35,8 @@
 <div class="row">
 	<div class="eight columns">
 		<div class="flex-video">
+			<iframe width="560" height="315" src="<?php print $content['field_youtube_url'][0]['#markup']; ?>" frameborder="0" allowfullscreen></iframe>
 
-<?php
-print views_embed_view('purl_test', 'block_1', $active_campus);
-?>
 
 		</div>
 
