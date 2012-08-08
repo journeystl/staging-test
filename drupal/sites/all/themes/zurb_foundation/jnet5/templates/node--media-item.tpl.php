@@ -1,7 +1,7 @@
 <?php
 
 /**
- * STATIC CODE
+ * MEDIA ITEMS
  */
 ?>
 
@@ -14,14 +14,16 @@
 
 
 
+
 <dl class="tabs">
   <dd class="active"><a href="#description">Description</a></dd>
   <dd><a href="#scripture">Scripture</a></dd>
   <dd><a href="#audio">Audio</a></dd>
 </dl>
 
+
 <ul class="tabs-content">
-  <li class="active" id="description">
+  <li class="active" id="descriptionTab">
   
   		<table>
   			<tr>
@@ -43,7 +45,7 @@
   		</table>
   		
   </li>
-  <li id="scripture">
+  <li id="scriptureTab">
   	<?php
   	  $key = "IP";
   	  $passage = urlencode("mark 1:1-20");
@@ -58,7 +60,8 @@
   
   
   </li>
-  <li id="audio">This is simple tab 3's content. It's, you know...okay.</li>
+  <li id="audioTab">This is simple tab 3's content. It's, you know...okay.</li>
 </ul>
+
 
 
