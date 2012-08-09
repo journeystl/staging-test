@@ -31,6 +31,30 @@ function jnet5_preprocess_html(&$vars) {
  * Impements template_preprocess_page().
  */
 function jnet5_preprocess_page(&$vars) {
+
+	// Convenience variables
+	$left = $vars['page']['sidebar_first'];
+	$right = $vars['page']['sidebar_second'];
+
+	// Dynamic sidebars
+	if (!empty($left) && !empty($right)) {
+	  $vars['main_grid'] = 'six push-three';
+	  $vars['sidebar_first_grid'] = 'three pull-six';
+	  $vars['sidebar_sec_grid'] = 'three';
+	} elseif (empty($left) && !empty($right)) {
+	  $vars['main_grid'] = 'eight';
+	  $vars['sidebar_first_grid'] = '';
+	  $vars['sidebar_sec_grid'] = 'four';
+	} elseif (!empty($left) && empty($right)) {
+	  $vars['main_grid'] = 'eight push-four';
+	  $vars['sidebar_first_grid'] = 'four pull-eight';
+	  $vars['sidebar_sec_grid'] = '';
+	} else {
+	  $vars['main_grid'] = 'twelve';
+	  $vars['sidebar_first_grid'] = '';
+	  $vars['sidebar_sec_grid'] = '';
+	}
+
 }
 
 /**
@@ -66,3 +90,7 @@ function jnet5_menu_tree__flyout_menu($variables) {
   // Add 'flyout' class to child links <ul>.
   return '<ul class="flyout">' . $variables['tree'] . '</ul>';
 }
+
+
+
+
