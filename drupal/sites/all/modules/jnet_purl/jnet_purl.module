@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Define campuses to be used throughout jnet_purl.
+ */
 function _jnet_purl_campuses() {
   return array(
     1 => array('value' => 'tg', 'id' => 1, 'label' => 'Tower Grove'),
@@ -51,7 +54,9 @@ function jnet_purl_purl_processor() {
   return $plugins;
 }
 
-
+/**
+ * Campus Provider callback.
+ */
 function jnet_purl_campus_provider($id) {
   // Get current campuses.
   $campuses = _jnet_purl_campuses();
@@ -61,6 +66,7 @@ function jnet_purl_campus_provider($id) {
   $breadcrumbs[0] = l($campuses[$id]['label'], '<front>');
   drupal_set_breadcrumb($breadcrumbs);
 }
+
 /**
  * Implements hook_node_view().
  */
