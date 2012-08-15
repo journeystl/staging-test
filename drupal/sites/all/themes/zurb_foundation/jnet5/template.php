@@ -61,6 +61,10 @@ function jnet5_preprocess_page(&$vars) {
  * Impements template_preprocess_node().
  */
 function jnet5_preprocess_node(&$vars) {
+  // Add tpl suggestions for Promotion Content depending on the "type".
+  if ($vars['type'] == 'promotion_content' && isset($vars['field_type'][0])) {
+    $vars['theme_hook_suggestions'][] = 'node__promotion_content__' . $vars['field_type'][0]['value'];
+  }
 }
 
 /**
