@@ -1,17 +1,22 @@
 <?php
 
 /**
- * MEDIA ITEMS
+ * MEDIA ITEMS TPL
  */
 ?>
 
 <h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 
 
-<div class="flex-video">
-	<iframe width="560" height="315" src="<?php print $content['field_youtube_url'][0]['#markup']; ?>" frameborder="0" allowfullscreen></iframe>
-</div>
-
+<!-- START VIDEO YOUTUBE -->
+<?php if (strlen($content['field_youtube_url'][0]['#markup']) > 0): ?>
+	<div class="flex-video widescreen">
+		<iframe width="560" height="315" src="<?php print str_replace('http://www.youtube.com/watch?v=', 'http://www.youtube.com/embed/', $content['field_youtube_url'][0]['#markup']); ?>?rel=0&amp;hd=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+	</div>
+<?php else:?>
+	<h3>no youtube video.</h3>
+<?php endif;?>
+<!-- END VIDEO YOUTUBE -->
 
 
 
