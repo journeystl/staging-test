@@ -1,5 +1,14 @@
 <?php
 
+function _jnet_purl_campuses() {
+  return array(
+    1 => array('value' => 'tg', 'id' => 1, 'label' => 'Tower Grove'),
+    2 => array('value' => 'wc', 'id' => 2, 'label' => 'West County'),
+    3 => array('value' => 'hr', 'id' => 3, 'label' => 'Hanley Road'),
+    4 => array('value' => 'bl', 'id' => 4, 'label' => 'Belleville'),
+  );
+}
+
 /**
  * Implements hook_purl_provider().
  */
@@ -18,14 +27,12 @@ function jnet_purl_purl_provider() {
  * Implements hook_purl_modifiers().
  */
 function jnet_purl_purl_modifiers() {
-  return array(
-    'campus_provider' => array(
-      array('value' => 'tg', 'id' => 1),
-      array('value' => 'wc', 'id' => 2),
-      array('value' => 'hr', 'id' => 3),
-      array('value' => 'bl', 'id' => 4),
-    ),
-  );
+  // Grab campuses from our setter function.
+  $array = array();
+  foreach (_jnet_purl_campuses() as $campus) {
+    $array['campus_provider'][] = array('value' => $campus['value'], 'id' => $campus['id']);
+  }
+  return $array;
 }
 
 /**
@@ -46,9 +53,12 @@ function jnet_purl_purl_processor() {
 
 
 function jnet_purl_campus_provider($id) {
+  // Get current campuses.
+  $campuses = _jnet_purl_campuses();
+
   // Set the root level breadcrumb.
   $breadcrumbs = drupal_get_breadcrumb();
-  $breadcrumbs[0] = l('Tower Grove', '<front>');
+  $breadcrumbs[0] = l($campuses[$id]['label'], '<front>');
   drupal_set_breadcrumb($breadcrumbs);
 }
 /**
