@@ -69,7 +69,7 @@
     
     <?php print render($page['content_top']); ?>
     <?php print render($page['content']); ?>
-    <?php print render($page['content_top']); ?>
+    <?php print render($page['content_bottom']); ?>
   </div>
   <?php if (!empty($page['sidebar_first'])): ?>
     <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
