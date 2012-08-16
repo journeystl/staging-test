@@ -3,11 +3,19 @@
 /**
  * MEDIA SERIES TPL
  */
+ 
+dpm($content);
 ?>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?> style="background-image: url(<?php print file_create_url($content['field_background_image']['#items'][0]['uri']); ?>); background-repeat: no-repeat;">
 
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
+  
+  <p>header image: <?php print $content['field_header_image'][0]['#markup']; ?></p>
+  <p>background image: <?php print file_create_url($content['field_background_image']['#items'][0]['uri']); ?>
+  
+  <hr>
 
 
   <?php if ($display_submitted): ?>
