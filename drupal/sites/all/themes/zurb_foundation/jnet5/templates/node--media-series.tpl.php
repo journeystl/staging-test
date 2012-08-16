@@ -5,11 +5,9 @@
  */
 ?>
 
-<h1>series.</h1>
-
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
-  <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+  <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
 
 
   <?php if ($display_submitted): ?>

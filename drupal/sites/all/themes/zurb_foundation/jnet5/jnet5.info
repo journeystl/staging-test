@@ -13,3 +13,18 @@ stylesheets[all][] = css/custom.css
 
 ; An empty JS file ready to be used
 scripts[] = js/scripts.js
+
+
+; Regions are output in the page.tpl.php
+regions[header]          = Header
+regions[navigation]      = Navigation
+regions[help]            = Help
+regions[highlighted]     = Highlighted
+regions[content_top]     = Content Top
+regions[content]         = Content
+regions[content_bottom]  = Content Bottom
+regions[sidebar_first]   = Left Sidebar
+regions[sidebar_second]  = Right Sidebar
+regions[footer_first]    = Footer first
+regions[footer_middle]   = Footer middle
+regions[footer_last]     = Footer last
