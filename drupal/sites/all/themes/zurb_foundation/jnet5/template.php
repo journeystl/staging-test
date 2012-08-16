@@ -31,6 +31,10 @@ function jnet5_preprocess_html(&$vars) {
  * Impements template_preprocess_page().
  */
 function jnet5_preprocess_page(&$vars) {
+  // Add tpl suggestions for Promotion Content depending on the "type".
+  if (isset($vars['node']) && $vars['node']->type == 'media_series') {
+    $vars['theme_hook_suggestions'][] = 'page__media_series';
+  }
 
 	// Convenience variables
 	$left = $vars['page']['sidebar_first'];
@@ -54,7 +58,6 @@ function jnet5_preprocess_page(&$vars) {
 	  $vars['sidebar_first_grid'] = '';
 	  $vars['sidebar_sec_grid'] = '';
 	}
-
 }
 
 /**
