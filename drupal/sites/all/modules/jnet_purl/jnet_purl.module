@@ -5,10 +5,10 @@
  */
 function _jnet_purl_campuses() {
   return array(
-    1 => array('value' => 'tg', 'id' => 1, 'label' => 'Tower Grove'),
-    2 => array('value' => 'wc', 'id' => 2, 'label' => 'West County'),
-    3 => array('value' => 'hr', 'id' => 3, 'label' => 'Hanley Road'),
-    4 => array('value' => 'bl', 'id' => 4, 'label' => 'Belleville'),
+    1 => array('value' => 'tg', 'id' => 1, 'label' => 'Tower Grove', 'pb_id' => 106),
+    2 => array('value' => 'wc', 'id' => 2, 'label' => 'West County', 'pb_id' => 109),
+    3 => array('value' => 'hr', 'id' => 3, 'label' => 'Hanley Road', 'pb_id' => 107),
+    4 => array('value' => 'bl', 'id' => 4, 'label' => 'Belleville', 'pb_id' => 108),
   );
 }
 
@@ -74,6 +74,30 @@ function jnet_purl_node_view($node, $view_mode, $langcode) {
   // Forward user to campus-specific node view if necessary.
   if (isset($node->field_campus_id) && isset($node->field_campus_id[$node->language][0]['value'])) {
     $campus_id = $node->field_campus_id[$node->language][0]['value'];
-    purl_goto('node/43', array('purl' => array('provider' => 'campus_provider', 'id' => $campus_id)));
+
+    // See if the field_campus_id matches a Patchbay campus ID.
+    $campuses = _jnet_purl_campuses();
+    $campus_match = FALSE;
+    foreach ($campuses as $campus) {
+      if ($campus['pb_id'] == $campus_id) {
+        $campus_match = $campus['id'];
+      }
+    }
+
+    // If no match, disable Purl and continue on.
+    if (!$campus_match) {
+      purl_goto("node/{$node->nid}", array('purl' => array('disable' => TRUE)));
+    }
+
+    // Get current Purl ID and see if we need to change things.
+    $active = purl_active()->get('path');
+    if ($campus_match && $active && $active[0]->value == $campus_match) {
+      break;
+    }
+
+    // Redirect to campus URL.
+    else {
+      purl_goto("node/{$node->nid}", array('purl' => array('provider' => 'campus_provider', 'id' => $campus_match)));
+    }
   }
 }

@@ -344,7 +344,7 @@ function purl_generate_rewrite_elements($item) {
 
   $processor = purl_get_processor($method);
   $local_modifiers = purl_modifiers($method);
-    
+
   $provider = $id = NULL;
   foreach ($local_modifiers as $k => $v) {
     if ($v['provider'] == $item['provider']) {
