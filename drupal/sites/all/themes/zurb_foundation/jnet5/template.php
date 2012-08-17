@@ -26,13 +26,17 @@ function jnet5_preprocess(&$vars, $hook) {
  */
 function jnet5_preprocess_html(&$vars) {
   // Add the background image on media_series nodes.
-  if (isset($vars['menu_item']['page_arguments']) && isset($vars['menu_item']['page_arguments'][0]->type)) {
+  if (isset($vars['menu_item']['page_arguments']) && isset($vars['menu_item']['page_arguments'][0]->type) && $vars['menu_item']['page_arguments'][0]->type == 'media_series') {
     // Attach node--media-series.css
     drupal_add_css(drupal_get_path('theme', 'jnet5') . '/css/node--media-series.css');
     // Check if a background image is attached and set it to the body's background.
-    if ($vars['menu_item']['page_arguments'][0]->type == 'media_series' && isset($vars['menu_item']['page_arguments'][0]->field_background_image[LANGUAGE_NONE])) {
+    if (isset($vars['menu_item']['page_arguments'][0]->field_background_image[LANGUAGE_NONE])) {
       $bg_image = file_create_url($vars['menu_item']['page_arguments'][0]->field_background_image[LANGUAGE_NONE][0]['uri']);
       $vars['attributes_array']['style'] = "background: url({$bg_image});";
+    }
+    // Add class depending on "foreground_light_dark"
+    if (isset($vars['menu_item']['page_arguments'][0]->field_light_dark[LANGUAGE_NONE])) {
+      $vars['classes_array'][] = 'media-' . $vars['menu_item']['page_arguments'][0]->field_light_dark[LANGUAGE_NONE][0]['value'];
     }
   }
 }
