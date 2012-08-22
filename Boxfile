@@ -37,6 +37,6 @@ web1:
     type: mysql
 
   worker1:
-    name: feed_importers
+    name: elysia_cron
     type: php
-    exec: workers/feed-importers.php
+    exec: workers/elysia-cron.php
