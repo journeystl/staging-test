@@ -39,4 +39,4 @@ web1:
   worker1:
     name: elysia_cron
     type: php
-    exec: workers/elysia-cron.php
+    exec: "php workers/elysia-cron.php"
