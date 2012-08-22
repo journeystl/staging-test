@@ -32,11 +32,12 @@ web1:
     - mbstring
     - eaccelerator
     - uploadprogress
-  db1:
-    name: drupal-db
-    type: mysql
 
-  worker1:
-    name: elysia_cron
-    type: php
-    exec: "php workers/elysia-cron.php"
+db1:
+  name: drupal-db
+  type: mysql
+
+worker1:
+  name: elysia_cron
+  type: php
+  exec: "php workers/elysia-cron.php"
