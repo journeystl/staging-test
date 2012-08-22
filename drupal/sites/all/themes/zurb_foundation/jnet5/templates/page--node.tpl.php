@@ -5,7 +5,6 @@
  */
 ?>
 
-
 <div class="top-bar">
   <div class="row">
       <div class="three columns">

@@ -3,21 +3,20 @@
 /**
  * MEDIA SERIES TPL
  */
+ 
+dpm($content);
 ?>
 
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>">
 
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
+  
+  
 
+  <p>header image: <?php print file_create_url($content['field_header_image']['#items'][0]['uri']); ?></p>
+	<hr>
 
-  <?php if ($display_submitted): ?>
-    <div class="posted">
-      <?php if ($user_picture): ?>
-        <?php print $user_picture; ?>
-      <?php endif; ?>
-      <?php print $submitted; ?>
-    </div>
-  <?php endif; ?>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
