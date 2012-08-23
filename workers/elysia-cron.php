@@ -8,5 +8,10 @@ $_SERVER['SERVER_SOFTWARE'] = 'Apache/2.2.16 (Ubuntu)';
 require_once dirname(__FILE__) . '/../drupal/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
-// Run elysia cron.
-elysia_cron_run(TRUE);
+while (1) {
+  // Run elysia cron.
+  elysia_cron_run(TRUE);
+
+  // Run again in 10 seconds.
+  sleep(10);
+}
