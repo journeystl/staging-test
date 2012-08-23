@@ -30,7 +30,13 @@
 <ul class="tabs-content">
   <li class="active" id="descriptionTab">
   
-  		<table>
+  		<strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
+  		<span>/</span>
+  		<em><?php print $content['field_length'][0]['#markup']; ?></em>
+  		<br>
+  		<a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_book'][0]['#markup']; ?>+<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_book'][0]['#markup']; ?> <?php print $content['field_scripture_reference'][0]['#markup']; ?></a>
+  		
+  		<!--<table>
   			<tr>
   				<td>Speaker:</td>
   				<td><?php print $content['field_speaker'][0]['#markup']; ?></td>
@@ -47,14 +53,17 @@
   				<td><a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_book'][0]['#markup']; ?>+<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_book'][0]['#markup']; ?> <?php print $content['field_scripture_reference'][0]['#markup']; ?></a></td>
   			</tr>
   			
-  		</table>
+  		</table>-->
+  		
+  		<p><?php print $content['field_description'][0]['#markup']; ?></p>
   		
   </li>
   <li id="scriptureTab">
+  
   	<?php
   	  $key = "IP";
-  	  $passage = urlencode("mark 1:1-20");
-  	  $options = "include-passage-references=true";
+  	  $passage = urlencode($content['field_scripture_book'][0]['#markup'].$content['field_scripture_reference'][0]['#markup']);
+  	  $options = "include-passage-references=true&include-audio-link=false";
   	  $url = "http://www.esvapi.org/v2/rest/passageQuery?key=$key&passage=$passage&$options";
   	  $ch = curl_init($url); 
   	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
