@@ -13,5 +13,5 @@ while (1) {
   elysia_cron_run(TRUE);
 
   // Run again in 10 seconds.
-  sleep(10);
+  sleep(60);
 }
