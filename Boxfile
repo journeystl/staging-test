@@ -40,7 +40,7 @@ db1:
 worker1:
   name: elysia_cron
   type: php
-  exec: "php workers/elysia-cron.php"
+  exec: "php workers/feed-importers.php"
   php_extensions:
     - mysqli
     - gd
