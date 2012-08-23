@@ -514,11 +514,11 @@ $conf['404_fast_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><titl
 //D7 DB config
 $databases = array();
 $databases['default']['default'] = array(
-		'database' => $_SERVER['DB1_NAME'],
-		'username' => $_SERVER['DB1_USER'],
-		'password' => $_SERVER['DB1_PASS'],
-		'host' => $_SERVER['DB1_HOST'],
-		'port' => $_SERVER['DB1_PORT'],
+		'database' => 'jnet5-drupal',
+		'username' => 'ivy',
+		'password' => '6QpATW07',
+		'host' => 'tunnel.pagodabox.com',
+		'port' => '3306',
 		'driver' => 'mysql',
-		'prefix' => '', 
+		'prefix' => '',
 );

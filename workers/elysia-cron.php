@@ -10,16 +10,10 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 while (1) {
   // Add an entry to the log.
-  worker_watchdog('worker', 'Running worker feed-importers.php.');
+  worker_watchdog('worker', 'Running worker elysia-cron.php.');
 
-  // Get all promotion content importers (should just be 1) and update the content.
-  $result = db_select('node', 'n')->fields('n', array('nid', 'title'))->condition('n.type', 'promotion_content_importer')->execute();
-  foreach ($result as $row) {
-    $feedSource = feeds_source('promotion_content_importer', $row->nid);
-    while ($feedSource->import() != FEEDS_BATCH_COMPLETE);
-    $num_items = $feedSource->itemCount();
-    worker_watchdog('worker', "Ended import for {$row->title} ({$num_items} items imported/updated)<br /><br />");
-  }
+  // Run elysia cron.
+  elysia_cron_run(TRUE);
 
   // Run again in 60 seconds.
   sleep(60);
