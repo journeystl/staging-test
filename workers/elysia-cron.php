@@ -9,6 +9,9 @@ require_once dirname(__FILE__) . '/../drupal/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 while (1) {
+  // We need to redefine the request time on each run.
+  define('REQUEST_TIME', time());
+
   // Run elysia cron.
   elysia_cron_run(TRUE);
 

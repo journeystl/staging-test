@@ -45,7 +45,6 @@ worker1:
     - mysqli
     - gd
     - curl
-    - hash
     - json
     - xml
     - ftp
