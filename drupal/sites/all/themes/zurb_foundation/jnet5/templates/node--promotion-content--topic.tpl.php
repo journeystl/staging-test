@@ -1,35 +1,20 @@
-TOPIC<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+TOPIC
 
-  <?php if ($display_submitted): ?>
-    <div class="posted">
-      <?php if ($user_picture): ?>
-        <?php print $user_picture; ?>
-      <?php endif; ?>
-      <?php print $submitted; ?>
-    </div>
-  <?php endif; ?>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      hide($content['field_tags']);
-      print render($content);
-    ?>
-  <div class="terms-links">
-    <?php if (($content['field_tags']) && !$is_front): ?>
-      <div class="tags">
-        <?php print render($content['field_tags']) ?>
-     </div>
-    <?php endif; ?>
-    <?php print render($content['links']); ?>
-  </div>
-  <?php print render($content['comments']); ?>
+<?php hide($content); ?>
+
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+
+  
+    <h1<?php if($title_attributes)print $title_attributes; ?>><?php if($title)print $title; ?></h1>
+    <h4>By <?php print render($content['field_author_longname']); ?></h4>
+    <?php render($content['field_type']); ?>
+	
+
+
+
+	<?php dpm(get_defined_vars()); ?>
+	
+<!--    <?php print render($content); ?>-->
+  
 
 </div>

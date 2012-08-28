@@ -28,3 +28,6 @@ regions[sidebar_second]  = Right Sidebar
 regions[footer_first]    = Footer first
 regions[footer_middle]   = Footer middle
 regions[footer_last]     = Footer last
+
+; Panels layouts. You can place multiple layouts under the "layouts" folder.
+plugins[panels][layouts] = layouts
