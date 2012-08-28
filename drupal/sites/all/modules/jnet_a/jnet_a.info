@@ -1,0 +1,4 @@
+name = Jnet - A
+description = On her majesty's secret service. (handle URLs generated at Patchbay)
+package = Jnet
+core = 7.x

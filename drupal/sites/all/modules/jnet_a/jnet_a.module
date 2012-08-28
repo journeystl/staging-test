@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function jnet_a_menu() {
+  $items['a/%'] = array(
+    'page callback' => 'jnet_a_redirect',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function jnet_a_redirect($arg) {
+  $args = explode('_', $arg);
+  $nid = db_select('feeds_item', 'f')->fields('f', array('entity_id'))->condition('f.guid', $args[0])->execute()->fetchField();
+  drupal_goto("node/{$nid}");
+}
