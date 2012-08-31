@@ -1,35 +1,29 @@
-EVENT<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+EVENT
 
-  <?php if ($display_submitted): ?>
-    <div class="posted">
-      <?php if ($user_picture): ?>
-        <?php print $user_picture; ?>
-      <?php endif; ?>
-      <?php print $submitted; ?>
-    </div>
-  <?php endif; ?>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      hide($content['field_tags']);
-      print render($content);
-    ?>
-  <div class="terms-links">
-    <?php if (($content['field_tags']) && !$is_front): ?>
-      <div class="tags">
-        <?php print render($content['field_tags']) ?>
-     </div>
-    <?php endif; ?>
-    <?php print render($content['links']); ?>
-  </div>
-  <?php print render($content['comments']); ?>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+
+<div class="row panel">
+	<div class="eight columns">
+  
+	    <h1<?php if($title_attributes)print $title_attributes; ?>><?php if($title)print $title; ?></h1>
+	    <h6>By <?php print render($content['field_author_longname'][0]['#markup']); ?></h6>
+	    <span class="label secondary radius"><?php print render(ucfirst($content['field_type'][0]['#markup'])); ?></span>
+	</div> <!--/.eight columns-->
+	
+	<div class="four columns">
+		<a href="#" class="button large radius">I Can Help! <span class="label secondary radius">3</span></a>
+	</div>
+	
+</div> <!--/.row-->
+
+<hr>
+<div><?php print render($content['body']); ?></div>
+
+
+
+	
+	
+<!--    <?php print render($content); ?>-->
+  
 
 </div>
