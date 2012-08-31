@@ -24,12 +24,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">
-    <p>
-      <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
-      <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
-    </p>
-  </div>
+
   <?php if ($site_slogan): ?>
     <div class="six columns panel radius hide-for-small">
       <?php print $site_slogan; ?>
