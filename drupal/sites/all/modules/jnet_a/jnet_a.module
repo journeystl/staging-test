@@ -19,7 +19,27 @@ function jnet_a_redirect($arg) {
   if ($nid) {
     drupal_goto("node/{$nid}");
   } else {
-    drupal_set_message('We could not find the requested content.');
-    drupal_goto("<front>");
+    // See if we can get any info via Patchbay API.
+    $args = explode('_', $arg);
+    $response = json_decode(file_get_contents("http://patchbay.journeyon.net/api/type?nid={$args[0]}"));
+    if (isset($response->type)) {
+      switch ($response->type) {
+
+        // For patchbay_content, get the Short URL field.
+        case 'patchbay_content':
+          $short_url = json_decode(file_get_contents("http://patchbay.journeyon.net/api/short_url?nid={$args[0]}"));
+          drupal_goto($short_url->short_url);
+          break;
+
+        // For media and media_series, send them to /media.
+        case 'media':
+        case 'media_series':
+          drupal_goto('media');
+          break;
+      }
+    }
   }
+
+  drupal_set_message('We could not find the requested content.');
+  drupal_goto("<front>", array(), 301);
 }
