@@ -17,5 +17,10 @@ function jnet_a_menu() {
 function jnet_a_redirect($arg) {
   $args = explode('_', $arg);
   $nid = db_select('feeds_item', 'f')->fields('f', array('entity_id'))->condition('f.guid', $args[0])->execute()->fetchField();
-  drupal_goto("node/{$nid}");
+  if ($nid) {
+    drupal_goto("node/{$nid}");
+  } else {
+    drupal_set_message('We could not find the requested content.');
+    drupal_goto("<front>");
+  }
 }
