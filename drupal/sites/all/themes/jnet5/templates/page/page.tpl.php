@@ -1,21 +1,25 @@
+<?php
+
+/**
+ * PAGE TPL
+ */
+?>
+
 <div class="top-bar">
   <div class="row">
-      <div class="three columns">
+    <?php print render($page['header']); ?>
+    <div id=header class="three columns centered">
       	<p>
         	<a href="/">
         		<img src="/<?php print path_to_theme(); ?>/images/navigation/JourneyLogo_05.png">
         	</a>
         </p>
-      </div>
-
-  <?php if (!empty($page['header'])): ?>
-    <div id=header class="nine columns">
-      <?php print render($page['header']); ?>
     </div>
-  <?php endif; ?>
+
 
   </div>
 </div>
+
 <div class="row">
   <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">
 
