@@ -11,7 +11,7 @@ EVENT
 	</div> <!--/.eight columns-->
 	
 	<div class="four columns">
-		<a href="#" class="button large radius">I Can Help! <span class="label secondary radius">3</span></a>
+		<a href="<?php print render($content['field_short_url'][0]['#markup']); ?>" class="button large radius">I Can Help! <span class="label secondary radius">3</span></a>
 	</div>
 	
 </div> <!--/.row-->
