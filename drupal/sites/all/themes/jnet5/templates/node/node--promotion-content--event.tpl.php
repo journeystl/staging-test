@@ -1,5 +1,3 @@
-EVENT
-
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 <div class="row">
@@ -20,7 +18,7 @@ EVENT
 		</div> <!--/.four columns-->
 		
 		<div class="two columns">
-			<a href="#" class="button radius large">RSVP  <span class="label round secondary">3</span></a>
+			<a href="<?php print render($content['field_short_url'][0]['#markup']); ?>" class="button radius large">RSVP  <span class="label round secondary">3</span></a>
 		</div> <!--/.two columns-->
 		    
 		    
