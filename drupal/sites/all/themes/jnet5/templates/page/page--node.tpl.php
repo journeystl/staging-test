@@ -6,9 +6,11 @@
 ?>
 
 <div class="top-bar">
+  <?php print $top_search_bar; ?>
+  <?php print $top_churches_bar; ?>
   <div class="row">
     <?php print render($page['header']); ?>
-    <div id=header class="three columns centered">
+    <div id="header" class="three columns centered">
       	<p>
         	<a href="/">
         		<img src="/<?php print path_to_theme(); ?>/images/navigation/JourneyLogo_05.png">
@@ -56,7 +58,7 @@
         <?php print render($action_links); ?>
       </ul>
     <?php endif; ?>
-    
+
     <?php print render($page['content_top']); ?>
     <?php print render($page['content']); ?>
     <?php print render($page['content_bottom']); ?>

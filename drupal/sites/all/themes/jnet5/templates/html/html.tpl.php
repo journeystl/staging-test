@@ -49,6 +49,8 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
+  <script type="text/javascript" src="//use.typekit.net/xka5tqs.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <?php print $styles; ?>
   <?php print $scripts; ?>
 

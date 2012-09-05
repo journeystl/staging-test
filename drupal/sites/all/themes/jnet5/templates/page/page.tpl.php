@@ -6,9 +6,11 @@
 ?>
 
 <div class="top-bar">
+  <?php print $top_search_bar; ?>
+  <?php print $top_churches_bar; ?>
   <div class="row">
     <?php print render($page['header']); ?>
-    <div id=header class="three columns centered">
+    <div id="header" class="three columns centered">
       	<p>
         	<a href="/">
         		<img src="/<?php print path_to_theme(); ?>/images/navigation/JourneyLogo_05.png">
@@ -19,10 +21,8 @@
 
   </div>
 </div>
-
 <div class="row">
   <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">
-
   <?php if ($site_slogan): ?>
     <div class="six columns panel radius hide-for-small">
       <?php print $site_slogan; ?>

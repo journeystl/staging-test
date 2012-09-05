@@ -72,6 +72,12 @@ function jnet5_preprocess_page(&$vars) {
 	  $vars['sidebar_first_grid'] = '';
 	  $vars['sidebar_sec_grid'] = '';
 	}
+
+  // Add top_search_bar.
+  $vars['top_search_bar'] = '<div id="search-bar"><input type="text" placeholder="Search + Hit Enter" /></div>';
+
+  // Add top_churches_bar.
+  $vars['top_churches_bar'] = '<div id="churches-bar">tg // wc // bv // hr</div>';
 }
 
 /**
@@ -102,6 +108,12 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
       }
     }
   }
+
+  // Insert tagline / logo after 3rd menu item.
+  array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</div><div id="nav-bar-logo">JOURNEY</div></li>')));
+
+  // Insert churches / search links.
+  $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
 }
 function jnet5_menu_tree__main_menu($variables) {
   // Add 'nav-bar' class to main menu's primary <ul>.
@@ -111,7 +123,3 @@ function jnet5_menu_tree__flyout_menu($variables) {
   // Add 'flyout' class to child links <ul>.
   return '<ul class="flyout">' . $variables['tree'] . '</ul>';
 }
-
-
-
-
