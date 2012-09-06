@@ -77,7 +77,7 @@
   // Submit our phony search form (only when the search input is focused).
   $(document).keyup(function(e) {
     var keyPressed = (e.keyCode ? e.keyCode : e.which);
-    if (keyPressed == 13 && $(e.target).is('input', searchBar)) {
+    if (keyPressed == 13 && $(e.target).is('#search-bar input')) {
       document.location = Drupal.settings.basePath + 'search/node/' + $('input', searchBar).val();
     }
   });
