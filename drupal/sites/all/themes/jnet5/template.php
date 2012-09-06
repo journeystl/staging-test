@@ -82,7 +82,17 @@ function jnet5_preprocess_page(&$vars) {
   $vars['top_search_bar'] = '<div id="search-bar"><input type="text" placeholder="Search + Hit Enter" /></div>';
 
   // Add top_churches_bar.
-  $vars['top_churches_bar'] = '<div id="churches-bar">tg // wc // bv // hr</div>';
+  $vars['top_churches_bar'] = array(
+    '#prefix' => '<div id="churches-bar">',
+    '#suffix' => '</div>',
+    '#theme' => 'item_list',
+    '#items' => array(),
+  );
+  $churches = db_select('node', 'n')->fields('n', array('nid', 'title'))->condition('n.type', 'church')->condition('n.status', 1)->execute();
+  foreach ($churches as $church) {
+    $vars['top_churches_bar']['#items'][] = l($church->title, "node/{$church->nid}");
+  }
+  $vars['top_churches_bar'] = render($vars['top_churches_bar']);
 }
 
 /**
