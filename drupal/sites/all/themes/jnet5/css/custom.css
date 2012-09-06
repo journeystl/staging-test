@@ -1,4 +1,7 @@
-/* Standardize Sitename styling */
+body {
+  padding-top: 91px;
+}
+
 #site-name {
   display: inline-block;
   font-size: 2.5em;
@@ -111,6 +114,8 @@
   height: 65px;
   line-height: 1.5;
   font-size: 40px;
+  float: left;
+  width: 900px;
 }
 
 #churches-bar ul {
@@ -128,4 +133,10 @@
   font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
   font-size: 24px;
   text-transform: uppercase;
+}
+
+#search-bar-close,
+#churches-bar-close {
+  float: right;
+  margin: 25px 10px 0 0;
 }

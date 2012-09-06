@@ -17,6 +17,8 @@ scripts[] = js/scripts.js
 ; Additional CSS Files
 stylesheets[all][] = css/node--promotion-content.css
 
+; Foundation Icons
+stylesheets[all][] = foundicons/css/general_foundicons.css
 
 ; Regions are output in the page.tpl.php
 regions[header]          = Header
