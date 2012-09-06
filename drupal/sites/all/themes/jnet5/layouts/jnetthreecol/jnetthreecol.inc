@@ -1,8 +1,9 @@
 <?php
 
+
 // Plugin definition
 $plugin = array(
-  'title' => t('Jnet Five Row Three Column'),
+  'title' => t('5Row 3Col'),
   'category' => t('Jnet Custom'),
   'icon' => 'jnetthreecol.png',
   'theme' => 'jnetthreecol',
@@ -12,6 +13,7 @@ $plugin = array(
 	'left1' => t('Left side 1'),
 	'middle1' => t('Middle 1'),
 	'right1' => t('Right side 1'),
+	'middle' => t('Middle'),
 	'left2' => t('Left side 2'),
 	'middle2' => t('Middle 2'),
 	'right2' => t('Right side 2'),

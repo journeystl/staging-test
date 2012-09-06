@@ -40,6 +40,14 @@
 	  	</div>
 	 <?php endif; ?>
 	 
+	 <?php if ($content['middle']): ?>
+	 	<div class="row">
+	 		<div class="twelve columns">
+	 			<?php print $content['middle']; ?>
+	 		</div>
+	 	</div>
+	 <?php endif; ?>
+	 
 	 <?php if($content['left2'] or $content['right2'] or $content['middle2']): ?>
 	 	<div class="row">
 	 	  	<div class="four columns">

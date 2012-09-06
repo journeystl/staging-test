@@ -2,7 +2,7 @@
 
 // Plugin definition
 $plugin = array(
-  'title' => t('Jnet Five Row Two Column'),
+  'title' => t('5Row 2Col'),
   'category' => t('Jnet Custom'),
   'icon' => 'jnettwocol.png',
   'theme' => 'jnettwocol',
