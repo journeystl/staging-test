@@ -69,6 +69,13 @@
     }
   });
 
+  // Hide the search bar when user clicks 'remove'.
+  $('#search-bar-close').click(function(e) {
+    if (searchBarActive) {
+      searchBar.animate({'top':'-65px'}, 200);
+    }
+  });
+
   // Clicking on the search bar is a-ok.
   searchBar.click(function(e) {
     e.stopPropagation();
@@ -97,6 +104,13 @@
 
   // Hide the churches bar when user clicks elsewhere.
   $(window).click(function(e) {
+    if (churchesBarActive) {
+      churchesBar.animate({'top':'-65px'}, 200);
+    }
+  });
+
+  // Hide the churches bar when user clicks 'remove'.
+  $('#churches-bar-close').click(function(e) {
     if (churchesBarActive) {
       churchesBar.animate({'top':'-65px'}, 200);
     }
