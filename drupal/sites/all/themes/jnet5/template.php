@@ -45,6 +45,11 @@ function jnet5_preprocess_html(&$vars) {
  * Impements template_preprocess_page().
  */
 function jnet5_preprocess_page(&$vars) {
+  // Add tpl suggestions for landing pages.
+  if (isset($_GET['landing'])) {
+    $vars['theme_hook_suggestions'][] = 'page__landing';
+  }
+
   // Add tpl suggestions for Promotion Content depending on the "type".
   if (isset($vars['node']) && $vars['node']->type == 'media_series') {
     $vars['theme_hook_suggestions'][] = 'page__media_series';
