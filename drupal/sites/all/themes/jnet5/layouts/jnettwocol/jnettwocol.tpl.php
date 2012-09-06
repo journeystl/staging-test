@@ -88,7 +88,6 @@
   	<?php if ($content['bottom']): ?>
 	  	<div class="row">
 	  		<div class="twelve columns">
-  				<hr>
   			 	<?php print $content['bottom']; ?>
 	  		</div>
 	  	</div>
