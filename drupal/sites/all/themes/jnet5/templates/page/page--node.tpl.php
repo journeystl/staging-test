@@ -39,6 +39,7 @@
   <?php print $breadcrumb; ?>
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
+  <?php if (!empty($page['content_header'])): print render($page['content_header']); endif; ?>
   <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
       <div class="highlight panel callout">
