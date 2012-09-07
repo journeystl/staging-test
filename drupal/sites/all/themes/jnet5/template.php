@@ -79,11 +79,11 @@ function jnet5_preprocess_page(&$vars) {
 	}
 
   // Add top_search_bar.
-  $vars['top_search_bar'] = '<div id="search-bar"><a href="javascript:;" id="search-bar-close"><i class="foundicon-remove"></i></a><input type="text" placeholder="Search + Hit Enter" /></div>';
+  $vars['top_search_bar'] = '<div id="search-bar"><a href="javascript:;" id="search-bar-close"><i class="g-foundicon-remove"></i></a><input type="text" placeholder="Search + Hit Enter" /></div>';
 
   // Add top_churches_bar.
   $vars['top_churches_bar'] = array(
-    '#prefix' => '<div id="churches-bar"><span>select a church:</span><a href="javascript:;" id="churches-bar-close"><i class="foundicon-remove"></i></a>',
+    '#prefix' => '<div id="churches-bar"><span>select a church:</span><a href="javascript:;" id="churches-bar-close"><i class="g-foundicon-remove"></i></a>',
     '#suffix' => '</div>',
     '#theme' => 'item_list',
     '#items' => array(),

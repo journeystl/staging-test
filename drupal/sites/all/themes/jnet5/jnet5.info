@@ -19,7 +19,11 @@ scripts[] = js/scripts.js
 stylesheets[all][] = css/node--promotion-content.css
 
 ; Foundation Icons
-stylesheets[all][] = foundicons/css/general_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_accessibility/stylesheets/accessibility_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_general/stylesheets/general_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_general_enclosed/stylesheets/general_enclosed_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_social/stylesheets/social_foundicons.css
+
 
 ; Regions are output in the page.tpl.php
 regions[header]          = Header
