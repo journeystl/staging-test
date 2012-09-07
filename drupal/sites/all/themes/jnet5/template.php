@@ -83,7 +83,7 @@ function jnet5_preprocess_page(&$vars) {
 
   // Add top_churches_bar.
   $vars['top_churches_bar'] = array(
-    '#prefix' => '<div id="churches-bar"><a href="javascript:;" id="churches-bar-close"><i class="foundicon-remove"></i></a>',
+    '#prefix' => '<div id="churches-bar"><span>select a church:</span><a href="javascript:;" id="churches-bar-close"><i class="foundicon-remove"></i></a>',
     '#suffix' => '</div>',
     '#theme' => 'item_list',
     '#items' => array(),
@@ -109,6 +109,7 @@ function jnet5_preprocess_node(&$vars) {
  * Theme main links menu.
  */
 function jnet5_preprocess_menu_block_wrapper(&$vars) {
+/*
   // Run through each primary link.
   foreach (element_children($vars['content']) as $link) {
     // If link has children, theme them properly.
@@ -123,6 +124,7 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
       }
     }
   }
+*/
 
   // Insert tagline / logo after 3rd menu item.
   array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</div><div id="nav-bar-logo">JOURNEY</div></li>')));

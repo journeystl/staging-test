@@ -1,3 +1,7 @@
+body {
+  padding-top: 91px;
+}
+
 #site-name {
   display: inline-block;
   font-size: 2.5em;
@@ -11,7 +15,7 @@
   position: fixed;
   top: 0;
   z-index: 1;
-  width: 940px;
+  width: 1170px;
   height: 65px;
   overflow-y: hidden;
   border-bottom: 1px solid #333;
@@ -19,37 +23,40 @@
   text-transform: uppercase;
 }
 
-.nav-bar {
+.menu-block-1 .nav-bar {
   height: 65px;
   background: #fff;
   margin-top: 0;
   padding: 0;
   overflow-y: hidden;
 }
-.nav-bar > li {
+.menu-block-1 .nav-bar > li {
   line-height: 65px;
   border: none;
 }
-.nav-bar > li:hover {
+.menu-block-1 .nav-bar > li:hover {
   background: #fff;
 }
-.nav-bar > li > a {
+.menu-block-1 .nav-bar > li > a {
   color: #333;
   font-size: 24px !important;
 }
-.nav-bar > li:last-child {
+.menu-block-1 .nav-bar > li:last-child {
   border-right: none;
 }
-.nav-bar > li > a:first-child {
-  padding: 0 26px !important;
+.menu-block-1 .nav-bar > li > a:first-child {
+  padding: 0 42px !important;
 }
-.nav-bar > li.last > a:first-child {
+.menu-block-1 .nav-bar > li.first > a:first-child {
+  padding-left: 0 !important;
+}
+.menu-block-1 .nav-bar > li.last > a:first-child {
   padding-right: 0 !important;
 }
-.nav-bar > li.has-flyout > a:first-child::after {
+.menu-block-1 .nav-bar > li.has-flyout > a:first-child::after {
   border: none;
 }
-.nav-bar .flyout {
+.menu-block-1 .nav-bar .flyout {
   background: #fff;
   border: none;
   -webkit-box-shadow: 0 0 0;
@@ -60,6 +67,8 @@
 #nav-bar-tag-logo-wrapper {
   background: #666;
   padding: 0 15px;
+  width: 360px;
+  overflow: hidden;
 }
 #nav-bar-tag,
 #nav-bar-logo {
@@ -67,8 +76,8 @@
   color: #fff;
 }
 #nav-bar-tag {
-  font-size: 22px;
-  font-weight: 300;
+	font-size: 19px;
+	font-weight: 400;
 }
 #nav-bar-buttons {
   float: right;
@@ -93,30 +102,30 @@
 
 #search-bar,
 #churches-bar {
-  width: 940px;
-  height: 65px;
+  width: 1170px;
+  height: 64px;
   background: #fff;
   position: fixed;
   top: -65px;
   z-index: 2;
   left: 50%;
-  margin-left: -470px;
+  margin-left: -585px;
   text-align: center;
 }
 
 #search-bar input[type="text"] {
   border: none;
   margin: 0 0 0 0;
-  height: 65px;
+  height: 64px;
   line-height: 1.5;
   font-size: 40px;
   float: left;
-  width: 900px;
+  width: 1100px;
 }
 
 #churches-bar ul {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 16px 0 0 0;
   padding: 0;
 }
 #churches-bar ul li {
@@ -127,7 +136,7 @@
 }
 #churches-bar ul li a {
   font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
