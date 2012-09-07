@@ -47,7 +47,8 @@
 }
 
 .view-id-visit_a_church .orbit .views-row > div,
-.view-id-visit_a_church .orbit .views-row > a {
+.view-id-visit_a_church .orbit .views-row > a,
+.view-id-visit_a_church .orbit .views-row > h2 {
 	position: relative;
 	visibility: hidden;
 }
@@ -64,24 +65,26 @@
 }
 
 .view-id-visit_a_church .orbit .views-row .field-content,
-.view-id-visit_a_church .orbit .views-row .item-list,
-.view-id-visit_a_church .orbit .views-row a {
+.view-id-visit_a_church .orbit .views-row .item-list {
 	padding: 0 30px 0 0;
   	margin: 8px 0 0 0;
 }
 
+.view-id-visit_a_church .orbit .views-row > a {
+}
+
 .view-id-visit_a_church .orbit .views-row .field-content,
-.view-id-visit_a_church .orbit .views-row .item-list *,
-.view-id-visit_a_church .orbit .views-row a {
+.view-id-visit_a_church .orbit .views-row .item-list * {
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
   	text-transform: uppercase;
   	color: #222;
   	font-size: 20px;
 }
 
-.view-id-visit_a_church .orbit .views-row a {
+.view-id-visit_a_church .orbit .views-row h2 a {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 43px;
+	color: #222;
 }
 
 .view-id-visit_a_church .orbit .views-row .item-list ul {
