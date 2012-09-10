@@ -56,7 +56,7 @@
 			
 		</div> <!--/.four columns-->
 		<div class="two columns">
-			<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round secondary">3</span></a>
+			<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">Leave A Comment  <span class="label round secondary">3</span></a>
 		</div> <!--/.two columns-->
 	</div> <!--/.row-->
 </div> <!--/.twelve columns panel-->
