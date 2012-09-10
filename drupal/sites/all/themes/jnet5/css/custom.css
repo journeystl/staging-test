@@ -5,7 +5,19 @@
 	border-bottom: 1px solid #666;
 }
 
-.column, .columns {
+/*
+.row .row:first-child .column:first-child,
+.row .row:first-child .columns:first-child {
+	padding-left: 0;
+}
+
+.row .row:first-child .column:last-child,
+.row .row:first-child .columns:last-child {
+	padding-right: 0;
+}
+*/
+
+.twelve.columns {
 	padding: 0;
 }
 
@@ -42,6 +54,8 @@
 #visitAchurch {
 	display: none;
 }
+
+
 #visitAchurch.orbit {
 	display: block;
 }
@@ -170,4 +184,9 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 }
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
 	background-image: url(/sites/all/themes/zurb_foundation/images/orbit/left-arrow.png);
+}
+
+/* FRONT PAGE - promo thumbs */
+.pane-promo-thumbs-front-page .four.columns {
+	padding-bottom: 25px;
 }

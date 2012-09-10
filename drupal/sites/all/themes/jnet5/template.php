@@ -127,7 +127,7 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
 */
 
   // Insert tagline / logo after 3rd menu item.
-  array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</div><div id="nav-bar-logo">JOURNEY</div></li>')));
+  array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
 
   // Insert churches / search links.
   $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');

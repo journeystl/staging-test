@@ -2,6 +2,10 @@ body {
   padding-top: 91px;
 }
 
+.top-bar .row {
+	padding: 0;
+}
+
 #site-name {
   display: inline-block;
   font-size: 2.5em;
@@ -45,7 +49,7 @@ body {
   border-right: none;
 }
 .menu-block-1 .nav-bar > li > a:first-child {
-  padding: 0 42px !important;
+  padding: 0 47px !important;
 }
 .menu-block-1 .nav-bar > li.first > a:first-child {
   padding-left: 0 !important;
@@ -71,11 +75,16 @@ body {
   overflow: hidden;
 }
 #nav-bar-tag,
+#nav-bar-tag a,
 #nav-bar-logo {
   text-align: center;
   color: #fff;
 }
-#nav-bar-tag {
+#nav-bar-logo {
+	margin: 7px 0 0 0;
+}
+#nav-bar-tag,
+#nav-bar-tag a {
 	font-size: 19px;
 	font-weight: 400;
 }
