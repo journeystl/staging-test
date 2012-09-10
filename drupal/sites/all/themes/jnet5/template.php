@@ -79,11 +79,11 @@ function jnet5_preprocess_page(&$vars) {
 	}
 
   // Add top_search_bar.
-  $vars['top_search_bar'] = '<div id="search-bar"><a href="javascript:;" id="search-bar-close"><i class="foundicon-remove"></i></a><input type="text" placeholder="Search + Hit Enter" /></div>';
+  $vars['top_search_bar'] = '<div id="search-bar"><a href="javascript:;" id="search-bar-close"><i class="g-foundicon-remove"></i></a><input type="text" placeholder="Search + Hit Enter" /></div>';
 
   // Add top_churches_bar.
   $vars['top_churches_bar'] = array(
-    '#prefix' => '<div id="churches-bar"><a href="javascript:;" id="churches-bar-close"><i class="foundicon-remove"></i></a>',
+    '#prefix' => '<div id="churches-bar"><span>select a church:</span><a href="javascript:;" id="churches-bar-close"><i class="g-foundicon-remove"></i></a>',
     '#suffix' => '</div>',
     '#theme' => 'item_list',
     '#items' => array(),
@@ -109,6 +109,7 @@ function jnet5_preprocess_node(&$vars) {
  * Theme main links menu.
  */
 function jnet5_preprocess_menu_block_wrapper(&$vars) {
+  /* Uncomment to allow for dropdowns.
   // Run through each primary link.
   foreach (element_children($vars['content']) as $link) {
     // If link has children, theme them properly.
@@ -123,13 +124,16 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
       }
     }
   }
+  */
 
-  // Insert tagline / logo after 3rd menu item.
-  dpm($vars);
-  array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</div><div id="nav-bar-logo">JOURNEY</div></li>')));
+  // Alter main menu when it's considered the primary nav.
+  if ($vars['delta'] == 1) {
+    // Insert tagline / logo after 3rd menu item.
+    array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
 
-  // Insert churches / search links.
-  $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
+    // Insert churches / search links.
+    $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
+  }
 }
 function jnet5_menu_tree__main_menu($variables) {
   // Add 'nav-bar' class to main menu's primary <ul>.

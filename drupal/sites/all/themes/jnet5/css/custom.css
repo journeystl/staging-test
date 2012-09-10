@@ -1,142 +1,192 @@
-body {
-  padding-top: 91px;
+.row .row:first-child {
+	padding: 10px 0;
+	margin: 10px 0 30px 0;
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
 }
 
-#site-name {
-  display: inline-block;
-  font-size: 2.5em;
-  font-weight: normal;
-  line-height: 1.25;
-  margin: 0;
-  padding: 15px 0 0;
+/*
+.row .row:first-child .column:first-child,
+.row .row:first-child .columns:first-child {
+	padding-left: 0;
 }
 
-#block-menu-block-1 {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 940px;
-  height: 65px;
-  overflow-y: hidden;
-  border-bottom: 1px solid #333;
-  font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
-  text-transform: uppercase;
+.row .row:first-child .column:last-child,
+.row .row:first-child .columns:last-child {
+	padding-right: 0;
+}
+*/
+
+.twelve.columns {
+	padding: 0;
 }
 
-.nav-bar {
-  height: 65px;
-  background: #fff;
-  margin-top: 0;
-  padding: 0;
-  overflow-y: hidden;
+
+/* FRONT PAGE - feature menu */
+.pane-menu-menu-front-page-featured ul {
+	text-align: center;
+	padding: 0 0 0 13px;
 }
-.nav-bar > li {
-  line-height: 65px;
-  border: none;
-}
-.nav-bar > li:hover {
-  background: #fff;
-}
-.nav-bar > li > a {
-  color: #333;
-  font-size: 24px !important;
-}
-.nav-bar > li:last-child {
-  border-right: none;
-}
-.nav-bar > li > a:first-child {
-  padding: 0 26px !important;
-}
-.nav-bar > li.last > a:first-child {
-  padding-right: 0 !important;
-}
-.nav-bar > li.has-flyout > a:first-child::after {
-  border: none;
-}
-.nav-bar .flyout {
-  background: #fff;
-  border: none;
-  -webkit-box-shadow: 0 0 0;
-  -moz-box-shadow: 0 0 0;
-  box-shadow: 0 0 0;
+.pane-menu-menu-front-page-featured ul li.leaf {
+	list-style: none;
+	list-style-image: none;
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	font-family: "ltc-bodoni-175", "georgia", serif;
+	font-size: 43px;
+	text-transform: uppercase;
+	padding: 27px 0;
+	margin: 9px 0;
 }
 
-#nav-bar-tag-logo-wrapper {
-  background: #666;
-  padding: 0 15px;
-}
-#nav-bar-tag,
-#nav-bar-logo {
-  text-align: center;
-  color: #fff;
-}
-#nav-bar-tag {
-  font-size: 22px;
-  font-weight: 300;
-}
-#nav-bar-buttons {
-  float: right;
-  padding-top: 8px;
-}
-#nav-bar-churches,
-#nav-bar-search {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  margin-top: 6px;
-  cursor: pointer;
-}
-#nav-bar-churches {
-  background: url('../images/navigation/icn-church.png') bottom left no-repeat;
-}
-#nav-bar-search {
-  width: 25px;
-  height: 25px;
-  background: url('../images/navigation/icn-search.png') bottom right no-repeat;
+.pane-menu-menu-front-page-featured ul li.leaf:hover {
+	border-top: 1px solid #f30;
+	border-bottom: 1px solid #f30;
 }
 
-#search-bar,
-#churches-bar {
-  width: 940px;
-  height: 65px;
-  background: #fff;
-  position: fixed;
-  top: -65px;
-  z-index: 2;
-  left: 50%;
-  margin-left: -470px;
-  text-align: center;
+.pane-menu-menu-front-page-featured ul li.leaf a {
+	color: #666666;
 }
 
-#search-bar input[type="text"] {
-  border: none;
-  margin: 0 0 0 0;
-  height: 65px;
-  line-height: 1.5;
-  font-size: 40px;
-  float: left;
-  width: 900px;
+
+/* FRONT PAGE - visit a church */
+
+#visitAchurch {
+	display: none;
 }
 
-#churches-bar ul {
-  list-style: none;
-  margin: 10px 0 0 0;
-  padding: 0;
+
+#visitAchurch.orbit {
+	display: block;
 }
-#churches-bar ul li {
-  list-style: none;
-  display: inline;
-  margin: 0 40px ;
-  padding: 20px 0 0 0;
-}
-#churches-bar ul li a {
-  font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
-  font-size: 24px;
-  text-transform: uppercase;
+#visitAchurch.orbit {
+	margin: 9px 0 0 0;
 }
 
-#search-bar-close,
-#churches-bar-close {
-  float: right;
-  margin: 25px 10px 0 0;
+#visitAchurch.orbit .views-row {
+	text-align: right;
+}
+
+#visitAchurch.orbit .views-row > div,
+#visitAchurch.orbit .views-row > a,
+#visitAchurch.orbit .views-row > h2 {
+	position: relative;
+	visibility: hidden;
+}
+
+#visitAchurch.orbit .views-row:hover * {
+	visibility: visible;
+}
+
+#visitAchurch.orbit .views-row .whitecover {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(255, 255, 255); opacity: 0.6;
+	margin: -67% 0 -70% 0;
+}
+
+#visitAchurch.orbit .views-row .field-content,
+#visitAchurch.orbit .views-row h2 {
+	padding: 0 30px 0 0;
+  	margin: 8px 0 0 0;
+}
+
+#visitAchurch.orbit .views-row .item-list {
+	padding: 0 22px 0 0;
+}
+
+#visitAchurch.orbit .views-row .field-content,
+#visitAchurch.orbit .views-row .item-list * {
+	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+  	text-transform: uppercase;
+  	color: #222;
+  	font-size: 20px;
+}
+
+#visitAchurch.orbit .views-row h2 a {
+	font-family: "ltc-bodoni-175", "georgia", serif;
+	font-size: 43px;
+	color: #222;
+}
+
+#visitAchurch.orbit .views-row .item-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#visitAchurch.orbit .views-row .item-list ul li * {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#visitAchurch.orbit .views-row .item-list .field-name-field-church-service-day {
+	font-weight: bold;
+	padding: 0 8px 0 0;
+}
+
+#visitAchurch.orbit .views-row > .button {
+	margin: 0 30px 15px 0;
+}
+
+div.orbit-wrapper #visitAchurch div.slider-nav span.right,
+div.orbit-wrapper #visitAchurch div.slider-nav span.left {
+	display: none;
+	visibility: none;
+}
+
+
+/* FRONT PAGE - news */
+.view-id-new_front_page .row:first-child {
+
+}
+.view-id-new_front_page h2 {
+	margin: 0;
+	padding: 0;
+}
+#News {
+	display: none;
+}
+#News.orbit {
+	display: block;
+}
+
+#News .views-row.orbit-slide {
+	background-color: #fff; /* temp */
+	width: 86%;
+	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+	color: #666;
+	font-size: 16px;
+}
+
+#News .views-row.orbit-slide .title a {
+	color: #333;
+	font-size: 36px;
+	padding: 0 15px 0 0;
+}
+
+#News * {
+	display: inline;
+}
+
+.view-id-new_front_page div.orbit-wrapper div.slider-nav {
+}
+
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span {
+	float: right;
+	position: relative;
+	margin: -49px 0 0 0;
+}
+
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
+	background-image: url(/sites/all/themes/zurb_foundation/images/orbit/right-arrow.png);
+}
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
+	background-image: url(/sites/all/themes/zurb_foundation/images/orbit/left-arrow.png);
+}
+
+/* FRONT PAGE - promo thumbs */
+.pane-promo-thumbs-front-page .four.columns {
+	padding-bottom: 25px;
 }

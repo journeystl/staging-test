@@ -1,0 +1,156 @@
+body {
+  padding-top: 91px;
+}
+
+.top-bar .row {
+	padding: 0;
+}
+
+#site-name {
+  display: inline-block;
+  font-size: 2.5em;
+  font-weight: normal;
+  line-height: 1.25;
+  margin: 0;
+  padding: 15px 0 0;
+}
+
+#block-menu-block-1 {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 1170px;
+  height: 65px;
+  overflow-y: hidden;
+  border-bottom: 1px solid #333;
+  font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+.menu-block-1 .nav-bar {
+  height: 65px;
+  background: #fff;
+  margin-top: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+.menu-block-1 .nav-bar > li {
+  line-height: 65px;
+  border: none;
+}
+.menu-block-1 .nav-bar > li:hover {
+  background: #fff;
+}
+.menu-block-1 .nav-bar > li > a {
+  color: #333;
+  font-size: 24px !important;
+}
+.menu-block-1 .nav-bar > li:last-child {
+  border-right: none;
+}
+.menu-block-1 .nav-bar > li > a:first-child {
+  padding: 0 47px !important;
+}
+.menu-block-1 .nav-bar > li.first > a:first-child {
+  padding-left: 0 !important;
+}
+.menu-block-1 .nav-bar > li.last > a:first-child {
+  padding-right: 0 !important;
+}
+.menu-block-1 .nav-bar > li.has-flyout > a:first-child::after {
+  border: none;
+}
+.menu-block-1 .nav-bar .flyout {
+  background: #fff;
+  border: none;
+  -webkit-box-shadow: 0 0 0;
+  -moz-box-shadow: 0 0 0;
+  box-shadow: 0 0 0;
+}
+
+#nav-bar-tag-logo-wrapper {
+  background: #666;
+  padding: 0 15px;
+  width: 360px;
+  overflow: hidden;
+}
+#nav-bar-tag,
+#nav-bar-tag a,
+#nav-bar-logo {
+  text-align: center;
+  color: #fff;
+}
+#nav-bar-logo {
+	margin: 7px 0 0 0;
+}
+#nav-bar-tag,
+#nav-bar-tag a {
+	font-size: 19px;
+	font-weight: 400;
+}
+#nav-bar-buttons {
+  float: right;
+  padding-top: 8px;
+}
+#nav-bar-churches,
+#nav-bar-search {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+#nav-bar-churches {
+  background: url('../images/navigation/icn-church.png') bottom left no-repeat;
+}
+#nav-bar-search {
+  width: 25px;
+  height: 25px;
+  background: url('../images/navigation/icn-search.png') bottom right no-repeat;
+}
+
+#search-bar,
+#churches-bar {
+  width: 1170px;
+  height: 64px;
+  background: #fff;
+  position: fixed;
+  top: -65px;
+  z-index: 2;
+  left: 50%;
+  margin-left: -585px;
+  text-align: center;
+}
+
+#search-bar input[type="text"] {
+  border: none;
+  margin: 0 0 0 0;
+  height: 64px;
+  line-height: 1.5;
+  font-size: 40px;
+  float: left;
+  width: 1100px;
+}
+
+#churches-bar ul {
+  list-style: none;
+  margin: 16px 0 0 0;
+  padding: 0;
+}
+#churches-bar ul li {
+  list-style: none;
+  display: inline;
+  margin: 0 40px ;
+  padding: 20px 0 0 0;
+}
+#churches-bar ul li a {
+  font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+#search-bar-close,
+#churches-bar-close {
+  float: right;
+  margin: 25px 10px 0 0;
+}

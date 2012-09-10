@@ -9,36 +9,23 @@
   <?php print $top_search_bar; ?>
   <?php print $top_churches_bar; ?>
   <div class="row">
-    <?php print render($page['header']); ?>
+   		 <?php print render($page['header']); ?>
+   </div>
+   <div class="row">
     <div id="header" class="three columns centered">
-      	<p>
-        	<a href="/">
-        		<img src="/<?php print path_to_theme(); ?>/images/navigation/JourneyLogo_05.png">
-        	</a>
-        </p>
+		<a href="/">
+			<img src="/<?php print path_to_theme(); ?>/images/navigation/logo_big.gif">
+		</a>
     </div>
 
 
   </div>
 </div>
+
+
+
 <div class="row">
 
-  <?php if ($site_slogan): ?>
-    <div class="six columns panel radius hide-for-small">
-      <?php print $site_slogan; ?>
-    </div>
-  <?php endif; ?>
-  <div class="show-for-small">
-    <div class="six mobile-two columns">
-      <p><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('radius', 'button')))); ?></p>
-    </div>
-    <div class="six mobile-two columns">
-      <p><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('radius', 'success', 'button')))); ?></p>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <?php print $breadcrumb; ?>
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
   <?php if (!empty($page['content_header'])): print render($page['content_header']); endif; ?>
@@ -75,7 +62,7 @@
     </div>
   <?php endif; ?>
 </div>
-<?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last'])): ?>
+<?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>
   <footer class="row">
     <?php if (!empty($page['footer_first'])): ?>
       <div id="footer-first" class="four columns">
@@ -92,7 +79,13 @@
         <?php print render($page['footer_last']); ?>
       </div>
     <?php endif; ?>
+    <?php if (!empty($page['footer_bottom'])): ?>
+      <div id="footer-last" class="twelve columns">
+        <?php print render($page['footer_last']); ?>
+      </div>
+    <?php endif; ?>
   </footer>
+  <div class="row" id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">

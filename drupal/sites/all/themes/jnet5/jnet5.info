@@ -10,6 +10,7 @@ stylesheets[all][] = css/drupal.css
 
 ; An empty CSS file ready to be used
 stylesheets[all][] = css/custom.css
+stylesheets[all][] = css/header.css
 
 ; An empty JS file ready to be used
 scripts[] = js/scripts.js
@@ -18,7 +19,11 @@ scripts[] = js/scripts.js
 stylesheets[all][] = css/node--promotion-content.css
 
 ; Foundation Icons
-stylesheets[all][] = foundicons/css/general_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_accessibility/stylesheets/accessibility_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_general/stylesheets/general_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_general_enclosed/stylesheets/general_enclosed_foundicons.css
+stylesheets[all][] = foundation_icons_all/foundation_icons_social/stylesheets/social_foundicons.css
+
 
 ; Regions are output in the page.tpl.php
 regions[header]          = Header
@@ -34,6 +39,7 @@ regions[sidebar_second]  = Right Sidebar
 regions[footer_first]    = Footer first
 regions[footer_middle]   = Footer middle
 regions[footer_last]     = Footer last
+regions[footer_bottom]   = Footer Bottom
 
 ; Panels layouts. You can place multiple layouts under the "layouts" folder.
 plugins[panels][layouts] = layouts

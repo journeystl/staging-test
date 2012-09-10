@@ -21,22 +21,7 @@
 
   </div>
 </div>
-<div class="row">
-  <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">
-  <?php if ($site_slogan): ?>
-    <div class="six columns panel radius hide-for-small">
-      <?php print $site_slogan; ?>
-    </div>
-  <?php endif; ?>
-  <div class="show-for-small">
-    <div class="six mobile-two columns">
-      <p><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('radius', 'button')))); ?></p>
-    </div>
-    <div class="six mobile-two columns">
-      <p><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('radius', 'success', 'button')))); ?></p>
-    </div>
-  </div>
-</div>
+
 
 
 <?php //if (!empty($page['content_header'])): print render($page['content_header']); endif; ?>
@@ -45,7 +30,6 @@
 
 
 <div class="row">
-  <?php print $breadcrumb; ?>
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
   <?php if (!empty($page['content_header'])): print render($page['content_header']); endif; ?>
@@ -104,6 +88,7 @@
       </div>
     <?php endif; ?>
   </footer>
+  <div class="row" id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">

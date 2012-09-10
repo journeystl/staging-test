@@ -5,7 +5,7 @@
    */
 
   var header = $('#block-menu-block-1');
-  var headerNav = $('.nav-bar');
+  var headerNav = $('.top-bar .nav-bar');
   var headerTag = $('#nav-bar-tag');
   var headerLogo = $('#nav-bar-logo');
   var headerCondensed = false;
