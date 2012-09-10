@@ -21,6 +21,9 @@ while (1) {
     worker_watchdog('worker', "Ended import for {$row->title} ({$num_items} items imported/updated)<br /><br />");
   }
 
+  // Clear cache of loaded nodes.
+  entity_get_controller('node')->resetCache();
+
   // Run again in 60 seconds.
   sleep(60);
 }
