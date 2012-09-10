@@ -21,6 +21,11 @@ function jnet5_preprocess(&$vars, $hook) {
   }
 }
 
+function jnet5_preprocess_panels_pane(&$vars) {
+  $menu = '<a href="">Tower Grove</a> <a href="">Belleville</a> <a href="">West County</a>';
+  $vars['content'] = str_replace('[visit_a_church]', $menu, $vars['content']);
+}
+
 /**
  * Impements template_preprocess_html().
  */
