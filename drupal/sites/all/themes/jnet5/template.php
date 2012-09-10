@@ -125,6 +125,7 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
   }
 
   // Insert tagline / logo after 3rd menu item.
+  dpm($vars);
   array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</div><div id="nav-bar-logo">JOURNEY</div></li>')));
 
   // Insert churches / search links.
