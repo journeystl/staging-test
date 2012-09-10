@@ -1,9 +1,9 @@
-.row .row:first-child {
+/*.row .row:first-child {
 	padding: 10px 0;
 	margin: 10px 0 30px 0;
 	border-top: 1px solid #666;
 	border-bottom: 1px solid #666;
-}
+}*/
 
 /*
 .row .row:first-child .column:first-child,
@@ -17,9 +17,10 @@
 }
 */
 
-.twelve.columns {
+/*.twelve.columns {
 	padding: 0;
-}
+}*/
+
 
 
 /* FRONT PAGE - feature menu */
@@ -54,47 +55,38 @@
 #visitAchurch {
 	display: none;
 }
-
-
 #visitAchurch.orbit {
 	display: block;
 }
 #visitAchurch.orbit {
 	margin: 9px 0 0 0;
 }
-
 #visitAchurch.orbit .views-row {
 	text-align: right;
 }
-
 #visitAchurch.orbit .views-row > div,
 #visitAchurch.orbit .views-row > a,
 #visitAchurch.orbit .views-row > h2 {
 	position: relative;
 	visibility: hidden;
 }
-
 #visitAchurch.orbit .views-row:hover * {
 	visibility: visible;
 }
-
 #visitAchurch.orbit .views-row .whitecover {
 	width: 100%;
 	height: 100%;
 	background-color: rgb(255, 255, 255); opacity: 0.6;
 	margin: -67% 0 -70% 0;
 }
-
 #visitAchurch.orbit .views-row .field-content,
 #visitAchurch.orbit .views-row h2 {
 	padding: 0 30px 0 0;
   	margin: 8px 0 0 0;
 }
-
 #visitAchurch.orbit .views-row .item-list {
 	padding: 0 22px 0 0;
 }
-
 #visitAchurch.orbit .views-row .field-content,
 #visitAchurch.orbit .views-row .item-list * {
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
@@ -102,30 +94,25 @@
   	color: #222;
   	font-size: 20px;
 }
-
 #visitAchurch.orbit .views-row h2 a {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 43px;
 	color: #222;
 }
-
 #visitAchurch.orbit .views-row .item-list ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-
 #visitAchurch.orbit .views-row .item-list ul li * {
 	display: inline;
 	margin: 0;
 	padding: 0;
 }
-
 #visitAchurch.orbit .views-row .item-list .field-name-field-church-service-day {
 	font-weight: bold;
 	padding: 0 8px 0 0;
 }
-
 #visitAchurch.orbit .views-row > .button {
 	margin: 0 30px 15px 0;
 }
@@ -138,12 +125,15 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 
 
 /* FRONT PAGE - news */
+.view-id-new_front_page.view-display-id-block {
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+}
 .view-id-new_front_page .row:first-child {
 
 }
 .view-id-new_front_page h2 {
-	margin: 0;
-	padding: 0;
+
 }
 #News {
 	display: none;
@@ -180,13 +170,13 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 }
 
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
-	background-image: url(/sites/all/themes/zurb_foundation/images/orbit/right-arrow.png);
+	background-image: url('../images/orbit/right-arrow.png');
 }
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
-	background-image: url(/sites/all/themes/zurb_foundation/images/orbit/left-arrow.png);
+	background-image: url('../zurb_foundation/images/orbit/left-arrow.png);
 }
 
 /* FRONT PAGE - promo thumbs */
-.pane-promo-thumbs-front-page .four.columns {
-	padding-bottom: 25px;
+.pane-promo-thumbs-front-page {
+	margin-bottom: 25px;
 }

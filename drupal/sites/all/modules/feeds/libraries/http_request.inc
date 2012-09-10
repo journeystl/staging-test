@@ -86,7 +86,7 @@ function http_request_get($url, $username = NULL, $password = NULL, $accept_inva
   // one page download (it's possible, compatible and parse calls).
   static $download_cache = array();
   if (isset($download_cache[$url])) {
-    return $download_cache[$url];
+    //return $download_cache[$url];
   }
 
   if (!$username && valid_url($url, TRUE)) {
