@@ -255,7 +255,7 @@ dl.tabs.pill dd a:hover {
 	display: block; /* reset */
 	text-decoration: none; /* reset */
 	font-size: 20px; /* reset */
-	
+
 }
 
 .menu-block-2 .nav-bar > li.active > a {
@@ -291,4 +291,50 @@ dl.tabs.pill dd a:hover {
 #block-block-10 p {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 22px;
+}
+
+/* Footer menu */
+#footer-bottom {
+	font-family: Arial, Verdana, sans-serif;
+}
+#footer-bottom * {
+	font-size: 13px !important;
+	line-height: 20px !important;
+}
+#footer-bottom a {
+	color: #707070;
+	font-weight: bold;
+}
+#footer-bottom ul li ul a {
+	color: #b0a7a7;
+	font-weight: normal;
+}
+#footer-bottom ul.nav-bar {
+	background: #fff;
+	height: auto;
+}
+#footer-bottom ul.nav-bar > li {
+	border: none !important;
+	width: 230px;
+}
+#footer-bottom ul.nav-bar > li:hover {
+	background: none;
+}
+#footer-bottom ul.nav-bar > li > a {
+	padding: 0 0 0 0 !important;
+}
+#footer-bottom ul.nav-bar ul,
+#footer-bottom ul.nav-bar ul ul {
+	margin: 0 !important;
+}
+#footer-bottom ul.nav-bar li ul li {
+	float: none;
+	display: inline;
+	list-style: circle;
+}
+#footer-bottom ul.flyout li,
+#footer-bottom ul.nav-bar li ul li,
+#footer-bottom ul.nav-bar a {
+	border: none !important;
+	background: none !important;
 }
