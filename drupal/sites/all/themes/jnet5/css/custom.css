@@ -124,12 +124,16 @@ h1, h2, h3, h4, h5, h6 {
 .view-id-new_front_page.view-display-id-block h2 i {
 	font-size: 24px;
 }
-
+#News {
+	margin-top: 13px;
+	width: 850px !important;
+}
 #News .views-row.orbit-slide {
+	background: #fff;
 	color: #666;
 	font-size: 16px;
 }
-#News .views-row.orbit-slide .title a {
+#News .views-row.orbit-slide a {
 	color: #333;
 	font-size: 36px;
 	padding: 0 15px 0 0;
@@ -138,8 +142,12 @@ h1, h2, h3, h4, h5, h6 {
 .view-id-new_front_page.view-display-id-block div.slider-nav {
 	position: absolute;
 	right: 0px;
-	top: 5px;
+	top: 21px;
+	width: 78px;
 }
+
+#News .views-row.orbit-slide { display: none; }
+#News.orbit .views-row.orbit-slide { display: block; }
 
 
 /* FRONT PAGE - promo thumbs */

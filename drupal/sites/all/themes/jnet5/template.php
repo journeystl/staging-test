@@ -26,13 +26,13 @@ function jnet5_preprocess_panels_pane(&$vars) {
   $hrpath = '/hr';
   $wcpath = '/wc';
   $blpath = '/bl';
+
   $visitmenu = '<div href="#" class="button radius dropdown">Visit A Church<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul></div>';
   $vars['content'] = str_replace('[visit_a_church]', $visitmenu, $vars['content']);
 
   $selectmenu = '<div href="#" class="button radius dropdown">Select A Church<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul></div>';
   $vars['content'] = str_replace('[select_a_church]', $selectmenu, $vars['content']);
-
-  }
+}
 
 /**
  * Impements template_preprocess_html().
