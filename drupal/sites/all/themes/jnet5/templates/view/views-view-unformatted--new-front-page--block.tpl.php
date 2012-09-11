@@ -8,7 +8,7 @@
 ?>
 
 <div class="row">
-	<h2 class="two columns"><i class="a-foundicon-network"></i> News</h2>
+	<h2 class="two columns"><i class="g-foundicon-refresh"></i> News</h2>
 	<div class="ten columns">	
 		<div id="News">
 		<?php foreach ($rows as $id => $row): ?>

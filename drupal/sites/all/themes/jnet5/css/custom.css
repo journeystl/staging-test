@@ -1,3 +1,6 @@
+body{
+	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+}
 .row .row:first-child {
 	padding: 10px 0;
 	margin: 10px 0 30px 0;
@@ -50,6 +53,7 @@
 
 
 /* FRONT PAGE - visit a church */
+
 
 #visitAchurch {
 	display: none;
@@ -155,7 +159,6 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 #News .views-row.orbit-slide {
 	background-color: #fff; /* temp */
 	width: 86%;
-	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 	color: #666;
 	font-size: 16px;
 }
