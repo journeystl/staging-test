@@ -21,6 +21,15 @@ function jnet5_preprocess(&$vars, $hook) {
   }
 }
 
+function jnet5_preprocess_panels_pane(&$vars) {
+  $visitmenu = '<div href="#" class="button radius dropdown">Visit A Church<ul><li><a href="/tower-grove">Tower Grove</a></li><li><a href="/hanley-road">Hanley Road</a></li><li><a href="/west-county">West County</a></li><li><a href="/belleville">Belleville</a></li></ul></div>';
+  $vars['content'] = str_replace('[visit_a_church]', $visitmenu, $vars['content']);
+  
+  $selectmenu = '<div href="#" class="button radius dropdown">Select A Church<ul><li><a href="/tower-grove">Tower Grove</a></li><li><a href="/hanley-road">Hanley Road</a></li><li><a href="/west-county">West County</a></li><li><a href="/belleville">Belleville</a></li></ul></div>';
+  $vars['content'] = str_replace('[select_a_church]', $selectmenu, $vars['content']);
+  
+  }
+
 /**
  * Impements template_preprocess_html().
  */
@@ -109,7 +118,7 @@ function jnet5_preprocess_node(&$vars) {
  * Theme main links menu.
  */
 function jnet5_preprocess_menu_block_wrapper(&$vars) {
-/*
+  /* Uncomment to allow for dropdowns.
   // Run through each primary link.
   foreach (element_children($vars['content']) as $link) {
     // If link has children, theme them properly.
@@ -124,13 +133,16 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
       }
     }
   }
-*/
+  */
 
-  // Insert tagline / logo after 3rd menu item.
-  array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
+  // Alter main menu when it's considered the primary nav.
+  if ($vars['delta'] == 1) {
+    // Insert tagline / logo after 3rd menu item.
+    array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
 
-  // Insert churches / search links.
-  $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
+    // Insert churches / search links.
+    $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
+  }
 }
 function jnet5_menu_tree__main_menu($variables) {
   // Add 'nav-bar' class to main menu's primary <ul>.

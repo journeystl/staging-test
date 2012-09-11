@@ -5,29 +5,23 @@
  */
 ?>
 
-<div class="top-bar">
+<div class="top-bar show-for-medium show-for-large-up">
   <?php print $top_search_bar; ?>
   <?php print $top_churches_bar; ?>
   <div class="row">
     <?php print render($page['header']); ?>
+  </div>
+  <div class="row">
     <div id="header" class="three columns centered">
-      	<p>
-        	<a href="/">
-        		<img src="/<?php print path_to_theme(); ?>/images/navigation/JourneyLogo_05.png">
-        	</a>
-        </p>
+      <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
     </div>
-
-
   </div>
 </div>
 
-
-
-<?php //if (!empty($page['content_header'])): print render($page['content_header']); endif; ?>
-
-
-
+<div class="top-bar show-for-small">
+  <a id="toggle-mobile-nav" href="#">[nav]</a>
+  <div id="mobile-nav"><?php print $main_menu_links; ?></div>
+</div>
 
 <div class="row">
   <?php if ($messages): print $messages; endif; ?>
@@ -88,6 +82,7 @@
       </div>
     <?php endif; ?>
   </footer>
+  <div class="row" id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">
