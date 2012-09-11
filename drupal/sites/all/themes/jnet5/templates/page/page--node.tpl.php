@@ -50,7 +50,7 @@
 		<?php if (!empty($page['content_header'])) { ?>
 		<?php print render($page['content_header']); ?>
 		<?php } else if (!$is_front) { ?>
-		<hr class="top double">
+		<hr class="top">
 		<?php } ?>
 	</div>
 
@@ -90,7 +90,7 @@
   <?php endif; ?>
   
   	<div class="twelve columns">
-    	<hr class="top double">
+    	<hr class="top">
     </div>
 
 </div>
