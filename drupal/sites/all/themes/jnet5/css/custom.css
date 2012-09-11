@@ -295,6 +295,7 @@ dl.tabs.pill dd a:hover {
 
 /* Footer menu */
 #footer-bottom {
+	border-top: 1px solid #adadad;
 	font-family: Arial, Verdana, sans-serif;
 }
 #footer-bottom * {
