@@ -88,6 +88,10 @@
       <?php print render($page['sidebar_second']); ?>
     </div>
   <?php endif; ?>
+  
+  	<div class="twelve columns">
+    	<hr class="top double">
+    </div>
 
 </div>
 
