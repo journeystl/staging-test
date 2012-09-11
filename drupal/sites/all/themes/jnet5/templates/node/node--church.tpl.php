@@ -79,8 +79,9 @@
 
 	<div class="row">
 	
+	
 		<div class="six columns">
-		      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+		      <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
 		    
 	<!-- VIEWS -->
 	
@@ -92,12 +93,16 @@
 	
 	</div> <!-- end row -->
 	
+	<hr class="bottom">
+	<hr class="top">
+	
 	<div class="row">
 		<div class="tweleve columns">
 		<?php print views_embed_view('promo_thumbs_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
 		</div>
 	</div> <!-- end row -->
-	
+	<hr class="bottom">
+	<hr class="top">
 	
 	<div class="row">
 		<div class="six columns">
@@ -111,14 +116,7 @@
 		</div>
 	
 	</div> <!-- end row -->
-	
-	
-	<div class="row">
-	
-	</div> <!-- end row -->
 
   
-
-	
 
 </div> <!-- end node -->
