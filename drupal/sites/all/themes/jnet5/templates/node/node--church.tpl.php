@@ -77,29 +77,48 @@
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+	<div class="row">
+	
+		<div class="six columns">
+		      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+		    
+	<!-- VIEWS -->
+	
+		<?php print views_embed_view('church_info', 'block'); ?>
+	    </div>
+	    <div class="six columns">
+	    	<?php print views_embed_view('church_photo', 'block'); ?>
+	    </div>
+	
+	</div> <!-- end row -->
+	
+	<div class="row">
+		<div class="tweleve columns">
+		<?php print views_embed_view('promo_thumbs_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
+		</div>
+	</div> <!-- end row -->
+	
+	
+	<div class="row">
+		<div class="six columns">
+			<h3>Meet Our Staff</h3>
+			<?php print views_embed_view('meet_the_staff_churches', 'block'); ?>
+		</div>
+		
+		<div class="six columns">
+			<h3>Upcoming Events</h3>
+			<?php print views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
+		</div>
+	
+	</div> <!-- end row -->
+	
+	
+	<div class="row">
+	
+	</div> <!-- end row -->
 
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      hide($content['field_tags']);
-      print render($content);
-    ?>
-  <div class="terms-links">
-    <?php if (($content['field_tags']) && !$is_front): ?>
-      <div class="tags">
-        <?php print render($content['field_tags']) ?>
-     </div>
-    <?php endif; ?>
-    <?php print render($content['links']); ?>
-  </div>
-  <?php print render($content['comments']); ?>
+  
 
-</div>
+	
+
+</div> <!-- end node -->
