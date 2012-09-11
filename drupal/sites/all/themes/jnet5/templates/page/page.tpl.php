@@ -21,7 +21,16 @@
 </div>
 
 <div class="top-bar show-for-small">
-  <a id="toggle-mobile-nav" href="#">[nav]</a>
+	  <div id="toggle-mobile-nav">
+	  	<ul class="nav-bar">
+	  		<li class="has-flyout">
+	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/JourneyLogo_05.png"></a>
+	  			<a href="#" class="flyout-toggle">
+	  				<span></span>
+	  			</a>
+	  		</li>
+	  	</ul>
+	  </div>
   <div id="mobile-nav"><?php print $main_menu_links; ?></div>
 </div>
 

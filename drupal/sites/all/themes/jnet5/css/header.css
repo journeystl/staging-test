@@ -2,6 +2,10 @@ body {
   padding-top: 91px;
 }
 
+body .show-on-small {
+	padding-top: 10px;
+}
+
 body.toolbar {
 	padding-top: 120px !important;
 }
