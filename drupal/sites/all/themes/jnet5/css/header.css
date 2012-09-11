@@ -2,6 +2,10 @@ body {
   padding-top: 91px;
 }
 
+body.toolbar {
+	padding-top: 120px !important;
+}
+
 #site-name {
   display: inline-block;
   font-size: 2.5em;
@@ -14,13 +18,17 @@ body {
 #block-menu-block-1 {
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 19;
   width: 1170px;
   height: 65px;
   overflow-y: hidden;
   border-bottom: 1px solid #333;
   font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
   text-transform: uppercase;
+}
+
+body.toolbar #block-menu-block-1 {
+	top: 29px;
 }
 
 .menu-block-1 .nav-bar {
@@ -112,7 +120,7 @@ body {
   background: #fff;
   position: fixed;
   top: -65px;
-  z-index: 2;
+  z-index: 20;
   left: 50%;
   margin-left: -585px;
   text-align: center;
@@ -149,4 +157,21 @@ body {
 #churches-bar-close {
   float: right;
   margin: 25px 10px 0 0;
+}
+
+
+/* states */
+
+.menu-block-1 .nav-bar > li.active {
+	background: url('../images/navigation/arrow.gif') bottom center no-repeat;
+}
+
+.menu-block-1 .nav-bar > li.active:hover {
+	background: transparent;
+	cursor: default;
+}
+
+.menu-block-1 .nav-bar > li.active > a {
+	color: #fff;
+	background: #F30;
 }

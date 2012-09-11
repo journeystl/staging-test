@@ -1,6 +1,14 @@
 (function ($) {$(document).ready(function() {
 
   /**
+   * Mobile nav
+   */
+  $('#mobile-nav').hide();
+  $('#toggle-mobile-nav').click(function() {
+    $('#mobile-nav').slideToggle('slow', function() {});
+  });
+
+  /**
    * Header expand / collapse
    */
 

@@ -1,25 +1,32 @@
-/*.row .row:first-child {
+
+body{
+	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+}
+
+#header {
+	margin-bottom: 30px;
+}
+.row .row:first-child {
 	padding: 10px 0;
 	margin: 10px 0 30px 0;
 	border-top: 1px solid #666;
 	border-bottom: 1px solid #666;
-}*/
-
-/*
-.row .row:first-child .column:first-child,
-.row .row:first-child .columns:first-child {
-	padding-left: 0;
 }
 
-.row .row:first-child .column:last-child,
-.row .row:first-child .columns:last-child {
-	padding-right: 0;
-}
-*/
-
-/*.twelve.columns {
+.twelve.columns {
 	padding: 0;
-}*/
+}
+
+/* HEADINGS */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "ltc-bodoni-175", "georgia", serif;
+	font-weight: bold;
+	text-rendering: optimizeLegibility;
+	line-height: 1.1;
+	margin-bottom: 14px;
+	margin-top: 14px;
+}
 
 
 
@@ -51,6 +58,16 @@
 
 
 /* FRONT PAGE - visit a church */
+
+.page-node-588 .row .row:first-child .column:first-child,
+.page-node-588 .row .row:first-child .columns:first-child {
+	padding-left: 0;
+}
+
+.page-node-588 .row .row:first-child .column:last-child,
+.page-node-588 .row .row:first-child .columns:last-child {
+	padding-right: 0;
+}
 
 #visitAchurch {
 	display: none;
@@ -145,7 +162,6 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 #News .views-row.orbit-slide {
 	background-color: #fff; /* temp */
 	width: 86%;
-	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 	color: #666;
 	font-size: 16px;
 }
@@ -173,10 +189,153 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 	background-image: url('../images/orbit/right-arrow.png');
 }
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
-	background-image: url('../zurb_foundation/images/orbit/left-arrow.png);
+	background-image: url('../zurb_foundation/images/orbit/left-arrow.png');
 }
 
 /* FRONT PAGE - promo thumbs */
-.pane-promo-thumbs-front-page {
+.pane-promo-thumbs-front-page .views-row {
 	margin-bottom: 25px;
+}
+
+
+/* Admin Tabs */
+dl.tabs.pill {
+	opacity:0.2;
+}
+
+dl.tabs.pill:hover {
+	opacity:1;
+}
+
+dl.tabs.pill dd a:hover {
+	background-color: #CCC;
+}
+
+/* INTERIOR - tabs */
+.menu-block-2 .nav-bar {
+	height: 47px; /* reset */
+	background: transparent; /* reset */
+	margin-top: 0; /* reset */
+	padding: 0; /* reset */
+	border-bottom: 1px solid #666;
+}
+
+.menu-block-2 .nav-bar > li {
+	float: left; /* reset */
+	display: block; /* reset */
+	position: relative; /* reset */
+	padding: 0 40px 0 0; /* reset */
+	margin: 0 25px 0 0; /* reset */
+	border: 1px none red; /* reset */
+	border-right: none; /* reset */
+	line-height: auto; /* reset */
+}
+.menu-block-2 .nav-bar > li:hover {
+	background: transparent; /* reset */
+	border-bottom: 8px solid #999;
+}
+
+.menu-block-2 .nav-bar > li.active {
+	background: transparent; /* reset */
+	border-bottom: 8px solid #F30;
+}
+
+.menu-block-2 .nav-bar > li.active:hover {
+	background: transparent; /* reset */
+	cursor: default;
+}
+
+.menu-block-2 .nav-bar > li > a {
+	color: #999;
+}
+
+.menu-block-2 .nav-bar > li > a:first-child {
+	position: relative; /* reset */
+	padding: 0; /* reset */
+	display: block; /* reset */
+	text-decoration: none; /* reset */
+	font-size: 20px; /* reset */
+
+}
+
+.menu-block-2 .nav-bar > li.active > a {
+	color: #333; /* reset */
+}
+
+
+/* INTERIOR - header blocks */
+
+#block-block-6,
+#block-block-7,
+#block-block-8,
+#block-block-9,
+#block-block-10 {
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	text-align: center;
+	margin: 10px 0 40px 0;
+}
+
+#block-block-6 h2,
+#block-block-7 h2,
+#block-block-8 h2,
+#block-block-9 h2,
+#block-block-10 h2 {
+	text-transform: uppercase;
+}
+
+#block-block-6 p,
+#block-block-7 p,
+#block-block-8 p,
+#block-block-9 p,
+#block-block-10 p {
+	font-family: "ltc-bodoni-175", "georgia", serif;
+	font-size: 22px;
+}
+
+/* Footer menu */
+#footer-bottom {
+	border-top: 1px solid #adadad;
+	font-family: Arial, Verdana, sans-serif;
+}
+#footer-bottom * {
+	font-size: 13px !important;
+	line-height: 20px !important;
+}
+#footer-bottom a {
+	color: #707070;
+	font-weight: bold;
+}
+#footer-bottom ul li ul a {
+	color: #b0a7a7;
+	font-weight: normal;
+}
+#footer-bottom ul.nav-bar {
+	background: #fff;
+	height: auto;
+}
+#footer-bottom ul.nav-bar > li {
+	border: none !important;
+	width: 230px;
+}
+#footer-bottom ul.nav-bar > li:hover {
+	background: none;
+}
+#footer-bottom ul.nav-bar > li > a {
+	padding: 0 0 0 0 !important;
+}
+#footer-bottom ul.nav-bar ul,
+#footer-bottom ul.nav-bar ul ul {
+	margin: 0 !important;
+}
+#footer-bottom ul.nav-bar li ul li {
+	float: none;
+	display: inline;
+	list-style: circle;
+}
+#footer-bottom ul.flyout li,
+#footer-bottom ul.nav-bar li ul li,
+#footer-bottom ul.nav-bar a {
+	border: none !important;
+	background: none !important;
 }
