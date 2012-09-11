@@ -57,7 +57,7 @@
 	  	  	<div class="six columns">
 	  	    	<?php print $content['right3']; ?>
 	  	  	</div>
-	    	</div>
+	    </div>
 	   <?php endif; ?>
 	   
 	   <?php if($content['left4'] or $content['right4']): ?>
@@ -69,7 +69,7 @@
 	   	  	<div class="six columns">
 	   	    	<?php print $content['right4']; ?>
 	   	  	</div>
-	     	</div>
+	     </div>
 	    <?php endif; ?>
 	    
 	    <?php if($content['left5'] or $content['right5']): ?>

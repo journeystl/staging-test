@@ -114,7 +114,7 @@ body.toolbar #block-menu-block-1 {
 
 #search-bar,
 #churches-bar {
-  width: 1170px;
+  width: 100%;
   height: 64px;
   background: #fff;
   position: fixed;
