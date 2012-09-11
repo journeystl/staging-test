@@ -14,7 +14,8 @@
  *   - $content['right']: Content in the right column.
  */
 ?>
-<div <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
+<div class="row" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
+<div class="twelve columns">
 	
 	<?php if ($content['top']): ?>
 		<div class="row">
@@ -120,4 +121,5 @@
 	  	</div>
 	<?php endif; ?>
 
+</div>
 </div>
