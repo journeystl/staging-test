@@ -47,7 +47,7 @@
 
 
 <div class="row">
-<div class="twelve columns panel">
+<div class="twelve columns">
 	<div class="row">
 		<div class="six columns">
 			<h1><?php print render($node->title); ?></h1>
@@ -66,5 +66,5 @@
 			<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round secondary">3</span></a>
 		</div> <!--/.two columns-->
 	</div> <!--/.row-->
-</div> <!--/.twelve columns panel-->
+</div> <!--/.twelve columns-->
 </div> <!--/.row-->
