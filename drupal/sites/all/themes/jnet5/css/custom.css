@@ -7,10 +7,6 @@ body{
 	margin-bottom: 30px;
 }
 
-.front .node {
-	border-top: 1px solid #666;
-}
-
 hr.top {
 	border: solid #666;
 	border-width: 1px 0 0;
@@ -24,8 +20,8 @@ hr.bottom {
 	border: solid #666;
 	border-width: 1px 0 0;
 	clear: both;
-	margin-top: 10px;
 	margin-bottom: 10px;
+	margin-bottom: 50px;
 	height: 0;
 }
 
@@ -140,40 +136,54 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 30px 15px 0;
 }
 
+div.orbit-wrapper #visitAchurch div.slider-nav span.right,
+div.orbit-wrapper #visitAchurch div.slider-nav span.left {
+	display: none;
+	visibility: none;
+}
+
 
 /* FRONT PAGE - news */
-.view-id-new_front_page.view-display-id-block {
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
-}
-.view-id-new_front_page.view-display-id-block h2 i {
-	font-size: 24px;
-}
+
 #News {
-	margin-top: 13px;
-	width: 850px !important;
+	display: none;
 }
+#News.orbit {
+	display: block;
+}
+
 #News .views-row.orbit-slide {
-	background: #fff;
+	background-color: #fff; /* temp */
+	width: 86%;
 	color: #666;
 	font-size: 16px;
 }
-#News .views-row.orbit-slide a {
+
+#News .views-row.orbit-slide .title a {
 	color: #333;
 	font-size: 36px;
 	padding: 0 15px 0 0;
 }
 
-.view-id-new_front_page.view-display-id-block div.slider-nav {
-	position: absolute;
-	right: 0px;
-	top: 21px;
-	width: 78px;
+#News * {
+	display: inline;
 }
 
-#News .views-row.orbit-slide { display: none; }
-#News.orbit .views-row.orbit-slide { display: block; }
+.view-id-new_front_page div.orbit-wrapper div.slider-nav {
+}
 
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span {
+	float: right;
+	position: relative;
+	margin: -49px 0 0 0;
+}
+
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
+	background-image: url('../images/orbit/right-arrow.png');
+}
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
+	background-image: url('../zurb_foundation/images/orbit/left-arrow.png');
+}
 
 /* FRONT PAGE - promo thumbs */
 .pane-promo-thumbs-front-page .views-row {
@@ -248,30 +258,15 @@ dl.tabs.pill dd a:hover {
 
 /* INTERIOR - header blocks */
 
-#block-block-6,
-#block-block-7,
-#block-block-8,
-#block-block-9,
-#block-block-10 {
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
+.help .block {
 	text-align: center;
-	margin: 10px 0 40px 0;
 }
 
-#block-block-6 h2,
-#block-block-7 h2,
-#block-block-8 h2,
-#block-block-9 h2,
-#block-block-10 h2 {
+.help .block h2 {
 	text-transform: uppercase;
 }
 
-#block-block-6 p,
-#block-block-7 p,
-#block-block-8 p,
-#block-block-9 p,
-#block-block-10 p {
+.help .block p {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 22px;
 }

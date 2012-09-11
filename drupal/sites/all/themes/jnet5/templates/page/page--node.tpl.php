@@ -39,16 +39,20 @@
   <?php if ($messages): print $messages; endif; ?>
 
   <?php if (!empty($page['help'])) { ?>
-    <div class="twelve columns">
+    <div class="twelve columns help">
+    	<hr class="top double">
       <?php print render($page['help']); ?>
+      	<hr class="bottom double">
     </div>
   <?php } ?>
-
-  <?php if (!empty($page['content_header'])) { ?>
-    <div class="twelve columns">
-      <?php print render($page['content_header']); ?>
-    </div>
-  <?php } ?>
+  
+	<div class="twelve columns content-header">
+		<?php if (!empty($page['content_header'])) { ?>
+		<?php print render($page['content_header']); ?>
+		<?php } else if (!$is_front) { ?>
+		<hr class="top double">
+		<?php } ?>
+	</div>
 
   <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
