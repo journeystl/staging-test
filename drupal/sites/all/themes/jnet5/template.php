@@ -24,10 +24,10 @@ function jnet5_preprocess(&$vars, $hook) {
 function jnet5_preprocess_panels_pane(&$vars) {
   $visitmenu = '<div href="#" class="button radius dropdown">Visit A Church<ul><li><a href="/tower-grove">Tower Grove</a></li><li><a href="/hanley-road">Hanley Road</a></li><li><a href="/west-county">West County</a></li><li><a href="/belleville">Belleville</a></li></ul></div>';
   $vars['content'] = str_replace('[visit_a_church]', $visitmenu, $vars['content']);
-  
+
   $selectmenu = '<div href="#" class="button radius dropdown">Select A Church<ul><li><a href="/tower-grove">Tower Grove</a></li><li><a href="/hanley-road">Hanley Road</a></li><li><a href="/west-county">West County</a></li><li><a href="/belleville">Belleville</a></li></ul></div>';
   $vars['content'] = str_replace('[select_a_church]', $selectmenu, $vars['content']);
-  
+
   }
 
 /**
@@ -165,7 +165,7 @@ function jnet5_menu_link__menu_front_page___featured($variables) {
 */
 function jnet5_menu_local_tasks(&$variables) {
 	$output = '';
-	
+
 	if (!empty($variables['primary'])) {
 		$variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
 		$variables['primary']['#prefix'] .= '<dl class="tabs pill">';
@@ -178,6 +178,6 @@ function jnet5_menu_local_tasks(&$variables) {
 		$variables['secondary']['#suffix'] = '</dl>';
 		$output .= drupal_render($variables['secondary']);
 	}
-	
+
 	return $output;
 }

@@ -8,6 +8,12 @@
     $('#mobile-nav').slideToggle('slow', function() {});
   });
 
+
+  /**
+   * Active nav arrows.
+   */
+  $('#block-menu-block-1 ul.nav-bar li.active a').after('<div class="nav-active-arrow"></div>');
+
   /**
    * Header expand / collapse
    */
@@ -27,7 +33,7 @@
   }
 
   function headerExpand() {
-    header.stop().animate({height:'65px'}, 200);
+    header.stop().animate({height:'66px'}, 200).css('overflow', 'visible');
     headerNav.stop().animate({'margin-top':'0px'}, 200);
     headerTag.stop().animate({'margin-top':'0px'}, 200);
     headerCondensed = false;

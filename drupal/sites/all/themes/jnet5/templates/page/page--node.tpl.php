@@ -6,10 +6,12 @@
 ?>
 
 <div class="top-bar show-for-medium show-for-large-up">
-  <?php print $top_search_bar; ?>
-  <?php print $top_churches_bar; ?>
   <div class="row">
-    <?php print render($page['header']); ?>
+    <div class="twelve columns">
+      <?php print $top_search_bar; ?>
+      <?php print $top_churches_bar; ?>
+      <?php print render($page['header']); ?>
+    </div>
   </div>
   <div class="row">
     <div id="header" class="three columns centered">
@@ -19,14 +21,26 @@
 </div>
 
 <div class="top-bar show-for-small">
-  <div id="toggle-mobile-nav">[nav]</div>
+  <a id="toggle-mobile-nav" href="#">[nav]</a>
   <div id="mobile-nav"><?php print $main_menu_links; ?></div>
 </div>
 
 <div class="row">
+
   <?php if ($messages): print $messages; endif; ?>
-  <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
-  <?php if (!empty($page['content_header'])): print render($page['content_header']); endif; ?>
+
+  <?php if (!empty($page['help'])) { ?>
+    <div class="twelve columns">
+      <?php print render($page['help']); ?>
+    </div>
+  <?php } ?>
+
+  <?php if (!empty($page['content_header'])) { ?>
+    <div class="twelve columns">
+      <?php print render($page['content_header']); ?>
+    </div>
+  <?php } ?>
+
   <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
       <div class="highlight panel callout">
@@ -49,17 +63,21 @@
     <?php print render($page['content']); ?>
     <?php print render($page['content_bottom']); ?>
   </div>
+
   <?php if (!empty($page['sidebar_first'])): ?>
     <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
       <?php print render($page['sidebar_first']); ?>
     </div>
   <?php endif; ?>
+
   <?php if (!empty($page['sidebar_second'])): ?>
     <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
       <?php print render($page['sidebar_second']); ?>
     </div>
   <?php endif; ?>
+
 </div>
+
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>
   <footer class="row">
     <?php if (!empty($page['footer_first'])): ?>
@@ -83,7 +101,11 @@
       </div>
     <?php endif; ?>
   </footer>
-  <div class="row" id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
+  <div class="row">
+    <div class="tweleve columns">
+      <div id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
+    </div>
+  </div>
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">

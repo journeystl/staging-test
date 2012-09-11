@@ -6,16 +6,8 @@ body{
 #header {
 	margin-bottom: 30px;
 }
-.row .row:first-child {
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
-}
-
-.twelve.columns {
-}
 
 /* HEADINGS */
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-weight: bold;
@@ -24,7 +16,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 14px;
 	margin-top: 14px;
 }
-
 
 
 /* FRONT PAGE - feature menu */
@@ -55,17 +46,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* FRONT PAGE - visit a church */
-
-.page-node-588 .row .row:first-child .column:first-child,
-.page-node-588 .row .row:first-child .columns:first-child {
-	padding-left: 0;
-}
-
-.page-node-588 .row .row:first-child .column:last-child,
-.page-node-588 .row .row:first-child .columns:last-child {
-	padding-right: 0;
-}
-
 #visitAchurch {
 	display: none;
 }
@@ -142,12 +122,6 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 .view-id-new_front_page.view-display-id-block {
 	border-top: 1px solid #666;
 	border-bottom: 1px solid #666;
-}
-.view-id-new_front_page .row:first-child {
-
-}
-.view-id-new_front_page h2 {
-
 }
 #News {
 	display: none;
@@ -335,6 +309,10 @@ dl.tabs.pill dd a:hover {
 #footer-bottom ul.nav-bar a {
 	border: none !important;
 	background: none !important;
+}
+#footer-bottom ul.nav-bar > li.active {
+	background: #fff !important;
+	border-color: #CC2900 !important;
 }
 
 
