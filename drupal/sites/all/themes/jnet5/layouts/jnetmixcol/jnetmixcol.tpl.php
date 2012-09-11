@@ -26,6 +26,7 @@
 	
 	<?php if($content['left1'] or $content['right1']): ?>
 		<div class="row">
+		<div class="row-inner">
 		  	<div class="six columns">
 		    	<?php print $content['left1']; ?>
 		  	</div>
@@ -33,6 +34,7 @@
 		  	<div class="six columns">
 		    	<?php print $content['right1']; ?>
 		  	</div>
+		</div>
 	  	</div>
 	 <?php endif; ?>
 	 
