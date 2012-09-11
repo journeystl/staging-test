@@ -261,3 +261,34 @@ dl.tabs.pill dd a:hover {
 .menu-block-2 .nav-bar > li.active > a {
 	color: #333; /* reset */
 }
+
+
+/* INTERIOR - header blocks */
+
+#block-block-6,
+#block-block-7,
+#block-block-8,
+#block-block-9,
+#block-block-10 {
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	text-align: center;
+	margin: 10px 0 40px 0;
+}
+
+#block-block-6 h2,
+#block-block-7 h2,
+#block-block-8 h2,
+#block-block-9 h2,
+#block-block-10 h2 {
+	text-transform: uppercase;
+}
+
+#block-block-6 p,
+#block-block-7 p,
+#block-block-8 p,
+#block-block-9 p,
+#block-block-10 p {
+	font-family: "ltc-bodoni-175", "georgia", serif;
+	font-size: 22px;
+}
