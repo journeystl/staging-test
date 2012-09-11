@@ -22,10 +22,10 @@ function jnet5_preprocess(&$vars, $hook) {
 }
 
 function jnet5_preprocess_panels_pane(&$vars) {
-  $tgpath = '/tg'
-  $hrpath = '/hr'
-  $wcpath = '/wc'
-  $blpath = '/bl'
+  $tgpath = '/tg';
+  $hrpath = '/hr';
+  $wcpath = '/wc';
+  $blpath = '/bl';
   $visitmenu = '<div href="#" class="button radius dropdown">Visit A Church<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul></div>';
   $vars['content'] = str_replace('[visit_a_church]', $visitmenu, $vars['content']);
 
