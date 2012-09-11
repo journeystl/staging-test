@@ -143,3 +143,10 @@ function jnet5_menu_tree__flyout_menu($variables) {
   // Add 'flyout' class to child links <ul>.
   return '<ul class="flyout">' . $variables['tree'] . '</ul>';
 }
+
+function jnet5_menu_link__menu_front_page___featured($variables) {
+  // Started but not completed ... JF
+  $variables['element']['#attributes']['class'][] = 'menu12345-' . $variables['element']['#original_link']['mlid'];
+
+  return theme_menu_link($variables);
+}
