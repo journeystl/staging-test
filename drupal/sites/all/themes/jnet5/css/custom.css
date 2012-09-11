@@ -339,3 +339,23 @@ dl.tabs.pill dd a:hover {
 	border: none !important;
 	background: none !important;
 }
+
+
+/* Locations View */
+.view-id-locations table {
+	width: 100%;
+	border: none;
+}
+.view-id-locations table thead {
+	display: none;
+}
+.view-id-locations table tr.even, tr.odd {
+	background-color: #fff;
+	border-bottom: none;
+}
+.view-id-locations table td.views-field-field-building-photo {
+	width: 430px;
+}
+.view-id-locations table td.views-field-field-church-state {
+	padding-top: 60px;
+}
