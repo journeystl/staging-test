@@ -360,6 +360,7 @@ dl.tabs.pill dd a:hover {
   border-collapse: collapse;
   border-spacing: 0;
   border: none;
+  margin-left: none;
 }
 
 .table th,
