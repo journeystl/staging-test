@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="top-bar show-for-medium show-for-large-up">
+<div class="top-bar hide-for-small">
   <div class="row">
     <div class="twelve columns">
       <?php print $top_search_bar; ?>
