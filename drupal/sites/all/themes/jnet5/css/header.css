@@ -1,12 +1,8 @@
-body {
+.shim {
   padding-top: 91px;
 }
 
-body .show-on-small {
-	padding-top: 10px;
-}
-
-body.toolbar {
+body.toolbar .shim {
 	padding-top: 120px !important;
 }
 

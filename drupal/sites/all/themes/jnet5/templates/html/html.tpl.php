@@ -59,6 +59,7 @@
 	<![endif]-->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
+  <div class="shim show-for-medium show-for-large-up"></div>
   <div class="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
   </div>
