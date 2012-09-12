@@ -203,3 +203,35 @@ div.nav-active-arrow {
 	color: #fff;
 	background: #F30;
 }
+
+
+/* MOBILE NAV */
+
+
+#toggle-mobile-nav  .nav-bar {
+	background-color: #666;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+#toggle-mobile-nav img{
+	margin-top: 15px;
+}
+
+#toggle-mobile-nav .flyout-toggle{
+	margin-top: -14px;
+	font-size: 22px;
+}
+
+.nav-bar > li.has-flyout > a:first-child { padding-right: 36px; position: relative; }
+.nav-bar > li.has-flyout > a:first-child:after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: none 4px;
+	border-color: transparent;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
