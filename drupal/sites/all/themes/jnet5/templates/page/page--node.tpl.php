@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="top-bar show-for-medium show-for-large-up">
+<div class="top-bar hide-for-small">
   <div class="row">
     <div class="twelve columns">
       <?php print $top_search_bar; ?>
@@ -13,7 +13,8 @@
       <?php print render($page['header']); ?>
     </div>
   </div>
-  <div class="row">
+  
+  <div id="big-logo" class="row">
     <div id="header" class="three columns centered">
 		  <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
     </div>
