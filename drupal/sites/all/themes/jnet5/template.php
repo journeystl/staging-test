@@ -32,6 +32,13 @@ function jnet5_preprocess_panels_pane(&$vars) {
 
   $selectmenu = '<div href="#" class="button radius dropdown">Select A Church<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul></div>';
   $vars['content'] = str_replace('[select_a_church]', $selectmenu, $vars['content']);
+  
+  $visitmenusecondary = '<div href="#" class="button radius dropdown secondary">Select A Church<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul></div>';
+  $vars['content'] = str_replace('[visit_a_church_secondary]', $visitmenusecondary, $vars['content']);
+  
+  $selectmenusecondary = '<div href="#" class="button radius dropdown secondary">Select A Church<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul></div>';
+  $vars['content'] = str_replace('[select_a_church_secondary]', $selectmenusecondary, $vars['content']);
+
 }
 
 /**
