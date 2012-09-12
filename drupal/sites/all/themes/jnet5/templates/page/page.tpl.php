@@ -24,9 +24,9 @@
 	  <div id="toggle-mobile-nav">
 	  	<ul class="nav-bar">
 	  		<li class="has-flyout">
-	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/JourneyLogo_05.png"></a>
+	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_small.gif"></a>
 	  			<a href="#" class="flyout-toggle">
-	  				<span></span>
+	  				<span><i class="ge-foundicon-plus"></i></span>
 	  			</a>
 	  		</li>
 	  	</ul>
