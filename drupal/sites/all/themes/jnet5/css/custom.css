@@ -7,9 +7,30 @@ body{
 	margin-bottom: 30px;
 }
 
-.front .node {
-	border-top: 1px solid #666;
+hr.top {
+	border: solid #666;
+	border-width: 1px 0 0;
+	clear: both;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	height: 0;
 }
+
+hr.bottom {
+	border: solid #666;
+	border-width: 1px 0 0;
+	clear: both;
+	margin-bottom: 10px;
+	margin-bottom: 50px;
+	height: 0;
+}
+
+hr.double {
+	border: solid #666;
+	border-width: 1px 0 1px 0;
+	height: 9px !important;
+}
+
 
 /* HEADINGS */
 h1, h2, h3, h4, h5, h6 {
@@ -123,10 +144,7 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 
 
 /* FRONT PAGE - news */
-.view-id-new_front_page.view-display-id-block {
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
-}
+
 #News {
 	display: none;
 }
@@ -240,38 +258,23 @@ dl.tabs.pill dd a:hover {
 
 /* INTERIOR - header blocks */
 
-#block-block-6,
-#block-block-7,
-#block-block-8,
-#block-block-9,
-#block-block-10 {
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
+.help .block {
 	text-align: center;
-	margin: 10px 0 40px 0;
 }
 
-#block-block-6 h2,
-#block-block-7 h2,
-#block-block-8 h2,
-#block-block-9 h2,
-#block-block-10 h2 {
+.help .block h2 {
 	text-transform: uppercase;
 }
 
-#block-block-6 p,
-#block-block-7 p,
-#block-block-8 p,
-#block-block-9 p,
-#block-block-10 p {
+.help .block p {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 22px;
 }
 
 /* Footer menu */
 #footer-bottom {
-	border-top: 1px solid #adadad;
 	font-family: Arial, Verdana, sans-serif;
+	margin-bottom: 220px;
 }
 #footer-bottom * {
 	font-size: 13px !important;
@@ -341,6 +344,8 @@ dl.tabs.pill dd a:hover {
 
 /* CHURCH PAGES */
 
+
+
 /*
 .field-collection-item-field-church-times * {
 	float: left;
@@ -349,10 +354,29 @@ dl.tabs.pill dd a:hover {
 
 /* MOBILE NAV */
 
+#toggle-mobile-nav .nav-bar {
+	background-color: #666;
+	margin-bottom: 0px;
+}
+
 #toggle-mobile-nav img{
 	margin-top: 15px;
 }
 
 #toggle-mobile-nav .flyout-toggle{
-	margin-top: 30px;
+	margin-top: -14px;
+	font-size: 22px;
+}
+
+.nav-bar > li.has-flyout > a:first-child { padding-right: 36px; position: relative; }
+.nav-bar > li.has-flyout > a:first-child:after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: none 4px;
+	border-color: transparent;
+	position: absolute;
+	right: 0;
+	top: 0;
 }

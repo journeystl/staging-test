@@ -24,9 +24,9 @@
 	  <div id="toggle-mobile-nav">
 	  	<ul class="nav-bar">
 	  		<li class="has-flyout">
-	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/JourneyLogo_05.png"></a>
+	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_small.gif"></a>
 	  			<a href="#" class="flyout-toggle">
-	  				<span></span>
+	  				<span><i class="ge-foundicon-plus"></i></span>
 	  			</a>
 	  		</li>
 	  	</ul>
@@ -39,16 +39,20 @@
   <?php if ($messages): print $messages; endif; ?>
 
   <?php if (!empty($page['help'])) { ?>
-    <div class="twelve columns">
+    <div class="twelve columns help">
+    	<hr class="top double">
       <?php print render($page['help']); ?>
+      	<hr class="bottom double">
     </div>
   <?php } ?>
-
-  <?php if (!empty($page['content_header'])) { ?>
-    <div class="twelve columns">
-      <?php print render($page['content_header']); ?>
-    </div>
-  <?php } ?>
+  
+	<div class="twelve columns content-header">
+		<?php if (!empty($page['content_header'])) { ?>
+		<?php print render($page['content_header']); ?>
+		<?php } else if (!$is_front) { ?>
+		<hr class="top">
+		<?php } ?>
+	</div>
 
   <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
@@ -84,6 +88,10 @@
       <?php print render($page['sidebar_second']); ?>
     </div>
   <?php endif; ?>
+  
+  	<div class="twelve columns">
+    	<hr class="top">
+    </div>
 
 </div>
 

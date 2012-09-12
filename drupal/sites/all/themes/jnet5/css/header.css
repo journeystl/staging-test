@@ -40,25 +40,6 @@ body.toolbar #block-menu-block-1 {
   line-height: 65px;
   border: none;
 }
-.menu-block-1 .nav-bar > li:hover {
-  background: #fff;
-}
-.menu-block-1 .nav-bar > li > a {
-  color: #333;
-  font-size: 24px !important;
-}
-.menu-block-1 .nav-bar > li:last-child {
-  border-right: none;
-}
-.menu-block-1 .nav-bar > li > a:first-child {
-  padding: 0 47px !important;
-}
-.menu-block-1 .nav-bar > li.first > a:first-child {
-  padding-left: 0 !important;
-}
-.menu-block-1 .nav-bar > li.last > a:first-child {
-  padding-right: 0 !important;
-}
 .menu-block-1 .nav-bar > li.has-flyout > a:first-child::after {
   border: none;
 }
@@ -161,9 +142,34 @@ body.toolbar #block-menu-block-1 {
 
 /* states */
 
-.menu-block-1 .nav-bar > li.active a:after {
-
+.menu-block-1 .nav-bar > li:hover {
+  background: #fff;
 }
+.menu-block-1 .nav-bar > li > a {
+  color: #333;
+  font-size: 24px !important;
+}
+.menu-block-1 .nav-bar > li:last-child {
+  border-right: none;
+}
+.menu-block-1 .nav-bar > li,
+.menu-block-1 .nav-bar > li > a:first-child {
+  padding: 0 23.5px !important;
+}
+.menu-block-1 .nav-bar > li.first,
+.menu-block-1 .nav-bar > li.first > a:first-child {
+  padding-left: 0 !important;
+}
+.menu-block-1 .nav-bar > li.last,
+.menu-block-1 .nav-bar > li.last > a:first-child {
+  padding-right: 0 !important;
+}
+.menu-block-1 .nav-bar > li.first > a.active:first-child,
+.menu-block-1 .nav-bar > li.last > a.active:first-child {
+  padding: 0 11.6px !important;
+}
+
+
 div.nav-active-arrow {
   background: url('../images/navigation/arrow.gif') center top no-repeat;
   display: block;
@@ -176,11 +182,23 @@ div.nav-active-arrow {
   margin-left: 50%;
 }
 
+.menu-block-1 .nav-bar > li.first div.nav-active-arrow {
+  left: -37px;
+}
+
+.menu-block-1 .nav-bar > li.last div.nav-active-arrow {
+  left: -12px;
+}
+
+
 .menu-block-1 .nav-bar > li.active:hover {
 	background: transparent;
 	cursor: default;
 }
-
+.menu-block-1 .nav-bar > li.active {
+	background: transparent; /* reset */
+	border-color: transparent;  /* reset */
+}
 .menu-block-1 .nav-bar > li.active > a {
 	color: #fff;
 	background: #F30;
