@@ -410,8 +410,6 @@ dl.tabs.pill dd a:hover {
 /* STORIES PAGE */
 
 .story-block{
-	height: 600px;
-	padding-top: 400px;
-	padding-left: 40px;
-	padding-right: 40px;
+	height: 400px;
+	padding-top: 250px;
 }
