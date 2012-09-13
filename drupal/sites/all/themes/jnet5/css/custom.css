@@ -406,3 +406,12 @@ dl.tabs.pill dd a:hover {
 .image-block-content h2{
 	margin-top: 20px;
 }
+
+/* STORIES PAGE */
+
+.story-block{
+	height: 600px;
+	padding-top: 400px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
