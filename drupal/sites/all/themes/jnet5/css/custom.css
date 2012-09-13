@@ -392,5 +392,17 @@ dl.tabs.pill dd a:hover {
 /* "IMAGE-BLOCK" STYLE (USED ON /WHAT-TO-EXPECT) */
 
 .image-block{
-	
+	margin-bottom: 80px;
+	width: 474px;
+	background: url(../images/gradient.png) repeat-x 0 0;
+}
+
+.image-block-content{
+	width: inherit;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.image-block-content h2{
+	margin-top: 20px;
 }
