@@ -164,8 +164,8 @@ body.toolbar #block-menu-block-1 {
 .menu-block-1 .nav-bar > li.last > a:first-child {
   padding-right: 0 !important;
 }
-.menu-block-1 .nav-bar > li.first > a.active:first-child,
-.menu-block-1 .nav-bar > li.last > a.active:first-child {
+.menu-block-1 .nav-bar > li.first > a.active-trail:first-child,
+.menu-block-1 .nav-bar > li.last > a.active-trail:first-child {
   padding: 0 11.6px !important;
 }
 
@@ -191,15 +191,15 @@ div.nav-active-arrow {
 }
 
 
-.menu-block-1 .nav-bar > li.active:hover {
+.menu-block-1 .nav-bar > li.active-trail:hover {
 	background: transparent;
 	cursor: default;
 }
-.menu-block-1 .nav-bar > li.active {
+.menu-block-1 .nav-bar > li.active-trail {
 	background: transparent; /* reset */
 	border-color: transparent;  /* reset */
 }
-.menu-block-1 .nav-bar > li.active > a {
+.menu-block-1 .nav-bar > li.active-trail > a {
 	color: #fff;
 	background: #F30;
 }
