@@ -27,7 +27,7 @@ function jnet5_preprocess_panels_pane(&$vars) {
   $wcpath = '/wc';
   $blpath = '/bl';
 
-  $churchselect = '<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li></ul>';
+  $churchselect = '<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Belleville</a></li><li><a href="/visit">All Locations</a></li></ul>';
   $vars['content'] = str_replace('[church_select]', $churchselect, $vars['content']);
 }
 
