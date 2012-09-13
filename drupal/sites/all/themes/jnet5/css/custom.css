@@ -147,43 +147,46 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 
 #News {
 	display: none;
+	margin-top: 13px;
+	width: 850px !important;
 }
 #News.orbit {
 	display: block;
 }
 
 #News .views-row.orbit-slide {
-	background-color: #fff; /* temp */
-	width: 86%;
-	color: #666;
-	font-size: 16px;
+ 	background: #fff;
+ 	color: #666;
+ 	font-size: 16px;
 }
 
-#News .views-row.orbit-slide .title a {
+#News .views-row.orbit-slide a {
 	color: #333;
 	font-size: 36px;
 	padding: 0 15px 0 0;
 }
 
-#News * {
-	display: inline;
+.view-id-new_front_page.view-display-id-block h2 {
+	color: #666;
+}
+.view-id-new_front_page.view-display-id-block h2 i {
+	font-size: 24px;
 }
 
-.view-id-new_front_page div.orbit-wrapper div.slider-nav {
+.view-id-new_front_page.view-display-id-block div.slider-nav {
+	position: absolute;
+	right: 0px;
+	top: 5px;
+	width: 78px;
 }
 
-.view-id-new_front_page div.orbit-wrapper div.slider-nav span {
-	float: right;
-	position: relative;
-	margin: -49px 0 0 0;
-}
-
-.view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
-	background-image: url('../images/orbit/right-arrow.png');
-}
-.view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
-	background-image: url('../zurb_foundation/images/orbit/left-arrow.png');
-}
+div.orbit-wrapper span.rotator {background: url('../../images/orbit/rotator-black.png') no-repeat; }
+div.orbit-wrapper span.mask.move {background: url('../../images/orbit/timer-black.png') repeat 0 0; }
+div.orbit-wrapper span.pause.active { background: url('../../images/orbit/pause-black.png') no-repeat 0 -40px; }
+div.orbit-wrapper div.slider-nav span.right { background: url('../../images/orbit/right-arrow.png'); }
+div.orbit-wrapper div.slider-nav span.left { background: url('../../images/orbit/left-arrow.png'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../../images/orbit/right-arrow-small.png'); }
+.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../../images/orbit/left-arrow-small.png'); }
 
 /* FRONT PAGE - promo thumbs */
 .pane-promo-thumbs-front-page .views-row {
