@@ -157,13 +157,13 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 #News .views-row.orbit-slide {
  	background: #fff;
  	color: #666;
- 	font-size: 16px;
+ 	font-size: 23px;
 }
 
 #News .views-row.orbit-slide a {
 	color: #333;
-	font-size: 36px;
-	padding: 0 15px 0 0;
+	font-size: 32px;
+	padding: 0 3px 0 0;
 }
 
 .view-id-new_front_page.view-display-id-block h2 {
@@ -187,11 +187,6 @@ div.orbit-wrapper div.slider-nav span.right { background: url('../../images/orbi
 div.orbit-wrapper div.slider-nav span.left { background: url('../../images/orbit/left-arrow.png'); }
 .lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../../images/orbit/right-arrow-small.png'); }
 .lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../../images/orbit/left-arrow-small.png'); }
-
-/* FRONT PAGE - promo thumbs */
-.pane-promo-thumbs-front-page .views-row {
-	margin-bottom: 25px;
-}
 
 
 /* Admin Tabs */
@@ -411,3 +406,20 @@ dl.tabs.pill dd a:hover {
 }
 
 /* STORIES PAGE */
+
+/*
+
+.view-id-stories .block-grid .black.solid {
+	background-color: blue;
+	height: 100px;
+	width: 100%;
+}
+
+.view-id-stories .block-grid h4 a {
+	border: 1px solid black;
+}
+
+.view-id-stories .block-grid p {
+	border: 1px solid red;
+}
+*/

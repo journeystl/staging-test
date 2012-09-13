@@ -27,7 +27,7 @@
     $('#News').orbit({
 			animation: 'horizontal-push', // fade, horizontal-slide, vertical-slide, horizontal-push
 			animationSpeed: 800, // how fast animtions are
-			timer: false, // true or false to have the timer
+			timer: true, // true or false to have the timer
 			resetTimerOnClick: false, // true resets the timer instead of pausing slideshow progress
 			advanceSpeed: 2000, // if timer is enabled, time between transitions
 			pauseOnHover: true, // if you hover pauses the slider

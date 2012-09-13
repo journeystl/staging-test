@@ -147,7 +147,7 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
 }
 function jnet5_menu_tree__main_menu($variables) {
   // Add 'nav-bar' class to main menu's primary <ul>.
-  return '<ul class="nav-bar">' . $variables['tree'] . '</ul>';
+  return '<ul class="nav-bar test">' . $variables['tree'] . '</ul>';
 }
 function jnet5_menu_tree__flyout_menu($variables) {
   // Add 'flyout' class to child links <ul>.
@@ -160,6 +160,9 @@ function jnet5_menu_link__menu_front_page___featured($variables) {
 
   return theme_menu_link($variables);
 }
+
+
+
 
 /**
 * Implements theme_menu_local_tasks().
