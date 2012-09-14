@@ -142,11 +142,14 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
   }
   */
 
-  // Alter main menu when it's considered the primary nav.
-  if ($vars['delta'] == 1) {
+  // Add 'nav-bar' class to primary and secondary nav.
+  if ($vars['delta'] == 1 || $vars['delta'] == 2) {
     // Run our custom theme_wrapper below. By using array() we're unsetting any other theme wrappers that might run.
     $vars['content']['#theme_wrappers'] = array('menu_tree__nav_bar');
+  }
 
+  // Alter main menu when it's considered the primary nav.
+  if ($vars['delta'] == 1) {
     // Insert tagline / logo after 3rd menu item.
     array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
 
@@ -160,7 +163,7 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
     $vars['content']['#theme_wrappers'] = array('menu_tree__nav_footer');
   }
 }
-// Add 'nav-bar' class to main menu's primary <ul>.
+// Add 'nav-bar' class to main & secondary menu's primary <ul>.
 function jnet5_menu_tree__nav_bar($vars) {
   return '<ul class="nav-bar">' . $vars['tree'] . '</ul>';
 }
