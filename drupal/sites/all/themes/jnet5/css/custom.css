@@ -419,7 +419,7 @@ dl.tabs.pill dd a:hover {
 /* Footer Social Icons */
 
 #footer-bottom ul.social * {
-	font-size: 27px !important;
+	font-size: 130% !important;
 	line-height: normal !important;
 	font-family: myriad-pro-condensed-n3, myriad-pro-condensed, sans-serif;
 	color: #CCC;
@@ -435,4 +435,8 @@ dl.tabs.pill dd a:hover {
 
 #footer-bottom ul.social a:hover i {
 	color: #ff3300;
+}
+
+#footer-bottom span {
+	display: inline !important;
 }
