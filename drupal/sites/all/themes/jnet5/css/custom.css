@@ -180,14 +180,6 @@ div.orbit-wrapper #visitAchurch div.slider-nav span.left {
 	width: 78px;
 }
 
-div.orbit-wrapper span.rotator {background: url('../../images/orbit/rotator-black.png') no-repeat; }
-div.orbit-wrapper span.mask.move {background: url('../../images/orbit/timer-black.png') repeat 0 0; }
-div.orbit-wrapper span.pause.active { background: url('../../images/orbit/pause-black.png') no-repeat 0 -40px; }
-div.orbit-wrapper div.slider-nav span.right { background: url('../../images/orbit/right-arrow.png'); }
-div.orbit-wrapper div.slider-nav span.left { background: url('../../images/orbit/left-arrow.png'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.right { background: url('../../images/orbit/right-arrow-small.png'); }
-.lt-ie9 div.orbit-wrapper div.slider-nav span.left { background: url('../../images/orbit/left-arrow-small.png'); }
-
 
 /* Admin Tabs */
 dl.tabs.pill {
@@ -297,7 +289,7 @@ dl.tabs.pill dd a:hover {
 #footer-bottom ul.nav-bar > li:hover {
 	background: none;
 }
-#footer-bottom ul.nav-bar > li > a {
+#footer-bottom ul.nav-bar li a {
 	padding: 0 0 0 0 !important;
 }
 #footer-bottom ul.nav-bar ul,
@@ -306,10 +298,11 @@ dl.tabs.pill dd a:hover {
 }
 #footer-bottom ul.nav-bar li ul li {
 	float: none;
-	display: inline;
+	display: block;
+	margin: 0 0 0 0;
 	list-style: circle;
 }
-#footer-bottom ul.flyout li,
+#footer-bottom ul.expanded li,
 #footer-bottom ul.nav-bar li ul li,
 #footer-bottom ul.nav-bar a {
 	border: none !important;
@@ -391,12 +384,10 @@ dl.tabs.pill dd a:hover {
 
 .image-block{
 	margin-bottom: 80px;
-	width: 474px;
 	background: url(../images/gradient.png) repeat-x 0 0;
 }
 
 .image-block-content{
-	width: inherit;
 	padding-right: 10px;
 	padding-left: 10px;
 }
@@ -423,6 +414,7 @@ dl.tabs.pill dd a:hover {
 	border: 1px solid red;
 }
 */
+
 
 /* Footer Social Icons */
 
