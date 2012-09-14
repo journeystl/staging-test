@@ -116,6 +116,12 @@ function jnet5_preprocess_node(&$vars) {
 }
 
 /**
+ * Implements template_preprocess_block().
+ */
+function jnet5_preprocess_block(&$vars) {
+}
+
+/**
  * Theme main links menu.
  */
 function jnet5_preprocess_menu_block_wrapper(&$vars) {
@@ -138,49 +144,48 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
 
   // Alter main menu when it's considered the primary nav.
   if ($vars['delta'] == 1) {
+    // Run our custom theme_wrapper below. By using array() we're unsetting any other theme wrappers that might run.
+    $vars['content']['#theme_wrappers'] = array('menu_tree__nav_bar');
+
     // Insert tagline / logo after 3rd menu item.
     array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
 
     // Insert churches / search links.
     $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
   }
+
+  // Alter main menu when it's printed in the footer.
+  if ($vars['delta'] == 3) {
+    // Run our custom theme_wrapper below. By using array() we're unsetting any other theme wrappers that might run.
+    $vars['content']['#theme_wrappers'] = array('menu_tree__nav_footer');
+  }
 }
-function jnet5_menu_tree__main_menu($variables) {
-  // Add 'nav-bar' class to main menu's primary <ul>.
-  return '<ul class="nav-bar test">' . $variables['tree'] . '</ul>';
+// Add 'nav-bar' class to main menu's primary <ul>.
+function jnet5_menu_tree__nav_bar($vars) {
+  return '<ul class="nav-bar">' . $vars['tree'] . '</ul>';
 }
-function jnet5_menu_tree__flyout_menu($variables) {
-  // Add 'flyout' class to child links <ul>.
-  return '<ul class="flyout">' . $variables['tree'] . '</ul>';
+// Add grid classes to footer menu's primary <ul>.
+function jnet5_menu_tree__nav_footer($vars) {
+  return '<ul class="nav-bar block-grid five-up mobile-one-up">' . $vars['tree'] . '</ul>';
 }
-
-function jnet5_menu_link__menu_front_page___featured($variables) {
-  // Started but not completed ... JF
-  $variables['element']['#attributes']['class'][] = 'menu12345-' . $variables['element']['#original_link']['mlid'];
-
-  return theme_menu_link($variables);
-}
-
-
-
 
 /**
 * Implements theme_menu_local_tasks().
 */
-function jnet5_menu_local_tasks(&$variables) {
+function jnet5_menu_local_tasks(&$vars) {
 	$output = '';
 
-	if (!empty($variables['primary'])) {
-		$variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
-		$variables['primary']['#prefix'] .= '<dl class="tabs pill">';
-		$variables['primary']['#suffix'] = '</dl>';
-		$output .= drupal_render($variables['primary']);
+	if (!empty($vars['primary'])) {
+		$vars['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
+		$vars['primary']['#prefix'] .= '<dl class="tabs pill">';
+		$vars['primary']['#suffix'] = '</dl>';
+		$output .= drupal_render($vars['primary']);
 	}
-	if (!empty($variables['secondary'])) {
-		$variables['secondary']['#prefix'] = '<h2 class="element-invisible">' . t('Secondary tabs') . '</h2>';
-		$variables['secondary']['#prefix'] .= '<dl class="tabs pill">';
-		$variables['secondary']['#suffix'] = '</dl>';
-		$output .= drupal_render($variables['secondary']);
+	if (!empty($vars['secondary'])) {
+		$vars['secondary']['#prefix'] = '<h2 class="element-invisible">' . t('Secondary tabs') . '</h2>';
+		$vars['secondary']['#prefix'] .= '<dl class="tabs pill">';
+		$vars['secondary']['#suffix'] = '</dl>';
+		$output .= drupal_render($vars['secondary']);
 	}
 
 	return $output;
