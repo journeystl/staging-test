@@ -398,23 +398,38 @@ dl.tabs.pill dd a:hover {
 
 /* STORIES PAGE */
 
-/*
+.view-id-stories .views-row {
+	position: relative;
+}
 
-.view-id-stories .block-grid .black.solid {
-	background-color: blue;
-	height: 100px;
+.view-id-stories .views-field-field-image a {
+	padding: 0;
+	margin: 0;
+}
+.view-id-stories h4 {
+	background: url(../images/gradient.png) repeat-x 0 -215px;
 	width: 100%;
+	min-height: 100px;
+	margin-top: 0;
+	padding: 10px 0 0 20px;
 }
 
-.view-id-stories .block-grid h4 a {
-	border: 1px solid black;
+.view-id-stories p {
+	margin-top: -74px;
+	padding: 0 0 0 20px;
 }
 
-.view-id-stories .block-grid p {
-	border: 1px solid red;
+.view-id-stories a.watch {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 15em;
+	color: rgb(255, 255, 255); opacity: 0.4;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	
 }
-*/
-
 
 /* Footer Social Icons */
 
