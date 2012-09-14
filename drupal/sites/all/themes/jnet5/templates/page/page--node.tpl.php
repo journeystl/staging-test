@@ -13,7 +13,6 @@
       <?php print render($page['header']); ?>
     </div>
   </div>
-  
   <div id="big-logo" class="row">
     <div id="header" class="three columns centered">
 		  <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
@@ -46,7 +45,7 @@
       	<hr class="bottom double">
     </div>
   <?php } ?>
-  
+
 	<div class="twelve columns content-header">
 		<?php if (!empty($page['content_header'])) { ?>
 		<?php print render($page['content_header']); ?>
@@ -73,6 +72,8 @@
       </ul>
     <?php endif; ?>
 
+    <?php print jnet5_add_this(); ?>
+
     <?php print render($page['content_top']); ?>
     <?php print render($page['content']); ?>
     <?php print render($page['content_bottom']); ?>
@@ -89,7 +90,7 @@
       <?php print render($page['sidebar_second']); ?>
     </div>
   <?php endif; ?>
-  
+
   	<div class="twelve columns">
     	<hr class="top">
     </div>
