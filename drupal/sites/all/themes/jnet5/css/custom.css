@@ -398,6 +398,10 @@ dl.tabs.pill dd a:hover {
 
 /* STORIES PAGE */
 
+.view-id-stories .block-grid.one-up {
+	margin: 0 0 4% 0;
+}
+
 .view-id-stories .views-row {
 	position: relative;
 }
@@ -410,7 +414,7 @@ dl.tabs.pill dd a:hover {
 	background: url(../images/gradient.png) repeat-x 0 -215px;
 	width: 100%;
 	min-height: 100px;
-	margin-top: 0;
+	margin-top: -1%;
 	padding: 10px 0 0 20px;
 }
 
@@ -423,9 +427,11 @@ dl.tabs.pill dd a:hover {
 	position: absolute;
 	top: 0;
 	left: 0;
-	font-size: 15em;
+	font-size: 11em;
 	color: rgb(255, 255, 255); opacity: 0.4;
 	height: 100%;
+	line-height: 5em;
+	vertical-align: middle;
 	width: 100%;
 	text-align: center;
 	
@@ -444,7 +450,7 @@ dl.tabs.pill dd a:hover {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 100%;
 	color: #666;
-	padding: 0;
+	padding: 10px 0 0 0;
 	margin: 0;
 }
 
