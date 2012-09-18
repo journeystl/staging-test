@@ -38,7 +38,7 @@ db1:
   type: mysql
 
 worker1:
-  name: elysia_cron
+  name: feed_importers
   type: php
   exec: "php workers/feed-importers.php"
   php_extensions:
