@@ -49,6 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0 0 0 13px;
 }
 .pane-menu-menu-front-page-featured ul li.leaf {
+	line-height: 1.1;
 	list-style: none;
 	list-style-image: none;
 	font-family: "ltc-bodoni-175", "georgia", serif;
