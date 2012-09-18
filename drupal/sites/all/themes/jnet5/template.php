@@ -172,6 +172,15 @@ function jnet5_menu_tree__nav_footer($vars) {
   return '<ul class="nav-bar block-grid five-up mobile-one-up">' . $vars['tree'] . '</ul>';
 }
 
+function jnet5_menu_tree__menu_front_page___featured($vars) {
+  return '<ul class="block-grid five-up mobile-one-up">' . $vars['tree'] . '</ul>';
+}
+
+function jnet5_link($variables) {
+  $variables['options']['html'] = TRUE;
+  return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
+}
+
 /**
 * Implements theme_menu_local_tasks().
 */
