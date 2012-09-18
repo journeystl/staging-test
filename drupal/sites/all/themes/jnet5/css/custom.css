@@ -49,24 +49,27 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0 0 0 13px;
 }
 .pane-menu-menu-front-page-featured ul li.leaf {
+	line-height: 1.1;
 	list-style: none;
 	list-style-image: none;
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 275%;
+}
+.pane-menu-menu-front-page-featured ul li.leaf span {
+	font-size: 40%;
 	text-transform: uppercase;
-	padding: 27px 0;
-	margin: 9px 0;
 }
-
 .pane-menu-menu-front-page-featured ul li.leaf:hover {
-	border-top: 1px solid #f30;
-	border-bottom: 1px solid #f30;
+	color: #f30;
 }
-
 .pane-menu-menu-front-page-featured ul li.leaf a {
 	color: #666666;
+	padding: 27px 0;
+	margin: 9px 0;
+	display: block;
+}
+.pane-menu-menu-front-page-featured ul li.leaf a:hover {
+	color: #f30;
 }
 
 
