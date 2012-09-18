@@ -37,20 +37,20 @@ db1:
   name: drupal-db
   type: mysql
 
-#worker1:
-#  name: elysia_cron
-#  type: php
-#  exec: "php workers/feed-importers.php"
-#  php_extensions:
-#    - mysqli
-#    - gd
-#    - curl
-#    - json
-#    - xml
-#    - ftp
-#    - pdo
-#    - pdo_mysql
-#    - mcrypt
-#    - mbstring
-#    - eaccelerator
-#    - uploadprogress
+worker1:
+  name: elysia_cron
+  type: php
+  exec: "php workers/feed-importers.php"
+  php_extensions:
+    - mysqli
+    - gd
+    - curl
+    - json
+    - xml
+    - ftp
+    - pdo
+    - pdo_mysql
+    - mcrypt
+    - mbstring
+    - eaccelerator
+    - uploadprogress
