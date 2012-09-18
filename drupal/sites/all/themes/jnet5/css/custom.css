@@ -466,3 +466,28 @@ dl.tabs.pill dd a:hover {
 #footer-bottom span {
 	display: inline !important;
 }
+
+/* FRONT FEATURED */
+.view-id-front_page_featured .bkimg {
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #cdcdcd;
+}
+
+.view-id-front_page_featured .bkimg.show-for-xlarge {
+	height: 600px;
+}
+
+.view-id-front_page_featured .bkimg.show-for-large-up {
+	height: 400px;
+}
+
+.view-id-front_page_featured .bkimg.show-for-medium {
+	height: 550px;
+}
+
+.view-id-front_page_featured .bkimg.show-for-small {
+	height: 367px;
+}
+
