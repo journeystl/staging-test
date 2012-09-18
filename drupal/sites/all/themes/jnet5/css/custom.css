@@ -465,6 +465,7 @@ dl.tabs.pill dd a:hover {
 /* FRONT FEATURED */
 .view-id-front_page_featured .bkimg {
 	width: 100%;
+	height: 500px;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: #cdcdcd;

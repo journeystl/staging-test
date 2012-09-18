@@ -4,4 +4,4 @@
   */
 ?>
 
-<div class="bkimg show-for-small" style="background-image: url(<?php print $output; ?>);"></div>
+<div class="bkimg show-for-medium" style="background-image: url(<?php print $output; ?>);"></div>
