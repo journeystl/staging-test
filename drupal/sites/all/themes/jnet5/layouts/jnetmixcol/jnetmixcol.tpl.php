@@ -16,6 +16,10 @@
 ?>
 <div <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
 	
+	<?php if ($content['top_full']): ?>
+		<?php print $content['top_full']; ?>
+	<?php endif; ?>
+	
 	<?php if ($content['top']): ?>
 		<div class="row">
 			<div class="twelve columns">
@@ -36,6 +40,10 @@
 	  	</div>
 	 <?php endif; ?>
 	 
+	 <?php if ($content['middle_full']): ?>
+		<?php print $content['middle_full']; ?>
+	<?php endif; ?>
+	
 	 <?php if ($content['middle']): ?>
 	 	<div class="row">
 	 		<div class="twelve columns">
@@ -95,6 +103,10 @@
 	    	  	</div>
 	      	</div>
 	     <?php endif; ?>
+	     
+	     <?php if ($content['bottom_full']): ?>
+			<?php print $content['bottom_full']; ?>
+		<?php endif; ?>
 	 
 	 
   	<?php if ($content['bottom']): ?>

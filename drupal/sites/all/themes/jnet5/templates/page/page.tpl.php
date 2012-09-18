@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PAGE:NODE TPL
+ * PAGE
  */
 ?>
 
@@ -11,12 +11,6 @@
       <?php print $top_search_bar; ?>
       <?php print $top_churches_bar; ?>
       <?php print render($page['header']); ?>
-    </div>
-  </div>
-  
-  <div id="big-logo" class="row">
-    <div id="header" class="three columns centered">
-		  <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
     </div>
   </div>
 </div>
@@ -35,72 +29,79 @@
   <div id="mobile-nav"><?php print $main_menu_links; ?></div>
 </div>
 
-<div class="row">
-
-  <?php if ($messages): print $messages; endif; ?>
-
-  <?php if (!empty($page['help'])) { ?>
-    <div class="twelve columns help">
-    	<hr class="top double">
-      <?php print render($page['help']); ?>
-      	<hr class="bottom double">
-    </div>
-  <?php } ?>
-  
-	<div class="twelve columns content-header">
-		<?php if (!empty($page['content_header'])) { ?>
-		<?php print render($page['content_header']); ?>
-		<?php } else if (!$is_front) { ?>
-		<hr class="top">
-		<?php } ?>
+  <div class="row">
+	<div class="twelve columns">
+		<?php if ($messages): print $messages; endif; ?>
 	</div>
-
-  <div id="main" class="<?php print $main_grid; ?> columns">
-    <?php if (!empty($page['highlighted'])): ?>
-      <div class="highlight panel callout">
-        <?php print render($page['highlighted']); ?>
-      </div>
-    <?php endif; ?>
-    <a id="main-content"></a>
-
-    <?php if ($title && !$is_front): ?>
-      <?php print render($title_prefix); ?>
-      <h1 id="page-title" class="title"><?php print $title; ?></h1>
-      <?php print render($title_suffix); ?>
-    <?php endif; ?>
-
-    <?php if (!empty($tabs)): ?>
-      <?php print render($tabs); ?>
-      <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
-    <?php endif; ?>
-    <?php if ($action_links): ?>
-      <ul class="action-links">
-        <?php print render($action_links); ?>
-      </ul>
-    <?php endif; ?>
-
-    <?php print render($page['content_top']); ?>
-    <?php print render($page['content']); ?>
-    <?php print render($page['content_bottom']); ?>
   </div>
 
-  <?php if (!empty($page['sidebar_first'])): ?>
-    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
-      <?php print render($page['sidebar_first']); ?>
+  <?php if (!empty($page['help'])) { ?>
+  	<hr class="top double">
+    <div class="row">
+    	<div class="twelve columns help">
+			<?php print render($page['help']); ?>
+    	</div>
     </div>
-  <?php endif; ?>
+    <hr class="bottom double">
+  <?php } ?>
 
-  <?php if (!empty($page['sidebar_second'])): ?>
-    <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
-      <?php print render($page['sidebar_second']); ?>
-    </div>
-  <?php endif; ?>
+    <div class="row">
+		<div class="twelve columns content-header">
+			<?php if (!empty($page['content_header'])) { ?>
+			<?php print render($page['content_header']); ?>
+			<?php } else if (!$is_front) { ?>
+			<hr class="top">
+			<?php } ?>
+		</div>
+	</div>
 
-  	<div class="twelve columns">
-    	<hr class="top">
-    </div>
+  <div id="main">
+    <?php if (!empty($page['highlighted'])): ?>
+      	<div class="row">
+	      <div class="highlight panel callout twelve columns">
+	        <?php print render($page['highlighted']); ?>
+	      </div>
+	    </div>
+    <?php endif; ?>
     
+    <a id="main-content"></a>
+
+    <?php if (!empty($tabs)): ?>
+    	<div class="row">
+    		<div class="twelve columns">
+		      <?php print render($tabs); ?>
+		      <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
+	      </div>
+      	</div>
+    <?php endif; ?>
+    <?php if ($action_links): ?>
+    	<div class="row">
+    		<div class="twelve columns">
+		      <ul class="action-links">
+		        <?php print render($action_links); ?>
+		      </ul>
+			</div>
+		</div>
+    <?php endif; ?>
+
+   </div>
 </div>
+
+
+    <?php if ($page['content_top']): ?>
+    	<?php print render($page['content_top']); ?>
+    	<hr class="top">
+	<?php endif; ?>
+	<?php if ($page['content']): ?>
+    	<?php print render($page['content']); ?>
+    <?php endif; ?>
+    <?php if ($page['content_bottom']): ?>
+    	<hr class="top">
+    	<?php print render($page['content_bottom']); ?>
+    <?php endif; ?>
+
+
+  	
 
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>
   <footer class="row">
@@ -119,22 +120,10 @@
         <?php print render($page['footer_last']); ?>
       </div>
     <?php endif; ?>
-    <?php if (!empty($page['footer_bottom'])): ?>
-      <div id="footer-last" class="twelve columns">
-        <?php print render($page['footer_last']); ?>
-      </div>
-    <?php endif; ?>
   </footer>
-  <div class="row">
-    <div class="tweleve columns">
-      <div id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
-    </div>
-  </div>
+  
+  
+  <?php if (!empty($page['footer_bottom'])): ?>
+		<div id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
+   <?php endif; ?>
 <?php endif; ?>
-<div class="bottom-bar">
-  <div class="row">
-    <div class="tweleve columns">
-      &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
-    </div>
-  </div>
-</div>

@@ -5,8 +5,9 @@
  */
 ?>
 
-<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
-
+<?php if ($content['field_speaker']): ?>
+	<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
+<?php endif;?>
 
 <!-- START VIDEO YOUTUBE -->
 <?php if (strlen($content['field_youtube_url'][0]['#markup']) > 0): ?>
