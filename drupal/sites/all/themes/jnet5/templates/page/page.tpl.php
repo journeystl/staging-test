@@ -8,16 +8,10 @@
 <div class="top-bar hide-for-small">
   <div class="row">
     <div class="twelve columns">
-      <?php print $top_search_bar; ?>
-      <?php print $top_churches_bar; ?>
+      <?php /* print $top_search_bar; */ ?>
+      <?php /* print $top_churches_bar; */ ?>
       <?php print $top_nav; ?>
       <?php //print render($page['header']); ?>
-    </div>
-  </div>
-
-  <div id="big-logo" class="row">
-    <div id="header" class="three columns centered">
-		  <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
     </div>
   </div>
 </div>
