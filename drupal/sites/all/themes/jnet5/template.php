@@ -101,17 +101,17 @@ function jnet5_preprocess_page(&$vars) {
   $vars['top_nav'] = "<div class='row'><nav class='top-bar'>";
 
     // Add first 3 links.
-    $vars['top_nav'] .= "<div class='five columns'><ul class='left'>";
+    $vars['top_nav'] .= "<div class='four columns'><ul class='left'>";
     for ($i=0;$i<=2;$i++) {
       $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
     }
     $vars['top_nav'] .= "</ul></div>";
 
     // Add logo.
-    $vars['top_nav'] .= "<div class='three columns'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_small.gif'></div>";
+    $vars['top_nav'] .= "<div class='three columns'><a class='logo' href='/'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_main.png'></a></div>";
 
     // Add remaining links.
-    $vars['top_nav'] .= "<div class='three columns'><ul class='right'>";
+    $vars['top_nav'] .= "<div class='four columns'><ul class='right'>";
     for ($i=3;$i<count($menu_links);$i++) {
       $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
     }
@@ -181,14 +181,6 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
     $vars['content']['#theme_wrappers'] = array('menu_tree__nav_bar');
   }
 
-  // Alter main menu when it's considered the primary nav.
-  if ($vars['delta'] == 1) {
-    // Insert tagline / logo after 3rd menu item.
-    array_splice($vars['content'], 3, 0, array('tag' => array('#markup' => '<li class="leaf" id="nav-bar-tag-logo-wrapper"><div id="nav-bar-tag"><a href="/">LOVE GOD. CONNECT PEOPLE. TRANSFORM THE WORLD.</a></div><div id="nav-bar-logo"><img src="/sites/all/themes/jnet5/images/navigation/logo_small.gif"></div></li>')));
-
-    // Insert churches / search links.
-    $vars['content']['buttons'] = array('#markup' => '<li class="leaf" id="nav-bar-buttons"><div id="nav-bar-churches"></div><div id="nav-bar-search"></div></li>');
-  }
 
   // Alter main menu when it's printed in the footer.
   if ($vars['delta'] == 3) {
