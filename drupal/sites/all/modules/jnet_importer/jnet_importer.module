@@ -60,6 +60,7 @@ function jnet_importer_import() {
     // Set all fields.
     $node->title = $object->node->title;
     $node->body['und'][0]['value'] = $object->node->field_body[0]->value;
+    $node->body['und'][0]['format'] = 'full_html';
     $node->field_uid['und'][0]['value'] = $object->node->guid;
     $node->field_type['und'][0]['value'] = $object->node->field_type[0]->value;
     $node->field_campus_id['und'][0]['value'] = $object->node->campus;
