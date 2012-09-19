@@ -10,7 +10,14 @@
     <div class="twelve columns">
       <?php print $top_search_bar; ?>
       <?php print $top_churches_bar; ?>
-      <?php print render($page['header']); ?>
+      <?php print $top_nav; ?>
+      <?php //print render($page['header']); ?>
+    </div>
+  </div>
+
+  <div id="big-logo" class="row">
+    <div id="header" class="three columns centered">
+		  <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
     </div>
   </div>
 </div>
@@ -45,6 +52,12 @@
     <hr class="bottom double">
   <?php } ?>
 
+	<div class="twelve columns content-header">
+		<?php if (!empty($page['content_header'])) { ?>
+		<?php print render($page['content_header']); ?>
+		<?php } else if (!$is_front) { ?>
+		<hr class="top">
+		<?php } ?>
     <div class="row">
 		<div class="twelve columns content-header">
 			<?php if (!empty($page['content_header'])) { ?>
@@ -63,7 +76,7 @@
 	      </div>
 	    </div>
     <?php endif; ?>
-    
+
     <a id="main-content"></a>
 
     <?php if (!empty($tabs)): ?>
@@ -91,6 +104,9 @@
     <?php if ($page['content_top']): ?>
     	<?php print render($page['content_top']); ?>
     	<hr class="top">
+    </div>
+
+</div>
 	<?php endif; ?>
 	<?php if ($page['content']): ?>
     	<?php print render($page['content']); ?>
@@ -101,7 +117,6 @@
     <?php endif; ?>
 
 
-  	
 
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>
   <footer class="row">
@@ -121,8 +136,8 @@
       </div>
     <?php endif; ?>
   </footer>
-  
-  
+
+
   <?php if (!empty($page['footer_bottom'])): ?>
 		<div id="footer-bottom"><?php print render($page['footer_bottom']); ?></div>
    <?php endif; ?>

@@ -88,6 +88,39 @@ function jnet5_preprocess_page(&$vars) {
 	  $vars['sidebar_sec_grid'] = '';
 	}
 
+  // Build top-navbar.
+  $result = db_query("SELECT link_title, link_path FROM {menu_links} WHERE menu_name = 'main-menu' AND depth = 1 ORDER BY weight")->fetchAllKeyed();
+  $menu_links = array();
+  $active_trail = menu_get_active_trail();
+  foreach ($result as $key => $val) {
+    // Check if this item is 'active'.
+    $active = (isset($active_trail[1]) && isset($active_trail[1]['link_path']) && $active_trail[1]['link_path'] == $val) ? 'active' : '';
+    $menu_links[] = array('link_title' => $key, 'link_path' => $val, 'active' => $active);
+  }
+
+  $vars['top_nav'] = "<div class='row'><nav class='top-bar'>";
+
+    // Add first 3 links.
+    $vars['top_nav'] .= "<div class='five columns'><ul class='left'>";
+    for ($i=0;$i<=2;$i++) {
+      $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
+    }
+    $vars['top_nav'] .= "</ul></div>";
+
+    // Add logo.
+    $vars['top_nav'] .= "<div class='three columns'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_small.gif'></div>";
+
+    // Add remaining links.
+    $vars['top_nav'] .= "<div class='three columns'><ul class='right'>";
+    for ($i=3;$i<count($menu_links);$i++) {
+      $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
+    }
+    $vars['top_nav'] .= "</ul></div>";
+
+    // Add church/search and close things up.
+    $vars['top_nav'] .= "<div class='one columns'><ul class='right'><li><div id='nav-bar-churches'></div><div id='nav-bar-search'></div></li></ul></div></nav></div>";
+
+
   // Add top_search_bar.
   $vars['top_search_bar'] = '<div id="search-bar"><a href="javascript:;" id="search-bar-close"><i class="g-foundicon-remove"></i></a><input type="text" placeholder="Search + Hit Enter" /></div>';
 

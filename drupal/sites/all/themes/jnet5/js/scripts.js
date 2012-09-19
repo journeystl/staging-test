@@ -12,14 +12,14 @@
   /**
    * Active nav arrows.
    */
-  $('#block-menu-block-1 ul.nav-bar li.active a').after('<div class="nav-active-arrow"></div>');
+  $('#nav-wrapper li.active a').after('<div class="nav-active-arrow"></div>');
 
   /**
    * Header expand / collapse
    */
 
-  var header = $('#block-menu-block-1');
-  var headerNav = $('.top-bar .nav-bar');
+  var header = $('#nav-wrapper');
+  var headerNav = $('nav.top-bar');
   var headerTag = $('#nav-bar-tag');
   var headerLogo = $('#nav-bar-logo');
   var headerCondensed = false;
@@ -28,14 +28,14 @@
   function headerCondense() {
     header.stop().animate({height:'40px'}, 200);
     headerNav.stop().animate({'margin-top':'-15px'}, 200);
-    headerTag.stop().animate({'margin-top':'-63px'}, 200);
+    //headerTag.stop().animate({'margin-top':'-63px'}, 200);
     headerCondensed = true;
   }
 
   function headerExpand() {
     header.stop().animate({height:'66px'}, 200).css('overflow', 'visible');
     headerNav.stop().animate({'margin-top':'0px'}, 200);
-    headerTag.stop().animate({'margin-top':'0px'}, 200);
+    //headerTag.stop().animate({'margin-top':'0px'}, 200);
     headerCondensed = false;
   }
 
@@ -135,5 +135,10 @@
     e.stopPropagation();
   });
 
+
+  /**
+   * Initialize topbar.
+   */
+   $(document).foundationTopBar();
 
 });})(jQuery);
