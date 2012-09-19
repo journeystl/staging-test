@@ -173,7 +173,7 @@ function jnet5_menu_tree__nav_footer($vars) {
 }
 
 function jnet5_menu_tree__menu_front_page___featured($vars) {
-  return '<ul class="block-grid five-up mobile-one-up">' . $vars['tree'] . '</ul>';
+  return '<ul class="block-grid five-up mobile-two-up">' . $vars['tree'] . '</ul>';
 }
 
 function jnet5_link($variables) {
