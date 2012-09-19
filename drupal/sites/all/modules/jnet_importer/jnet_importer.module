@@ -70,6 +70,16 @@ function jnet_importer_import() {
     $node->field_uid['und'][0]['value'] = $object->node->guid;
     $node->field_signup['und'][0]['value'] = $object->node->signup;
 
+    // Save the poster image.
+    if (isset($object->node->field_poster_image[0]->filepath)) {
+      $file_path = $object->node->field_poster_image[0]->filepath;
+      if ($file_data = file_get_contents($file_path)) {
+        $file_name = pathinfo($file_path, PATHINFO_BASENAME);
+        $file = file_save_data($file_data, "public://poster-image/{$file_name}", FILE_EXISTS_REPLACE);
+        $node->field_image['und'][0] = array('fid' => $file->fid);
+      }
+    }
+
     // Save this node.
     node_save($node);
 

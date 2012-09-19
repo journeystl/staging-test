@@ -12,7 +12,7 @@
   /**
    * Active nav arrows.
    */
-  $('#block-menu-block-1 ul.nav-bar li.active a').after('<div class="nav-active-arrow"></div>');
+  $('#nav-wrapper li.active a').after('<div class="nav-active-arrow"></div>');
 
   /**
    * Header expand / collapse
