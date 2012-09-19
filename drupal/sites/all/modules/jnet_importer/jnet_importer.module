@@ -26,6 +26,16 @@ function jnet_importer_permission() {
   );
 }
 
+/**
+ * Implements hook_node_delete().
+ */
+function jnet_importer_node_delete($node) {
+  // When nodes are deleted, delete their entries in the jnet_importer table.
+  db_delete('jnet_importer')
+    ->condition('nid', $node->nid)
+    ->execute();
+}
+
 function jnet_importer_import() {
   variable_set('jnet_importer_debug', TRUE);
   $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$_GET['qty']}");
