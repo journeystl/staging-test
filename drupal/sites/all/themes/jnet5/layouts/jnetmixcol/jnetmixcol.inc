@@ -24,6 +24,9 @@ $plugin = array(
 	'left5' => t('Left side 5'),
 	'right5' => t('Right side 5'),
 	'bottom_full' => t('Bottom Full Width'),
+	'bottomA' => t('Bottom Mix A'),
+	'bottomB' => t('Bottom Mix B'),
+	'bottomC' => t('Bottom Mix C'),
 	'bottom' => t('Bottom')
   ),
 );
