@@ -27,13 +27,12 @@
 
 		           </td>
 		           <td>
-		           	<?php
+		           <?php print render($content['group_services']); ?>
+<!--		           	<?php
 		           		foreach($field_church_times[$node->language]  as $key => $value){
 		           		   print $content['group_services']['field_church_times'][$key]['entity']['field_collection_item'][$value]['field_church_service_day']['0']['#markup'] . '<br>' . $content['group_services']['field_church_times'][$key]['entity']['field_collection_item'][$value]['field_church_service_time']['0']['#markup'];
 		           		}
-		           	 ?>
-
-
+		           	 ?>	-->
 
 		           </td>
 		         </tr>

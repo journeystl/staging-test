@@ -107,7 +107,25 @@
 	     <?php if ($content['bottom_full']): ?>
 			<?php print $content['bottom_full']; ?>
 		<?php endif; ?>
-	 
+
+
+	<?php if($content['bottomA'] or $content['bottomB'] or $content['bottomC']): ?>
+		<div class="row">
+		  	<div class="three columns">
+		    	<?php print $content['bottomA']; ?>
+		  	</div>
+		  	
+		  	<div class="three columns">
+		  		<?php print $content['bottomB']; ?>
+		  	</div>
+	
+		  	<div class="six columns">
+		    	<?php print $content['bottomC']; ?>
+		  	</div>
+	  	</div>
+	 <?php endif; ?>
+
+
 	 
   	<?php if ($content['bottom']): ?>
 	  	<div class="row">
