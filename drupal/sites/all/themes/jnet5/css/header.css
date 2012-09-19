@@ -16,7 +16,10 @@ body.toolbar .shim {
   height: 66px;
   line-height: 66px;
   background-color: #fff; /* temp */
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #999;
+  background-image: url('../images/navigation/topbar_bk.gif');
+  background-position: bottom;
+  background-repeat: repeat-x;
 }
 
 .top-bar-wrapper.hide-for-small .top-bar {
@@ -32,7 +35,7 @@ body.toolbar .shim {
 
 
 .top-bar-wrapper.hide-for-small .top-bar ul > li a:not(.button) {
-	color: #333; /* reset */
+	color: #999; /* reset */
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 	text-transform: uppercase;
 	display: block; /* reset */
@@ -43,7 +46,17 @@ body.toolbar .shim {
 	padding: 0 15px; /* reset */
 }
 
+.top-bar-wrapper.hide-for-small .top-bar .logo {
+	background-color: #999;
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
 
+.top-bar-wrapper.hide-for-small .top-bar .logo img {
+	margin: 0 auto;
+}
 
 
 #nav-bar-churches,
@@ -112,9 +125,18 @@ body.toolbar .shim {
 
 /* states */
 
-.menu-block-1 .nav-bar > li:hover {
-  background: #fff;
+.top-bar-wrapper.hide-for-small .top-bar > li:hover {
+  	color: #fff;
+	background: #F30;
 }
+
+.top-bar-wrapper.hide-for-small .nav-bar > li:hover { background: #333333; }
+.menu-block-1 .nav-bar > li.active-trail > a {
+	color: #fff;
+	background: #F30;
+}
+
+/* old states */
 .menu-block-1 .nav-bar > li > a {
   color: #333;
   font-size: 24px !important;
@@ -169,10 +191,7 @@ div.nav-active-arrow {
 	background: transparent; /* reset */
 	border-color: transparent;  /* reset */
 }
-.menu-block-1 .nav-bar > li.active-trail > a {
-	color: #fff;
-	background: #F30;
-}
+
 
 
 /* MOBILE NAV */

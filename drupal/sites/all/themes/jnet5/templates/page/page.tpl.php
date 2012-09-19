@@ -20,7 +20,7 @@
 	  <div id="toggle-mobile-nav">
 	  	<ul class="nav-bar">
 	  		<li class="has-flyout">
-	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_small.gif"></a>
+	  			<a href="#"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_main.png"></a>
 	  			<a href="#" class="flyout-toggle">
 	  				<span><i class="ge-foundicon-plus"></i></span>
 	  			</a>
