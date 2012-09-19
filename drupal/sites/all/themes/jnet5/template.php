@@ -108,7 +108,7 @@ function jnet5_preprocess_page(&$vars) {
     $vars['top_nav'] .= "</ul></div>";
 
     // Add logo.
-    $vars['top_nav'] .= "<div class='three columns'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_small.gif'></div>";
+    $vars['top_nav'] .= "<div class='three columns'><a href='/'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_small.gif'></a></div>";
 
     // Add remaining links.
     $vars['top_nav'] .= "<div class='three columns'><ul class='right'>";

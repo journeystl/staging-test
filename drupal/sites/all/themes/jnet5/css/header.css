@@ -1,81 +1,51 @@
 .shim {
-  padding-top: 91px;
+  padding-top: 70px;
 }
 
 body.toolbar .shim {
 	padding-top: 120px !important;
 }
 
-#site-name {
-  display: inline-block;
-  font-size: 2.5em;
-  font-weight: normal;
-  line-height: 1.25;
-  margin: 0;
-  padding: 15px 0 0;
-}
 
-#block-menu-block-1 {
+
+.top-bar-wrapper.hide-for-small {
   position: fixed;
   top: 0;
-  z-index: 19;
-  width: 1170px;
+  width: 100%;
+  z-index: 1000;
   height: 66px;
-  border-bottom: 1px solid #333;
-  font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
-  text-transform: uppercase;
+  line-height: 66px;
+  background-color: #fff; /* temp */
+  border-bottom: 1px solid #000;
 }
 
-body.toolbar #block-menu-block-1 {
-	top: 29px;
+.top-bar-wrapper.hide-for-small .top-bar {
+	background-color: transparent;  /* reset */
 }
 
-.menu-block-1 .nav-bar {
-  height: 65px;
-  background: #fff;
-  margin-top: 0;
-  padding: 0;
-}
-.menu-block-1 .nav-bar > li {
-  line-height: 65px;
-  border: none;
-}
-.menu-block-1 .nav-bar > li.has-flyout > a:first-child::after {
-  border: none;
-}
-.menu-block-1 .nav-bar .flyout {
-  background: #fff;
-  border: none;
-  -webkit-box-shadow: 0 0 0;
-  -moz-box-shadow: 0 0 0;
-  box-shadow: 0 0 0;
+.top-bar-wrapper.hide-for-small .top-bar div>* {
+	height: 66px;
+	line-height: 66px;
+	vertical-align: middle;
 }
 
-#nav-bar-tag-logo-wrapper {
-  background: #666;
-  padding: 0 15px;
-  width: 360px;
-  height: 65px;
-  overflow: hidden;
+
+
+.top-bar-wrapper.hide-for-small .top-bar ul > li a:not(.button) {
+	color: #333; /* reset */
+	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+	text-transform: uppercase;
+	display: block; /* reset */
+	font-size: 2em; /* reset */
+	font-weight: normal; /* reset */
+	height: inherit; /* reset */
+	line-height: inherit; /* reset */
+	padding: 0 15px; /* reset */
 }
-#nav-bar-tag,
-#nav-bar-tag a,
-#nav-bar-logo {
-  text-align: center;
-  color: #fff;
-}
-#nav-bar-logo {
-	margin: 7px 0 0 0;
-}
-#nav-bar-tag,
-#nav-bar-tag a {
-	font-size: 113%;
-	font-weight: 400;
-}
-#nav-bar-buttons {
-  float: right;
-  padding-top: 8px;
-}
+
+
+
+
 #nav-bar-churches,
 #nav-bar-search {
   display: inline-block;

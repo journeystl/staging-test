@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="top-bar hide-for-small">
+<div class="top-bar-wrapper hide-for-small">
   <div class="row">
     <div class="twelve columns">
       <?php /* print $top_search_bar; */ ?>
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div class="top-bar show-for-small">
+<div class="top-bar-wrapper show-for-small">
 	  <div id="toggle-mobile-nav">
 	  	<ul class="nav-bar">
 	  		<li class="has-flyout">
