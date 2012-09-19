@@ -4,9 +4,10 @@
  * Implements hook_menu().
  */
 function jnet_importer_menu() {
-  $items['jnet/importer'] = array(
+  $items['jnet/importer/%'] = array(
     'title' => 'Patchbay Importer',
-    'page callback' => 'jnet_importer_import',
+    'page callback' => 'jnet_importer_import_page',
+    'page arguments' => array(2),
     'access arguments' => array('access jnet importer'),
     'type' => MENU_CALLBACK,
   );
@@ -36,9 +37,14 @@ function jnet_importer_node_delete($node) {
     ->execute();
 }
 
-function jnet_importer_import() {
+function jnet_importer_import_page($qty) {
+  jnet_importer_import($qty, TRUE);
+  return 'done.';
+}
+
+function jnet_importer_import($qty, $debug = FALSE) {
   variable_set('jnet_importer_debug', TRUE);
-  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$_GET['qty']}");
+  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}");
   $data = json_decode($data);
 
   foreach ($data as $object) {
@@ -48,17 +54,17 @@ function jnet_importer_import() {
     // Check if it exists.
     $exists = db_query("SELECT * FROM jnet_importer WHERE guid = :guid", array(':guid' => $object->node->guid))->fetchAssoc();
     if ($exists) {
-      if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} already exists."); }
+      if ($debug) { dpm("Node {$object->node->title} already exists."); }
       // Check if it has changed.
       if ($exists['hash'] == $object_hash) {
-        if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} has NOT changed."); }
+        if ($debug) { dpm("Node {$object->node->title} has NOT changed."); }
         continue;
       } else {
-        if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} HAS changed."); }
+        if ($debug) { dpm("Node {$object->node->title} HAS changed."); }
         $node = node_load($exists['nid']);
       }
     } else {
-      if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} does NOT exist."); }
+      if ($debug) { dpm("Node {$object->node->title} does NOT exist."); }
       $node = new stdClass();
       $node->type = 'promotion_content';
       node_object_prepare($node);
@@ -198,15 +204,13 @@ function jnet_importer_import() {
     );
 
     if ($exists) {
-      if (variable_get('jnet_importer_debug')) { dpm("Updating import record for {$object->node->title}."); }
+      if ($debug) { dpm("Updating import record for {$object->node->title}."); }
       drupal_write_record('jnet_importer', $record, 'guid');
     } else {
-      if (variable_get('jnet_importer_debug')) { dpm("Adding import record for {$object->node->title}."); }
+      if ($debug) { dpm("Adding import record for {$object->node->title}."); }
       drupal_write_record('jnet_importer', $record);
     }
   }
-
-  return '';
 }
 
 function _jnet_importer_delete_field_collections(&$node, $field_name) {
