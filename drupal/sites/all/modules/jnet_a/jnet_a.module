@@ -15,7 +15,7 @@ function jnet_a_menu() {
 }
 
 function jnet_a_redirect($arg) {
-  $nid = db_select('feeds_item', 'f')->fields('f', array('entity_id'))->condition('f.guid', $arg)->execute()->fetchField();
+  $nid = db_select('jnet_importer', 'i')->fields('i', array('nid'))->condition('i.guid', $arg)->execute()->fetchField();
   if ($nid) {
     drupal_goto("node/{$nid}");
   } else {
