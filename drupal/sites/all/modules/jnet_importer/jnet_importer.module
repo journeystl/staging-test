@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function jnet_importer_menu() {
+  $items['jnet/importer'] = array(
+    'title' => 'Patchbay Importer',
+    'page callback' => 'jnet_importer_import',
+    'access arguments' => array('access jnet importer'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function jnet_importer_permission() {
+  return array(
+    'access jnet importer' =>  array(
+      'title' => t('Access JNet Improter'),
+      'description' => t(''),
+    ),
+  );
+}
+
+function jnet_importer_import() {
+  variable_set('jnet_importer_debug', TRUE);
+  $data = file_get_contents('http://patchbay.journeyon.net/patchbay/feed?qty=10');
+  $data = json_decode($data);
+
+  foreach ($data as $object) {
+    // Calculate hash.
+    $object_hash = md5(serialize($object->node));
+
+    // Check if it exists.
+    $exists = db_query("SELECT * FROM jnet_importer WHERE guid = :guid", array(':guid' => $object->node->guid))->fetchAssoc();
+    if ($exists) {
+      if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} already exists."); }
+      // Check if it has changed.
+      if ($exists['hash'] == $object_hash) {
+        if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} has NOT changed."); }
+        continue;
+      } else {
+        if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} HAS changed."); }
+        $node = node_load($exists['nid']);
+      }
+    } else {
+      if (variable_get('jnet_importer_debug')) { dpm("Node {$object->node->title} does NOT exist."); }
+      $node = new stdClass();
+      $node->type = 'promotion_content';
+      node_object_prepare($node);
+      $node->language = LANGUAGE_NONE;
+      $node->uid = 0;
+      node_save($node);
+    }
+
+    // Set all fields.
+    $node->title = $object->node->title;
+    //$node->field_short_url['und'][0]['value'] = $object->field_short_url->value;
+    //$node->field_short_url['und'][0]['value'] = $object->node->field_body[0]->value;
+    //$node->field_short_url['und'][0]['value'] = $object->node->field_author_nickname[0]->value;
+    //$node->field_short_url['und'][0]['value'] = $object->node->field_author_longname[0]->value;
+
+    $node->field_type['und'][0]['value'] = $object->node->field_type[0]->value;
+    $node->field_campus_id['und'][0]['value'] = $object->node->campus;
+    $node->field_weight['und'][0]['value'] = $object->node->weight;
+    $node->field_uid['und'][0]['value'] = $object->node->guid;
+    $node->field_signup['und'][0]['value'] = $object->node->signup;
+
+    // Save this node.
+    node_save($node);
+
+
+    // Topic Posts
+
+    // Delete existing field_collections.
+    _jnet_importer_delete_field_collections($node, 'field_topic_posts');
+
+    // Grabbing the count() from any field_collection field appears to be adequate.
+    $topic_posts_count = count($object->node->field_topic_post_created_at);
+    for ($i=0;$i<$topic_posts_count;$i++) {
+      $field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_topic_posts'));
+      $field_collection_item->setHostEntity('node', $node);
+      $field_collection_item->field_topic_post_created_at['und'][0]['value'] = $object->node->field_topic_post_created_at[$i]->value;
+      $field_collection_item->field_topic_post_via_email['und'][0]['value'] = $object->node->field_topic_post_via_email[$i]->value;
+      $field_collection_item->field_topic_post_via_mobile['und'][0]['value'] = $object->node->field_topic_post_via_mobile[$i]->value;
+      $field_collection_item->field_topic_post_body['und'][0]['value'] = $object->node->field_topic_post_body[$i]->value;
+      $field_collection_item->field_topic_post_author_nickname['und'][0]['value'] = $object->node->field_topic_post_author_nick[$i]->value;
+      $field_collection_item->field_topic_post_author_longname['und'][0]['value'] = $object->node->field_topic_post_author_long[$i]->value;
+      $field_collection_item->save();
+    }
+
+    // Done. Update our jnet_importer table.
+    $record = array(
+      'guid' => $object->node->guid,
+      'nid' => $node->nid,
+      'hash' => $object_hash,
+    );
+
+    if ($exists) {
+      if (variable_get('jnet_importer_debug')) { dpm("Updating import record for {$object->node->title}."); }
+      drupal_write_record('jnet_importer', $record, 'guid');
+    } else {
+      if (variable_get('jnet_importer_debug')) { dpm("Adding import record for {$object->node->title}."); }
+      drupal_write_record('jnet_importer', $record);
+    }
+  }
+
+  return '';
+}
+
+function _jnet_importer_delete_field_collections(&$node, $field_name) {
+  if ($items = field_get_items('node', $node, $field_name)) {
+    // Gather field_collection item_id's.
+    $ids = array();
+    foreach($items as $item) {
+      $ids[] = $item['value'];
+    }
+
+    // Delete the field collections.
+    entity_delete_multiple('field_collection_item', $ids);
+
+    // Delete the (now pointless) references on the node. A patch was suggested to auto-do this for field_collection
+    // but has not yet been rolled into core.
+    $node->{$field_name} = array();
+    node_save($node);
+  }
+}

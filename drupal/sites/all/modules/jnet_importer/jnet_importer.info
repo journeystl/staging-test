@@ -1,0 +1,4 @@
+name = Jnet - Importer
+description = Feeds killer.
+package = Jnet
+core = 7.x

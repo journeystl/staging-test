@@ -8,9 +8,12 @@
 <div class="top-bar hide-for-small">
   <div class="row">
     <div class="twelve columns">
-      <?php print $top_search_bar; ?>
-      <?php print $top_churches_bar; ?>
-      <?php print render($page['header']); ?>
+      <div id="nav-wrapper">
+        <?php print $top_search_bar; ?>
+        <?php print $top_churches_bar; ?>
+        <?php print $top_nav; ?>
+        <?php //print render($page['header']); ?>
+      </div>
     </div>
   </div>
   <div id="big-logo" class="row">

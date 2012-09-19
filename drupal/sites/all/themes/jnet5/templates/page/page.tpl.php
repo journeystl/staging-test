@@ -10,10 +10,11 @@
     <div class="twelve columns">
       <?php print $top_search_bar; ?>
       <?php print $top_churches_bar; ?>
-      <?php print render($page['header']); ?>
+      <?php print $top_nav; ?>
+      <?php //print render($page['header']); ?>
     </div>
   </div>
-  
+
   <div id="big-logo" class="row">
     <div id="header" class="three columns centered">
 		  <a href="<?php print $GLOBALS['base_path']; ?>"><img src="<?php print $GLOBALS['base_path'] . $GLOBALS['theme_path']; ?>/images/navigation/logo_big.gif"></a>
@@ -46,7 +47,7 @@
       	<hr class="bottom double">
     </div>
   <?php } ?>
-  
+
 	<div class="twelve columns content-header">
 		<?php if (!empty($page['content_header'])) { ?>
 		<?php print render($page['content_header']); ?>
@@ -99,7 +100,7 @@
   	<div class="twelve columns">
     	<hr class="top">
     </div>
-    
+
 </div>
 
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>

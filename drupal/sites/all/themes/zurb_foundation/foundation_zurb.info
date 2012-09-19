@@ -22,6 +22,7 @@ scripts[] = js/jquery.tooltips.js
 ;scripts[] = js/jquery.offcanvas.js
 scripts[] = js/app.js
 scripts[] = js/jquery.foundation.navigation.js
+scripts[] = js/jquery.foundation.topbar.js
 
 ; Regions are output in the page.tpl.php
 regions[header]          = Header
