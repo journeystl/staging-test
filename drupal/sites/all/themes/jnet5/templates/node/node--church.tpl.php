@@ -11,11 +11,46 @@
 	
 		<div class="six columns">
 		      <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
+		      
+		     <table class="table table-condensed">
+		       <tbody>
+		         <tr>
+		           <td><strong>Services</strong></td>
+		           <td>
+		           		<?php print $field_church_street[$node->language][0]['value']; ?>
+
+		           
+		           
+		           </td>
+		           <td>Content</td>
+		         </tr>
+		         
+		         <tr>
+		         	<td> </td>
+		         	<td><?php print $field_church_city[$node->language][0]['value']; ?>, <?php print $field_church_state[$node->language][0]['value']; ?>&#32;<?php print $field_church_zipcode[$node->language][0]['value']; ?></td>
+		         	<td></td>
+		         </tr>
+		         <tr>
+		         	<td> </td>
+		         	<td><i class="foundation-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $field_church_city[$node->language][0]['value']; ?>, <?php print $field_church_state[$node->language][0]['value']; ?> <?php print $field_church_zipcode[$node->language][0]['value']; ?>">Map</a></td>
+		         </tr>
+		         <tr>
+		         </tr>
+		         <tr>
+		           <td><strong>Church Office</strong></td>
+		           <td>Content</td>
+		           <td>Content</td>
+		         </tr>
+		       </tbody>
+		     </table>
 		    
 	<!-- VIEWS -->
 	
-		<?php print views_embed_view('church_info', 'block'); ?>
-	    </div>
+<!--		<?php print views_embed_view('church_info', 'block'); ?>-->
+		<?php dpm( get_defined_vars() ); ?>
+
+		
+	    </div> <!--/.six columns-->
 	    <div class="six columns">
 	    	<?php print views_embed_view('church_photo', 'block'); ?>
 	    </div>
