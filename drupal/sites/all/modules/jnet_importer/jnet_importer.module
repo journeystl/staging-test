@@ -28,7 +28,7 @@ function jnet_importer_permission() {
 
 function jnet_importer_import() {
   variable_set('jnet_importer_debug', TRUE);
-  $data = file_get_contents('http://patchbay.journeyon.net/patchbay/feed?qty=10');
+  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$_GET['qty']}");
   $data = json_decode($data);
 
   foreach ($data as $object) {
@@ -59,16 +59,30 @@ function jnet_importer_import() {
 
     // Set all fields.
     $node->title = $object->node->title;
-    //$node->field_short_url['und'][0]['value'] = $object->field_short_url->value;
-    //$node->field_short_url['und'][0]['value'] = $object->node->field_body[0]->value;
-    //$node->field_short_url['und'][0]['value'] = $object->node->field_author_nickname[0]->value;
-    //$node->field_short_url['und'][0]['value'] = $object->node->field_author_longname[0]->value;
-
+    $node->body['und'][0]['value'] = $object->node->field_body[0]->value;
+    $node->field_uid['und'][0]['value'] = $object->node->guid;
     $node->field_type['und'][0]['value'] = $object->node->field_type[0]->value;
     $node->field_campus_id['und'][0]['value'] = $object->node->campus;
+    $node->field_short_url['und'][0]['value'] = $object->node->field_short_url[0]->value;
+    $node->field_updated_at['und'][0]['value'] = $object->node->field_updated_at[0]->value;
+    $node->field_created_at['und'][0]['value'] = $object->node->field_created_at[0]->value;
+    $node->field_author_nickname['und'][0]['value'] = $object->node->field_author_nickname[0]->value;
+    $node->field_author_longname['und'][0]['value'] = $object->node->field_author_longname[0]->value;
     $node->field_weight['und'][0]['value'] = $object->node->weight;
-    $node->field_uid['und'][0]['value'] = $object->node->guid;
     $node->field_signup['und'][0]['value'] = $object->node->signup;
+
+    // Set all event fields that aren't in field collections.
+    $node->field_event_starting_at['und'][0]['value'] = $object->node->field_starting_at[0]->value;
+    $node->field_event_ending_at['und'][0]['value'] = $object->node->field_ending_at[0]->value;
+    $node->field_event_roles['und'][0]['value'] = $object->node->field_event_roles[0]->value;
+    $node->field_event_address_street['und'][0]['value'] = $object->node->field_event_address_street[0]->value;
+    $node->field_event_address_city['und'][0]['value'] = $object->node->field_event_address_city[0]->value;
+    $node->field_event_address_state['und'][0]['value'] = $object->node->field_event_address_state[0]->value;
+    $node->field_event_address_zip['und'][0]['value'] = $object->node->field_event_address_zip[0]->value;
+    $node->field_event_address_latitude['und'][0]['value'] = $object->node->field_event_address_lat[0]->value;
+    $node->field_event_address_longitude['und'][0]['value'] = $object->node->field_event_address_lon[0]->value;
+    $node->field_event_address_loc_type['und'][0]['value'] = $object->node->field_event_address_loc_type[0]->value;
+    $node->field_event_address_id['und'][0]['value'] = $object->node->field_event_address_id[0]->value;
 
     // Save the poster image.
     if (isset($object->node->field_poster_image[0]->filepath)) {
@@ -83,23 +97,85 @@ function jnet_importer_import() {
     // Save this node.
     node_save($node);
 
+    /**
+     * Field collections
+     * We map local and remote field names within an array that is keyed with the field collection machine name.
+     * This allows for a simpler method to loop over and create all of the field collections.
+     */
 
-    // Topic Posts
+    $field_collections = array(
+      'field_topic_posts' => array(
+        'field_topic_post_created_at' => 'field_topic_post_created_at',
+        'field_topic_post_via_email' => 'field_topic_post_via_email',
+        'field_topic_post_via_mobile' => 'field_topic_post_via_mobile',
+        'field_topic_post_body' => 'field_topic_post_body',
+        'field_topic_post_author_nickname' => 'field_topic_post_author_nick',
+        'field_topic_post_author_longname' => 'field_topic_post_author_long',
+      ),
+      'field_need_responses' => array(
+        'field_need_response_created_at' => 'field_need_response_created_at',
+        'field_need_response_via_email' => 'field_need_response_via_email',
+        'field_need_response_is_an_update' => 'field_need_response_is_update',
+        'field_need_response_body' => 'field_need_response_body',
+        'field_need_response_author_nickn' => 'field_need_response_author_nick',
+        'field_need_response_author_longn' => 'field_need_response_author_long',
+      ),
+      'field_need_items' => array(
+        'field_need_item_updated_at' => 'field_need_item_updated_at',
+        'field_need_item_created_at' => 'field_need_item_created_at',
+        'field_need_item_description' => 'field_need_item_description',
+        'field_need_item_starting_at' => 'field_need_item_starting_at',
+        'field_need_item_author_nickname' => 'field_need_item_author_nick',
+        'field_need_item_author_longname' => 'field_need_item_author_long',
+      ),
+      'field_event_responses' => array(
+        'field_event_response_created_at' => 'field_event_response_created_at',
+        'field_event_response_author_nick' => 'field_event_response_author_nick',
+        'field_event_response_author_long' => 'field_event_response_author_long',
+        'field_event_response_attending' => 'field_event_response_attending',
+        'field_event_response_total' => 'field_event_response_total',
+      ),
+      'field_event_notes' => array(
+        'field_event_note_via_mobile' => 'field_event_note_via_mobile',
+        'field_event_note_via_email' => 'field_event_note_via_email',
+        'field_event_note_updated_at' => 'field_event_note_updated_at',
+        'field_event_note_created_at' => 'field_event_note_created_at',
+        'field_event_note_body' => 'field_event_note_body',
+        'field_event_note_author_nick' => 'field_event_note_author_nick',
+        'field_event_note_author_long' => 'field_event_note_author_long',
+      ),
+      'field_event_items' => array(
+        'field_event_item_title' => 'field_event_item_title',
+        'field_event_item_total_qty' => 'field_event_item_total_qty',
+      ),
+      'field_event_item_responses' => array(
+        'field_event_item_response_qty' => 'field_event_item_resp_qty',
+        'field_event_item_response_title' => 'field_event_item_resp_title',
+        'field_event_item_resp_nick' => 'field_event_item_resp_nick',
+        'field_event_item_resp_longname' => 'field_event_item_resp_longname',
+      ),
+    );
 
-    // Delete existing field_collections.
-    _jnet_importer_delete_field_collections($node, 'field_topic_posts');
+    foreach ($field_collections as $field_name => $mapping) {
+      // Delete existing.
+      _jnet_importer_delete_field_collections($node, $field_name);
 
-    // Grabbing the count() from any field_collection field appears to be adequate.
-    $topic_posts_count = count($object->node->field_topic_post_created_at);
-    for ($i=0;$i<$topic_posts_count;$i++) {
-      $field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_topic_posts'));
-      $field_collection_item->setHostEntity('node', $node);
-      $field_collection_item->field_topic_post_created_at['und'][0]['value'] = $object->node->field_topic_post_created_at[$i]->value;
-      $field_collection_item->field_topic_post_via_email['und'][0]['value'] = $object->node->field_topic_post_via_email[$i]->value;
-      $field_collection_item->field_topic_post_via_mobile['und'][0]['value'] = $object->node->field_topic_post_via_mobile[$i]->value;
-      $field_collection_item->field_topic_post_body['und'][0]['value'] = $object->node->field_topic_post_body[$i]->value;
-      $field_collection_item->field_topic_post_author_nickname['und'][0]['value'] = $object->node->field_topic_post_author_nick[$i]->value;
-      $field_collection_item->field_topic_post_author_longname['und'][0]['value'] = $object->node->field_topic_post_author_long[$i]->value;
+      // Add the proper amount of field collections.
+      $tmp_remote_field = reset(array_values($mapping));
+      $tmp_count = count($object->node->{$tmp_remote_field});
+
+      for ($i=0;$i<$tmp_count;$i++) {
+        // Create the new field collection and attach it to the host node.
+        $field_collection_item = entity_create('field_collection_item', array('field_name' => $field_name));
+        $field_collection_item->setHostEntity('node', $node);
+
+        // Map each field.
+        foreach ($mapping as $field_local => $field_remote) {
+          $field_collection_item->{$field_local}['und'][0]['value'] = $object->node->{$field_remote}[$i]->value;
+        }
+      }
+
+      // Save the field collection.
       $field_collection_item->save();
     }
 
