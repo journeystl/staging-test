@@ -16,16 +16,20 @@ while (1) {
   $result = db_select('node', 'n')->fields('n', array('nid', 'title'))->condition('n.type', 'promotion_content_importer')->execute();
   foreach ($result as $row) {
     $feedSource = feeds_source('promotion_content_importer', $row->nid);
-    while ($feedSource->import() != FEEDS_BATCH_COMPLETE);
+    $feedSource->startImport();
+    while ($feedSource->progressImporting() != FEEDS_BATCH_COMPLETE);
     $num_items = $feedSource->itemCount();
     worker_watchdog('worker', "Ended import for {$row->title} ({$num_items} items imported/updated)<br /><br />");
   }
 
-  // Clear cache of loaded nodes.
+  // Clear cache of loaded nodes. We do this so that Drupal doesn't maintain the current cache of entities on the next iteration.
   entity_get_controller('node')->resetCache();
 
-  // Run again in 60 seconds.
-  sleep(60);
+  // Same as above.
+  unset($feedSource);
+
+  // Run again in 120 seconds.
+  sleep(120);
 }
 
 // We redefine the watchdog() function here so that we can control the timestamp properly.
