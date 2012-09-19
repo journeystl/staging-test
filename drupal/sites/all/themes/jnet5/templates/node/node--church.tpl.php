@@ -4,6 +4,10 @@
  * NODE: CHURCH TPL
  */
 ?>
+
+		<?php dpm( $content ); ?>
+		
+		
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
 	<div class="row">
@@ -22,7 +26,16 @@
 		           
 		           
 		           </td>
-		           <td>Content</td>
+		           <td>
+		           	<?php 
+		           		foreach($field_church_times[$node->language]  as $key => $value){
+		           		   print $content['group_services']['field_church_times'][$key]['entity']['field_collection_item'][$value]['field_church_service_day']['0']['#markup'] . '<br>' . $content['group_services']['field_church_times'][$key]['entity']['field_collection_item'][$value]['field_church_service_time']['0']['#markup'];
+		           		}
+		           	 ?>	
+		           
+		           
+		           
+		           </td>
 		         </tr>
 		         
 		         <tr>
@@ -32,7 +45,7 @@
 		         </tr>
 		         <tr>
 		         	<td> </td>
-		         	<td><i class="foundation-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $field_church_city[$node->language][0]['value']; ?>, <?php print $field_church_state[$node->language][0]['value']; ?> <?php print $field_church_zipcode[$node->language][0]['value']; ?>">Map</a></td>
+		         	<td><i class="foundation-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $field_church_street[$node->language][0]['value']; ?>&#32;<?php print $field_church_state[$node->language][0]['value']; ?>&#32;<?php print $field_church_zipcode[$node->language][0]['value']; ?>">Map</a></td>
 		         </tr>
 		         <tr>
 		         </tr>
@@ -47,7 +60,7 @@
 	<!-- VIEWS -->
 	
 <!--		<?php print views_embed_view('church_info', 'block'); ?>-->
-		<?php dpm( get_defined_vars() ); ?>
+
 
 		
 	    </div> <!--/.six columns-->
