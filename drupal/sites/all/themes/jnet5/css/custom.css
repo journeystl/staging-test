@@ -273,7 +273,17 @@ dl.tabs.pill dd a:hover {
 
 /* CHURCH PAGES */
 
+.field-name-field-church-service-day{
+	font-weight: bold;
+}
 
+.field-name-field-church-service-day:after{
+	content: ":";
+}
+
+.field-name-field-church-service-time{
+	margin-left: 20px;
+}
 
 /*
 .field-collection-item-field-church-times * {
