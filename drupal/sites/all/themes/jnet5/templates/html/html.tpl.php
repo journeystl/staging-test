@@ -13,6 +13,7 @@
   <title><?php print $head_title; ?></title>
   <script type="text/javascript" src="//use.typekit.net/xka5tqs.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script type="text/javascript" src="http://www.esvapi.org/crossref/crossref.min.js"></script>
   <?php print $styles; ?>
   <?php print $scripts; ?>
 
@@ -28,6 +29,6 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-  <script src=”http://www.esvapi.org/crossref/crossref.min.js” type=”text/javascript”></script>
+
 </body>
 </html>
