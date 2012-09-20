@@ -43,7 +43,6 @@ function jnet_importer_import_page($qty) {
 }
 
 function jnet_importer_import($qty, $debug = FALSE) {
-  variable_set('jnet_importer_debug', TRUE);
   $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}");
   $data = json_decode($data);
 
@@ -107,7 +106,9 @@ function jnet_importer_import($qty, $debug = FALSE) {
       if ($file_data = file_get_contents($file_path)) {
         $file_name = pathinfo($file_path, PATHINFO_BASENAME);
         $file = file_save_data($file_data, "public://poster-image/{$file_name}", FILE_EXISTS_REPLACE);
-        $node->field_image['und'][0] = array('fid' => $file->fid);
+        if ($file) {
+          $node->field_image['und'][0] = array('fid' => $file->fid);
+        }
       }
     }
 
