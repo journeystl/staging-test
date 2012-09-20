@@ -2,17 +2,11 @@
   padding-top: 70px;
 }
 
-body.toolbar .shim {
-	padding-top: 120px !important;
-}
-
-
-
 .top-bar-wrapper.hide-for-small {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 19;
   height: 66px;
   line-height: 66px;
   background-color: #fff; /* temp */
@@ -20,6 +14,10 @@ body.toolbar .shim {
   background-image: url('../images/navigation/topbar_bk.gif');
   background-position: bottom;
   background-repeat: repeat-x;
+}
+
+body.toolbar .top-bar-wrapper.hide-for-small {
+	top: 28px;
 }
 
 .top-bar-wrapper.hide-for-small .top-bar {
@@ -125,7 +123,8 @@ body.toolbar .shim {
 
 /* states */
 
-.top-bar-wrapper.hide-for-small .top-bar > li:hover {
+/*
+.top-bar-wrapper.hide-for-small .nav-bar > li:hover {
   	color: #fff;
 	background: #F30;
 }
@@ -135,6 +134,7 @@ body.toolbar .shim {
 	color: #fff;
 	background: #F30;
 }
+*/
 
 /* old states */
 .menu-block-1 .nav-bar > li > a {
