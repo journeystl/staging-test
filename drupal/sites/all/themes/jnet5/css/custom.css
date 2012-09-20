@@ -1,7 +1,34 @@
 
-body{
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+	font-size: 18px;
+}
+
+body, div, dl, dt, dd, ul, ol, li, pre, form, p, blockquote, th, td {
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "ltc-bodoni-175", "georgia", serif;
+	font-weight: bold;
+	text-rendering: optimizeLegibility;
+	line-height: 1.1;
+	margin-bottom: 14px;
+	margin-top: 14px;
+	color: red;
+}
+
+h1 { font-size: 257%; }
+
+h2 { font-size: 200%; }
+
+h3 { font-size: 150%; }
+
+h4 { font-size: 120%; }
+
+h5 { font-size: 110%; }
+
+h6 { font-size: 90%; }
+
 
 #header {
 	margin-bottom: 30px;
@@ -36,17 +63,6 @@ hr.double {
 	border: solid #666;
 	border-width: 1px 0 1px 0;
 	height: 9px !important;
-}
-
-
-/* HEADINGS */
-h1, h2, h3, h4, h5, h6 {
-	font-family: "ltc-bodoni-175", "georgia", serif;
-	font-weight: bold;
-	text-rendering: optimizeLegibility;
-	line-height: 1.1;
-	margin-bottom: 14px;
-	margin-top: 14px;
 }
 
 

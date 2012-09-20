@@ -73,7 +73,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 	text-transform: uppercase;
 	display: block; /* reset */
-	font-size: 1.8em; /* reset */
+	font-size: 1.6em; /* reset */
 	font-weight: normal; /* reset */
 	height: inherit; /* reset */
 	line-height: inherit; /* reset */

@@ -43,15 +43,14 @@
     <hr class="bottom double">
   <?php } ?>
 
+	<?php if (!empty($page['content_header'])) { ?>
     <div class="row">
 		<div class="twelve columns content-header">
-			<?php if (!empty($page['content_header'])) { ?>
 			<?php print render($page['content_header']); ?>
-			<?php } else if (!$is_front) { ?>
-			<hr class="top">
-			<?php } ?>
 		</div>
 	</div>
+	<hr class="top">
+	<?php } ?>
 
   <div id="main">
     <?php if (!empty($page['highlighted'])): ?>
@@ -98,7 +97,11 @@
     <?php endif; ?>
     <?php if ($page['content_bottom']): ?>
     	<hr class="top">
-    	<?php print render($page['content_bottom']); ?>
+    	<div class="row">
+    		<div class="twelve columns">
+    			<?php print render($page['content_bottom']); ?>
+    		</div>
+    	</div>
     <?php endif; ?>
 
 

@@ -3,6 +3,7 @@
  * NODE: CHURCH TPL
  */
 ?>
+
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 	<div class="row">
 		<div class="six columns">
@@ -48,22 +49,19 @@
 	    </div>
 
 	</div> <!-- end row -->
-
+	
+	<hr class="top">
+	
 	<div class="row">
-		<div class="twelve columns">
-			<hr class="top">
-		</div>
 
 		<div class="twelve columns">
 		<?php print views_embed_view('promo_thumbs_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
 		</div>
 	</div> <!-- end row -->
 
-
+	<hr class="top">
+	
 	<div class="row">
-		<div class="twelve columns">
-			<hr class="top">
-		</div>
 		<div class="six columns">
 			<h3>Meet Our Staff</h3>
 			<?php print views_embed_view('meet_the_staff_churches', 'block'); ?>
