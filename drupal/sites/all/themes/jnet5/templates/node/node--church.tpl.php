@@ -29,6 +29,11 @@
 
 		           	</td>
 		         </tr>
+		         
+		         <tr>
+		         	<td colspan="3"><hr class="top"></td>
+		         </tr>
+
 		         <tr>
 		           	<td><strong>Church Office</strong></td>
 		           	<td>

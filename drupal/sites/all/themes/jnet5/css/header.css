@@ -167,11 +167,13 @@ body.toolbar .top-bar-wrapper.hide-for-small {
   	background-color: transparent; /* reset */
 }
 
-.top-bar-wrapper.hide-for-small .top-bar ul > li:hover a,
+.top-bar-wrapper.hide-for-small .top-bar ul > li:hover a {
+  	color: #eee;
+	background-color: #999;
+}
 .top-bar-wrapper.hide-for-small .top-bar ul > li.active a {
   	color: #eee;
 	background-color: #F30;
-	
 }
 .top-bar-wrapper.hide-for-small .top-bar ul > li.active a:hover {
 	color: #fff;
