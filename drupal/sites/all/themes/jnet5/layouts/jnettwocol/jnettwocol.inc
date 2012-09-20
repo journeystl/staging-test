@@ -8,6 +8,7 @@ $plugin = array(
   'theme' => 'jnettwocol',
   'css' => 'jnettwocol.css',
   'regions' => array(
+  	'top_full' => t('Top Full Width'),
 	'top' => t('Top'),
 	'left1' => t('Left side 1'),
 	'right1' => t('Right side 1'),
@@ -19,6 +20,7 @@ $plugin = array(
 	'right4' => t('Right side 4'),
 	'left5' => t('Left side 5'),
 	'right5' => t('Right side 5'),
+	'bottom_full' => t('Bottom Full Width'),
 	'bottom' => t('Bottom')
   ),
 );
