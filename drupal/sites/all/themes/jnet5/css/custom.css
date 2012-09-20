@@ -427,5 +427,9 @@ dl.tabs.pill dd a:hover {
 a.esvBibleRef { 
 	color:#F30;
 	text-decoration:none; 
+}
 
+.pane-content ul li{
+	list-style: none;
+	margin-left: 15px;
 }
