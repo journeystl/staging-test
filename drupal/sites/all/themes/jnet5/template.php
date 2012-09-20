@@ -101,24 +101,25 @@ function jnet5_preprocess_page(&$vars) {
   $vars['top_nav'] = "<div class='row'><nav class='top-bar'>";
 
     // Add first 3 links.
-    $vars['top_nav'] .= "<div class='four columns'><ul class='left'>";
+    $vars['top_nav'] .= "<div class='five columns'><ul class='left-links'>";
     for ($i=0;$i<=2;$i++) {
       $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
     }
     $vars['top_nav'] .= "</ul></div>";
 
     // Add logo.
-    $vars['top_nav'] .= "<div class='three columns'><a class='logo' href='/'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_main.png'></a></div>";
+    $vars['top_nav'] .= "<div class='two columns'><a class='logo' href='/'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_main.png'></a></div>";
 
     // Add remaining links.
-    $vars['top_nav'] .= "<div class='four columns'><ul class='right'>";
+    $vars['top_nav'] .= "<div class='five columns'><ul class='right-links'>";
     for ($i=3;$i<count($menu_links);$i++) {
       $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
     }
-    $vars['top_nav'] .= "</ul></div>";
 
     // Add church/search and close things up.
-    $vars['top_nav'] .= "<div class='one columns'><ul class='right'><li><div id='nav-bar-churches'></div><div id='nav-bar-search'></div></li></ul></div></nav></div>";
+    $vars['top_nav'] .= "<li><div id='nav-bar-churches'></div><div id='nav-bar-search'></div></li>";
+    
+	$vars['top_nav'] .= "</ul></div></nav></div>";
 
 
   // Add top_search_bar.

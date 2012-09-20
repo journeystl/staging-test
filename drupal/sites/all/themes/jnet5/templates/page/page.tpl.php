@@ -6,14 +6,11 @@
 ?>
 
 <div class="top-bar-wrapper hide-for-small">
-  <div class="row">
-    <div class="twelve columns">
       <?php /* print $top_search_bar; */ ?>
       <?php /* print $top_churches_bar; */ ?>
       <?php print $top_nav; ?>
       <?php //print render($page['header']); ?>
-    </div>
-  </div>
+
 </div>
 
 <div class="top-bar-wrapper show-for-small">
@@ -46,12 +43,6 @@
     <hr class="bottom double">
   <?php } ?>
 
-	<div class="twelve columns content-header">
-		<?php if (!empty($page['content_header'])) { ?>
-		<?php print render($page['content_header']); ?>
-		<?php } else if (!$is_front) { ?>
-		<hr class="top">
-		<?php } ?>
     <div class="row">
 		<div class="twelve columns content-header">
 			<?php if (!empty($page['content_header'])) { ?>

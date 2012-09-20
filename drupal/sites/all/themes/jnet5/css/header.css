@@ -24,36 +24,71 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 	background-color: transparent;  /* reset */
 }
 
+.top-bar-wrapper.hide-for-small .top-bar,
 .top-bar-wrapper.hide-for-small .top-bar div>* {
-	height: 66px;
-	line-height: 66px;
+	height: 65px;
+	line-height: 65px;
 	vertical-align: middle;
 }
 
+.top-bar-wrapper.hide-for-small .top-bar ul > li {
+	float: left; /* in found */
+	padding: 0 2%;
+	margin: 0 3% 0 0;
+	width: 26%;
+	text-align: center;
+}
 
+.top-bar-wrapper.hide-for-small .top-bar ul.left-links > li:last-child {
+	width: 32%;
+}
+
+.top-bar-wrapper.hide-for-small .top-bar ul.right-links li:first-child {
+	margin-left: 2%;
+}
+
+.top-bar-wrapper.hide-for-small .top-bar ul.right-links li:last-child {
+	text-align: right;
+}
+
+.top-bar-wrapper.hide-for-small .top-bar ul > li:first-child {
+	padding: 0;
+}
+
+.top-bar-wrapper.hide-for-small .top-bar ul > li:last-child {
+	margin: 0;
+}
+
+.top-bar-wrapper.hide-for-small .top-bar .columns {
+	padding: 0;
+}
 
 .top-bar-wrapper.hide-for-small .top-bar ul > li a:not(.button) {
 	color: #999; /* reset */
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 	text-transform: uppercase;
 	display: block; /* reset */
-	font-size: 2em; /* reset */
+	font-size: 1.8em; /* reset */
 	font-weight: normal; /* reset */
 	height: inherit; /* reset */
 	line-height: inherit; /* reset */
-	padding: 0 15px; /* reset */
+	padding: 0; /* reset */
+}
+
+
+.top-bar-wrapper.hide-for-small .top-bar ul > li a:first-child {
+	padding-left: 0;
 }
 
 .top-bar-wrapper.hide-for-small .top-bar .logo {
 	background-color: #999;
 	display: block;
 	width: 100%;
-	height: 100%;
 	text-align: center;
 }
 
 .top-bar-wrapper.hide-for-small .top-bar .logo img {
-	margin: 0 auto;
+	margin: 20px auto 0 auto;
 }
 
 
@@ -62,7 +97,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
   display: inline-block;
   width: 25px;
   height: 25px;
-  margin-top: 6px;
+  margin-top: 18px;
   cursor: pointer;
 }
 #nav-bar-churches {
@@ -123,18 +158,20 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 
 /* states */
 
-/*
-.top-bar-wrapper.hide-for-small .nav-bar > li:hover {
-  	color: #fff;
-	background: #F30;
+.top-bar-wrapper.hide-for-small .top-bar ul > li:hover {
+  	background-color: transparent; /* reset */
 }
 
-.top-bar-wrapper.hide-for-small .nav-bar > li:hover { background: #333333; }
-.menu-block-1 .nav-bar > li.active-trail > a {
-	color: #fff;
-	background: #F30;
+.top-bar-wrapper.hide-for-small .top-bar ul > li:hover a {
+  	color: #fff;
+	background-color: #F30;
+	
 }
-*/
+.top-bar-wrapper.hide-for-small .top-bar ul > li.active-trail a {
+	color: #fff;
+	background-color: #F30;
+}
+
 
 /* old states */
 .menu-block-1 .nav-bar > li > a {
@@ -170,7 +207,7 @@ div.nav-active-arrow {
   position: absolute;
   z-index: 99;
   top: 65px;
-  left: -25px;
+  left: 86px;
   margin-left: 50%;
 }
 
