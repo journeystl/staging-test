@@ -103,7 +103,7 @@ function jnet5_preprocess_page(&$vars) {
     // Add first 3 links.
     $vars['top_nav'] .= "<div class='five columns'><ul class='left-links'>";
     for ($i=0;$i<=2;$i++) {
-      $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
+      $vars['top_nav'] .= "<li class='{$menu_links[$i]['active']}'><a href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
     }
     $vars['top_nav'] .= "</ul></div>";
 
@@ -113,7 +113,7 @@ function jnet5_preprocess_page(&$vars) {
     // Add remaining links.
     $vars['top_nav'] .= "<div class='five columns'><ul class='right-links'>";
     for ($i=3;$i<count($menu_links);$i++) {
-      $vars['top_nav'] .= "<li><a class='{$menu_links[$i]['active']}' href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
+      $vars['top_nav'] .= "<li class='{$menu_links[$i]['active']}'><a href='{$GLOBALS['base_path']}{$menu_links[$i]['link_path']}'>{$menu_links[$i]['link_title']}</a></li>";
     }
 
     // Add church/search and close things up.
