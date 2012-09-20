@@ -36,7 +36,7 @@
 			          	 <i class="foundation-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $field_church_street[$node->language][0]['value']; ?>&#32;<?php print $field_church_state[$node->language][0]['value']; ?>&#32;<?php print $field_church_zipcode[$node->language][0]['value']; ?>">Map</a> 
 		           	</td>
 		           	<td>
-			           	<i class="foundation-phone"></i>&#32;<?php print $field_church_phone[$node->language][0]['value']; ?>
+			           	<i class="foundation-phone"></i>&#32;<?php print $field_church_phone[$node->language][0]['value']; ?><br>
 			           	<i class="foundation-mail"></i>&#32;<a href="mailto:<?php print $field_church_email[$node->language][0]['value']; ?>"><?php print $field_church_email[$node->language][0]['value']; ?></a>
 		           	</td>
 		         </tr>

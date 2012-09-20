@@ -28,5 +28,6 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  <script src=”http://www.esvapi.org/crossref/crossref.min.js” type=”text/javascript”></script>
 </body>
 </html>
