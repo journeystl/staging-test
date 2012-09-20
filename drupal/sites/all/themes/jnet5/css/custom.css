@@ -251,7 +251,6 @@ dl.tabs.pill dd a:hover {
 	border-color: #CC2900 !important;
 }
 
-
 /* Locations View */
 .view-id-locations table {
 	width: 100%;
@@ -284,13 +283,6 @@ dl.tabs.pill dd a:hover {
 .field-name-field-church-service-time{
 	margin-left: 20px;
 }
-
-/*
-.field-collection-item-field-church-times * {
-	float: left;
-}
-*/
-
 
 /* TABLES */
 .table {
@@ -429,4 +421,11 @@ dl.tabs.pill dd a:hover {
 	color: red;
 	position: absolute;
 	bottom: 0px;
+}
+
+/* CrossRef from ESV */
+a.esvBibleRef { 
+	color:#F30;
+	text-decoration:none; 
+
 }
