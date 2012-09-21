@@ -576,6 +576,10 @@ dl.tabs.pill dd a:hover {
 	color: #ff3300;
 }
 
+#footer-bottom ul.social-mobile li {
+	text-align: center;
+}
+
 #footer-bottom span {
 	display: inline !important;
 }
