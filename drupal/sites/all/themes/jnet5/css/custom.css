@@ -42,25 +42,6 @@ h6 { font-size: 90%; }
 	font-size: 15px;
 }
 
-/* Use Viewport Classes on Span */
-span.hide-for-small,
-span.show-for-medium,
-span.show-for-medium-down,
-span.hide-for-large,
-span.hide-for-large-up,
-span.hide-for-xlarge {
-	float: left;
-	clear: none;
-}
-
-span.first {
-	padding: 0 5px 0 0;
-}
-
-span.last {
-	padding: 0 0 0 5px;
-	float: right;
-}
 
 /* Admin Tool Bar */
 #toolbar a {
@@ -307,6 +288,35 @@ dl.tabs.pill dd a:hover {
 
 .menu-block-2 .nav-bar > li.active > a {
 	color: #333; /* reset */
+}
+
+/* Use Viewport Classes on Span */
+.menu-block-2 span.hide-for-small,
+.menu-block-2 span.show-for-medium,
+.menu-block-2 span.show-for-medium-down,
+.menu-block-2 span.hide-for-large,
+.menu-block-2 span.hide-for-large-up,
+.menu-block-2 span.hide-for-xlarge {
+	float: left;
+	clear: none;
+}
+
+.menu-block-2 span.first {
+	padding: 0 5px 0 0;
+}
+
+.menu-block-2 span.last {
+	padding: 0 0 0 5px;
+	float: right;
+}
+
+/* Correct for Footer Menu */
+.menu-block-3 span.first {
+	padding: 0 2px 0 0;
+}
+
+.menu-block-3 span.last {
+	padding: 0 0 0 3px;
 }
 
 
