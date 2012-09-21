@@ -1,3 +1,13 @@
+/* Hide Bug Herd for Small */
+
+@media only screen and (min-width: 501px) {
+	.sidebarApplication {
+		display: none !important;
+		visibility: hidden !important;
+	}
+}
+
+
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td, .button {
 	font-size: 18px;
@@ -141,7 +151,24 @@ hr.double {
 	color: #f30;
 }
 
+/* Switch Font for Medium and Small Displays */
+@media only screen and (max-width: 1200px) {
+	.pane-menu-menu-front-page-featured ul li.leaf {
+		font-family: "georgia", serif;
+	}
+}
+
+@media only screen and (max-width: 970px) and (min-width: 768px) {
+	.pane-menu-menu-front-page-featured ul li.leaf {
+		font-size: 100%;
+	}
+	.pane-menu-menu-front-page-featured ul li.leaf a em {
+		font-size: 200%;
+	}
+}
+
 /* FRONT PAGE - feature menu SMALL */
+
 .pane-menu-menu-front-page-featured ul.show-for-small li.leaf {
 	border-bottom: 1px solid #666;
 	border-right: 0px none;
