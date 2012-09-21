@@ -61,8 +61,8 @@ function jnet5_preprocess_page(&$vars) {
   }
 
   // Add tpl suggestions for Promotion Content depending on the "type".
-  if (isset($vars['node']) && $vars['node']->type == 'media_series') {
-    $vars['theme_hook_suggestions'][] = 'page__media_series';
+  if (isset($vars['node'])) {
+    $vars['theme_hook_suggestions'][] = 'page__node__' . $vars['node']->type;
   }
 
 	// Convenience variables
@@ -118,7 +118,7 @@ function jnet5_preprocess_page(&$vars) {
 
     // Add church/search and close things up.
     $vars['top_nav'] .= "<li><div id='nav-bar-churches'></div><div id='nav-bar-search'></div></li>";
-    
+
 	$vars['top_nav'] .= "</ul></div></nav></div>";
 
 

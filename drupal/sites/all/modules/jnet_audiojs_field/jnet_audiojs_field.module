@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function jnet_audiojs_field_field_formatter_info() {
+  return array(
+    'text_mp3' => array(
+      'label' => t('Mp3 Audio Player'),
+      'field types' => array('text'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function jnet_audiojs_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  drupal_add_js(drupal_get_path('module', 'jnet_audiojs_field') . '/audiojs/audio.min.js');
+  drupal_add_js("audiojs.events.ready(function() {
+      var as = audiojs.createAll();
+    });", array('type' => 'inline', 'scope' => 'footer'));
+
+  $element = array();
+
+  foreach ($items as $delta => $item) {
+    $element[$delta] = array(
+      '#markup' => "<audio src='{$item['value']}' preload='auto' />",
+    );
+  }
+
+  return $element;
+}

@@ -1,0 +1,4 @@
+name = Jnet - AudioJS Field
+description = Provides a magical HTML5 audio field that regresses to a Flash player, courtesy of github.com/audiojs.
+package = Jnet
+core = 7.x

@@ -43,7 +43,7 @@ function jnet_importer_import_page($qty) {
 }
 
 function jnet_importer_import($qty, $debug = FALSE) {
-  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}");
+  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}&web_publish&web_feature");
   $data = json_decode($data);
 
   foreach ($data as $object) {
