@@ -1,13 +1,13 @@
 <?php
 
 /**
- * PAGE - Node
+ * PAGE - Panel Node
  */
 ?>
 
 <div class="top-bar-wrapper hide-for-small">
-      <?php /* print $top_search_bar; */ ?>
-      <?php /* print $top_churches_bar; */ ?>
+      <?php print $top_search_bar; ?>
+      <?php print $top_churches_bar; ?>
       <?php print $top_nav; ?>
       <?php //print render($page['header']); ?>
 
