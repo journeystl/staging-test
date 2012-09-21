@@ -37,24 +37,6 @@
   		<br>
   		<a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_book'][0]['#markup']; ?>+<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_book'][0]['#markup']; ?> <?php print $content['field_scripture_reference'][0]['#markup']; ?></a>
 
-  		<!--<table>
-  			<tr>
-  				<td>Speaker:</td>
-  				<td><?php print $content['field_speaker'][0]['#markup']; ?></td>
-  			</tr>
-  			<tr>
-  				<td>Date:</td>
-  				<td><?php print $content['field_sermondate'][0]['#markup']; ?></td>
-  			<tr>
-  				<td>Length:</td>
-  				<td><?php print $content['field_length'][0]['#markup']; ?></td>
-  			</tr>
-  			<tr>
-  				<td>Scripture:</td>
-  				<td><a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_book'][0]['#markup']; ?>+<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_book'][0]['#markup']; ?> <?php print $content['field_scripture_reference'][0]['#markup']; ?></a></td>
-  			</tr>
-
-  		</table>-->
 
   		<p><?php print $content['field_description'][0]['#markup']; ?></p>
 
