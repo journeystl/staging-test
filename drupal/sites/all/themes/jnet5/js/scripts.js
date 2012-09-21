@@ -12,13 +12,13 @@
   /**
    * Active nav arrows.
    */
-  $('.top-bar-wrapper li.active a').after('<div class="nav-active-arrow"></div>');
+  $('.top-bar-wrapper li.active a').after('<div class="nav-active-arrow hide-for-small"></div>');
 
   /**
    * Header expand / collapse
    */
 
-  var header = $('.top-bar-wrapper');
+  var header = $('.top-bar-wrapper.hide-for-small');
   var headerNav = $('nav.top-bar');
   var headerTag = $('#nav-bar-tag');
   var headerLogo = $('#nav-bar-logo');

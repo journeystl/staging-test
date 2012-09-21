@@ -2,6 +2,10 @@
   padding-top: 90px;
 }
 
+.front .shim {
+  padding-top: 64px;
+}
+
 .top-bar-wrapper.hide-for-small {
   position: fixed;
   top: 0;

@@ -1,9 +1,9 @@
 
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td, .button {
 	font-size: 18px;
 }
 
-body, div, dl, dt, dd, ul, ol, li, pre, form, p, blockquote, th, td {
+body, div, dl, dt, dd, ul, ol, li, pre, form, p, blockquote, th, td, .button {
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 }
 
@@ -33,6 +33,14 @@ h4 { font-size: 120%; }
 h5 { font-size: 110%; }
 
 h6 { font-size: 90%; }
+
+.button.dropdown > ul li {
+	height: 35px;
+	line-height: 35px;
+}
+.button.dropdown > ul li a {
+	font-size: 15px;
+}
 
 #toolbar a {
 	font-size: 1.2em;
@@ -227,9 +235,8 @@ dl.tabs.pill dd a:hover {
 .menu-block-2 .nav-bar {
 	height: 47px; /* reset */
 	background: transparent; /* reset */
-	margin-top: 0; /* reset */
+	margin: 0 0 -6px 0;
 	padding: 0; /* reset */
-	border-bottom: 1px solid #666;
 }
 
 .menu-block-2 .nav-bar > li {
@@ -294,11 +301,10 @@ dl.tabs.pill dd a:hover {
 
 /* Footer menu */
 #footer-bottom {
-	font-family: Arial, Verdana, sans-serif;
 	margin-bottom: 220px;
 }
 #footer-bottom * {
-	font-size: 13px !important;
+	font-size: 16px !important;
 	line-height: 20px !important;
 }
 #footer-bottom a {
@@ -478,7 +484,7 @@ dl.tabs.pill dd a:hover {
 /* Footer Social Icons */
 
 #footer-bottom ul.social * {
-	font-size: 130% !important;
+	font-size: 125% !important;
 	line-height: normal !important;
 	font-family: myriad-pro-condensed-n3, myriad-pro-condensed, sans-serif;
 	color: #CCC;
@@ -510,7 +516,7 @@ dl.tabs.pill dd a:hover {
 }
 
 .view-id-front_page_featured img {
-	margin-top: -17em;
+	margin-top: -14em;
 }
 
 .buttons {
@@ -534,7 +540,7 @@ dl.tabs.pill dd a:hover {
 		margin: 0;
 	}
 	.view-id-front_page_featured img {
-		margin-top: -17em;
+		margin-top: -12em;
 	}
 	.buttons {
 		margin: -10.2% auto 10.2% auto;
@@ -545,7 +551,7 @@ dl.tabs.pill dd a:hover {
 		max-height: 430px;
 	}
 	.view-id-front_page_featured img {
-		margin-top: -11em;
+		margin-top: -8em;
 	}
 	.buttons {
 		margin: -9.2% auto 9.2% auto;
