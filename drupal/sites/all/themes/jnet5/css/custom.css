@@ -54,11 +54,12 @@ span.hide-for-xlarge {
 }
 
 span.first {
-	padding: 0 6px 0 0;
+	padding: 0 5px 0 0;
 }
 
 span.last {
-	padding: 0 0 0 6px;
+	padding: 0 0 0 5px;
+	float: right;
 }
 
 /* Admin Tool Bar */
@@ -268,7 +269,13 @@ dl.tabs.pill dd a:hover {
 	border: 1px none red; /* reset */
 	border-right: none; /* reset */
 	line-height: auto; /* reset */
+	width: auto !important; /* reset */
 }
+
+.menu-block-2 .nav-bar > li:last-child {
+	margin: 0;
+}
+
 .menu-block-2 .nav-bar > li:hover {
 	background: transparent; /* reset */
 	border-bottom: 8px solid #999;
@@ -286,6 +293,7 @@ dl.tabs.pill dd a:hover {
 
 .menu-block-2 .nav-bar > li > a {
 	color: #999;
+	width: auto !important;
 }
 
 .menu-block-2 .nav-bar > li > a:first-child {
