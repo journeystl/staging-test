@@ -664,3 +664,36 @@ p + ul {
 .pane-content ul {
 	margin-left: 15px;
 }
+
+
+/* Media Item Nav */
+
+.block-jnet-media-nav-block ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.block-jnet-media-nav-block ul li {
+	margin: 0;
+	border-top: 1px solid #666;
+	font-size: 20px
+}
+
+.block-jnet-media-nav-block ul li.last {
+	border-bottom: 1px solid #666;
+}
+
+.block-jnet-media-nav-block ul li a {
+	display: block;
+	width: 100%;
+	padding: 4% 0 4% 4%;
+}
+
+.block-jnet-media-nav-block ul li a.active {
+	background-color: #EEE;
+	font-size: 23px;
+	font-weight: bold;
+	color: #666;
+	cursor: default;
+}
