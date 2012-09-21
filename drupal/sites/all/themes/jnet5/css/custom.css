@@ -34,6 +34,9 @@ h5 { font-size: 110%; }
 
 h6 { font-size: 90%; }
 
+#toolbar a {
+	font-size: 1.2em;
+}
 
 #header {
 	margin-bottom: 30px;
@@ -74,32 +77,74 @@ hr.double {
 /* FRONT PAGE - feature menu */
 .pane-menu-menu-front-page-featured ul {
 	text-align: center;
-	padding: 0 0 0 13px;
+	margin: 0 0 20px 0 !important;
 }
 .pane-menu-menu-front-page-featured ul li.leaf {
-	line-height: 1.1;
 	list-style: none;
 	list-style-image: none;
 	font-family: "ltc-bodoni-175", "georgia", serif;
-	font-size: 275%;
-}
-.pane-menu-menu-front-page-featured ul li.leaf span {
-	font-size: 40%;
+	font-size: 100%;
 	text-transform: uppercase;
+	border-right: 1px solid #666;
+	height: 149px;
+	line-height: 31px;
 }
-.pane-menu-menu-front-page-featured ul li.leaf:hover {
-	color: #f30;
+
+.pane-menu-menu-front-page-featured ul li.leaf:last-child {
+	border-right: 0px none;
 }
+
 .pane-menu-menu-front-page-featured ul li.leaf a {
 	color: #666666;
-	padding: 27px 0;
-	margin: 9px 0;
+	padding: 15% 0;
+	margin: 0;
 	display: block;
 }
+
+.pane-menu-menu-front-page-featured ul li.leaf a:first-child {
+	padding-left: 0;
+}
+
+.pane-menu-menu-front-page-featured ul li.leaf:nth-child(2) a {
+	padding: 26% 0;
+}
+
+.pane-menu-menu-front-page-featured ul li.leaf:nth-child(4) a,
+.pane-menu-menu-front-page-featured ul li.leaf:nth-child(5) a {
+	padding: 15% 0;
+}
+
+.pane-menu-menu-front-page-featured ul li.leaf a em {
+	font-size: 250%;
+	text-transform: capitalize;
+	display: block;
+}
+
 .pane-menu-menu-front-page-featured ul li.leaf a:hover {
 	color: #f30;
 }
 
+/* FRONT PAGE - feature menu SMALL */
+.pane-menu-menu-front-page-featured ul.show-for-small li.leaf {
+	border-bottom: 1px solid #666;
+	border-right: 0px none;
+	height: auto;
+	padding: 8% 0;
+	width: 90%;
+	margin: 0 5%;
+}
+.pane-menu-menu-front-page-featured ul.show-for-small li.leaf:first-child {
+	padding-top: 4%;
+}
+.pane-menu-menu-front-page-featured ul.show-for-small li.leaf:last-child {
+	border-bottom: 0px none;
+	padding-bottom: 0;
+}
+.pane-menu-menu-front-page-featured ul.show-for-small li.leaf a {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
 
 
 /* FRONT PAGE - news */
@@ -232,6 +277,7 @@ dl.tabs.pill dd a:hover {
 
 /* INTERIOR - header blocks */
 
+/*
 .help .block {
 	text-align: center;
 }
@@ -244,6 +290,7 @@ dl.tabs.pill dd a:hover {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 22px;
 }
+*/
 
 /* Footer menu */
 #footer-bottom {
@@ -459,6 +506,7 @@ dl.tabs.pill dd a:hover {
 	max-height: 430px;
 	width: 100%;
 	text-align: center;
+	margin: 0 0 20px 0;
 }
 
 .view-id-front_page_featured img {
@@ -483,6 +531,7 @@ dl.tabs.pill dd a:hover {
 @media only screen and (max-width: 1279px) and (min-width: 1050px) {
 	.view-id-front_page_featured {
 		max-height: 400px;
+		margin: 0;
 	}
 	.view-id-front_page_featured img {
 		margin-top: -17em;
@@ -506,6 +555,7 @@ dl.tabs.pill dd a:hover {
 @media only screen and (max-width: 767px) {
 	.view-id-front_page_featured {
 		max-height: 417px;
+		margin: 0;
 	}
 	.view-id-front_page_featured img {
 		margin-top: -3em;

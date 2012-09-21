@@ -195,11 +195,12 @@ function jnet5_menu_tree__nav_bar($vars) {
 }
 // Add grid classes to footer menu's primary <ul>.
 function jnet5_menu_tree__nav_footer($vars) {
-  return '<ul class="nav-bar block-grid five-up mobile-one-up">' . $vars['tree'] . '</ul>';
+  return '<ul class="nav-bar block-grid five-up mobile-two-up">' . $vars['tree'] . '</ul>';
 }
 
 function jnet5_menu_tree__menu_front_page___featured($vars) {
-  return '<ul class="block-grid five-up mobile-two-up">' . $vars['tree'] . '</ul>';
+  return '<ul class="block-grid five-up hide-for-small">' . $vars['tree'] . '</ul>
+  <ul class="show-for-small">' . $vars['tree'] . '</ul>';
 }
 
 function jnet5_link($variables) {

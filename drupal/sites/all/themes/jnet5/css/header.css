@@ -1,5 +1,5 @@
 .shim {
-  padding-top: 70px;
+  padding-top: 90px;
 }
 
 .top-bar-wrapper.hide-for-small {
@@ -22,6 +22,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 
 .top-bar-wrapper.hide-for-small .top-bar {
 	background-color: transparent;  /* reset */
+	margin: 0;  /* reset */
 }
 
 .top-bar-wrapper.hide-for-small .top-bar,
@@ -213,24 +214,24 @@ div.nav-active-arrow {
 
 /* MOBILE NAV */
 
-
-#toggle-mobile-nav  .nav-bar {
-	background-color: #666;
+.top-bar-wrapper.show-for-small .nav-bar {
+	background-color: #ccc;
 	margin-bottom: 0;
 	margin-top: 0;
 }
 
-#toggle-mobile-nav img{
+
+.top-bar-wrapper.show-for-small img{
 	margin-top: 15px;
 }
 
-#toggle-mobile-nav .flyout-toggle{
+.top-bar-wrapper.show-for-small .flyout-toggle{
 	margin-top: -14px;
 	font-size: 22px;
 }
 
-.nav-bar > li.has-flyout > a:first-child { padding-right: 36px; position: relative; }
-.nav-bar > li.has-flyout > a:first-child:after {
+.top-bar-wrapper.show-for-small.nav-bar > li.has-flyout > a:first-child { padding-right: 36px; position: relative; }
+.top-bar-wrapper.show-for-small.nav-bar > li.has-flyout > a:first-child:after {
 	content: "";
 	display: block;
 	width: 0;
@@ -240,4 +241,8 @@ div.nav-active-arrow {
 	position: absolute;
 	right: 0;
 	top: 0;
+}
+
+.top-bar-wrapper.show-for-small #main-menu li {
+	background-color: #666;
 }

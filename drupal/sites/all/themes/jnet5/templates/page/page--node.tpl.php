@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PAGE
+ * PAGE - Node
  */
 ?>
 
@@ -81,26 +81,14 @@
 		</div>
     <?php endif; ?>
 
-<!-- MAIN DIFFERENCE -->
 
     <?php if ($page['content_top']): ?>
-    	<div class="row">
-    		<div class="twelve columns">
-    			<?php print render($page['content_top']); ?>
-    		</div>
-    	</div>
+    	<?php print render($page['content_top']); ?>
     	<hr class="top">
 	<?php endif; ?>
 	<?php if ($page['content']): ?>
-		<div class="row">
-    		<div class="twelve columns">
-    			<?php print render($page['content']); ?>
-    		</div>
-    	</div>
+    		<?php print render($page['content']); ?>
     <?php endif; ?>
-
-<!-- end MAIN DIFFERENCE -->
-
     <?php if ($page['content_bottom']): ?>
     	<hr class="top">
     	<div class="row">
