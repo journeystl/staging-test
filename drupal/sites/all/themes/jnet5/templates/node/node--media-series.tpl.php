@@ -12,10 +12,6 @@ dpm($content);
 
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
   
-  
-
-  <p>header image: <?php print file_create_url($content['field_header_image']['#items'][0]['uri']); ?></p>
-	<hr>
 
     <?php
       // We hide the comments and links now so that we can render them later.

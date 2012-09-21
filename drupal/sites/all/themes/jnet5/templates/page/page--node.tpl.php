@@ -89,10 +89,6 @@
     </div>
   <?php endif; ?>
 
-  	<div class="twelve columns">
-    	<hr class="top">
-    </div>
-
 </div>
 
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>
