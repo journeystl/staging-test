@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function jnet_media_nav_block_block_info() {
+  $blocks['jnet_media_nav_block'] = array(
+    'info' => t('Jnet Media Nav Block'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function jnet_media_nav_block_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'jnet_media_nav_block':
+      // Since we're only ever displaying this on a media node, we can completely and happily
+      // break if that's not the case, or if we're missing a media series.
+      $menu = menu_get_item();
+      if (isset($menu['path']) && $menu['path'] == 'node/%') {
+        $node = $menu['page_arguments'][0];
+      } else {
+        $block['subject'] = '';
+        $block['content'] = '';
+        return $block;
+      }
+
+      // Get the current media series from the active node.
+      $media_series_id = $node->field_series[LANGUAGE_NONE][0]['target_id'];
+      $media_item_date = $node->field_sermondate[LANGUAGE_NONE][0]['value'];
+
+      // Get up to 2 'previous' items.
+      $query = db_select('field_data_field_series', 's');
+      $query->join('node', 'n', 'n.nid = s.entity_id');
+      $query->join('field_data_field_sermondate', 'd', 'd.entity_id = s.entity_id');
+      $query->fields('n', array('nid', 'title'))
+        ->condition('s.field_series_target_id', $media_series_id)
+        ->condition('d.field_sermondate_value', $media_item_date, '<')
+        ->range(0,2)
+        ->orderBy('d.field_sermondate_value', 'DESC');
+      $items_prefix = $query->execute()->fetchAllKeyed();
+
+      // Since we grabbed the previous items DESC from the current, we need to now flip them so they're in their natural order.
+      $items_prefix = array_reverse($items_prefix, TRUE);
+
+      // Get as many 'next' items to fill up as we need.
+      $num_suffix = 4 - count($items_prefix);
+      $query = db_select('field_data_field_series', 's');
+      $query->join('node', 'n', 'n.nid = s.entity_id');
+      $query->join('field_data_field_sermondate', 'd', 'd.entity_id = s.entity_id');
+      $query->fields('n', array('nid', 'title'))
+        ->condition('s.field_series_target_id', $media_series_id)
+        ->condition('d.field_sermondate_value', $media_item_date, '>')
+        ->range(0,$num_suffix)
+        ->orderBy('d.field_sermondate_value', 'ASC');
+      $items_suffix = $query->execute()->fetchAllKeyed();
+
+      $merged = $items_prefix + array($node->nid => $node->title) + $items_suffix;
+      $items = array();
+      foreach ($merged as $nid => $title) {
+        $active = ($nid == $node->nid) ? 'active' : '';
+        $items[] = l($title, "node/{$nid}", array('attributes' => array('class' => array($active))));
+      }
+
+      $block['subject'] = '';
+      $block['content'] = theme('item_list', array('items' => $items));
+      break;
+
+  }
+  return $block;
+}

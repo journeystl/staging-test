@@ -1,0 +1,4 @@
+name = Jnet - Media Nav Block
+description = Provides a mystical block that shows the user their current palce in a media series. Only useful on a media item node page.
+package = Jnet
+core = 7.x

@@ -73,7 +73,6 @@
   	  print $response;
   	?>
 
-
   </li>
   <li id="audioTab"><?php print render($content['field_mp3_audio']); ?></li>
 </ul>
