@@ -53,6 +53,14 @@ span.hide-for-xlarge {
 	clear: none;
 }
 
+span.first {
+	padding: 0 6px 0 0;
+}
+
+span.last {
+	padding: 0 0 0 6px;
+}
+
 /* Admin Tool Bar */
 #toolbar a {
 	font-size: 1.2em;
@@ -255,7 +263,7 @@ dl.tabs.pill dd a:hover {
 	float: left; /* reset */
 	display: block; /* reset */
 	position: relative; /* reset */
-	padding: 0 40px 0 0; /* reset */
+	padding: 0 5% 0 0; /* reset */
 	margin: 0 25px 0 0; /* reset */
 	border: 1px none red; /* reset */
 	border-right: none; /* reset */
