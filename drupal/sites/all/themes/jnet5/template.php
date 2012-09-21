@@ -127,8 +127,8 @@ function jnet5_preprocess_page(&$vars) {
 
   // Add top_churches_bar.
   $vars['top_churches_bar'] = array(
-    '#prefix' => '<div id="churches-bar"><span>select a church:</span><a href="javascript:;" id="churches-bar-close"><i class="g-foundicon-remove"></i></a>',
-    '#suffix' => '</div>',
+    '#prefix' => '<div id="churches-bar"><h4>Select a Church:</h4>',
+    '#suffix' => '<a href="javascript:;" id="churches-bar-close"><i class="g-foundicon-remove"></i></a></div>',
     '#theme' => 'item_list',
     '#items' => array(),
   );

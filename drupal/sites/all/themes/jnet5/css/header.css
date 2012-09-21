@@ -13,7 +13,7 @@
   z-index: 19;
   height: 66px;
   line-height: 66px;
-  background-color: #fff; /* temp */
+  background-color: #fff;
   border-bottom: 1px solid #999;
   background-image: url('../images/navigation/topbar_bk.gif');
   background-position: bottom;
@@ -102,6 +102,8 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 }
 
 
+/* CHURCHES & SEARCH */
+
 #nav-bar-churches,
 #nav-bar-search {
   display: inline-block;
@@ -122,47 +124,86 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 #search-bar,
 #churches-bar {
   width: 100%;
-  height: 64px;
-  background: #fff;
+  height: 65px;
+  background: transparent;
   position: fixed;
   top: -65px;
+  padding-left: 3%;
   z-index: 20;
-  left: 50%;
-  margin-left: -585px;
   text-align: center;
+  background-color: #fff;
+  background-image: url('../images/navigation/topbar_bk.gif');
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+#churches-bar {
+	text-align: left;
 }
 
 #search-bar input[type="text"] {
   border: none;
   margin: 0 0 0 0;
-  height: 64px;
+  height: 65px;
   line-height: 1.5;
   font-size: 40px;
   float: left;
-  width: 1000px;
+  width: 95%;
+  background:transparent;
+  border-left: 10px solid #999;
+  padding: 0 0 0 20px;
+  -webkit-border-radius: 0; /* reset */
+  -moz-border-radius: 0; /* reset */
+  -ms-border-radius: 0; /* reset */
+  -o-border-radius: 0; /* reset */
+  border-radius: 0; /* reset */
+  -webkit-box-shadow: none; /* reset */
+  -moz-box-shadow: none; /* reset */
+  box-shadow: none; /* reset */
 }
 
+#churches-bar h4 {
+	float: left;
+	margin: 20px 0 0 0;
+	color: #999;
+}
 #churches-bar ul {
+  float: left;
   list-style: none;
-  margin: 16px 0 0 0;
+  margin: 20px 0 0 0;
   padding: 0;
+  width: 71%;
 }
 #churches-bar ul li {
   list-style: none;
   display: inline;
-  margin: 0 40px ;
-  padding: 20px 0 0 0;
+  margin: 0;
+  padding: 12px 0 0 0;
+  padding: 0 3%;
+}
+#churches-bar ul li:last-child {
+	padding-right: 0;
 }
 #churches-bar ul li a {
   font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
-  font-size: 18px;
-  text-transform: uppercase;
+  font-size: 24px;
+  text-transform: capitalize;
+  color: #666;
+}
+
+#churches-bar ul li a:hover,
+#churches-bar ul li a.active {
+	color: #f30;
+}
+
+#churches-bar ul li a.active:hover {
+	color: #000;
 }
 
 #search-bar-close,
 #churches-bar-close {
-  float: right;
-  margin: 25px 10px 0 0;
+	position: fixed;
+	right: 5%;
 }
 
 
