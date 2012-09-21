@@ -4,7 +4,7 @@
  * MEDIA ITEMS TPL
  */
 ?>
-
+<?php print jnet5_add_this(); ?>
 <?php if ($content['field_speaker']): ?>
 	<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 <?php endif;?>
