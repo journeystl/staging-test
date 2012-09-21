@@ -125,6 +125,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 #churches-bar {
   width: 100%;
   height: 65px;
+  overflow: hidden;
   background: transparent;
   position: fixed;
   top: -65px;
@@ -170,7 +171,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 #churches-bar ul {
   float: left;
   list-style: none;
-  margin: 20px 0 0 0;
+  margin: 11px 0 0 0;
   padding: 0;
   width: 71%;
 }
@@ -178,7 +179,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
   list-style: none;
   display: inline;
   margin: 0;
-  padding: 12px 0 0 0;
+  padding: 14px 0 0 0;
   padding: 0 3%;
 }
 #churches-bar ul li:last-child {
@@ -191,13 +192,15 @@ body.toolbar .top-bar-wrapper.hide-for-small {
   color: #666;
 }
 
-#churches-bar ul li a:hover,
+#churches-bar ul li a:hover {
+	color: #333;
+}
 #churches-bar ul li a.active {
 	color: #f30;
 }
 
 #churches-bar ul li a.active:hover {
-	color: #000;
+	cursor: default;
 }
 
 #search-bar-close,
