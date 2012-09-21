@@ -22,10 +22,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 14px;
 }
 
-@media handheld {
+/* Switch Font for Medium and Small Displays */
+@media only screen and (max-width: 1200px) {
 	h1, h2, h3, h4, h5, h6 {
 		font-family: "georgia", serif;
-		color: blue;
 	}
 }
 
