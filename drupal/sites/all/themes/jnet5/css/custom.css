@@ -49,7 +49,8 @@ span.show-for-medium-down,
 span.hide-for-large,
 span.hide-for-large-up,
 span.hide-for-xlarge {
-	display: inline !important;
+	float: left;
+	clear: none;
 }
 
 /* Admin Tool Bar */
