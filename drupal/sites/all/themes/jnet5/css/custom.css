@@ -706,3 +706,9 @@ p + ul {
 	color: #666;
 	cursor: default;
 }
+
+/* Church Thumbnails on /visit*/
+
+#block-views-visit-church-images-block li.views-row h4 {
+	margin-bottom: 0px;
+}
