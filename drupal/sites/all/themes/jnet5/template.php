@@ -208,6 +208,17 @@ function jnet5_link($variables) {
   return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
 }
 
+function jnet5_menu_link__menu_meet_our_staff($vars) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<dd' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</dd>\n";
+}
+
 /**
 * Implements theme_menu_local_tasks().
 */
@@ -235,7 +246,6 @@ function jnet5_add_this() {
     <div class='addthis_toolbox addthis_default_style '>
     <a class='addthis_button_facebook_like' fb:like:layout='button_count'></a>
     <a class='addthis_button_tweet'></a>
-    <a class='addthis_button_pinterest_pinit'></a>
     <a class='addthis_counter addthis_pill_style'></a>
     </div>
     <script type='text/javascript' src='http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-505341b94223ee75'></script>

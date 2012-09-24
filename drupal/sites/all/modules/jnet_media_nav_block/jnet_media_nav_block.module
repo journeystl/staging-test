@@ -34,39 +34,59 @@ function jnet_media_nav_block_block_view($delta = '') {
       $media_item_date = $node->field_sermondate[LANGUAGE_NONE][0]['value'];
 
       // Get 4 'previous' items.
-      // If we're on the last node we'll use them all.
-      // If we're not, we'll subtract to find the right amount.
       $query = db_select('field_data_field_series', 's');
       $query->join('node', 'n', 'n.nid = s.entity_id');
       $query->join('field_data_field_sermondate', 'd', 'd.entity_id = s.entity_id');
       $query->fields('n', array('nid', 'title'))
+        ->fields('d', array('field_sermondate_value'))
         ->condition('s.field_series_target_id', $media_series_id)
         ->condition('d.field_sermondate_value', $media_item_date, '<=')
         ->range(0,4)
-        ->orderBy('d.field_sermondate_value', 'DESC')
-        ->orderBy('n.nid', 'DESC');
-      $items_prefix = $query->execute()->fetchAllKeyed();
-      dpm($items_prefix);
+        ->orderBy('d.field_sermondate_value', 'DESC');
+      $result = $query->execute();
+      $items_prefix = array();
+      foreach ($result as $row) {
+        $items_prefix[$row->nid] = "{$row->title} " . date("m.d.Y", strtotime($row->field_sermondate_value));
+      }
 
       // Since we grabbed the previous items DESC from the current, we need to now flip them so they're in their natural order.
       $items_prefix = array_reverse($items_prefix, TRUE);
 
-      // Get as many 'next' items to fill up as we need.
+      // Get 4 'next' items.
+      $max_range = 5 - count($items_prefix);
       $query = db_select('field_data_field_series', 's');
       $query->join('node', 'n', 'n.nid = s.entity_id');
       $query->join('field_data_field_sermondate', 'd', 'd.entity_id = s.entity_id');
       $query->fields('n', array('nid', 'title'))
+        ->fields('d', array('field_sermondate_value'))
         ->condition('s.field_series_target_id', $media_series_id)
         ->condition('d.field_sermondate_value', $media_item_date, '>=')
         ->condition('s.entity_id', array_keys($items_prefix), 'NOT IN')
-        ->range(0,4)
-        ->orderBy('d.field_sermondate_value', 'ASC')
-        ->orderBy('n.title');
-      $items_suffix = $query->execute()->fetchAllKeyed();
-      dpm($items_suffix);
+        ->range(0,$max_range)
+        ->orderBy('d.field_sermondate_value', 'ASC');
+      $result = $query->execute();
+      $items_suffix = array();
+      foreach ($result as $row) {
+        $items_suffix[$row->nid] = "{$row->title} " . date("m.d.Y", strtotime($row->field_sermondate_value));
+      }
 
+      // Calculate how many we want of each. There's got to be a cooler way to do this.
       $merged = $items_prefix + array($node->nid => $node->title) + $items_suffix;
-      dpm($merged);
+      /*$new_merged = array($node->nid => $node->title);
+      $current_pos = array_search($node->nid, array_keys($merged));
+      for ($i=0;$i<5;$i++) {
+        if ( ($current_pos - $i >= 0) && isset($merged[$current_pos - $i])) {
+          array_unshift($new_merged, $merged[$current_pos - $i]);
+        }
+        if (isset($merged[$current_pos + $i])) {
+          array_push($new_merged, $merged[$current_pos + $i]);
+        }
+        if (count($new_merged) == 5) {
+          break;
+        }
+        dpm($new_merged);
+      }*/
+
       $items = array();
       foreach ($merged as $nid => $title) {
         $active = ($nid == $node->nid) ? 'active' : '';
