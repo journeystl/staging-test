@@ -45,7 +45,7 @@
 
   	<?php
   	  $key = "IP";
-  	  $passage = urlencode($content['field_scripture_book'][0]['#markup'].$content['field_scripture_reference'][0]['#markup']);
+  	  $passage = urlencode($content['field_scripture_reference'][0]['#markup']);
   	  $options = "include-passage-references=true&include-audio-link=false";
   	  $url = "http://www.esvapi.org/v2/rest/passageQuery?key=$key&passage=$passage&$options";
   	  $ch = curl_init($url);
