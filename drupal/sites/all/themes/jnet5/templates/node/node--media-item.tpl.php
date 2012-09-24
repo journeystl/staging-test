@@ -36,7 +36,7 @@
   		<span>/</span>
   		<em><?php print $content['field_length'][0]['#markup']; ?></em>
   		<br>
-  		<a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_book'][0]['#markup']; ?>+<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_book'][0]['#markup']; ?> <?php print $content['field_scripture_reference'][0]['#markup']; ?></a>
+  		<a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_reference'][0]['#markup']; ?></a>
 
 
   		<p><?php print $content['field_description'][0]['#markup']; ?></p>
@@ -46,7 +46,7 @@
 
   	<?php
   	  $key = "IP";
-  	  $passage = urlencode($content['field_scripture_book'][0]['#markup'].$content['field_scripture_reference'][0]['#markup']);
+  	  $passage = urlencode($content['field_scripture_reference'][0]['#markup']);
   	  $options = "include-passage-references=true&include-audio-link=false";
   	  $url = "http://www.esvapi.org/v2/rest/passageQuery?key=$key&passage=$passage&$options";
   	  $ch = curl_init($url);
