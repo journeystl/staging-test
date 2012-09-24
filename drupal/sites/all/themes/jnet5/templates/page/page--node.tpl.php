@@ -71,8 +71,6 @@
       </ul>
     <?php endif; ?>
 
-    <?php // MOVING THIS TO MEDIA-ITEM TPL //print jnet5_add_this(); ?>
-
     <?php print render($page['content_top']); ?>
     <?php print render($page['content']); ?>
     <?php print render($page['content_bottom']); ?>
