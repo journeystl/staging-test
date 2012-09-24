@@ -4,7 +4,7 @@
 <hr class="top">
 
 <div class="row">
-    <div class="tweleve columns">
+    <div class="twelve columns">
 		<?php print $content ?>
 	</div>
 </div>

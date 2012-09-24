@@ -27,7 +27,7 @@
     <p>
       <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
       <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
-    </p>  
+    </p>
   </div>
   <?php if ($site_slogan): ?>
     <div class="six columns panel radius hide-for-small">
@@ -102,7 +102,7 @@
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">
-    <div class="tweleve columns">
+    <div class="twelve columns">
       &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
     </div>
   </div>
