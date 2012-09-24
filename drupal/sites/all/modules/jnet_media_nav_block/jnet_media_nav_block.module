@@ -33,33 +33,40 @@ function jnet_media_nav_block_block_view($delta = '') {
       $media_series_id = $node->field_series[LANGUAGE_NONE][0]['target_id'];
       $media_item_date = $node->field_sermondate[LANGUAGE_NONE][0]['value'];
 
-      // Get up to 2 'previous' items.
+      // Get 4 'previous' items.
+      // If we're on the last node we'll use them all.
+      // If we're not, we'll subtract to find the right amount.
       $query = db_select('field_data_field_series', 's');
       $query->join('node', 'n', 'n.nid = s.entity_id');
       $query->join('field_data_field_sermondate', 'd', 'd.entity_id = s.entity_id');
       $query->fields('n', array('nid', 'title'))
         ->condition('s.field_series_target_id', $media_series_id)
-        ->condition('d.field_sermondate_value', $media_item_date, '<')
-        ->range(0,2)
-        ->orderBy('d.field_sermondate_value', 'DESC');
+        ->condition('d.field_sermondate_value', $media_item_date, '<=')
+        ->range(0,4)
+        ->orderBy('d.field_sermondate_value', 'DESC')
+        ->orderBy('n.nid', 'DESC');
       $items_prefix = $query->execute()->fetchAllKeyed();
+      dpm($items_prefix);
 
       // Since we grabbed the previous items DESC from the current, we need to now flip them so they're in their natural order.
       $items_prefix = array_reverse($items_prefix, TRUE);
 
       // Get as many 'next' items to fill up as we need.
-      $num_suffix = 4 - count($items_prefix);
       $query = db_select('field_data_field_series', 's');
       $query->join('node', 'n', 'n.nid = s.entity_id');
       $query->join('field_data_field_sermondate', 'd', 'd.entity_id = s.entity_id');
       $query->fields('n', array('nid', 'title'))
         ->condition('s.field_series_target_id', $media_series_id)
-        ->condition('d.field_sermondate_value', $media_item_date, '>')
-        ->range(0,$num_suffix)
-        ->orderBy('d.field_sermondate_value', 'ASC');
+        ->condition('d.field_sermondate_value', $media_item_date, '>=')
+        ->condition('s.entity_id', array_keys($items_prefix), 'NOT IN')
+        ->range(0,4)
+        ->orderBy('d.field_sermondate_value', 'ASC')
+        ->orderBy('n.title');
       $items_suffix = $query->execute()->fetchAllKeyed();
+      dpm($items_suffix);
 
       $merged = $items_prefix + array($node->nid => $node->title) + $items_suffix;
+      dpm($merged);
       $items = array();
       foreach ($merged as $nid => $title) {
         $active = ($nid == $node->nid) ? 'active' : '';
