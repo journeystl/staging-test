@@ -224,6 +224,7 @@ hr.double {
 
 .view-id-new_front_page.view-display-id-block div.slider-nav {
 	position: absolute;
+	z-index: 1;
 	right: 0px;
 	top: 5px;
 	width: 78px;

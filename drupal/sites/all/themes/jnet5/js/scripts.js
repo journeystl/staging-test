@@ -70,7 +70,13 @@
 
   var searchBar = $('#search-bar');
   var searchBarActive = false;
+
+  // Onload, hide our close-search-bar element since it flickers in some browsers (cough cough *firefox* cough)
+  searchBar.hide();
+
+  // Show the search bar.
   $('#nav-bar-search').click( function(e) {
+    searchBar.show();
     searchBar.animate({'top':'0px'}, 200);
     searchBarActive = true;
     e.stopPropagation();
@@ -79,14 +85,18 @@
   // Hide the search bar when user clicks elsewhere.
   $(window).click(function(e) {
     if (searchBarActive) {
-      searchBar.animate({'top':'-65px'}, 200);
+      searchBar.animate({'top':'-65px'}, 200, function() {
+        searchBar.hide();
+      });
     }
   });
 
   // Hide the search bar when user clicks 'remove'.
   $('#search-bar-close').click(function(e) {
     if (searchBarActive) {
-      searchBar.animate({'top':'-65px'}, 200);
+      searchBar.animate({'top':'-65px'}, 200, function() {
+        searchBar.hide();
+      });
     }
   });
 
@@ -110,7 +120,12 @@
 
   var churchesBar = $('#churches-bar');
   var churchesBarActive = false;
+
+  // Onload, hide the churches bar...
+  churchesBar.hide();
+
   $('#nav-bar-churches').click( function(e) {
+    churchesBar.show();
     churchesBar.animate({'top':'0px'}, 200);
     churchesBarActive = true;
     e.stopPropagation();
@@ -119,14 +134,18 @@
   // Hide the churches bar when user clicks elsewhere.
   $(window).click(function(e) {
     if (churchesBarActive) {
-      churchesBar.animate({'top':'-65px'}, 200);
+      churchesBar.animate({'top':'-65px'}, 200, function() {
+        churchesBar.hide();
+      });
     }
   });
 
   // Hide the churches bar when user clicks 'remove'.
   $('#churches-bar-close').click(function(e) {
     if (churchesBarActive) {
-      churchesBar.animate({'top':'-65px'}, 200);
+      churchesBar.animate({'top':'-65px'}, 200, function() {
+        churchesBar.hide();
+      });
     }
   });
 
