@@ -73,7 +73,7 @@ hr.top {
 	border: solid #666;
 	border-width: 1px 0 0;
 	clear: both;
-	margin-top: 5px;
+	margin-top: 0px;
 	margin-bottom: 20px;
 	height: 0;
 }
@@ -224,6 +224,7 @@ hr.double {
 
 .view-id-new_front_page.view-display-id-block div.slider-nav {
 	position: absolute;
+	z-index: 1;
 	right: 0px;
 	top: 5px;
 	width: 78px;
@@ -270,7 +271,7 @@ dl.tabs.pill dd a:hover {
 
 /* INTERIOR - tabs */
 .menu-block-2 .nav-bar {
-	height: 47px; /* reset */
+	height: 45px; /* reset */
 	background: transparent; /* reset */
 	margin: 0 0 -6px 0;
 	padding: 0; /* reset */
