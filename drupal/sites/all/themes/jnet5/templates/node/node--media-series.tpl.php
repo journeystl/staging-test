@@ -3,8 +3,6 @@
 /**
  * MEDIA SERIES TPL
  */
- 
-dpm($content);
 ?>
 
 

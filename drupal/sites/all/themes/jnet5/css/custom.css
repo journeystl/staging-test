@@ -837,3 +837,12 @@ body.node-type-promotion-content .content-header {
 	display: none;
 	visibility: hidden;
 }
+
+
+.node-type-media-series h4 {
+	margin-bottom: 0;
+}
+
+.node-type-media-series .views-row hr.top {
+	margin: 20px 0;
+}
