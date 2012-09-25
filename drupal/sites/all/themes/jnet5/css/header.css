@@ -7,7 +7,6 @@
 }
 
 .top-bar-wrapper.hide-for-small {
-  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
@@ -19,6 +18,10 @@
   background-image: url('../images/navigation/topbar_bk.gif');
   background-position: bottom;
   background-repeat: repeat-x;
+}
+
+.top-bar-wrapper.header-condensed {
+  overflow: hidden;
 }
 
 body.toolbar .top-bar-wrapper.hide-for-small {
