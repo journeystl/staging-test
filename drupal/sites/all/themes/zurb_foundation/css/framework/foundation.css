@@ -1032,7 +1032,7 @@ div.progress.round .meter { -webkit-border-radius: 1000px; -moz-border-radius: 1
   .top-bar ul li.search form input[type=search] { font-size: 14px; height: 22px; padding: 3px; } }
 
 /* IE8 Fixes */
-.lt-ie9 .top-bar ul li a { color: white; display: block; font-weight: bold; font-size: 13px; height: 45px; line-height: 45px; padding: 0 15px; }
+.lt-ie9 .top-bar ul li a { display: block; font-weight: bold; height: 45px; line-height: 45px; padding: 0 15px; }
 .lt-ie9 .top-bar ul li a.button { height: auto; line-height: 30px; margin-top: 7px; }
 .lt-ie9 .top-bar ul li a:hover { color: #cccccc; }
 .lt-ie9 .top-bar ul li a img { margin-top: -5px; vertical-align: middle; }

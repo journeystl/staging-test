@@ -219,6 +219,22 @@ function jnet5_menu_link__menu_meet_our_staff($vars) {
   return '<dd' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</dd>\n";
 }
 
+function jnet5_image($vars) {
+  $attributes = $vars['attributes'];
+  $attributes['src'] = file_create_url($vars['path']);
+
+  // IE ruins width and height for everybody.
+  //foreach (array('width', 'height', 'alt', 'title') as $key) {
+  foreach (array('alt', 'title') as $key) {
+
+    if (isset($vars[$key])) {
+      $attributes[$key] = $vars[$key];
+    }
+  }
+
+  return '<img' . drupal_attributes($attributes) . ' />';
+}
+
 /**
 * Implements theme_menu_local_tasks().
 */

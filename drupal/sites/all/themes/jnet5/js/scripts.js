@@ -40,7 +40,7 @@
   }
 
   // Header condense/expand on scroll.
-  $(document).scroll( function() {
+  $(window).scroll( function() {
     var scrolledFromTop = $(this).scrollTop();
     if (scrolledFromTop > scrollAtPx && !headerCondensed) {
       headerCondense();

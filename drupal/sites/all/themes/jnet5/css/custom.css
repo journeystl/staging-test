@@ -254,6 +254,7 @@ div.orbit-wrapper div.slider-nav span.left {
 */
 
 
+
 /* Admin Tabs */
 dl.tabs.pill {
 	opacity:0.2;
@@ -373,7 +374,7 @@ dl.tabs.pill dd a:hover {
 
 /* Footer menu */
 #footer-bottom {
-	margin-bottom: 220px;
+	margin-bottom: 20px;
 }
 #footer-bottom * {
 	font-size: 16px !important;
@@ -714,4 +715,18 @@ p + ul {
 
 .thumb-panel {
 	height: 300px;
+}
+
+/* AddThis */
+.atm * {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+}
+#at_auth {
+	padding: 3px 10px 20px;
+	line-height: 20px;
+	height: 20px;
+}
+.atm-f {
+	height: 25px !important;
 }
