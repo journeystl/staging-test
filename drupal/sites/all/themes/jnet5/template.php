@@ -208,6 +208,7 @@ function jnet5_link($variables) {
   return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
 }
 
+/*
 function jnet5_menu_link__menu_meet_our_staff($vars) {
   $element = $variables['element'];
   $sub_menu = '';
@@ -218,6 +219,7 @@ function jnet5_menu_link__menu_meet_our_staff($vars) {
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<dd' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</dd>\n";
 }
+*/
 
 function jnet5_image($vars) {
   $attributes = $vars['attributes'];
