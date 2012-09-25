@@ -289,6 +289,13 @@ div.orbit-wrapper div.slider-nav span.left {
 	width: auto !important; /* reset */
 }
 
+@media only screen and (max-width: 767px) {
+	.menu-block-2 .nav-bar > li {
+		margin: 0 2px 0 0;
+		padding: 0 3% 0 0;
+	}
+}
+
 .menu-block-2 .nav-bar > li:last-child {
 	margin: 0;
 }

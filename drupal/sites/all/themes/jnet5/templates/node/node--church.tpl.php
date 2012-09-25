@@ -78,7 +78,7 @@ if (isset($location_ids[1])) {
 	<div class="row">
 		<div class="six columns">
 			<h3>Meet Our Staff</h3>
-			<?php print views_embed_view('meet_the_staff_churches', 'block'); ?>
+			<?php print views_embed_view('meet_the_staff_churches', 'block'); ?>		
 		</div>
 
 		<div class="six columns">
