@@ -53,62 +53,43 @@
 	<?php } ?>
 
 
+<div class="row">
+  <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
-      	<div class="row">
-	      <div class="highlight panel callout twelve columns">
-	        <?php print render($page['highlighted']); ?>
-	      </div>
-	    </div>
+      <div class="highlight panel callout">
+        <?php print render($page['highlighted']); ?>
+      </div>
     <?php endif; ?>
-
-
+    <a id="main-content"></a>
 
     <?php if (!empty($tabs)): ?>
-    	<div class="row">
-    		<div class="twelve columns">
-		      <?php print render($tabs); ?>
-		      <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
-	      </div>
-      	</div>
+      <?php print render($tabs); ?>
+      <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
     <?php endif; ?>
     <?php if ($action_links): ?>
-    	<div class="row">
-    		<div class="twelve columns">
-		      <ul class="action-links">
-		        <?php print render($action_links); ?>
-		      </ul>
-			</div>
-		</div>
+      <ul class="action-links">
+        <?php print render($action_links); ?>
+      </ul>
     <?php endif; ?>
 
-<!-- MAIN DIFFERENCE -->
+    <?php print render($page['content_top']); ?>
+    <?php print render($page['content']); ?>
+    <?php print render($page['content_bottom']); ?>
+  </div>
 
-    <?php if ($page['content_top']): ?>
-    	<div class="row">
-    		<div class="twelve columns">
-    			<?php print render($page['content_top']); ?>
-    		</div>
-    	</div>
-    	<hr class="top">
-	<?php endif; ?>
-	<?php if ($page['content']): ?>
-		<div class="row">
-    		<div class="twelve columns">
-    			<?php print render($page['content']); ?>
-    		</div>
-    	</div>
-    <?php endif; ?>
+  <?php if (!empty($page['sidebar_first'])): ?>
+    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
+      <?php print render($page['sidebar_first']); ?>
+    </div>
+  <?php endif; ?>
 
-<!-- end MAIN DIFFERENCE -->
+  <?php if (!empty($page['sidebar_second'])): ?>
+    <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
+      <?php print render($page['sidebar_second']); ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($page['content_bottom']): ?>
-    	<hr class="top">
-    	<div class="row">
-    		<div class="twelve columns">
-    			<?php print render($page['content_bottom']); ?>
-    		</div>
-    	</div>
-    <?php endif; ?>
+</div>
 
 
 
