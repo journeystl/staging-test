@@ -9,6 +9,9 @@
  * Implements hook_init().
  */
 function bugherd_init() {
+  if ($GLOBALS['theme'] != 'jnet5') {
+    return;
+  }
 
   if (!user_access('access bugherd')) {
     return;
