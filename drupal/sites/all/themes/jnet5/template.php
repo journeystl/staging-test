@@ -188,6 +188,9 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
     // Run our custom theme_wrapper below. By using array() we're unsetting any other theme wrappers that might run.
     $vars['content']['#theme_wrappers'] = array('menu_tree__nav_footer');
   }
+  
+
+  // jnet5_menu_tree__menu_meet_out_staff
 }
 // Add 'nav-bar' class to main & secondary menu's primary <ul>.
 function jnet5_menu_tree__nav_bar($vars) {
@@ -208,18 +211,6 @@ function jnet5_link($variables) {
   return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
 }
 
-/*
-function jnet5_menu_link__menu_meet_our_staff($vars) {
-  $element = $variables['element'];
-  $sub_menu = '';
-
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<dd' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</dd>\n";
-}
-*/
 
 function jnet5_image($vars) {
   $attributes = $vars['attributes'];
