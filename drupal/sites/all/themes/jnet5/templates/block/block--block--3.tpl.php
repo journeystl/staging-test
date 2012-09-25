@@ -3,10 +3,14 @@
 /**
  * Topic Header
  */
-?>
-<?php $node = menu_get_object(); ?>
 
-<?php dpm($node); ?>
+$node = menu_get_object();
+
+// Get the campus name for this item.
+$campus_id = field_get_items('node', $node, 'field_campus_id');
+$campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) : FALSE;
+
+?>
 
 <div class="row">
 	<h1 class="twelve columns"><?php print render($node->title); ?></h1>
@@ -18,7 +22,9 @@
 		<span class="label radius">
 			<?php print render(ucfirst($node->field_type[$node->language][0]['value'])); ?>
 		</span>
-		<span class="secondary label radius">ChurchName Here</span>
+		<?php if ($campus_name): ?>
+			<span class="secondary label radius"><?php print $campus_name; ?></span>
+		<?php endif; ?>
 	</div> <!--/.eight-->
 
 	<div class="four columns">
