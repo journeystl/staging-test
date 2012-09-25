@@ -73,7 +73,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 	padding: 0;
 }
 
-.top-bar-wrapper.hide-for-small .top-bar ul > li a:not(.button) {
+.top-bar-wrapper.hide-for-small .top-bar ul li a {
 	color: #999; /* reset */
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 	text-transform: uppercase;
