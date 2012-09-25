@@ -748,3 +748,11 @@ p + ul {
 	display: block;
 	float: left;
 }
+
+.button>.label {
+	background-color: #c30;
+}
+
+.button:hover>.label {
+	background-color: #930;
+}

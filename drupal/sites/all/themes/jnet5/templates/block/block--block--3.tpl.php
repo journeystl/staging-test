@@ -22,7 +22,7 @@
 	</div> <!--/.eight-->
 
 	<div class="four columns">
-		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">Leave A Comment  <span class="label round secondary">3</span></a>
+		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">Leave A Comment  <span class="label round"><?php print count($node->field_topic_posts[LANGUAGE_NONE]); ?></span></a>
 	</div> <!--/.four columns-->
 
 
