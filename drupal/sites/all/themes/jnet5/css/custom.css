@@ -257,15 +257,15 @@ div.orbit-wrapper div.slider-nav span.left {
 
 
 /* Admin Tabs */
-dl.tabs.pill {
+.page-leadership ul.tabs.pill {
 	opacity:0.2;
 }
 
-dl.tabs.pill:hover {
+.page-leadership ul.tabs.pill:hover {
 	opacity:1;
 }
 
-dl.tabs.pill dd a:hover {
+.page-leadership ul.tabs.pill dd a:hover {
 	background-color: #CCC;
 }
 
@@ -298,7 +298,8 @@ dl.tabs.pill dd a:hover {
 	border-bottom: 8px solid #999;
 }
 
-.menu-block-2 .nav-bar > li.active {
+.menu-block-2 .nav-bar > li.active,
+.menu-block-2 .nav-bar > li.active-trail {
 	background: transparent; /* reset */
 	border-bottom: 8px solid #F30;
 }
@@ -322,7 +323,8 @@ dl.tabs.pill dd a:hover {
 
 }
 
-.menu-block-2 .nav-bar > li.active > a {
+.menu-block-2 .nav-bar > li.active > a,
+.menu-block-2 .nav-bar > li.active-trail > a {
 	color: #333; /* reset */
 }
 
@@ -755,4 +757,58 @@ p + ul {
 
 .button:hover>.label {
 	background-color: #930;
+}
+
+/* MEET THE STAFF */
+
+#block-block-17 {
+	margin-top: 45px;
+}
+
+
+.menu-block-4 ul {
+	height: auto;
+	border-bottom: 1px solid #e6e6e6;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+.menu-block-4 ul li {
+	float: none;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	list-style-image: none;
+	list-style-type: none;
+}
+.menu-block-4 ul li {
+	border-left: 3px solid #cccccc;
+}
+.menu-block-4 ul li a {
+	background: #f2f2f2;
+	border: none;
+	border: 1px solid #e6e6e6;
+	border-width: 1px 1px 0 0; color: #555;
+	display: block;
+	font-size: 18px;
+	height: auto;
+	line-height: 1;
+	padding: 15px 20px;
+}
+.menu-block-4 ul li.active {
+	margin-top: 0;
+	border-top: 1px solid #4d4d4d;
+	border-left: 4px solid #1a1a1a;
+}
+.menu-block-4 ul li.active a {
+	background: #4d4d4d;
+	border: none;
+	color: #fff;
+	height: auto;
+	margin: 0;
+	position: static;
+	top: 0;
+}
+.menu-block-4 ul li:first-child a.active {
+	margin: 0;
 }
