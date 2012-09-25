@@ -269,3 +269,20 @@ function jnet5_add_this() {
     <script type='text/javascript' src='http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-505341b94223ee75'></script>
   ";
 }
+
+/**
+ * Return the campus name for a given ID.
+ */
+function jnet5_campus_name_by_pbid($campus_id) {
+  $campuses = _jnet_purl_campuses();
+  foreach ($campuses as $campus) {
+    if ($campus['pb_id'] == $campus_id) {
+      $campus_name = $campus['label'];
+    }
+  }
+  if (isset($campus_name)) {
+    return $campus_name;
+  } else {
+    return FALSE;
+  }
+}

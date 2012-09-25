@@ -234,7 +234,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 }
 
 div.nav-active-arrow {
-	background: url('../images/navigation/arrow.gif') center top no-repeat;
+	background: url('../images/navigation/arrow.png') center top no-repeat;
 	display: block;
 	width: 50px;
 	height: 21px;
