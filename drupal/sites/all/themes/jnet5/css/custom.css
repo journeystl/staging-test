@@ -768,7 +768,6 @@ p + ul {
 	margin-top: 45px;
 }
 
-
 .menu-block-4 ul {
 	height: auto;
 	border-bottom: 1px solid #e6e6e6;
@@ -814,4 +813,22 @@ p + ul {
 }
 .menu-block-4 ul li:first-child a.active {
 	margin: 0;
+}
+
+.view-meet-the-staff h3 {
+	margin: 0;
+}
+
+.view-meet-the-staff .views-field-field-title .field-content {
+	font-weight: bold;
+	color: #666;
+	margin: 2px 0 0 0;
+}
+
+.view-meet-the-staff .views-field-body .field-content {
+	margin: 10px 0 0 0;
+}
+
+.view-meet-the-staff .hr.top {
+	margin: 30px 0;
 }
