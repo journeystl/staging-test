@@ -6,8 +6,6 @@
 ?>
 <?php $node = menu_get_object(); ?>
 
-<?php dpm($node); ?>
-
 <div class="row">
 	<h1 class="twelve columns"><?php print render($node->title); ?></h1>
 
