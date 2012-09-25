@@ -28,14 +28,14 @@
   function headerCondense() {
     header.stop().animate({height:'40px'}, 200);
     headerNav.stop().animate({'margin-top':'-15px'}, 200);
-    //headerTag.stop().animate({'margin-top':'-63px'}, 200);
+    header.css('overflow', 'hidden');
     headerCondensed = true;
   }
 
   function headerExpand() {
     header.stop().animate({height:'66px'}, 200).css('overflow', 'visible');
     headerNav.stop().animate({'margin-top':'0px'}, 200);
-    //headerTag.stop().animate({'margin-top':'0px'}, 200);
+    header.css('overflow', 'normal');
     headerCondensed = false;
   }
 
