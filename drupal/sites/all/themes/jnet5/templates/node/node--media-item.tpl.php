@@ -9,28 +9,38 @@
 	<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 <?php endif;?>
 
-<!-- START VIDEO YOUTUBE -->
+
+<dl class="tabs">
 <?php if (strlen($content['field_youtube_url'][0]['#markup']) > 0): ?>
+  <dd class="active"><a href="#video">Video</a></dd>
+  <dd><a href="#audio">Audio</a></dd>
+<?php else:?>
+  <dd class="active"><a href="#audio">Audio</a></dd>
+ <?php endif;?>
+  <dd><a href="#description">Description</a></dd>
+  <dd><a href="#scripture">Scripture</a></dd>
+</dl>
+
+<ul class="tabs-content">
+
+<?php if (strlen($content['field_youtube_url'][0]['#markup']) > 0): ?>
+<li class="active" id="videoTab">
+	<!-- START VIDEO YOUTUBE -->
 	<div class="flex-video widescreen">
 		<iframe width="560" height="315" src="<?php print str_replace('http://www.youtube.com/watch?v=', 'http://www.youtube.com/embed/', $content['field_youtube_url'][0]['#markup']); ?>?rel=0&amp;hd=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 	</div>
+	<!-- END VIDEO YOUTUBE -->
+</li>
+
+<li id="audioTab">
 <?php else:?>
-	<h3>no youtube video.</h3>
-<?php endif;?>
-<!-- END VIDEO YOUTUBE -->
+	
 
-<p><?php print jnet5_add_this(); ?></p>
-<hr class="top">
-
-<dl class="tabs">
-  <dd class="active"><a href="#description">Description</a></dd>
-  <dd><a href="#scripture">Scripture</a></dd>
-  <dd><a href="#audio">Audio</a></dd>
-</dl>
-
-
-<ul class="tabs-content">
-  <li class="active" id="descriptionTab">
+  <li class="active" id="audioTab">
+ <?php endif;?> 
+  
+  <?php print render($content['field_mp3_audio']); ?></li>
+  <li id="descriptionTab">
 
   		<strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
   		<span>/</span>
@@ -57,8 +67,7 @@
   	?>
 
   </li>
-  <li id="audioTab"><?php print render($content['field_mp3_audio']); ?></li>
+  
 </ul>
 
-
-
+<p><?php print jnet5_add_this(); ?></p>

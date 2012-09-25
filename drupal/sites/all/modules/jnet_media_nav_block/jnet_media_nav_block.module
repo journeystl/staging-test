@@ -46,7 +46,7 @@ function jnet_media_nav_block_block_view($delta = '') {
       $result = $query->execute();
       $items_prefix = array();
       foreach ($result as $row) {
-        $items_prefix[$row->nid] = "{$row->title} " . date("m.d.Y", strtotime($row->field_sermondate_value));
+        $items_prefix[$row->nid] = "{$row->title} - " . date("m.d.Y", strtotime($row->field_sermondate_value));
       }
 
       // Since we grabbed the previous items DESC from the current, we need to now flip them so they're in their natural order.
@@ -67,7 +67,7 @@ function jnet_media_nav_block_block_view($delta = '') {
       $result = $query->execute();
       $items_suffix = array();
       foreach ($result as $row) {
-        $items_suffix[$row->nid] = "{$row->title} " . date("m.d.Y", strtotime($row->field_sermondate_value));
+        $items_suffix[$row->nid] = "{$row->title} - " . date("m.d.Y", strtotime($row->field_sermondate_value));
       }
 
       // Calculate how many we want of each. There's got to be a cooler way to do this.
