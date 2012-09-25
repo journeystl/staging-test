@@ -4,4 +4,3 @@
 	<hr class="top">
 	<?php print jnet5_add_this(); ?>
 </div>
-

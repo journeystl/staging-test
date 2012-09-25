@@ -735,6 +735,9 @@ p + ul {
 }
 
 /* PROMOTION CONTENT */
+.content-header {
+	margin-bottom: 20px;
+}
 
 .node-type-promotion-content .columns>h5 {
 	margin-right: 10px;

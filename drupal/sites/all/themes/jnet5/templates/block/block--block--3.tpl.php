@@ -4,7 +4,6 @@
  * Topic Header
  */
 
-
 $node = menu_get_object();
 
 // Get the campus name for this item.
@@ -32,7 +31,4 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">Leave A Comment  <span class="label round"><?php print count($node->field_topic_posts[LANGUAGE_NONE]); ?></span></a>
 	</div> <!--/.four columns-->
 
-
-
 </div> <!--/.row-->
-
