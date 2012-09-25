@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PAGE
+ * PAGE - Node
  */
 ?>
 
@@ -52,7 +52,6 @@
 	<hr class="top">
 	<?php } ?>
 
-
 <div class="row">
   <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
@@ -90,8 +89,6 @@
   <?php endif; ?>
 
 </div>
-
-
 
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last']) || !empty($page['footer_bottom'])): ?>
   <footer class="row">
