@@ -58,9 +58,6 @@
 
   </li>
   <li id="audio">
-  	<a href="<?php print render($content['field_mp3_audio']); ?>">Download Audio</a>
+  	<a href="<?php print $content['field_mp3_audio']['#items'][0]['value']; ?>">Download Audio</a>
   </li>
 </ul>
-
-
-
