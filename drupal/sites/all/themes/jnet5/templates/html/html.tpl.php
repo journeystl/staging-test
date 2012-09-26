@@ -11,7 +11,7 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-  <script type="text/javascript" src="//use.typekit.net/xka5tqs.js"></script>
+  <script type="text/javascript" src="//use.typekit.net/eak1rmm.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <script type="text/javascript" src="http://www.esvapi.org/crossref/crossref.min.js"></script>
   <?php print $styles; ?>

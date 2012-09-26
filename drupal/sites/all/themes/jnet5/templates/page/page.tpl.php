@@ -77,7 +77,7 @@
   </div>
 
   <?php if (!empty($page['sidebar_first'])): ?>
-    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
+    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar">
       <?php print render($page['sidebar_first']); ?>
     </div>
   <?php endif; ?>

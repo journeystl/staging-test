@@ -188,7 +188,7 @@ function jnet5_preprocess_menu_block_wrapper(&$vars) {
     // Run our custom theme_wrapper below. By using array() we're unsetting any other theme wrappers that might run.
     $vars['content']['#theme_wrappers'] = array('menu_tree__nav_footer');
   }
-  
+
 
   // jnet5_menu_tree__menu_meet_out_staff
 }
@@ -226,6 +226,30 @@ function jnet5_image($vars) {
   }
 
   return '<img' . drupal_attributes($attributes) . ' />';
+}
+
+function jnet5_menu_link($vars) {
+  $element = $vars['element'];
+
+  // If the current active menu item is below this item, force this item as active.
+  static $active_item = FALSE;
+  static $active_item_plids;
+  if (!$active_item) {
+    $active_item = menu_get_item();
+    $active_item_plids = db_query("SELECT plid FROM menu_links WHERE link_path = :path", array(':path' => $active_item['path']))->fetchAllAssoc('plid');
+    $active_item_plids = array_keys($active_item_plids);
+  }
+  if (in_array($element['#original_link']['mlid'], $active_item_plids)) {
+    $element['#attributes']['class'][] = 'active';
+  }
+
+  $sub_menu = '';
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
 /**

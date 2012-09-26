@@ -12,7 +12,7 @@
 <!-- START VIDEO YOUTUBE -->
 <?php if (strlen($content['field_youtube_url'][0]['#markup']) > 0): ?>
 	<div class="flex-video widescreen">
-		<iframe width="560" height="315" src="<?php print str_replace('http://www.youtube.com/watch?v=', 'http://www.youtube.com/embed/', $content['field_youtube_url'][0]['#markup']); ?>?rel=0&amp;hd=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+    <?php print '<iframe width="560" height="315" src="' . str_replace('http://www.youtube.com/watch?v=', 'http://www.youtube.com/embed/', $content['field_youtube_url'][0]['#markup']) . '?rel=0&amp;hd=1&amp;showinfo=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>'; ?>
 	</div>
 <?php else:?>
 	<h3>no youtube video.</h3>
@@ -58,9 +58,6 @@
 
   </li>
   <li id="audio">
-  	<a href="<?php print render($content['field_mp3_audio']); ?>">Download Audio</a>
+  	<a href="<?php print $content['field_mp3_audio']['#items'][0]['value']; ?>">Download Audio</a>
   </li>
 </ul>
-
-
-
