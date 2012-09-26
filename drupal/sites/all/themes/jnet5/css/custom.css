@@ -17,11 +17,6 @@ body, div, dl, dt, dd, ul, ol, li, pre, form, p, blockquote, th, td, .button {
 	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
 }
 
-/* SMALL BUTTON SIZE FIX */
-a.button.small {
-	font-size: 16px;
-}
-
 table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {
 	font-size: 18px;
 	line-height: 26px;
@@ -783,6 +778,10 @@ body.node-type-promotion-content .content-header {
 
 .button:hover>.label {
 	background-color: #930;
+}
+
+#event-rsvp {
+	margin-top: 20px;
 }
 
 /* MEET THE STAFF */
