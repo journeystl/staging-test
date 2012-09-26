@@ -53,8 +53,6 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 		<?php endif; ?>
 	</div> <!--/.eight-->
 
-<<<<<<< HEAD
-=======
 	<div class="four columns" id="event-deets">
 		<div><?php print render(field_view_field('node', $node, 'field_event_starting_at')); ?></div><br>
 		<div><strong>Location:</strong></div>
@@ -64,6 +62,6 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 		<?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></div>
 
 	</div> <!--/.four columns-->
->>>>>>> 70c5a5971de1bbc4156fe6da5538bad0f431825e
+
 
 </div> <!--/.row-->
