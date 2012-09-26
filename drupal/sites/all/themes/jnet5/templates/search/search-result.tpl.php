@@ -1,1 +1,0 @@
-<?php print dpm( get_defined_vars() ); ?>
