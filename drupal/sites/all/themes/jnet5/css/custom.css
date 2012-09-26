@@ -863,3 +863,16 @@ body.node-type-promotion-content .content-header {
 .node-type-media-series .views-row hr.top {
 	margin: 20px 0;
 }
+
+#event-rsvp {
+	padding-top: 20px;
+	margin-bottom: 10px;
+}
+
+#event-deets {
+	margin-top: 15px;
+}
+
+#event-map-btn {
+
+}

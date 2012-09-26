@@ -9,7 +9,7 @@ $node = menu_get_object();
 // Get the campus name for this item.
 $campus_id = field_get_items('node', $node, 'field_campus_id');
 $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) : FALSE;
-
+dpm($node);
 ?>
 
 <div class="row">
@@ -28,7 +28,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 	</div> <!--/.eight-->
 
 	<div class="four columns">
-		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">I can help!  <span class="label round"><?php print count($node->field_need_responses[LANGUAGE_NONE]); ?></span></a>
+		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">I can help!  <span class="label round"><?php print count($node->field_need_items[LANGUAGE_NONE]); ?></span></a>
 	</div> <!--/.four columns-->
 
 </div> <!--/.row-->
