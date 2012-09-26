@@ -18,6 +18,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 	</div> <!--/.eight columns-->
 	<div class="four columns" id="event-rsvp">
 		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round"><?php print count($node->field_event_responses); ?></span></a>
+		<a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="button secondary radius large" id="event-map-btn">Map It</a>
 	</div> <!--/.four columns-->
 </div> <!--/.row-->
 <div class="row">
@@ -40,10 +41,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 		<div><?php print render($node->field_event_address_city[$node->language][0]['value']); ?>
 		<?php print render($node->field_event_address_state[$node->language][0]['value']); ?>
 		<?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></div>
-		<div id="event-map-btn">
-		<a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="button secondary radius tiny">Map It</a>
-
-		</div>
+		
 	</div> <!--/.four columns-->
 
 </div> <!--/.row-->
