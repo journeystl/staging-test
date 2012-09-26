@@ -51,9 +51,9 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 		<?php if ($campus_name): ?>
 			<span class="secondary label radius"><?php print $campus_name; ?></span>
 		<?php endif; ?>
-	</div> <!--/.eight-->
+	</div> <!--/.twelve-->
 
-	<div class="four columns" id="event-deets">
+<!--	<div class="four columns" id="event-deets">
 		<div><?php print render(field_view_field('node', $node, 'field_event_starting_at')); ?></div><br>
 		<div><strong>Location:</strong></div>
 		<div><?php print render($node->field_event_address_street[$node->language][0]['value']); ?></div>
@@ -61,7 +61,7 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 		<?php print render($node->field_event_address_state[$node->language][0]['value']); ?>
 		<?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></div>
 
-	</div> <!--/.four columns-->
+	</div>-->
 
 
 </div> <!--/.row-->
