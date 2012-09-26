@@ -383,6 +383,10 @@ div.orbit-wrapper div.slider-nav span.left {
 */
 
 /* Footer menu */
+#footer-bottom hr.top:first-child {
+	margin-top: 30px;
+}
+
 #footer-bottom {
 	margin-bottom: 20px;
 }
