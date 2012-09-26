@@ -9,6 +9,7 @@
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>">
 
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
+  <a class="button small radius secondary all-sermons" href="/sermon-series">View all Sermon Series</a>
   
 
     <?php
