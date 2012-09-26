@@ -10,6 +10,9 @@ $node = menu_get_object();
 $campus_id = field_get_items('node', $node, 'field_campus_id');
 $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) : FALSE;
 
+// Calculate post count.
+$post_count = ($posts = field_get_items('node', $node, 'field_event_responses')) ? count($posts) : 0;
+
 ?>
 
 <div class="row">
@@ -18,7 +21,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 	</div> <!--/.eight columns-->
 	
 	<div class="four columns" id="event-rsvp">
-		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round"><?php print count($node->field_event_responses); ?></span></a>
+		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round"><?php print $post_count; ?></span></a>
 		<a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="button secondary radius large" id="event-map-btn">Map It</a>
 	</div> <!--/.four columns-->
 	
@@ -50,5 +53,17 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 		<?php endif; ?>
 	</div> <!--/.eight-->
 
+<<<<<<< HEAD
+=======
+	<div class="four columns" id="event-deets">
+		<div><?php print render(field_view_field('node', $node, 'field_event_starting_at')); ?></div><br>
+		<div><strong>Location:</strong></div>
+		<div><?php print render($node->field_event_address_street[$node->language][0]['value']); ?></div>
+		<div><?php print render($node->field_event_address_city[$node->language][0]['value']); ?>
+		<?php print render($node->field_event_address_state[$node->language][0]['value']); ?>
+		<?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></div>
+
+	</div> <!--/.four columns-->
+>>>>>>> 70c5a5971de1bbc4156fe6da5538bad0f431825e
 
 </div> <!--/.row-->

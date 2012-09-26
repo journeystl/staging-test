@@ -874,3 +874,14 @@ body.node-type-promotion-content .content-header {
 .node-type-media-series .views-row hr.top {
 	margin: 20px 0;
 }
+
+
+/* RECENT RESOURCES */
+
+.view-id-resources .row hr.top {
+	margin: 3% 0;
+}
+
+.view-id-resources .five.columns {
+	min-height: 2em;
+}
