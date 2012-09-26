@@ -232,14 +232,16 @@ function jnet5_menu_link($vars) {
   $element = $vars['element'];
 
   // If the current active menu item is below this item, force this item as active.
-  //$active_item = menu_get_item();
-  //dpm($active_item);
-  //if (isset($active_item['mlid'])) {
-    //db_query("SELECT mlid FROM menu_links WHERE plid = ");
-    //$element['#attributes']['class'][] = 'active';
-    //$element['#original_link']['plid']
-  //}
-  //dpm($vars);
+  static $active_item = FALSE;
+  static $active_item_plids;
+  if (!$active_item) {
+    $active_item = menu_get_item();
+    $active_item_plids = db_query("SELECT plid FROM menu_links WHERE link_path = :path", array(':path' => $active_item['path']))->fetchAllAssoc('plid');
+    $active_item_plids = array_keys($active_item_plids);
+  }
+  if (in_array($element['#original_link']['mlid'], $active_item_plids)) {
+    $element['#attributes']['class'][] = 'active';
+  }
 
   $sub_menu = '';
   if ($element['#below']) {
