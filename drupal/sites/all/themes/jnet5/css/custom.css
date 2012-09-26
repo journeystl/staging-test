@@ -752,6 +752,17 @@ body.node-type-promotion-content .content-header {
 	float: left;
 }
 
+@media only screen and (max-width: 768px) {
+	.node-type-promotion-content .columns>h5 {
+		margin-right: 0;
+		display: block;
+		float: none;
+	}
+	.button {
+		margin-bottom: 10px;
+	}
+}
+
 .node-type-promotion-content .columns>.label {
 	font-size: 18px;
 	line-height: 24px;
@@ -862,17 +873,4 @@ body.node-type-promotion-content .content-header {
 
 .node-type-media-series .views-row hr.top {
 	margin: 20px 0;
-}
-
-#event-rsvp {
-	padding-top: 20px;
-	margin-bottom: 10px;
-}
-
-#event-deets {
-	margin-top: 15px;
-}
-
-#event-map-btn {
-
 }
