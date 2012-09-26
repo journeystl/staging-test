@@ -898,3 +898,20 @@ body.node-type-promotion-content .content-header {
 .view-id-resources .five.columns {
 	min-height: 2em;
 }
+
+
+/* DEFAULT TABLE */
+
+table {
+	background: transparent;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	margin: 0 0 18px;
+	border: 1px none;
+	width: 100%;
+}
+
+tbody {
+	border: 1px none;
+}
