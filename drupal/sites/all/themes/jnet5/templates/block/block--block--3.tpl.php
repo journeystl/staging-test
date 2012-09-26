@@ -10,6 +10,9 @@ $node = menu_get_object();
 $campus_id = field_get_items('node', $node, 'field_campus_id');
 $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) : FALSE;
 
+// Calculate post count.
+$post_count = ($posts = field_get_items('node', $node, 'field_topic_posts')) ? count($posts) : 0;
+
 ?>
 
 <div class="row">
@@ -28,7 +31,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 	</div> <!--/.eight-->
 
 	<div class="four columns">
-		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">Leave A Comment  <span class="label round"><?php print count($node->field_topic_posts[LANGUAGE_NONE]); ?></span></a>
+		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">Leave A Comment  <span class="label round"><?php print $post_count; ?></span></a>
 	</div> <!--/.four columns-->
 
 </div> <!--/.row-->

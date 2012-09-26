@@ -10,6 +10,9 @@ $node = menu_get_object();
 $campus_id = field_get_items('node', $node, 'field_campus_id');
 $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) : FALSE;
 
+// Calculate post count.
+$post_count = ($posts = field_get_items('node', $node, 'field_event_responses')) ? count($posts) : 0;
+
 ?>
 
 <div class="row">
@@ -17,7 +20,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 		<h1><?php print render($node->title); ?></h1>
 	</div> <!--/.eight columns-->
 	<div class="four columns" id="event-rsvp">
-		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round"><?php print count($node->field_event_responses); ?></span></a>
+		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round"><?php print $post_count; ?></span></a>
 		<a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="button secondary radius large" id="event-map-btn">Map It</a>
 	</div> <!--/.four columns-->
 </div> <!--/.row-->
@@ -41,7 +44,7 @@ $campus_name = ($campus_id) ? jnet5_campus_name_by_pbid($campus_id[0]['value']) 
 		<div><?php print render($node->field_event_address_city[$node->language][0]['value']); ?>
 		<?php print render($node->field_event_address_state[$node->language][0]['value']); ?>
 		<?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></div>
-		
+
 	</div> <!--/.four columns-->
 
 </div> <!--/.row-->
