@@ -39,7 +39,7 @@
   <li class="active" id="audioTab">
  <?php endif;?> 
   
-  <?php print render($content['field_mp3_audio']); ?></li>
+  <a href="<?php print render($content['field_mp3_audio']); ?>">Download Audio (right-click, save-as)</a></li>
   <li id="descriptionTab">
 
   		<strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
