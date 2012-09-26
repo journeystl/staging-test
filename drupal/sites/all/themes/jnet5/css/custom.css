@@ -14,7 +14,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
 }
 
 body, div, dl, dt, dd, ul, ol, li, pre, form, p, blockquote, th, td, .button {
-	font-family: "myriad-pro-condensed-n3", "myriad-pro-condensed", sans-serif;
+	font-family: "myriad-pro-condensed", sans-serif;
 }
 
 table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {
@@ -566,7 +566,7 @@ div.orbit-wrapper div.slider-nav span.left {
 }
 
 .view-id-stories div.storylink {
-	content: "<i class="foundation-video"></i>";
+	content: "<i class='foundation-video'></i>";
 }
 
 /* Footer Social Icons */
@@ -574,7 +574,7 @@ div.orbit-wrapper div.slider-nav span.left {
 #footer-bottom ul.social * {
 	font-size: 125% !important;
 	line-height: normal !important;
-	font-family: myriad-pro-condensed-n3, myriad-pro-condensed, sans-serif;
+	font-family: "myriad-pro-condensed", sans-serif;
 	color: #CCC;
 }
 
