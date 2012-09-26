@@ -444,7 +444,8 @@ div.orbit-wrapper div.slider-nav span.left {
 .view-id-locations table thead {
 	display: none;
 }
-.view-id-locations table tr.even, tr.odd {
+.view-id-locations table tr.even,
+.view-id-locations table tr.odd {
 	background-color: #fff;
 	border-bottom: none;
 }
@@ -470,12 +471,15 @@ div.orbit-wrapper div.slider-nav span.left {
 }
 
 /* TABLES */
-.table {
-  width: 100%;
-  background-color: transparent;
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: none;
+.table, .views-table {
+	border-collapse: collapse;
+	background: transparent;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	margin: 0 0 18px;
+	border: 1px none;
+	width: 100%;
 }
 
 .table th,
@@ -484,11 +488,11 @@ div.orbit-wrapper div.slider-nav span.left {
 }
 
 .table thead{
-	background: none;
+	background: transparent;
 }
 
 .table tbody{
-	border: none;
+	border: 1px none;
 }
 
 .table tr {
@@ -496,9 +500,19 @@ div.orbit-wrapper div.slider-nav span.left {
 	background-color: transparent;
 }
 
+.table-top-stripe tr {
+	border-top: 1px solid #999;
+}
+
 .table-condensed th,
 .table-condensed td {
   padding: 2px 12px;
+}
+
+.table-top-stripe th,
+.table-top-stripe td {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .table-condensed th:first-child,
@@ -509,6 +523,8 @@ div.orbit-wrapper div.slider-nav span.left {
 .table tbody tr.even, table tbody tr.alt { background: none; }
 
 .table tbody tr:nth-child(even) { background: none; }
+
+
 
 /* "IMAGE-BLOCK" STYLE (USED ON /WHAT-TO-EXPECT) */
 
@@ -900,18 +916,3 @@ body.node-type-promotion-content .content-header {
 }
 
 
-/* DEFAULT TABLE */
-
-table {
-	background: transparent;
-	-moz-border-radius: 0;
-	-webkit-border-radius: 0;
-	border-radius: 0;
-	margin: 0 0 18px;
-	border: 1px none;
-	width: 100%;
-}
-
-tbody {
-	border: 1px none;
-}
