@@ -30,7 +30,7 @@
 
 
 <ul class="tabs-content">
-  <li class="active" id="descriptionTab">
+  <li class="active" id="description">
 
   		<strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
   		<span>/</span>
@@ -42,7 +42,7 @@
   		<p><?php print $content['field_description'][0]['#markup']; ?></p>
 
   </li>
-  <li id="scriptureTab">
+  <li id="scripture">
 
   	<?php
   	  $key = "IP";
@@ -57,7 +57,9 @@
   	?>
 
   </li>
-  <li id="audioTab"><a href="<?php print render($content['field_mp3_audio']); ?>">Download Audio</a></li>
+  <li id="audio">
+  	<a href="<?php print render($content['field_mp3_audio']); ?>">Download Audio</a>
+  </li>
 </ul>
 
 

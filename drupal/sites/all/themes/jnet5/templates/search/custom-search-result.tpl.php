@@ -45,8 +45,7 @@
  * @see template_preprocess_custom_search_result()
  */
 ?>
-<?php print dpm( get_defined_vars() ); ?>
-Search Result Test
+
 <li>
   <h3 class="title">
     <a href="<?php print $url; ?>"><?php print $title; ?></a>
