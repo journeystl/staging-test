@@ -882,6 +882,10 @@ body.node-type-promotion-content .content-header {
 	margin: 3% 0;
 }
 
+.view-id-resources .views-row-last.row hr.top {
+	border: 1px none;
+}
+
 .view-id-resources .five.columns {
 	min-height: 2em;
 }
