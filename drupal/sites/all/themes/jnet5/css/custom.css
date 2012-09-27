@@ -59,6 +59,14 @@ h6 { font-size: 90%; }
 	font-size: 15px;
 }
 
+.muted {
+	color: #999;
+}
+
+.muted.smaller {
+	font-size: 85% !important;
+}
+
 
 /* Admin Tool Bar */
 #toolbar a {

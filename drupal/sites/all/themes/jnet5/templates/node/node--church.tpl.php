@@ -37,6 +37,10 @@ if (isset($location_ids[1])) {
 	           	$content['field_image']['#label_display'] = 'hidden';
 	            ?>
 	            <?php print render($content['group_services']); ?>
+	            
+	            <?php if (stristr($content['group_services']['#children'], '1')) {
+	            	print "<p class='muted smaller'>* No children's ministry provided during this service.</p>";
+	            } ?>
            	</td>
 		      </tr>
 
