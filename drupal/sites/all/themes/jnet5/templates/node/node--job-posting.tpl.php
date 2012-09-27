@@ -24,12 +24,14 @@
 			 
 			<?php 
 				$items = array();
-				foreach ($content['field_team']['#items'] as $item) {
-					if (isset($item)) {
-						$items[] = $item['value'];
+				if (isset($content['field_team']['#items'])) {
+					foreach ($content['field_team']['#items'] as $item) {
+						if (isset($item)) {
+							$items[] = $item['value'];
+						}
 					}
+					if (count($items)) { print "<h5>Team: " . implode($items, ", ") . "</h5>"; }
 				}
-				if (count($items)) { print "<h5>Team: " . implode($items, ", ") . "</h5>"; }
 			?>
 
 			<h5>Job Type</h5>
