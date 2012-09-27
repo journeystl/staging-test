@@ -967,3 +967,9 @@ body.node-type-promotion-content .content-header {
 .section-give #featured .slide { display: none; }
 .section-give #featured .slide:first-child { display: block; }
 .section-give #featured .orbit-slide { display: block; }
+
+/* JOBS VIEW */
+
+.view-jobs .views-field-body {
+	width: 35%;
+}
