@@ -33,15 +33,15 @@
 				print theme('item_list', array('items' => $items));
 			?>
 
-			<h4>Team</h4>
+			<!-- <h4>Team</h4> -->
 			<?php 
-				$items = array();
+				/* $items = array();
 				foreach ($content['field_team']['#items'] as $item) {
 					if (isset($item)) {
 						$items[] = $item['value'];
 					}
 				}
-				print theme('item_list', array('items' => $items));
+				print theme('item_list', array('items' => $items)); */
 			?>
 		</div>
 		<div class="panel">
