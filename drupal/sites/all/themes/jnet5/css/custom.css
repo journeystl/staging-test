@@ -598,14 +598,11 @@ hr.double {
 }
 
 #podcast-modal * {
-
 	font-family: "myriad-pro-condensed", sans-serif;
-	
 }
 
 #podcast-modal h2 {
 	font-family: "ltc-bodoni-175", "georgia", serif;
-
 }
 
 #podcast-modal li {
@@ -618,6 +615,10 @@ hr.double {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	display: block;
+}
+
+#podcast-modal div:hover i {
+	color: #ff3300;
 }
 
 
