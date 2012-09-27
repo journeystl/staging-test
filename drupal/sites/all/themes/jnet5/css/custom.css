@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Switch Font for Medium and Small Displays */
 @media only screen and (max-width: 1200px) {
 	h1, h2, h3, h4, h5, h6 {
-		font-family: "georgia", serif;
+		font-family: "georgia", serif !important;
 	}
 }
 
@@ -967,6 +967,23 @@ body.node-type-promotion-content .content-header {
 .section-give #featured .slide { display: none; }
 .section-give #featured .slide:first-child { display: block; }
 .section-give #featured .orbit-slide { display: block; }
+
+
+/* LOGOS IN PANELS */
+
+.panel-pane .logo {
+	border-top: 1px solid #666;
+	padding-top: 4px;
+	min-height: 270px;
+	text-align: center;
+}
+
+.panel-pane .logo img {
+	margin-bottom: 5px;
+}
+.panel-pane .logo p {
+	text-align: left;
+}
 
 /* JOBS VIEW */
 
