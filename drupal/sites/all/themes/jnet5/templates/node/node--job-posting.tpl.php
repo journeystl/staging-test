@@ -23,14 +23,16 @@
 			?>
 		</div>
 	</div>
-	<div class="four columns">
-		<h3>Application Requirements</h3>
-		<?php 
-			$items = array();
-			foreach ($content['field_application_requirements']['#items'] as $item) {
-				$items[] = $item['value'];
-			}
-			print theme('item_list', array('items' => $items));
-		?>
+	<div class="four columns sidebar">
+		<div class="panel">
+			<h3>Application Requirements</h3>
+			<?php 
+				$items = array();
+				foreach ($content['field_application_requirements']['#items'] as $item) {
+					$items[] = $item['value'];
+				}
+				print theme('item_list', array('items' => $items));
+			?>
+		</div>
 	</div>
 </div>
