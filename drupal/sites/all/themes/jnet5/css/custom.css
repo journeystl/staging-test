@@ -357,22 +357,6 @@ hr.double {
 }
 
 
-/* INTERIOR - header blocks */
-
-/*
-.help .block {
-	text-align: center;
-}
-
-.help .block h2 {
-	text-transform: uppercase;
-}
-
-.help .block p {
-	font-family: "ltc-bodoni-175", "georgia", serif;
-	font-size: 22px;
-}
-*/
 
 /* Footer menu */
 #footer-bottom hr.top:first-child {
@@ -920,5 +904,8 @@ body.node-type-promotion-content .content-header {
 	min-height: 2em;
 }
 
+/* GIVE TICKER */
 
-
+.section-give #featured .slide { display: none; }
+.section-give #featured .slide:first-child { display: block; }
+.section-give #featured .orbit-slide { display: block; }
