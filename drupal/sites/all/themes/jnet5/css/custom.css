@@ -59,6 +59,10 @@ h6 { font-size: 90%; }
 	font-size: 15px;
 }
 
+.button.small {
+	font-size: 16px;
+}
+
 
 /* Admin Tool Bar */
 #toolbar a {
