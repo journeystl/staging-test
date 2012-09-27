@@ -991,6 +991,6 @@ body.node-type-promotion-content .content-header {
 	width: 35%;
 }
 
-.node-job-posting .field-name-body ul ul {
-	line-height: 1;
+.node-job-posting .field-name-body li p, .node-job-posting .field-name-body li li p {
+	margin-bottom: 10px;
 }
