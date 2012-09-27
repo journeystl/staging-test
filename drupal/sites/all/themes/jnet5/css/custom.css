@@ -524,6 +524,9 @@ div.orbit-wrapper div.slider-nav span.left {
 
 .table tbody tr:nth-child(even) { background: none; }
 
+.table .label {
+	text-transform: capitalize;
+}
 
 
 /* "IMAGE-BLOCK" STYLE (USED ON /WHAT-TO-EXPECT) */
