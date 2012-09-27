@@ -31,7 +31,7 @@
   <?php print $page_bottom; ?>
   
   <div id="podcast-modal" class="reveal-modal small">
-    <h2><i class="s-foundicon-rss"></i>Podcasts</h2>
+    <h2><i class="s-foundicon-rss"></i> Podcasts</h2>
     <ul class="block-grid two-up">
     	<li><h6>Sermon Audio</h6>
     		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-audio">RSS</a></div>
