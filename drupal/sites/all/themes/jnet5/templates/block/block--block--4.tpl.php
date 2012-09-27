@@ -25,13 +25,13 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 	</div> <!--/.four columns-->
 
 	<div class="eight columns">
-		<h3><?php print render(field_view_field('node', $node, 'field_event_starting_at')); ?></h3>
+		<strong>Event Starting At:</strong> <?php print date("F j, Y \a\\t g:ia", strtotime($node->field_event_starting_at[$node->language][0]['value'])); ?></div>
 	</div> <!--/.eight columns-->
-	
+
 	<div class="four columns">
 		<div class="location-link"><strong>Location:</strong> <a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="" id="event-map-link"><?php print render($node->field_event_address_street[$node->language][0]['value']); ?>, <?php print render($node->field_event_address_city[$node->language][0]['value']); ?>, <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></a></div>
 	</div> <!--/.four columns-->
-	
+
 	<div class="twelve columns">
 		<?php if ($node->field_author_longname): ?>
 			<h5>By <?php print render($node->field_author_longname[$node->language][0]['value']); ?></h5>
@@ -42,6 +42,5 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 		<?php if ($campus_name): ?>
 			<span class="secondary label radius"><?php print $campus_name; ?></span>
 		<?php endif; ?>
-	</div> <!--/.eight columns-->
 
 </div> <!--/.row-->

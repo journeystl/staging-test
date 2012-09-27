@@ -1,0 +1,4 @@
+name = Jnet - Date Timezone Field
+description = A splendiferous approach to displaying a date in whatever timezone we want. Used to combat the UTC-crazyness that can come out of City/Patchbay.
+package = Jnet
+core = 7.x
