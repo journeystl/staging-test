@@ -597,6 +597,30 @@ hr.double {
 	display: inline !important;
 }
 
+#podcast-modal * {
+
+	font-family: "myriad-pro-condensed", sans-serif;
+	
+}
+
+#podcast-modal h2 {
+	font-family: "ltc-bodoni-175", "georgia", serif;
+
+}
+
+#podcast-modal li {
+	margin-top: 10px;
+	list-style: none;
+}
+
+#podcast-modal span {
+	margin-left: 40px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: block;
+}
+
+
 /* FRONT FEATURED IMAGE */
 .view-id-front_page_featured {
 	overflow: hidden;
