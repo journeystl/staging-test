@@ -753,10 +753,11 @@ p + ul {
 }
 
 /* Scrolling anchor on /visit */
-.view-locations .views-field {
+.view-locations .view-content .views-field {
 	position: relative;
 }
-.location-list-anchor {
+.view-locations a.location-list-anchor {
+	height: 1px;
 	position: absolute;
 	top: -39px;
 }
