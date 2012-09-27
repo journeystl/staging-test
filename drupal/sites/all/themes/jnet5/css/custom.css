@@ -968,6 +968,23 @@ body.node-type-promotion-content .content-header {
 .section-give #featured .slide:first-child { display: block; }
 .section-give #featured .orbit-slide { display: block; }
 
+
+/* LOGOS IN PANELS */
+
+.panel-pane .logo {
+	border-top: 1px solid #666;
+	padding-top: 4px;
+	min-height: 270px;
+	text-align: center;
+}
+
+.panel-pane .logo img {
+	margin-bottom: 5px;
+}
+.panel-pane .logo p {
+	text-align: left;
+}
+
 /* JOBS VIEW */
 
 .view-jobs .views-field-body {
