@@ -34,16 +34,16 @@
     <h2><i class="s-foundicon-rss"></i>Podcasts</h2>
     <ul class="block-grid two-up">
     	<li>Sermon Audio
-    		<span><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-audio">RSS</a></span>
-    		<span><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-audio">iTunes</a></span>
+    		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-audio">RSS</a></div>
+    		<div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-audio">iTunes</a></div>
     		</li>
     	<li>Everything Audio
-    		<span><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/everything-audio">RSS</a></span>
-    		<span><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/everything-audio">iTunes</a></span>
+    		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/everything-audio">RSS</a></div>
+    		<div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/everything-audio">iTunes</a></div>
     		</li>
     	<li>Sermon Video
-    		<span><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-video">RSS</a></span>
-    		<span><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-video">iTunes</a></span>
+    		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-video">RSS</a></div>
+    		<div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-video">iTunes</a></div>
     		</li>
     </ul>
     <a class="close-reveal-modal">&#215;</a>
