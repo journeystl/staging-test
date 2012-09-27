@@ -752,6 +752,15 @@ p + ul {
 	height: 300px;
 }
 
+/* Scrolling anchor on /visit */
+.view-locations .views-field {
+	position: relative;
+}
+.location-list-anchor {
+	position: absolute;
+	top: -39px;
+}
+
 /* AddThis */
 .atm * {
 	font-family: Arial, sans-serif;
