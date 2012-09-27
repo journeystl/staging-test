@@ -9,6 +9,10 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" <?php print $html_attributes; ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html <?php print $html_attributes . $rdf_namespaces; ?>> <!--<![endif]-->
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="copyright" content="&copy; The Journey" />
+  <meta name="keywords" content="Jesus, God, the, journey, journey church, church, theology, sin, saint, st. louis, louis, reformed, christian, Darrin Patrick, Darin Patrick, Acts 29, acts, 29" />
+  <meta name="description" content="The Journey is a multi site church in St. Louis, Missouri that seeks to know God, love people, and transform St. Louis and the world for his glory." />
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <script type="text/javascript" src="//use.typekit.net/eak1rmm.js"></script>
