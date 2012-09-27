@@ -29,7 +29,7 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-  
+
   <div id="podcast-modal" class="reveal-modal small">
     <h2><i class="s-foundicon-rss"></i> Podcasts</h2>
     <ul class="block-grid two-up">
