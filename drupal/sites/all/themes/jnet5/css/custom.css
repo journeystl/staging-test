@@ -890,6 +890,13 @@ body.node-type-promotion-content .content-header {
 	visibility: hidden;
 }
 
+/* CHURCH STAFF */
+
+.role-title {
+	margin-top: -5px;
+	line-height: 90%;
+}
+
 
 /* MEDIA SERIES */
 
