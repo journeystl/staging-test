@@ -990,3 +990,7 @@ body.node-type-promotion-content .content-header {
 .view-jobs .views-field-body {
 	width: 35%;
 }
+
+.node-job-posting .field-name-body ul ul {
+	line-height: 1;
+}
