@@ -6,7 +6,6 @@
 ?>
 
 <div class="row">
-	<?php dpm($content); ?>
 	<div class="eight columns">
 		<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 			<?php print render($title_prefix); ?>
@@ -18,11 +17,11 @@
 	</div>
 	<div class="four columns sidebar">
 		<div class="panel">
-			<h4>Status: <?php print $content['field_status']['#items'][0]['value']; ?></h4>
+			<h5>Status: <?php print $content['field_status']['#items'][0]['value']; ?></h5>
 
-			<h4>Church: <?php print $content['field_church'][0]['#markup']; ?></h4>
+			<h5>Church: <?php print $content['field_church'][0]['#markup']; ?></h5>
 
-			<h4>Job Type</h4>
+			<h5>Job Type</h5>
 			<?php 
 				$items = array();
 				foreach ($content['field_job_type']['#items'] as $item) {
@@ -33,19 +32,19 @@
 				print theme('item_list', array('items' => $items));
 			?>
 
-			<!-- <h4>Team</h4> -->
+			<h5>Team</h5>
 			<?php 
-				/* $items = array();
+				$items = array();
 				foreach ($content['field_team']['#items'] as $item) {
 					if (isset($item)) {
 						$items[] = $item['value'];
 					}
 				}
-				print theme('item_list', array('items' => $items)); */
+				print theme('item_list', array('items' => $items));
 			?>
 		</div>
 		<div class="panel">
-			<h4>Application Requirements</h4>
+			<h5>Application Requirements</h5>
 			<?php 
 				$items = array();
 				foreach ($content['field_application_requirements']['#items'] as $item) {
