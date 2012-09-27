@@ -893,8 +893,9 @@ body.node-type-promotion-content .content-header {
 /* CHURCH STAFF */
 
 .role-title {
-	margin-top: -5px;
+	margin-top: -10px;
 	line-height: 90%;
+	font-size: 16px;
 }
 
 
