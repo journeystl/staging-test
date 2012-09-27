@@ -21,21 +21,21 @@
 
 			<h5>Church: <?php print $content['field_church'][0]['#markup']; ?></h5>
 
-			<h5>Job Type</h5>
+			 
 			<?php 
 				$items = array();
-				foreach ($content['field_job_type']['#items'] as $item) {
+				foreach ($content['field_team']['#items'] as $item) {
 					if (isset($item)) {
 						$items[] = $item['value'];
 					}
 				}
-				print theme('item_list', array('items' => $items));
+				if (count($items)) { print "<h5>Team: " . implode($items, ", ") . "</h5>"; }
 			?>
 
-			<h5>Team</h5>
+			<h5>Job Type</h5>
 			<?php 
 				$items = array();
-				foreach ($content['field_team']['#items'] as $item) {
+				foreach ($content['field_job_type']['#items'] as $item) {
 					if (isset($item)) {
 						$items[] = $item['value'];
 					}
