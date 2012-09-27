@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Switch Font for Medium and Small Displays */
 @media only screen and (max-width: 1200px) {
 	h1, h2, h3, h4, h5, h6 {
-		font-family: "georgia", serif;
+		font-family: "georgia", serif !important;
 	}
 }
 
@@ -983,4 +983,10 @@ body.node-type-promotion-content .content-header {
 }
 .panel-pane .logo p {
 	text-align: left;
+}
+
+/* JOBS VIEW */
+
+.view-jobs .views-field-body {
+	width: 35%;
 }

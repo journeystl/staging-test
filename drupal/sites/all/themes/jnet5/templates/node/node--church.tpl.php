@@ -37,7 +37,7 @@ if (isset($location_ids[1])) {
 	           	$content['field_image']['#label_display'] = 'hidden';
 	            ?>
 	            <?php print render($content['group_services']); ?>
-	            
+
 	            <?php if (stristr($content['group_services']['#children'], '*')) {
 	            	print "<p class='muted smaller'>* No children's ministry provided during this service.</p>";
 	            } ?>
@@ -80,18 +80,40 @@ if (isset($location_ids[1])) {
 	<hr class="top">
 
 	<div class="row">
-		<div class="six columns">
-			<h3>Meet Our Staff</h3>
-			<?php print views_embed_view('meet_the_staff_churches', 'block'); ?>		
-		</div>
+		<?php
 
-		<div class="six columns">
-			<h3>Upcoming Events</h3>
-			<?php print views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
-			<hr class="top double">
-			<h3>Get Involved</h3>
-			<?php print views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
-		</div>
+			$view_meet_the_staff = views_get_view('meet_the_staff_churches');
+			$view_meet_the_staff->set_display('block');
+			$view_meet_the_staff->execute();
+			if (count($view_meet_the_staff->result) > 0) {
+				print '
+				<div class="six columns">
+					<h3>Meet Our Staff</h3>
+					' . $view_meet_the_staff->render() . '
+				</div>
+
+				<div class="six columns">
+					<h3>Upcoming Events</h3>
+					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
+					<hr class="top double">
+					<h3>Get Involved</h3>
+					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
+				</div>';
+
+			} else {
+				print '
+				<div class="six columns">
+					<h3>Upcoming Events</h3>
+					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
+				</div>
+
+				<div class="six columns">
+					<h3>Get Involved</h3>
+					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
+				</div>';
+			}
+
+		?>
 
 	</div> <!-- end row -->
 
