@@ -84,6 +84,9 @@ if (isset($location_ids[1])) {
 		<div class="six columns">
 			<h3>Upcoming Events</h3>
 			<?php print views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
+			<hr class="top double">
+			<h3>Get Involved</h3>
+			<?php print views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']); ?>
 		</div>
 
 	</div> <!-- end row -->

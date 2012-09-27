@@ -29,6 +29,25 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  
+  <div id="podcast-modal" class="reveal-modal small">
+    <h2><i class="s-foundicon-rss"></i> Podcasts</h2>
+    <ul class="block-grid two-up">
+    	<li><h6>Sermon Audio</h6>
+    		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-audio">RSS</a></div>
+    		<div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-audio">iTunes</a></div>
+    		</li>
+    	<li><h6>Everything Audio</h6>
+    		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/everything-audio">RSS</a></div>
+    		<div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/everything-audio">iTunes</a></div>
+    		</li>
+    	<li><h6>Sermon Video</h6>
+    		<div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-video">RSS</a></div>
+    		<div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-video">iTunes</a></div>
+    		</li>
+    </ul>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
 </body>
 </html>
