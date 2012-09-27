@@ -1,0 +1,105 @@
+<?php
+
+function _jnet_datezone_timezone_options() {
+  return array(
+    'none' => 'No timezone conversion',
+    'UTC' => 'UTC',
+    'America/Chicago' => 'America/Chicago',
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function jnet_datezone_field_field_formatter_info() {
+  return array(
+    'date_zone' => array(
+      'label' => t('Date in a Specific Timezone'),
+      'field types' => array('date', 'datestamp', 'datetime'),
+      'settings' => array(
+        'timezone' => 'none',
+        'format' => '',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function jnet_datezone_field_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  if ($display['type'] == 'date_zone') {
+    $element['timezone'] = array(
+      '#type' => 'select',
+      '#title' => t('Timezone'),
+      '#default_value' => $settings['timezone'],
+      '#required' => TRUE,
+      '#options' => _jnet_datezone_timezone_options(),
+    );
+
+    // Gather format options
+    $formats = db_select('date_formats', 'f')->fields('f', array('dfid', 'format'))->execute()->fetchAllKeyed();
+    $format_options = array();
+    foreach ($formats as $format) {
+      $format_options[$format] = date($format);
+    }
+    $element['format'] = array(
+      '#type' => 'select',
+      '#title' => t('Format'),
+      '#default_value' => $settings['format'],
+      '#required' => TRUE,
+      '#options' => $format_options,
+    );
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function jnet_datezone_field_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = '';
+
+  if ($display['type'] == 'date_zone') {
+    $timezone_options = _jnet_datezone_timezone_options();
+    $summary = "<strong>Timezone:</strong> {$timezone_options[$settings['timezone']]}<br />
+      <strong>Format:</strong> " . date($settings['format']);
+  }
+
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function jnet_datezone_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $settings = $display['settings'];
+  $element = array();
+
+  foreach ($items as $delta => $item) {
+    // Do nothing with empty date fields.
+    if (empty($item['value'])) {
+      continue;
+    }
+
+    $date_obj = new DateTime($item['value']);
+
+    if ($settings['timezone'] != 'none') {
+      $date_timezone  = new DateTimeZone($settings['timezone']);
+      $date_obj->setTimezone($date_timezone);
+    }
+
+    $element[$delta] = array(
+      '#markup' => $date_obj->format("{$settings['format']}"),
+    );
+  }
+
+  return $element;
+}

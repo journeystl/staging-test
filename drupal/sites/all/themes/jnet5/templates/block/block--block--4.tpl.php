@@ -27,15 +27,15 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 		<?php if ($campus_name): ?>
 			<span class="secondary label radius"><?php print $campus_name; ?></span>
 		<?php endif; ?>
-		
+
 	</div> <!--/.eight columns-->
-	
+
 	<div class="four columns" id="event-rsvp">
 		<a href="<?php print render($node->field_short_url[$node->language][0]['value']); ?>" class="button radius large">RSVP  <span class="label round"><?php print $post_count; ?></span></a>
 		<a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="button secondary radius large" id="event-map-btn">Map It</a>
-		<h3><?php print render(field_view_field('node', $node, 'field_event_starting_at')); ?></h3>
+		<div><strong>Event Starting At:</strong> <?php print date("F j, Y \a\\t g:ia", strtotime($node->field_event_starting_at[$node->language][0]['value'])); ?></div>
 		<div class="location-link"><strong>Location:</strong> <a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="" id="event-map-link"><?php print render($node->field_event_address_street[$node->language][0]['value']); ?>, <?php print render($node->field_event_address_city[$node->language][0]['value']); ?>, <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></a></div>
-		
+
 	</div> <!--/.four columns-->
-	
+
 </div> <!--/.row-->
