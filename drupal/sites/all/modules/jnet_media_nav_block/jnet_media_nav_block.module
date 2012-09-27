@@ -72,20 +72,6 @@ function jnet_media_nav_block_block_view($delta = '') {
 
       // Calculate how many we want of each. There's got to be a cooler way to do this.
       $merged = $items_prefix + array($node->nid => $node->title) + $items_suffix;
-      /*$new_merged = array($node->nid => $node->title);
-      $current_pos = array_search($node->nid, array_keys($merged));
-      for ($i=0;$i<5;$i++) {
-        if ( ($current_pos - $i >= 0) && isset($merged[$current_pos - $i])) {
-          array_unshift($new_merged, $merged[$current_pos - $i]);
-        }
-        if (isset($merged[$current_pos + $i])) {
-          array_push($new_merged, $merged[$current_pos + $i]);
-        }
-        if (count($new_merged) == 5) {
-          break;
-        }
-        dpm($new_merged);
-      }*/
 
       $items = array();
       foreach ($merged as $nid => $title) {
