@@ -226,34 +226,26 @@ hr.double {
 	position: absolute;
 	z-index: 1;
 	right: 0px;
-	top: 5px;
-	width: 78px;
+	top: 17px;
+	width: 60px;
 }
 
 .view-id-new_front_page.view-display-id-block div.timer {
 	display: none;
 	visibility: none;
 }
-
-/*
-div.orbit-wrapper div.slider-nav span {
-	width: 39px;
-	height: 50px;
-	top: 50%;
-	margin-top: -25px;
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.left,
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
+	width: 50%;
 }
-
-div.orbit-wrapper div.slider-nav span.right {
-	background-size: 75%;
-	right: 0;
-}
-
-div.orbit-wrapper div.slider-nav span.left {
-	background-size: 100%;
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
+	background: url(../images/news/arrow-left.png) no-repeat center;
 	left: 0;
 }
-*/
 
+.view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
+	background: url(../images/news/arrow-right.png) no-repeat center;
+}
 
 
 /* Admin Tabs */
