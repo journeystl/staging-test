@@ -523,19 +523,19 @@ hr.double {
 
 /* STORIES PAGE */
 
-.view-id-stories .block-grid.one-up {
+.view-id-Stories .block-grid.one-up {
 	margin: 0 0 4% 0;
 }
 
-.view-id-stories .views-row {
+.view-id-Stories .views-row {
 	position: relative;
 }
 
-.view-id-stories .views-field-field-image a {
+.view-id-Stories .views-field-field-image a {
 	padding: 0;
 	margin: 0;
 }
-.view-id-stories h4 {
+.view-id-Stories h4 {
 	background: url(../images/gradient.png) repeat-x 0 -215px;
 	width: 100%;
 	min-height: 100px;
@@ -543,7 +543,7 @@ hr.double {
 	padding: 10px 0 0 20px;
 }
 
-.view-id-stories p {
+.view-id-Stories p {
 	margin-top: -74px;
 	padding: 0 0 0 20px;
 }
@@ -553,7 +553,7 @@ hr.double {
 }
 
 
-.view-id-stories i {
+.view-id-Stories i {
 	position: absolute;
 	top: 10%;
 	font-size: 11em;
