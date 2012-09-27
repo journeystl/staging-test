@@ -1,0 +1,14 @@
+diff --git a/purl.module b/purl.module
+index 410a71b..955b989 100644
+--- a/purl.module
++++ b/purl.module
+@@ -123,9 +123,6 @@ function purl_init() {
+     if (!isset($_GET['q'])) {
+       $_GET['q'] = '';
+     }
+-    if (!isset($_REQUEST['q'])) {
+-      $_REQUEST['q'] = '';
+-    }
+ 
+     // Initialize the PURL path modification stack.
+     purl_inited(TRUE);
