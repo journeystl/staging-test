@@ -882,6 +882,14 @@ body.node-type-promotion-content .content-header {
 	visibility: hidden;
 }
 
+/* CHURCH STAFF */
+
+.role-title {
+	margin-top: -10px;
+	line-height: 90%;
+	font-size: 16px;
+}
+
 
 /* MEDIA SERIES */
 
@@ -912,9 +920,5 @@ body.node-type-promotion-content .content-header {
 	min-height: 2em;
 }
 
-/*CHURCH MAP*/
-.church-map {
-	margin-bottom: 10px;
-}
 
 
