@@ -516,7 +516,6 @@ hr.double {
 /* "IMAGE-BLOCK" STYLE (USED ON /WHAT-TO-EXPECT) */
 
 .image-block{
-	margin-bottom: 80px;
 	background: url(../images/gradient.png) repeat-x 0 0;
 }
 

@@ -38,7 +38,7 @@ if (isset($location_ids[1])) {
 	            ?>
 	            <?php print render($content['group_services']); ?>
 	            
-	            <?php if (stristr($content['group_services']['#children'], '1')) {
+	            <?php if (stristr($content['group_services']['#children'], '*')) {
 	            	print "<p class='muted smaller'>* No children's ministry provided during this service.</p>";
 	            } ?>
            	</td>
