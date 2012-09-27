@@ -917,10 +917,21 @@ body.node-type-promotion-content .content-header {
 
 /* MEDIA SERIES */
 
-.node-type-media-series h1 {
+
+.node-type-media-series .field-name-field-image {
 	float: left;
+	padding: 0 20px 0 0;
 }
 
+.node-type-media-series h1,
+.node-type-media-series h2 {
+	margin: 0;
+}
+
+.node-type-media-series .field-name-field-seriesdate {
+	font-weight: bold;
+	margin: 5px 0 20px 0;
+}
 .node-type-media-series a.all-sermons {
 	margin: 27px 0 0 20px;
 }
