@@ -640,6 +640,10 @@ hr.double {
 	margin: -11.5% auto 11.5% auto;
 }
 
+.buttons * {
+	display: inline;
+}
+
 
 /* Very large display targeting */
 @media only screen and (min-width: 1441px) {
