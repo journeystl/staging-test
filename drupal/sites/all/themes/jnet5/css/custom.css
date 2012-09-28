@@ -988,6 +988,29 @@ body.node-type-promotion-content .content-header {
 	margin-bottom: 10px;
 }
 
+/* JOBS 2 */
+.view-id-jobs_2 thead {
+	border-bottom: 1px solid #666;
+}
+.view-id-jobs_2 tbody tr:first-child td {
+	padding-top: 20px;
+}
+.view-id-jobs_2 h3 {
+	margin-bottom: 0;
+}
+.view-id-jobs_2 .views-field-field-job-type {
+	min-width: 100px;
+}
+
+.view-id-jobs_2 .views-field-field-status {
+	min-width: 200px;
+}
+
+.view-id-jobs_2 .label {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
 /* KIDS PAGE */
 
 .view-id-service_times_kids_page tr {
