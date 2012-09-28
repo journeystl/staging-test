@@ -987,3 +987,27 @@ body.node-type-promotion-content .content-header {
 .node-job-posting .field-name-body li p, .node-job-posting .field-name-body li li p {
 	margin-bottom: 10px;
 }
+
+/* KIDS PAGE */
+
+.view-id-service_times_kids_page tr {
+	border-top: 1px solid #666;
+}
+
+.view-id-service_times_kids_page td {
+	padding-top: 5px;
+	padding-bottom: 20px;
+}
+.view-id-service_times_kids_page h3 {
+	margin-top: 0;
+	min-width: 7em;
+}
+
+.view-id-service_times_kids_page .nokids {
+	display: none;
+	visibility: hidden;
+}
+
+.view-id-service_times_kids_page .field-collection-item-field-church-times * {
+	display: inline;
+}
