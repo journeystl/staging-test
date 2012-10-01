@@ -24,6 +24,33 @@
   <!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+<?php
+  // Google Analytics -- Copyright 2010 Google Inc. All Rights Reserved.
+
+  $GA_ACCOUNT = "MO-4633630-1";
+  $GA_PIXEL = "/ga.php";
+
+  function googleAnalyticsGetImageUrl() {
+    global $GA_ACCOUNT, $GA_PIXEL;
+    $url = "";
+    $url .= $GA_PIXEL . "?";
+    $url .= "utmac=" . $GA_ACCOUNT;
+    $url .= "&utmn=" . rand(0, 0x7fffffff);
+    $referer = $_SERVER["HTTP_REFERER"];
+    $query = $_SERVER["QUERY_STRING"];
+    $path = $_SERVER["REQUEST_URI"];
+    if (empty($referer)) {
+      $referer = "-";
+    }
+    $url .= "&utmr=" . urlencode($referer);
+    if (!empty($path)) {
+      $url .= "&utmp=" . urlencode($path);
+    }
+    $url .= "&guid=ON";
+    return str_replace("&", "&amp;", $url);
+  }
+?>
+
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div class="shim hide-for-small"></div>
@@ -52,6 +79,12 @@
     </ul>
     <a class="close-reveal-modal">&#215;</a>
   </div>
+  
+<?php
+	// Google Analytics
+	$googleAnalyticsImageUrl = googleAnalyticsGetImageUrl();
+	echo '<img src="' . $googleAnalyticsImageUrl . '" />';
+?>
 
 </body>
 </html>
