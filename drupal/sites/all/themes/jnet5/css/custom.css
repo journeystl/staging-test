@@ -571,11 +571,11 @@ hr.double {
 
 /* Footer Social Icons */
 
-#footer-bottom ul.social {
-	list-style: none;
+#footer-bottom .social {
+	margin-bottom: 23px;
 }
 
-#footer-bottom ul.social * {
+#footer-bottom .social * {
 	font-size: 115% !important;
 	line-height: normal !important;
 	font-family: "myriad-pro-condensed", sans-serif;
@@ -583,40 +583,40 @@ hr.double {
 	list-style: none;
 }
 
-#footer-bottom ul.social h2 {
+#footer-bottom .social h2 {
 	font-family: "ltc-bodoni-175", "georgia", serif;
 	font-size: 100%;
 	color: #666;
-	padding: 10px 0 0 0;
+	padding: 7px 0 0 0;
 	margin: 0;
 }
 
-#footer-bottom ul.social a:hover i {
-	color: #ff3300;
+#footer-bottom .social.show-for-medium a,
+#footer-bottom .social.show-for-small a {
+	display: block;
+	float: left;
+	margin: 3% 0 0 0;
+	width: 20%;
 }
 
-#footer-bottom ul.social-mobile li {
-	text-align: center;
+#footer-bottom .social a:hover i {
+	color: #ff3300;
 }
 
 #footer-bottom span {
 	display: inline !important;
 }
 
-.city-link {
-/*	height: 44px;*/
-	display: block;
+#footer-bottom .social .cityicon {
 	padding-left: 28px;
+	min-height: 29px;
 	background: url(../images/TheCity_oneColor.png) no-repeat 0 2px;
 }
 
-.city-link:hover {
+#footer-bottom .social .cityicon:hover {
 	background-image: url(../images/TheCity_oneColorRed.png);	
 }
 
-.city-link-small {
-	padding-left: 10px;
-}
 
 #podcast-modal * {
 	font-family: "myriad-pro-condensed", sans-serif;
