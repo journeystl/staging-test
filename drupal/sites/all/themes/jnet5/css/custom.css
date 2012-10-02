@@ -664,6 +664,11 @@ hr.double {
 	display: inline;
 }
 
+.view-id-front_page_featured .views-field-edit-node {
+	margin-top: -148px;
+	position: absolute;
+}
+
 
 /* Very large display targeting */
 @media only screen and (min-width: 1441px) {
