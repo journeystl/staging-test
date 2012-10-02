@@ -571,11 +571,16 @@ hr.double {
 
 /* Footer Social Icons */
 
+#footer-bottom ul.social {
+	list-style: none;
+}
+
 #footer-bottom ul.social * {
-	font-size: 125% !important;
+	font-size: 115% !important;
 	line-height: normal !important;
 	font-family: "myriad-pro-condensed", sans-serif;
 	color: #CCC;
+	list-style: none;
 }
 
 #footer-bottom ul.social h2 {
@@ -596,6 +601,21 @@ hr.double {
 
 #footer-bottom span {
 	display: inline !important;
+}
+
+.city-link {
+/*	height: 44px;*/
+	display: block;
+	padding-left: 28px;
+	background: url(../images/TheCity_oneColor.png) no-repeat 0 2px;
+}
+
+.city-link:hover {
+	background-image: url(../images/TheCity_oneColorRed.png);	
+}
+
+.city-link-small {
+	padding-left: 10px;
 }
 
 #podcast-modal * {
