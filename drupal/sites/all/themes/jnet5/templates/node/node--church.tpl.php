@@ -27,10 +27,8 @@ if (isset($location_ids[1])) {
 				</div>
 				<div class="four mobile-two columns">
 					<?php print $address_services->field_church_street[$node->language][0]['value']; ?><br>
-												<?php print $address_services->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?><br>
-												<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_services->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
-												
-												<a href="#">test</a>
+					<?php print $address_services->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?><br>
+					<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_services->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
 				</div>
 				<div class="four mobile-two columns">
 		            <?php
@@ -56,7 +54,7 @@ if (isset($location_ids[1])) {
 				<div class="four mobile-two columns">
 	           		<?php print $address_office->field_church_street[$node->language][0]['value']; ?><br>
 								<?php print $address_office->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?><br>
-		<i class="foundation-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_office->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
+		<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_office->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
 				</div>
 				<div class="four mobile-two columns">
 		           	<i class="foundation-phone"></i>&#32;<?php print $field_church_phone[$node->language][0]['value']; ?><br>
