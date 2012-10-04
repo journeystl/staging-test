@@ -18,7 +18,9 @@
   <dd class="active"><a href="#audio">Audio</a></dd>
  <?php endif;?>
   <dd><a href="#description">Description</a></dd>
+<?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
   <dd><a href="#scripture">Scripture</a></dd>
+<?php endif;?>
 </dl>
 
 <ul class="tabs-content">
@@ -56,21 +58,25 @@
   		<p><?php print $content['field_description'][0]['#markup']; ?></p>
 
   </li>
-  <li id="scriptureTab">
+  
+  <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
+	<li id="scriptureTab">
+  <?php
+    if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])) {
+      $key = "IP";
+      $passage = urlencode($content['field_scripture_reference'][0]['#markup']);
+      $options = "include-passage-references=true&include-audio-link=false";
+      $url = "http://www.esvapi.org/v2/rest/passageQuery?key=$key&passage=$passage&$options";
+      $ch = curl_init($url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      $response = curl_exec($ch);
+      curl_close($ch);
 
-  	<?php
-  	  $key = "IP";
-  	  $passage = urlencode($content['field_scripture_reference'][0]['#markup']);
-  	  $options = "include-passage-references=true&include-audio-link=false";
-  	  $url = "http://www.esvapi.org/v2/rest/passageQuery?key=$key&passage=$passage&$options";
-  	  $ch = curl_init($url);
-  	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  	  $response = curl_exec($ch);
-  	  curl_close($ch);
-  	  print $response;
-  	?>
-
+      print $response;
+    }
+	?>
   </li>
+  <?php endif;?>
   
 </ul>
 
