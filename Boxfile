@@ -20,6 +20,7 @@ web1:
     - private
   php_extensions:
     - mysqli
+    - mysql
     - gd
     - curl
     - hash
@@ -44,6 +45,7 @@ worker1:
   exec: "php workers/jnet-importer.php"
   php_extensions:
     - mysqli
+    - mysql
     - gd
     - curl
     - json
