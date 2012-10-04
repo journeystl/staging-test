@@ -443,6 +443,14 @@ hr.double {
 	margin-left: 20px;
 }
 
+.node-church .foundation-mail {
+	margin-bottom: 20px;
+}
+
+.node-church .view-id-church_photo img {
+	margin-bottom: 30px;
+}
+
 /* TABLES */
 .table, .views-table {
 	border-collapse: collapse;
