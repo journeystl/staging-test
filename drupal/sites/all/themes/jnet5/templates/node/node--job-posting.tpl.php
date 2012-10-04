@@ -47,6 +47,7 @@
 		</div>
 		<div class="panel">
 			<h5>Application Requirements</h5>
+			<p>To apply for this position, please send the following to <a href="mailto:jobs@journeyon.net">jobs@journeyon.net</a> :</p>
 			<?php 
 				$items = array();
 				foreach ($content['field_application_requirements']['#items'] as $item) {
