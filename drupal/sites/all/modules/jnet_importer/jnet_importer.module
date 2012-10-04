@@ -85,6 +85,7 @@ function jnet_importer_import($qty, $debug = FALSE) {
     $node->field_author_nickname['und'][0]['value'] = $object->node->field_author_nickname[0]->value;
     $node->field_author_longname['und'][0]['value'] = $object->node->field_author_longname[0]->value;
     $node->field_weight['und'][0]['value'] = $object->node->weight;
+    $node->field_archive['und'][0]['value'] = $object->node->archive;
     $node->field_signup['und'][0]['value'] = $object->node->signup;
 
     // Set all event fields that aren't in field collections.
