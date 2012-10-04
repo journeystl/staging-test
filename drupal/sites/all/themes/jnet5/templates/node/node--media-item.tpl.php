@@ -13,9 +13,13 @@
 <dl class="tabs">
 <?php if (strlen($content['field_youtube_url'][0]['#markup']) > 0): ?>
   <dd class="active"><a href="#video">Video</a></dd>
-  <dd><a href="#audio">Audio</a></dd>
+  <?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
+    <dd><a href="#audio">Audio</a></dd>
+  <?php endif;?>
 <?php else:?>
-  <dd class="active"><a href="#audio">Audio</a></dd>
+  <?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
+    <dd class="active"><a href="#audio">Audio</a></dd>
+  <?php endif;?>
  <?php endif;?>
   <dd><a href="#description">Description</a></dd>
 <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
@@ -33,18 +37,21 @@
 	</div>
 	<!-- END VIDEO YOUTUBE -->
 </li>
-
+<?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
 <li class="audio" id="audioTab">
+<?php endif;?>
 <?php else:?>
 	
-
+  <?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
   <li class="active audio" id="audioTab">
+  <?php endif;?>
  <?php endif;?> 
-  
-  <?php print render($content['field_mp3_audio']); ?>
-  
-  <a class="button radius secondary" href="<?php print $content['field_mp3_audio']['#items'][0]['value']; ?>">Download Audio</a>
-  </li>
+  <?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
+    <?php print render($content['field_mp3_audio']); ?>
+    
+    <a class="button radius secondary" href="<?php print $content['field_mp3_audio']['#items'][0]['value']; ?>">Download Audio</a>
+    </li>
+  <?php endif;?>
   
   <li id="descriptionTab">
 
