@@ -32,6 +32,7 @@ web1:
     - mbstring
     - eaccelerator
     - uploadprogress
+    - ssh2
 
 db1:
   name: drupal-db
