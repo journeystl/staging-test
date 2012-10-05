@@ -117,7 +117,8 @@ function jnet5_preprocess_page(&$vars) {
     }
 
     // Add church/search and close things up.
-    $vars['top_nav'] .= "<li><div id='nav-bar-churches'></div><div id='nav-bar-search'></div></li>";
+    // $vars['top_nav'] .= "<li><div id='nav-bar-churches'></div><div id='nav-bar-search'></div></li>";
+    $vars['top_nav'] .= "<li><div id='nav-bar-churches'></div>";
 
 	$vars['top_nav'] .= "</ul></div></nav></div>";
 
