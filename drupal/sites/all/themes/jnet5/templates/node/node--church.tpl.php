@@ -47,7 +47,7 @@ if (isset($location_ids[1])) {
 					<hr class="top show-for-small">
 				</div>
 			</div>
-			<div class="row">
+			<div class="row office">
 				<div class="four mobile-four columns">
 					<strong>Church Office</strong>
 				</div>
