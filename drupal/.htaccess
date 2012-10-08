@@ -60,6 +60,11 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{HTTP_HOST} ^jnet5-dev\.pagodabox\.com$ [NC]
   RewriteRule ^(.*)$ http://thejourney.org/$1 [L,R=301]
 
+  # Rewrite journeyon.net and www.journeyon.net to thejourney.org
+  RewriteCond %{HTTP_HOST} ^www\.journeyon\.net$ [NC]
+  RewriteCond %{HTTP_HOST} ^journeyon\.net$ [NC]
+  RewriteRule ^(.*)$ http://thejourney.org/$1 [L,R=301]
+
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
   # Git to store control files. Files whose names begin with a period, as well
