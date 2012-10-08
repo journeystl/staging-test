@@ -62,6 +62,7 @@ DirectoryIndex index.php index.html index.htm
 
   # Rewrite journeyon.net and www.journeyon.net to thejourney.org
   RewriteCond %{HTTP_HOST} ^www\.journeyon\.net$ [NC]
+  RewriteRule ^(.*)$ http://thejourney.org/$1 [L,R=301]  
   RewriteCond %{HTTP_HOST} ^journeyon\.net$ [NC]
   RewriteRule ^(.*)$ http://thejourney.org/$1 [L,R=301]
 
