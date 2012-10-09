@@ -8,7 +8,7 @@ function _jnet_purl_campuses() {
     1 => array('value' => 'tg', 'id' => 1, 'label' => 'Tower Grove', 'pb_id' => 106),
     2 => array('value' => 'wc', 'id' => 2, 'label' => 'West County', 'pb_id' => 109),
     3 => array('value' => 'hr', 'id' => 3, 'label' => 'Hanley Road', 'pb_id' => 107),
-    4 => array('value' => 'bl', 'id' => 4, 'label' => 'Belleville', 'pb_id' => 108),
+    4 => array('value' => 'me', 'id' => 4, 'label' => 'Metro East', 'pb_id' => 108),
   );
 }
 
