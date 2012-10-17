@@ -46,6 +46,10 @@ function jnet_importer_import($qty, $debug = FALSE) {
   $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}&web_publish&web_feature");
   $data = json_decode($data);
 
+  // Set default mailheaders to be used below.
+  $mail_headers = 'From: noreply@thejourney.org' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+  $websupport_to = 'websupport@journeyon.net';
+
   foreach ($data as $object) {
     // Calculate hash.
     $object_hash = md5(serialize($object->node));
@@ -109,7 +113,17 @@ function jnet_importer_import($qty, $debug = FALSE) {
         $file = file_save_data($file_data, "public://poster-image/{$file_name}", FILE_EXISTS_REPLACE);
         if ($file) {
           $node->field_image['und'][0] = array('fid' => $file->fid);
+        } else {
+          // If the file didn't *save* successfully, don't import this node and log this event.
+          watchdog('jnet_importer', 'Unable to save file %filename. Aborting import of: %title', array('%filename' => $file_name, '%title' => $object->node->title));
+          mail($websupport_to, 'Unable to save image at Jnet', "Unable to save image {$file_name}. Aborting import of: {$object->node->title}", $mail_headers);
+          continue;
         }
+      } else {
+        // If the file didn't *download* successfully, don't import this node and log this event.
+        watchdog('jnet_importer', 'Unable to download remote file %filepath. Aborting import of: %title', array('%filepath' => $file_path, '%title' => $object->node->title));
+        mail($websupport_to, 'Unable to download image from Patchbay to Jnet', "Unable to download image {$file_name} from {$file_path}. Aborting import of: {$object->node->title}", $mail_headers);
+        continue;
       }
     }
 
