@@ -114,22 +114,30 @@ function jnet_importer_import($qty, $debug = FALSE) {
     // Save the poster image.
     if (isset($object->node->field_poster_image[0]->filepath)) {
       $file_path = $object->node->field_poster_image[0]->filepath;
-      if ($file_data = file_get_contents($file_path)) {
-        $file_name = pathinfo($file_path, PATHINFO_BASENAME);
-        $file = file_save_data($file_data, "public://poster-image/{$file_name}", FILE_EXISTS_REPLACE);
-        if ($file) {
-          $node->field_image['und'][0] = array('fid' => $file->fid);
+      $file_name = pathinfo($file_path, PATHINFO_BASENAME);
+
+      // Check if image already exists.
+      if ( (isset($node->field_image['und'][0]) && $node->field_image['und'][0]['filename'] != $file_name) || (!isset($node->field_image['und'][0])) )  {
+
+        if ($file_data = file_get_contents($file_path)) {
+          $file = file_save_data($file_data, "public://poster-image/{$file_name}");
+          if ($file) {
+            $node->field_image['und'][0] = array('fid' => $file->fid);
+          } else {
+            // If the file didn't *save* successfully, don't import this node and log this event.
+            watchdog('jnet_importer', 'Unable to save file %filename. Aborting import of: %title', array('%filename' => $file_name, '%title' => $object->node->title));
+            mail($websupport_to, 'Unable to save image at Jnet', "Unable to save image {$file_name}. Aborting import of: {$object->node->title}", $mail_headers);
+            continue;
+          }
         } else {
-          // If the file didn't *save* successfully, don't import this node and log this event.
-          watchdog('jnet_importer', 'Unable to save file %filename. Aborting import of: %title', array('%filename' => $file_name, '%title' => $object->node->title));
-          mail($websupport_to, 'Unable to save image at Jnet', "Unable to save image {$file_name}. Aborting import of: {$object->node->title}", $mail_headers);
+          // If the file didn't *download* successfully, don't import this node and log this event.
+          watchdog('jnet_importer', 'Unable to download remote file %filepath. Aborting import of: %title', array('%filepath' => $file_path, '%title' => $object->node->title));
+          mail($websupport_to, 'Unable to download image from Patchbay to Jnet', "Unable to download image {$file_name} from {$file_path}. Aborting import of: {$object->node->title}", $mail_headers);
           continue;
         }
+
       } else {
-        // If the file didn't *download* successfully, don't import this node and log this event.
-        watchdog('jnet_importer', 'Unable to download remote file %filepath. Aborting import of: %title', array('%filepath' => $file_path, '%title' => $object->node->title));
-        mail($websupport_to, 'Unable to download image from Patchbay to Jnet', "Unable to download image {$file_name} from {$file_path}. Aborting import of: {$object->node->title}", $mail_headers);
-        continue;
+        watchdog('jnet_importer', 'Image already exists. Not saving new image for node: %title', array('%title' => $object->node->title));
       }
     }
 
