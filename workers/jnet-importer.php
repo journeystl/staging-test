@@ -13,6 +13,7 @@ while (1) {
   worker_watchdog('worker', 'Running worker jnet-importer.php.');
 
   jnet_importer_import(25);
+  jnet_importer_import_weights();
 
   worker_watchdog('worker', 'Finished worker jnet-importer.php. Will run again in 120 seconds.');
 
