@@ -266,6 +266,7 @@ function jnet_importer_import_weights() {
       WHERE j.guid = :guid", array(':guid' => $object->guid))->fetchAssoc();
     if (isset($result['entity_id']) && $result['field_weight_value'] != $object->weight) {
       db_query("UPDATE {field_data_field_weight} SET field_weight_value = :weight WHERE entity_id = :entity_id", array(':weight' => $object->weight, ':entity_id' => $result['entity_id']));
+      watchdog('jnet_importer_weights', 'Updated weight for nid %nid from %old_weight to %new_weight.', array('%nid' => $result['entity_id'], '%old_weight' => $result['field_weight_value'], '%new_weight' => $object->weight));
     }
   }
 
