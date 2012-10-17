@@ -12,6 +12,12 @@ function jnet_importer_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['jnet/import-weights'] = array(
+    'page callback' => 'jnet_importer_import_weights',
+    'access arguments' => array('access jnet importer'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -245,4 +251,23 @@ function _jnet_importer_delete_field_collections(&$node, $field_name) {
     $node->{$field_name} = array();
     node_save($node);
   }
+}
+
+/**
+ * Import weights.
+ */
+function jnet_importer_import_weights() {
+  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed-weights");
+  $data = json_decode($data);
+
+  foreach ($data as $object) {
+    $result = db_query("SELECT w.entity_id, w.field_weight_value FROM {jnet_importer} j
+      LEFT JOIN {field_data_field_weight} w ON j.nid = w.entity_id
+      WHERE j.guid = :guid", array(':guid' => $object->guid))->fetchAssoc();
+    if (isset($result['entity_id']) && $result['field_weight_value'] != $object->weight) {
+      db_query("UPDATE {field_data_field_weight} SET field_weight_value = :weight WHERE entity_id = :entity_id", array(':weight' => $object->weight, ':entity_id' => $result['entity_id']));
+    }
+  }
+
+  return 'done';
 }
