@@ -440,7 +440,7 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
 
   // Check if directory exists.
   if (!is_dir($directory)) {
-    watchdog('debug', 'file_prepare_directory - is not dir!');
+    watchdog('debug', 'file_prepare_directory - is not dir! ' . $directory);
     // Let mkdir() recursively create directories and use the default directory
     // permissions.
     if (($options & FILE_CREATE_DIRECTORY) && @drupal_mkdir($directory, NULL, TRUE)) {
