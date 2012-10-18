@@ -12,6 +12,12 @@ function jnet_importer_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['jnet/import-weights'] = array(
+    'page callback' => 'jnet_importer_import_weights',
+    'access arguments' => array('access jnet importer'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -45,6 +51,10 @@ function jnet_importer_import_page($qty) {
 function jnet_importer_import($qty, $debug = FALSE) {
   $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}&web_publish&web_feature");
   $data = json_decode($data);
+
+  // Set default mailheaders to be used below.
+  $mail_headers = 'From: noreply@thejourney.org' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+  $websupport_to = 'websupport@journeyon.net';
 
   foreach ($data as $object) {
     // Calculate hash.
@@ -104,12 +114,30 @@ function jnet_importer_import($qty, $debug = FALSE) {
     // Save the poster image.
     if (isset($object->node->field_poster_image[0]->filepath)) {
       $file_path = $object->node->field_poster_image[0]->filepath;
-      if ($file_data = file_get_contents($file_path)) {
-        $file_name = pathinfo($file_path, PATHINFO_BASENAME);
-        $file = file_save_data($file_data, "public://poster-image/{$file_name}", FILE_EXISTS_REPLACE);
-        if ($file) {
-          $node->field_image['und'][0] = array('fid' => $file->fid);
+      $file_name = pathinfo($file_path, PATHINFO_BASENAME);
+
+      // Check if image already exists.
+      if ( (isset($node->field_image['und'][0]) && $node->field_image['und'][0]['filename'] != $file_name) || (!isset($node->field_image['und'][0])) )  {
+
+        if ($file_data = file_get_contents($file_path)) {
+          $file = file_save_data($file_data, "public://poster-image/{$file_name}");
+          if ($file) {
+            $node->field_image['und'][0] = array('fid' => $file->fid);
+          } else {
+            // If the file didn't *save* successfully, don't import this node and log this event.
+            watchdog('jnet_importer', 'Unable to save file %filename. Aborting import of: %title', array('%filename' => $file_name, '%title' => $object->node->title));
+            //mail($websupport_to, 'Unable to save image at Jnet', "Unable to save image {$file_name}. Aborting import of: {$object->node->title}", $mail_headers);
+            continue;
+          }
+        } else {
+          // If the file didn't *download* successfully, don't import this node and log this event.
+          watchdog('jnet_importer', 'Unable to download remote file %filepath. Aborting import of: %title', array('%filepath' => $file_path, '%title' => $object->node->title));
+          //mail($websupport_to, 'Unable to download image from Patchbay to Jnet', "Unable to download image {$file_name} from {$file_path}. Aborting import of: {$object->node->title}", $mail_headers);
+          continue;
         }
+
+      } else {
+        watchdog('jnet_importer', 'Image already exists. Not saving new image for node: %title', array('%title' => $object->node->title));
       }
     }
 
@@ -231,4 +259,24 @@ function _jnet_importer_delete_field_collections(&$node, $field_name) {
     $node->{$field_name} = array();
     node_save($node);
   }
+}
+
+/**
+ * Import weights.
+ */
+function jnet_importer_import_weights() {
+  $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed-weights");
+  $data = json_decode($data);
+
+  foreach ($data as $object) {
+    $result = db_query("SELECT w.entity_id, w.field_weight_value FROM {jnet_importer} j
+      LEFT JOIN {field_data_field_weight} w ON j.nid = w.entity_id
+      WHERE j.guid = :guid", array(':guid' => $object->guid))->fetchAssoc();
+    if (isset($result['entity_id']) && $result['field_weight_value'] != $object->weight) {
+      db_query("UPDATE {field_data_field_weight} SET field_weight_value = :weight WHERE entity_id = :entity_id", array(':weight' => $object->weight, ':entity_id' => $result['entity_id']));
+      watchdog('jnet_importer_weights', 'Updated weight for nid %nid from %old_weight to %new_weight.', array('%nid' => $result['entity_id'], '%old_weight' => $result['field_weight_value'], '%new_weight' => $object->weight));
+    }
+  }
+
+  return 'done';
 }

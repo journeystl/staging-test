@@ -43,6 +43,10 @@ worker1:
   name: jnet_importer
   type: php
   exec: "php workers/jnet-importer.php"
+  shared_writable_dirs:
+    - drupal/sites/default/files
+    - drupal/files
+    - tmp
   php_extensions:
     - mysqli
     - mysql
