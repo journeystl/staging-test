@@ -88,30 +88,30 @@ if (isset($location_ids[1])) {
 			if (count($view_meet_the_staff->result) > 0) {
 				print '
 				<div class="six columns hide-for-small">
+					' . render(block_get_blocks_by_region('inner_first')) . '
 					<h3>Meet Our Staff</h3>
 					' . $view_meet_the_staff->render() . '
-					<br>
-					' . render(block_get_blocks_by_region('inner_first')) . '
 				</div>
 
 				<div class="six columns">
+					' . render(block_get_blocks_by_region('inner_second')) . '
 					<h3>Upcoming Events</h3>
 					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 					<hr class="top double">
 					<h3>Get Involved</h3>
 					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
-					<br>
-					' . render(block_get_blocks_by_region('inner_second')) . '
 				</div>';
 
 			} else {
 				print '
 				<div class="six columns">
+					' . render(block_get_blocks_by_region('inner_first')) . '
 					<h3>Upcoming Events</h3>
 					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 				</div>
 
 				<div class="six columns">
+					' . render(block_get_blocks_by_region('inner_second')) . '
 					<h3>Get Involved</h3>
 					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 				</div>';
