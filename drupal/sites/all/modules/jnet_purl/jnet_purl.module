@@ -9,6 +9,7 @@ function _jnet_purl_campuses() {
     2 => array('value' => 'wc', 'id' => 2, 'label' => 'West County', 'pb_id' => 109),
     3 => array('value' => 'hr', 'id' => 3, 'label' => 'Hanley Road', 'pb_id' => 107),
     4 => array('value' => 'me', 'id' => 4, 'label' => 'Metro East', 'pb_id' => 108),
+    5 => array('value' => 'si', 'id' => 5, 'label' => 'Southern Illinois', 'pb_id' => 1782),
   );
 }
 
