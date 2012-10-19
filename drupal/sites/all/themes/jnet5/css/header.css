@@ -200,6 +200,20 @@ body.toolbar .top-bar-wrapper.hide-for-small {
   color: #666;
 }
 
+@media only screen and (max-width: 983px) {
+	#churches-bar ul {
+	  margin-top: 15px;
+	}
+	#churches-bar ul li {
+	  padding: 0 1.5%;
+	}
+	#churches-bar ul li a {
+	  font-size: 21px;
+	}
+}
+
+
+
 #churches-bar ul li a:hover {
 	color: #333;
 }
