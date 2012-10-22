@@ -26,6 +26,11 @@ if (isset($location_ids[1])) {
 					<strong>Services</strong>
 				</div>
 				<div class="four mobile-two columns">
+					
+					<?php if ($address_services->field_church_location[$node->language][0]['value'] != null) {
+						print $address_services->field_church_location[$node->language][0]['value'] . '<br>';
+						}	
+					?>
 					<?php print $address_services->field_church_street[$node->language][0]['value']; ?><br>
 					<?php print $address_services->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?><br>
 					<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_services->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
@@ -52,6 +57,10 @@ if (isset($location_ids[1])) {
 					<strong>Church Office</strong>
 				</div>
 				<div class="four mobile-two columns">
+					<?php if ($address_services->field_church_location[$node->language][1]['value'] != null) {
+						print $address_services->field_church_location[$node->language][1]['value'] . '<br>';
+						}	
+					?>
 	           		<?php print $address_office->field_church_street[$node->language][0]['value']; ?><br>
 								<?php print $address_office->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?><br>
 		<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_office->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
