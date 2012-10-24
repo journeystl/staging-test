@@ -51,7 +51,7 @@ function jnet_importer_import_page($qty) {
 function jnet_importer_import($qty, $debug = FALSE) {
   $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}&web_publish&web_feature");
   $data = json_decode($data);
-  $file_save_dir = '/home/jnet5-dev/shared/drupal/files/poster-image/';
+  $file_save_dir = '/var/www/drupal/files/poster-image/';
   //$file_save_dir = '/var/www/web/jnet5-dev/drupal/files/poster-image/';
 
   // Set default mailheaders to be used below.
