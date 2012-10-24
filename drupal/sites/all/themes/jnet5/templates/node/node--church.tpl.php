@@ -26,6 +26,11 @@ if (isset($location_ids[1])) {
 					<strong>Services</strong>
 				</div>
 				<div class="four mobile-two columns">
+					
+					<?php if ($address_services->field_church_location[$node->language][0]['value'] != null) {
+						print $address_services->field_church_location[$node->language][0]['value'] . '<br>';
+						}	
+					?>
 					<?php print $address_services->field_church_street[$node->language][0]['value']; ?><br>
 					<?php print $address_services->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?><br>
 					<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_services->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
@@ -52,6 +57,10 @@ if (isset($location_ids[1])) {
 					<strong>Church Office</strong>
 				</div>
 				<div class="four mobile-two columns">
+					<?php if ($address_services->field_church_location[$node->language][1]['value'] != null) {
+						print $address_services->field_church_location[$node->language][1]['value'] . '<br>';
+						}	
+					?>
 	           		<?php print $address_office->field_church_street[$node->language][0]['value']; ?><br>
 								<?php print $address_office->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?><br>
 		<i class="g-foundicon-location"></i>&#32;<a href="http://maps.google.com/?q=<?php print $address_office->field_church_street[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?>">Map</a>
@@ -88,11 +97,13 @@ if (isset($location_ids[1])) {
 			if (count($view_meet_the_staff->result) > 0) {
 				print '
 				<div class="six columns hide-for-small">
+					' . render(block_get_blocks_by_region('inner_first')) . '
 					<h3>Meet Our Staff</h3>
 					' . $view_meet_the_staff->render() . '
 				</div>
 
 				<div class="six columns">
+					' . render(block_get_blocks_by_region('inner_second')) . '
 					<h3>Upcoming Events</h3>
 					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 					<hr class="top double">
@@ -103,11 +114,13 @@ if (isset($location_ids[1])) {
 			} else {
 				print '
 				<div class="six columns">
+					' . render(block_get_blocks_by_region('inner_first')) . '
 					<h3>Upcoming Events</h3>
 					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 				</div>
 
 				<div class="six columns">
+					' . render(block_get_blocks_by_region('inner_second')) . '
 					<h3>Get Involved</h3>
 					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 				</div>';
