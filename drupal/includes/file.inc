@@ -432,7 +432,6 @@ function file_create_url($uri) {
  *   otherwise.
  */
 function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS) {
-  watchdog('debug', 'file_prepare_directory - ' . $directory);
   if (!file_stream_wrapper_valid_scheme(file_uri_scheme($directory))) {
     // Only trim if we're not dealing with a stream.
     $directory = rtrim($directory, '/\\');
@@ -440,23 +439,19 @@ function file_prepare_directory(&$directory, $options = FILE_MODIFY_PERMISSIONS)
 
   // Check if directory exists.
   if (!is_dir($directory)) {
-    watchdog('debug', 'file_prepare_directory - is not dir! ' . $directory);
     // Let mkdir() recursively create directories and use the default directory
     // permissions.
     if (($options & FILE_CREATE_DIRECTORY) && @drupal_mkdir($directory, NULL, TRUE)) {
-      watchdog('debug', 'file_prepare_directory - attempt to chmod');
       return drupal_chmod($directory);
     }
-    watchdog('debug', 'file_prepare_directory - is not dir - fail');
     return FALSE;
   }
   // The directory exists, so check to see if it is writable.
   $writable = is_writable($directory);
   if (!$writable && ($options & FILE_MODIFY_PERMISSIONS)) {
-    watchdog('debug', 'file_prepare_directory - is not writable');
     return drupal_chmod($directory);
   }
-  watchdog('debug', 'file_prepare_directory - final');
+
   return $writable;
 }
 

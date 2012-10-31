@@ -1,5 +1,4 @@
 web1:
-
   php_version: 5.3.8
   php_max_execution_time: 120
   php_max_input_time: 120

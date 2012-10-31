@@ -51,12 +51,16 @@ function jnet_importer_import_page($qty) {
 function jnet_importer_import($qty, $debug = FALSE) {
   $data = file_get_contents("http://patchbay.journeyon.net/patchbay/feed?qty={$qty}&web_publish&web_feature");
   $data = json_decode($data);
+  $file_save_dir = '/var/www/drupal/files/poster-image/';
+  //$file_save_dir = '/var/www/web/jnet5-dev/drupal/files/poster-image/';
 
   // Set default mailheaders to be used below.
   $mail_headers = 'From: noreply@thejourney.org' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
   $websupport_to = 'websupport@journeyon.net';
 
   foreach ($data as $object) {
+    $file_error = FALSE;
+
     // Calculate hash.
     $object_hash = md5(serialize($object->node));
 
@@ -119,26 +123,59 @@ function jnet_importer_import($qty, $debug = FALSE) {
       // Check if image already exists.
       if ( (isset($node->field_image['und'][0]) && $node->field_image['und'][0]['filename'] != $file_name) || (!isset($node->field_image['und'][0])) )  {
 
-        if ($file_data = file_get_contents($file_path)) {
-          $file = file_save_data($file_data, "public://poster-image/{$file_name}");
-          if ($file) {
-            $node->field_image['und'][0] = array('fid' => $file->fid);
-          } else {
-            // If the file didn't *save* successfully, don't import this node and log this event.
-            watchdog('jnet_importer', 'Unable to save file %filename. Aborting import of: %title', array('%filename' => $file_name, '%title' => $object->node->title));
-            //mail($websupport_to, 'Unable to save image at Jnet', "Unable to save image {$file_name}. Aborting import of: {$object->node->title}", $mail_headers);
-            continue;
-          }
+        // If this URI already exists, just use the existing FID.
+        if ($fid = db_query("SELECT fid FROM {file_managed} WHERE uri = :uri", array(':uri' => "public://poster-image/{$file_name}"))->fetchField()) {
+          $node->field_image['und'][0] = array('fid' => $fid);
         } else {
-          // If the file didn't *download* successfully, don't import this node and log this event.
-          watchdog('jnet_importer', 'Unable to download remote file %filepath. Aborting import of: %title', array('%filepath' => $file_path, '%title' => $object->node->title));
-          //mail($websupport_to, 'Unable to download image from Patchbay to Jnet', "Unable to download image {$file_name} from {$file_path}. Aborting import of: {$object->node->title}", $mail_headers);
-          continue;
+
+          // Download the file.
+          if (!$file_data = file_get_contents($file_path)) {
+            $file_error = "Could not download file {$file_name} from node {$object->node->title}.";
+          }
+
+          // Save the data into the files directory.
+          if ($file_data && file_put_contents($file_save_dir . $file_name, $file_data)) {
+            // Create a new file object manually.
+            $file = new stdClass();
+            $file->fid = NULL;
+            $file->uri = "public://poster-image/{$file_name}";
+            $file->filename  = $file_name;
+            $file->filemime  = file_get_mimetype($file->uri);
+            $file->uid       = 1;
+            $file->status    = FILE_STATUS_PERMANENT;
+            $file->timestamp = time();
+            $file->filesize  = filesize($file_save_dir . $file_name);
+
+            // Insert it into the file_managed table.
+            drupal_write_record('file_managed', $file);
+
+            // Attach the file to the node or throw an erorr.
+            if ($file->fid) {
+              $node->field_image['und'][0] = array('fid' => $file->fid);
+            } else {
+              $file_error = "Could not attach file {$file_name} to node {$object->node->title}.";
+            }
+
+          // If we couldn't save the file throw an error.
+          } else {
+            $file_error = "Could not save the file {$file_name} into directory {$file_save_dir} for node {$object->node->title}.";
+          }
+
         }
 
       } else {
         watchdog('jnet_importer', 'Image already exists. Not saving new image for node: %title', array('%title' => $object->node->title));
       }
+    }
+
+    if ($file_error) {
+      watchdog('jnet_importer', $file_error);
+      mail($websupport_to, 'Image import issue', $file_error, $mail_headers);
+      // If the node didn't already exist, delete this faulty new node.
+      if (!$exists()) {
+        node_delete($node->nid);
+      }
+      continue;
     }
 
     // Save this node.
