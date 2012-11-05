@@ -12,7 +12,7 @@ while (1) {
   // Add an entry to the log.
   worker_watchdog('worker', 'Running worker jnet-importer.php.');
 
-  jnet_importer_import(5);
+  jnet_importer_import(10);
   jnet_importer_import_weights();
 
   worker_watchdog('worker', 'Finished worker jnet-importer.php. Will run again in 120 seconds.');
