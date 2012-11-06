@@ -679,9 +679,7 @@ hr.double {
 	background-repeat: no-repeat;
 }
 .buttons {
-	position: relative;
-	top: 429px;
-	margin: -30px 0 0 0;
+	margin: 400px 0 -428px 0;
 }
 
 .buttons * {
