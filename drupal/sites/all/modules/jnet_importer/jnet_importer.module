@@ -1,5 +1,7 @@
 <?php
 
+define('WEBSUPPORT_EMAIL', 'websupport@journeyon.net');
+
 /**
  * Implements hook_menu().
  */
@@ -34,6 +36,24 @@ function jnet_importer_permission() {
 }
 
 /**
+ * Implements hook_cron().
+ */
+function jnet_importer_cron() {
+  // Grab the last 'worker' timestamp.
+  $last_timestamp = db_select('watchdog', 'w')
+    ->fields('w', array('timestamp'))
+    ->condition('w.type', 'worker')
+    ->orderBy('w.timestamp', 'DESC')
+    ->execute()->fetchField();
+
+  // If last 'worker' ran > 15 minutes ago, alert sysadmin.
+  if (strtotime("-15 minutes") > $last_timestamp) {
+    $mail_headers = 'From: noreply@thejourney.org' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    mail(WEBSUPPORT_EMAIL, 'Worker not running', 'Import worker has not run since ' . date("c", $last_timestamp), $mail_headers);
+  }
+}
+
+/**
  * Implements hook_node_delete().
  */
 function jnet_importer_node_delete($node) {
@@ -55,7 +75,6 @@ function jnet_importer_import($qty, $debug = FALSE) {
 
   // Set default mailheaders to be used below.
   $mail_headers = 'From: noreply@thejourney.org' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-  $websupport_to = 'websupport@journeyon.net';
 
   foreach ($data as $object) {
     $file_error = FALSE;
@@ -169,7 +188,7 @@ function jnet_importer_import($qty, $debug = FALSE) {
 
     if ($file_error) {
       watchdog('jnet_importer', $file_error);
-      mail($websupport_to, 'Image import issue', $file_error, $mail_headers);
+      mail(WEBSUPPORT_EMAIL, 'Image import issue', $file_error, $mail_headers);
       // If the node didn't already exist, delete this faulty new node.
       if (!$exists()) {
         node_delete($node->nid);

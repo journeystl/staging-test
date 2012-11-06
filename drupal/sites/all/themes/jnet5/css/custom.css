@@ -429,6 +429,19 @@ hr.double {
 	padding-top: 60px;
 }
 
+.location-list-anchor-wrapper {
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+.location-list-anchor {
+	height: 1px;
+	width: 1px;
+	position: absolute;
+	top: -48px;
+	left: 0px;
+}
+
 /* CHURCH PAGES */
 
 .field-name-field-church-service-day{
@@ -622,7 +635,7 @@ hr.double {
 }
 
 #footer-bottom .social .cityicon:hover {
-	background-image: url(../images/TheCity_oneColorRed.png);	
+	background-image: url(../images/TheCity_oneColorRed.png);
 }
 
 
@@ -788,15 +801,6 @@ p + ul {
 	height: 300px;
 }
 
-/* Scrolling anchor on /visit */
-.view-locations .view-content .views-field {
-	position: relative;
-}
-.view-locations a.location-list-anchor {
-	height: 1px;
-	position: absolute;
-	top: -39px;
-}
 
 /* AddThis */
 .atm * {
@@ -985,6 +989,11 @@ body.node-type-promotion-content .content-header {
 .section-give #featured .slide { display: none; }
 .section-give #featured .slide:first-child { display: block; }
 .section-give #featured .orbit-slide { display: block; }
+
+
+div.timer {
+	display: none;
+}
 
 
 /* LOGOS IN PANELS */
