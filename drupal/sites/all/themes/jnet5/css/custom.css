@@ -653,85 +653,77 @@ hr.double {
 
 /* FRONT FEATURED IMAGE */
 .view-id-front_page_featured {
-	overflow: hidden;
-	max-height: 430px;
 	width: 100%;
 	text-align: center;
 	margin: 0 0 20px 0;
 }
 
-.view-id-front_page_featured img {
-	margin-top: -14em;
+.view-id-front_page_featured .hero {
+	display: block;
+	height: 450px;
+	width: 100%;
+	background-position: center top;
+	background-repeat: no-repeat;
 }
-
 .buttons {
-	margin: -11.5% auto 11.5% auto;
+	position: relative;
+	top: 429px;
+	margin: -30px 0 0 0;
 }
 
 .buttons * {
 	display: inline;
 }
 
-.view-id-front_page_featured .views-field-edit-node {
-	margin-top: -148px;
-	position: absolute;
+.view-id-front_page_featured .views-field-edit-node a {
+	background-color: #eee;
+	width: 100%;
+	text-align: center;
+	height: 25px;
+	line-height: 25px;
+	vertical-align: middle;
+	display: block;
 }
 
-
-/* Very large display targeting */
-@media only screen and (min-width: 1441px) {
-	.view-id-front_page_featured {
-		max-height: 660px;
-	}
-	.view-id-front_page_featured img {
-		margin-top: -22em;
-	}
-}
-/* Medium display targeting */
-@media only screen and (max-width: 1279px) and (min-width: 1050px) {
-	.view-id-front_page_featured {
-		max-height: 400px;
-		margin: 0;
-	}
-	.view-id-front_page_featured img {
-		margin-top: -12em;
-	}
-	.buttons {
-		margin: -10.2% auto 10.2% auto;
-	}
-}
-@media only screen and (max-width: 1050px) and (min-width: 768px) {
-	.view-id-front_page_featured {
-		max-height: 430px;
-	}
-	.view-id-front_page_featured img {
-		margin-top: -8em;
-	}
-	.buttons {
-		margin: -9.2% auto 9.2% auto;
-	}
-}
-/* Small display targeting */
-@media only screen and (max-width: 767px) {
-	.view-id-front_page_featured {
-		max-height: 417px;
-		margin: 0;
-	}
-	.view-id-front_page_featured img {
-		margin-top: -3em;
-	}
-	.buttons,
-	.buttons * {
-		display: none;
-		visibility: hidden;
-	}
-}
 @media only screen and (max-width: 650px) {
-	.view-id-front_page_featured img {
-		margin-top: 0;
+	.view-id-front_page_featured .hero {
+		background-size: 352%;
+		height: 365px;
+	}
+	.buttons {
+		display: none;
 	}
 }
 
+@media only screen and (max-width: 550px) {
+	.view-id-front_page_featured .hero {
+		height: 308px;
+	}
+}
+
+@media only screen and (max-width: 495px) {
+	.view-id-front_page_featured .hero {
+		height: 279px;
+	}
+}
+
+@media only screen and (max-width: 449px) {
+	.view-id-front_page_featured .hero {
+		height: 257px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.view-id-front_page_featured .hero {
+		height: 221px;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.view-id-front_page_featured .hero {
+		height: 180px;
+	}
+}
 
 /* CrossRef from ESV */
 a.esvBibleRef {
