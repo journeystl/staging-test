@@ -999,6 +999,11 @@ body.node-type-promotion-content .content-header {
 .section-give #featured .orbit-slide { display: block; }
 
 
+div.timer {
+	display: none;
+}
+
+
 /* LOGOS IN PANELS */
 
 .panel-pane .logo {
