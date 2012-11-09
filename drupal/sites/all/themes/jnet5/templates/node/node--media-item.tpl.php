@@ -69,7 +69,7 @@
   <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
 	<li id="scriptureTab">
   <?php
-    if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])) {
+    if (function_exists('curl_init') && isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])) {
       $key = "IP";
       $passage = urlencode($content['field_scripture_reference'][0]['#markup']);
       $options = "include-passage-references=true&include-audio-link=false";
