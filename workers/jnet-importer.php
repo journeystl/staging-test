@@ -11,12 +11,12 @@ $_SERVER['REQUEST_METHOD'] = 'GET';
 $_SERVER['SERVER_SOFTWARE'] = 'Apache/2.2.16 (Ubuntu)';
 require_once dirname(__FILE__) . '/../drupal/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
-
+file_put_contents('/var/www/drupal/files/worker_error_log.txt', 'foo0');
 while (1) {
-
+file_put_contents('/var/www/drupal/files/worker_error_log.txt', 'foo1');
   // Add an entry to the log.
   worker_watchdog('worker', 'Running worker jnet-importer.php.');
-
+file_put_contents('/var/www/drupal/files/worker_error_log.txt', 'foo2');
   jnet_importer_import(10);
   jnet_importer_import_weights();
 
