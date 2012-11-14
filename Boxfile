@@ -68,6 +68,7 @@ worker1:
     - ftp
     - pdo
     - pdo_mysql
+    - http
     - mcrypt
     - mbstring
     - eaccelerator
