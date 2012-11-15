@@ -39,17 +39,6 @@ db1:
   type: mysql
 
 worker1:
-  php_version: 5.3.8
-  php_max_execution_time: 120
-  php_max_input_time: 120
-  php_post_max_size: "100M"
-  php_upload_max_filesize: "100M"
-  php_file_uploads: "1"
-  php_max_file_uploads: 10
-  php_display_errors: "0"
-  php_date_timezone: "US/central"
-  php_default_locale: "en_US"
-
   name: jnet_importer
   #document_root: /drupal
   shared_writable_dirs:
@@ -63,7 +52,6 @@ worker1:
     - mysql
     - gd
     - curl
-    - json
     - xml
     - ftp
     - pdo
