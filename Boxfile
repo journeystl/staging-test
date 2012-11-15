@@ -40,23 +40,22 @@ db1:
 
 worker1:
   name: jnet_importer
-  #document_root: /drupal
+  type: php
+  exec: "php workers/jnet-importer.php"
   shared_writable_dirs:
     - drupal/sites/default/files
     - drupal/files
     - tmp
-  type: php
-  exec: "php workers/jnet-importer.php"
   php_extensions:
     - mysqli
     - mysql
     - gd
     - curl
+    - json
     - xml
     - ftp
     - pdo
     - pdo_mysql
-    - http
     - mcrypt
     - mbstring
     - eaccelerator

@@ -1,10 +1,5 @@
 <?php
 
-//ini_set("log_errors" , "1");
-//ini_set("error_log" , "/var/www/drupal/files/worker_error_log.txt");
-//ini_set("display_errors" , "0");
-//file_put_contents('/var/www/drupal/files/worker_error_log.txt', 'foo');
-
 // Bootstrap Drupal
 define("DRUPAL_ROOT", dirname(__FILE__) . '/../drupal');
 $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
@@ -17,7 +12,7 @@ while (1) {
   // Add an entry to the log.
   worker_watchdog('worker', 'Running worker jnet-importer.php.');
 
-  jnet_importer_import(10);
+  jnet_importer_import(25);
   jnet_importer_import_weights();
 
   worker_watchdog('worker', 'Finished worker jnet-importer.php. Will run again in 120 seconds.');
