@@ -5,7 +5,7 @@
  */
 ?>
 
-<?php if (strlen($content['field_speaker']) > 1): ?>
+<?php if (!empty($content['field_speaker'][0]['#markup'])): ?>
 	<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 <?php endif;?>
 
