@@ -28,7 +28,7 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 
 
 	<div class="four columns">
-		<?php if (isset($node->field_event_address_street[$node->language][0]['value']) && isset($node->field_event_address_city[$node->language][0]['value']) && isset($node->field_event_address_state[$node->language][0]['value']) && isset($node->field_event_address_zip[$node->language][0]['value'])): ?>
+		<?php if (!empty($node->field_event_address_street[$node->language][0]['value']) && !empty($node->field_event_address_city[$node->language][0]['value']) && !empty($node->field_event_address_state[$node->language][0]['value']) && !empty($node->field_event_address_zip[$node->language][0]['value'])): ?>
 					<div class="location-link"><strong>Location:</strong> <a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="" id="event-map-link"><?php print render($node->field_event_address_street[$node->language][0]['value']); ?>, <?php print render($node->field_event_address_city[$node->language][0]['value']); ?>, <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?></a></div>
 		<?php endif;?>
 	</div> <!--/.four columns-->
