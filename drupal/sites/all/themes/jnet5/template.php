@@ -30,6 +30,13 @@ function jnet5_preprocess_panels_pane(&$vars) {
 
   $churchselect = '<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Metro East</a></li><li><a href="' . $sipath . '">Southern Illinois</a></li></ul>';
   $vars['content'] = str_replace('[church_select]', $churchselect, $vars['content']);
+
+  if($vars['logged_in']) {
+    $logged = "logged-in";
+    $vars['classes_array'][] = $logged;
+  }
+
+
 }
 
 /**
