@@ -35,9 +35,14 @@ function jnet5_preprocess_panels_pane(&$vars) {
   $vars['content'] = str_replace('[church_select]', $churchselect, $vars['content']);
 
   foreach ($vars['pane']->access['plugins'] as &$access_rule) {
+    if ($access_rule['not'] = 'FALE') {
+      $access_rule_rule = 'is';
+    } else {
+      $access_rule_rule = 'not';
+    }
     $access_rule_name = $access_rule['name'];
     $access_rule_context = $access_rule['context'];
-    $vars['classes_array'][] = $access_rule_name . '-' . $access_rule_context;
+    $vars['classes_array'][] = 'visibility-' . $access_rule_name . '-' . $access_rule_rule . '-' . $access_rule_context;
   }
 
   // if($vars['logged_in']) {
