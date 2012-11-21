@@ -1066,3 +1066,14 @@ div.timer {
 .view-id-service_times_kids_page .field-collection-item-field-church-times * {
 	display: inline;
 }
+
+/* PANEL PANE BY VISIBILITY RULE */
+
+.visibility-role-is-logged-in-user {
+	border-top: solid 20px red;
+}
+
+.visibility-role-is-logged-in-user:before {
+	color: red;
+	content: "Only Visible To Logged In Users";
+}

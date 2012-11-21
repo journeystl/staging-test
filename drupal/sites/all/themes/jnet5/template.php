@@ -23,8 +23,6 @@ function jnet5_preprocess(&$vars, $hook) {
 
 function jnet5_preprocess_panels_pane(&$vars) {
 
-  dpm($vars);
-
   $tgpath = '/tg';
   $hrpath = '/hr';
   $wcpath = '/wc';
