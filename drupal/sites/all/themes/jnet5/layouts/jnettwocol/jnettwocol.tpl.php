@@ -15,11 +15,10 @@
  */
 ?>
 <div <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
-
 	<?php if ($content['top_full']): ?>
 		<?php print $content['top_full']; ?>
 	<?php endif; ?>
-	
+
 	<?php if ($content['top']): ?>
 		<div class="row">
 			<div class="twelve columns">
@@ -27,72 +26,72 @@
 			</div>
 		</div>
 	<?php endif; ?>
-	
+
 	<?php if($content['left1'] or $content['right1']): ?>
 		<div class="row">
 		  	<div class="six columns">
 		    	<?php print $content['left1']; ?>
 		  	</div>
-	
+
 		  	<div class="six columns">
 		    	<?php print $content['right1']; ?>
 		  	</div>
 	  	</div>
 	 <?php endif; ?>
-	 
+
 	 <?php if($content['left2'] or $content['right2']): ?>
 	 	<div class="row">
 	 	  	<div class="six columns">
 	 	    	<?php print $content['left2']; ?>
 	 	  	</div>
-	 
+
 	 	  	<div class="six columns">
 	 	    	<?php print $content['right2']; ?>
 	 	  	</div>
 	   	</div>
 	  <?php endif; ?>
-	  
+
 	  <?php if($content['left3'] or $content['right3']): ?>
 	  	<div class="row">
 	  	  	<div class="six columns">
 	  	    	<?php print $content['left3']; ?>
 	  	  	</div>
-	  
+
 	  	  	<div class="six columns">
 	  	    	<?php print $content['right3']; ?>
 	  	  	</div>
 	    </div>
 	   <?php endif; ?>
-	   
+
 	   <?php if($content['left4'] or $content['right4']): ?>
 	   	<div class="row">
 	   	  	<div class="six columns">
 	   	    	<?php print $content['left4']; ?>
 	   	  	</div>
-	   
+
 	   	  	<div class="six columns">
 	   	    	<?php print $content['right4']; ?>
 	   	  	</div>
 	     </div>
 	    <?php endif; ?>
-	    
+
 	    <?php if($content['left5'] or $content['right5']): ?>
 	    	<div class="row">
 	    	  	<div class="six columns">
 	    	    	<?php print $content['left5']; ?>
 	    	  	</div>
-	    
+
 	    	  	<div class="six columns">
 	    	    	<?php print $content['right5']; ?>
 	    	  	</div>
 	      	</div>
 	     <?php endif; ?>
-	 
+
 		<?php if ($content['bottom_full']): ?>
 			<?php print $content['bottom_full']; ?>
 		<?php endif; ?>
-		
-		
+
+
   	<?php if ($content['bottom']): ?>
 	  	<div class="row">
 	  		<div class="twelve columns">
