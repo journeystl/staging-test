@@ -9,7 +9,7 @@
     	require_once(dirname(__FILE__) . '/lib/ca-main.php');
 
     	$ca = new CityApi();
-    	// $ca->debug = true;
+    	$ca->debug = true;
 		$ca->json = true;
 
 		// BASIC INFORMATION
@@ -61,6 +61,7 @@
 		// echo $groups_index_results;
 
 		foreach ($groups_index_results->groups as $group) {
+			echo $group;
 			// 24434 = Overflow group
 
 			// ADDRESS -- Get lat/long out of call
