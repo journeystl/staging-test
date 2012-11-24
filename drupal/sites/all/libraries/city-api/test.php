@@ -66,7 +66,7 @@
 		            "id": 2516013,
 		            "user_id": 56346
 		        }, */
-    	$groups_roles_results = $ca->groups_roles_index(24434, array('title' => "Leader"));
+    	$groups_roles_results = $ca->groups_roles_index(24434, array('title' => 'Leaders'));
     	echo $groups_roles_results;
 
 
