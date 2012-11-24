@@ -1,25 +1,25 @@
 <?php
+		// NEEDS / QUESTIONS:
+		// 		Day it meets -- where is this set?  In tags?
+		//		Leader email address?
+		//		How to differentiate based on tags?
+		//		Lat/Long too specific to have on site?
+		//		Get campus from group_index or from tags?  Manual in tags but seems to be set in group_index automatically
+
     	require_once(dirname(__FILE__) . '/lib/ca-main.php');
 
     	$ca = new CityApi();
     	// $ca->debug = true;
 		$ca->json = true;
 
+		// BASIC INFORMATION
 		// Get name, nickname, campus_name, unlisted (if true, change buttons in popup)
 		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
-		// echo $groups_index_results;
-
-		// groups_show (For dates?)
-		// groups_addresses_show (For geocoding -- to zip code or?)
-		// groups_tags_index (For type)
-		// groups_roles_index (For leader last name / email address?)
+		echo $groups_index_results;
 
     	// 24434 = Overflow group
 
-    	// Don't think I get anything here I don't get with groups_index
-    	// $groups_show_results = $ca->groups_show(24434);
-    	// echo $groups_show_results;
-
+		// ADDRESS -- Get lat/long out of call
 		// Do we ever have more than 1 address, if so FLAG IT!
 		/* {
 		    "total_pages": 1,
@@ -46,12 +46,15 @@
 		    "total_entries": 1
 		} */
     	$groups_addresses_index = $ca->groups_addresses_index(24434);
-    	echo $groups_addresses_index;
+    	// echo $groups_addresses_index;
 
+    	// TAGS
+    	// Get day, type of group
     	$groups_tags_results = $ca->groups_tags_index(24434);
-    	echo $groups_tags_results;
+    	// echo $groups_tags_results;
 
-    	// Search for title: leader
+    	// LEADER INFORMATION
+    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
     	// If we don't have one, flag it.
     	/* {
 		    "roles": [
@@ -67,7 +70,5 @@
 		            "user_id": 56346
 		        }, */
     	$groups_roles_results = $ca->groups_roles_index(24434, array('title' => 'Leaders'));
-    	echo $groups_roles_results;
-
-
+    	// echo $groups_roles_results;
 ?>
