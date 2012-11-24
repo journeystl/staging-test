@@ -15,11 +15,13 @@
 		// groups_roles_index (For leader last name / email address?)
 
     	// 24434 = Overflow group
-    	$groups_show_results = $ca->groups_show(24434);
-    	echo $groups_show_results;
 
-    	$groups_addresses_results = $ca->groups_addresses_show(24434);
-    	echo $groups_addresses_results;
+    	// Don't think I get anything here I don't get with groups_index
+    	// $groups_show_results = $ca->groups_show(24434);
+    	// echo $groups_show_results;
+
+    	$groups_addresses_index = $ca->groups_addresses_index(24434);
+    	echo $groups_addresses_index;
 
     	$groups_tags_results = $ca->groups_tags_index(24434);
     	echo $groups_tags_results;
