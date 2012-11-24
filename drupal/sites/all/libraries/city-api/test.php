@@ -14,61 +14,107 @@
 
 		// BASIC INFORMATION
 		// Get name, nickname, campus_name, unlisted (if true, change buttons in popup)
-		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
-		echo $groups_index_results;
-
-    	// 24434 = Overflow group
-
-		// ADDRESS -- Get lat/long out of call
-		// Do we ever have more than 1 address, if so FLAG IT!
 		/* {
-		    "total_pages": 1,
+		    "under_group_id": "2057",
+		    "group_types": [
+		        "CG"
+		    ],
+		    "search": null,
+		    "total_pages": 5,
 		    "per_page": 20,
 		    "current_page": 1,
-		    "addresses": [
+		    "total_entries": 90,
+		    "include_inactive": false,
+		    "groups": [
 		        {
-		            "location_type": "Host",
-		            "city": "St. Louis",
-		            "street": "7701 Maryland Ave",
-		            "latitude": 38.651321,
-		            "group_external_id": "",
-		            "updated_at": "09/07/2012 08:29 PM (GMT)",
-		            "street2": "",
-		            "group_id": 24434,
-		            "created_at": "09/03/2010 03:48 PM (GMT)",
-		            "zipcode": "63105",
-		            "longitude": -90.333914,
-		            "id": 93886,
-		            "state": "MO",
-		            "privacy": "Private"
-		        }
-		    ],
-		    "total_entries": 1
-		} */
-    	$groups_addresses_index = $ca->groups_addresses_index(24434);
-    	// echo $groups_addresses_index;
+	            "time_zone": "",
+	            "target_size": null,
+	            "nearest_neighborhood_name": null,
+	            "last_engaged": "11/18/2012 07:44 AM (CST)",
+	            "plaza_url": "http://journeyon.onthecity.org/plaza?group_id=24434",
+	            "group_type": "Community Group",
+	            "admin_url": "http://journeyon.onthecity.org/admin/groups/24434",
+	            "external_description": "Are you having trouble finding the group for you? Do you attend the Hanley Road Campus?\r\n\r\nYes? Please join this group. Kate Roig, your Hanley Road Administrator, and your Community Group Director, manage this group and they will be glad to talk to you and help you find a group to plug into.",
+	            "started_as_seed": false,
+	            "unlisted": false,
+	            "updated_at": "11/15/2012 08:46 PM (GMT)",
+	            "auto_approve_invites": false,
+	            "created_at": "09/03/2010 03:47 PM (GMT)",
+	            "nickname": "",
+	            "internal_url": "http://journeyon.onthecity.org/groups/24434",
+	            "external_id": "",
+	            "nearest_neighborhood_id": null,
+	            "api_url": "https://api.onthecity.org/groups/24434",
+	            "profile_pic": "https://s3.amazonaws.com:443/thecity/accounts/29/image_attachments/191741/211876_overflowing_glass_5.jpg?Signature=cbcCvT5jnJDaqO2UTqj5U0RH%2BJQ%3D&Expires=1353709038&AWSAccessKeyId=0APJF43XSHNJKBJZXY82",
+	            "inactive": false,
+	            "secure": false,
+	            "name": "HR | OVERFLOW Community Group",
+	            "archive_scheduled": false,
+	            "campus_id": null,
+	            "id": 24434,
+	            "parent_id": 31062,
+	            "campus_name": null,
+	            "default_invitation_custom_message": "Welcome to the Overflow Community Group! Thank you so much for joining. We are looking forward to what God has in store for our community this coming year. We will contact you in the coming weeks to help you find a place in a community group that is a good fit for you. Please let us know if you have any other questions!\r\n",
+	            "deletion_scheduled": false
+	        }, */
+		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
+		// echo $groups_index_results;
 
-    	// TAGS
-    	// Get day, type of group
-    	$groups_tags_results = $ca->groups_tags_index(24434);
-    	// echo $groups_tags_results;
+		foreach ($groups_index_results->groups as $group) {
+			// 24434 = Overflow group
 
-    	// LEADER INFORMATION
-    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
-    	// If we don't have one, flag it.
-    	/* {
-		    "roles": [
-		    	{
-		            "user_type": "User",
-		            "last_engaged": "10/30/2012",
-		            "user_name": "Kevin Frank",
-		            "active": true,
-		            "user_api_url": "https://api.onthecity.org/users/56346",
-		            "created_at": "09/09/2012",
-		            "title": "Leader",
-		            "id": 2516013,
-		            "user_id": 56346
-		        }, */
-    	$groups_roles_results = $ca->groups_roles_index(24434, array('title' => 'Leaders'));
-    	// echo $groups_roles_results;
+			// ADDRESS -- Get lat/long out of call
+			// Do we ever have more than 1 address, if so FLAG IT!
+			/* {
+			    "total_pages": 1,
+			    "per_page": 20,
+			    "current_page": 1,
+			    "addresses": [
+			        {
+			            "location_type": "Host",
+			            "city": "St. Louis",
+			            "street": "7701 Maryland Ave",
+			            "latitude": 38.651321,
+			            "group_external_id": "",
+			            "updated_at": "09/07/2012 08:29 PM (GMT)",
+			            "street2": "",
+			            "group_id": 24434,
+			            "created_at": "09/03/2010 03:48 PM (GMT)",
+			            "zipcode": "63105",
+			            "longitude": -90.333914,
+			            "id": 93886,
+			            "state": "MO",
+			            "privacy": "Private"
+			        }
+			    ],
+			    "total_entries": 1
+			} */
+	    	$groups_addresses_index = $ca->groups_addresses_index($group->id);
+	    	// echo $groups_addresses_index;
+
+	    	// TAGS
+	    	// Get day, type of group
+	    	$groups_tags_results = $ca->groups_tags_index($group->id);
+	    	// echo $groups_tags_results;
+
+	    	// LEADER INFORMATION
+	    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
+	    	// If we don't have one, flag it.
+	    	/* {
+			    "roles": [
+			    	{
+			            "user_type": "User",
+			            "last_engaged": "10/30/2012",
+			            "user_name": "Kevin Frank",
+			            "active": true,
+			            "user_api_url": "https://api.onthecity.org/users/56346",
+			            "created_at": "09/09/2012",
+			            "title": "Leader",
+			            "id": 2516013,
+			            "user_id": 56346
+			        }, */
+	    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
+	    	// echo $groups_roles_results;
+		}
+	
 ?>
