@@ -60,9 +60,9 @@
 		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
 		// echo $groups_index_results;
 
-		echo $groups_index_results;
+		$groups_object = json_decode($groups_index_results);
 
-		foreach ($groups_index_results->groups as $group) {
+		foreach ($groups_object->groups as $group) {
 			echo $group;
 			// 24434 = Overflow group
 
