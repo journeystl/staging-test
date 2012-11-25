@@ -63,7 +63,8 @@
 		$groups_object = json_decode($groups_index_results);
 
 		foreach ($groups_object->groups as $group) {
-			var_dump($group);
+			var_dump($group->id);
+			echo "<br />ID: {$group->id}<br />";
 			// 24434 = Overflow group
 
 			// ADDRESS -- Get lat/long out of call
