@@ -61,7 +61,7 @@
 		// echo $groups_index_results;
 
 		$groups_object = json_decode($groups_index_results);
-		var_dump($groups_object);
+		var_dump($groups_object->groups);
 		exit();
 
 		foreach ($groups_object->groups as $group) {
