@@ -60,7 +60,7 @@
 		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
 		// echo $groups_index_results;
 
-		echo $groups_index_results->groups;
+		echo $groups_index_results;
 
 		foreach ($groups_index_results->groups as $group) {
 			echo $group;
