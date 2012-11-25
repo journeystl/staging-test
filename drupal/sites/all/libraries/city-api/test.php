@@ -67,6 +67,7 @@
 
 			// ADDRESS -- Get lat/long out of call
 			// Do we ever have more than 1 address, if so FLAG IT!
+			// Do we ever have no address, what do we do?
 			/* {
 			    "total_pages": 1,
 			    "per_page": 20,
@@ -96,8 +97,8 @@
 
 	    	// TAGS
 	    	// Get day, type of group
-	    	// $groups_tags_results = $ca->groups_tags_index($group->id);
-	    	// echo $groups_tags_results;
+	    	$groups_tags_results = $ca->groups_tags_index($group->id);
+	    	echo $groups_tags_results;
 
 	    	// LEADER INFORMATION
 	    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
@@ -115,8 +116,8 @@
 			            "id": 2516013,
 			            "user_id": 56346
 			        }, */
-	    	// $groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
-	    	// echo $groups_roles_results;
+	    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
+	    	echo $groups_roles_results;
 		}
 	
 ?>
