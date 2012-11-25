@@ -60,6 +60,7 @@
 		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
 		$groups_object = json_decode($groups_index_results);
 
+		echo "TOTAL PAGES: {$groups_object->total_pages}";
 		foreach ($groups_object->groups as $group) {
 			// var_dump($group->id);
 			// echo "<br />ID: {$group->id}<br />";
