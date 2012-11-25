@@ -103,11 +103,13 @@
 				    "total_entries": 1
 				} */
 		    	$groups_addresses_index = $ca->groups_addresses_index($group->id);
+		    	$addresses_object = json_decode($groups_addresses_index);
 		    	// echo $groups_addresses_index;
 
 		    	// TAGS
 		    	// Get day, type of group
 		    	$groups_tags_results = $ca->groups_tags_index($group->id);
+		    	$tags_object = json_decode($groups_tags_results);
 		    	// echo $groups_tags_results;
 
 		    	// LEADER INFORMATION
@@ -127,14 +129,25 @@
 				            "user_id": 56346
 				        }, */
 		    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
+		    	$roles_object = json_decode($groups_roles_results);
 		    	// echo $groups_roles_results;
 
 		    	// Compile information ...
 		    	$group_name = $group->name;
 				$group_nickname = $group->nickname;
 				$group_unlisted_status = $group->unlisted;
+				$group_address_count = $addresses_object->total_entries;
+				$group_street = $addresses_object[0]->street;
+				$group_latitude = $addresses_object[0]->latitude;
+				$group_longitude = $addresses_object[0]->longitude;
 
-				$group_data_array[] = array("name" => $group_name, "nickname" => $group_nickname, "unlisted" => $group_unlisted_status);
+				$group_data_array[] = array("name" => $group_name,
+											"nickname" => $group_nickname,
+											"unlisted" => $group_unlisted_status,
+											"address_count" => $group_address_count,
+											"latitude" => $group_latitude,
+											"longitude" => $group_longitude
+											);
 			}
 		}
 		var_dump($group_data_array);			
