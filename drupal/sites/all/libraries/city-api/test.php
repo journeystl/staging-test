@@ -62,10 +62,10 @@
 
 		$groups_object = json_decode($groups_index_results);
 		var_dump($groups_object->groups);
-		exit();
+		// exit();
 
 		foreach ($groups_object->groups as $group) {
-			echo $group;
+			var_dump($group);
 			// 24434 = Overflow group
 
 			// ADDRESS -- Get lat/long out of call
@@ -94,13 +94,13 @@
 			    ],
 			    "total_entries": 1
 			} */
-	    	$groups_addresses_index = $ca->groups_addresses_index($group->id);
-	    	echo $groups_addresses_index;
+	    	// $groups_addresses_index = $ca->groups_addresses_index($group->id);
+	    	// echo $groups_addresses_index;
 
 	    	// TAGS
 	    	// Get day, type of group
-	    	$groups_tags_results = $ca->groups_tags_index($group->id);
-	    	echo $groups_tags_results;
+	    	// $groups_tags_results = $ca->groups_tags_index($group->id);
+	    	// echo $groups_tags_results;
 
 	    	// LEADER INFORMATION
 	    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
@@ -118,8 +118,8 @@
 			            "id": 2516013,
 			            "user_id": 56346
 			        }, */
-	    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
-	    	echo $groups_roles_results;
+	    	// $groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
+	    	// echo $groups_roles_results;
 		}
 	
 ?>
