@@ -60,65 +60,72 @@
 		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
 		$groups_object = json_decode($groups_index_results);
 
-		echo "TOTAL PAGES: {$groups_object->total_pages}";
-		foreach ($groups_object->groups as $group) {
-			// var_dump($group->id);
-			// echo "<br />ID: {$group->id}<br />";
-			// 24434 = Overflow group
+		for ($i=1; $i<=$groups_object->total_pages; $i++) {
+			// Now that we've called it once to know total pages -- let's walk through all of them, unless we have already done so.
+			if ($i != 1) {
+				$groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i)); 
+				$groups_object = json_decode($groups_index_results);
+			}
 
-			// ADDRESS -- Get lat/long out of call
-			// Do we ever have more than 1 address, if so FLAG IT!
-			// Do we ever have no address, what do we do?
-			/* {
-			    "total_pages": 1,
-			    "per_page": 20,
-			    "current_page": 1,
-			    "addresses": [
-			        {
-			            "location_type": "Host",
-			            "city": "St. Louis",
-			            "street": "7701 Maryland Ave",
-			            "latitude": 38.651321,
-			            "group_external_id": "",
-			            "updated_at": "09/07/2012 08:29 PM (GMT)",
-			            "street2": "",
-			            "group_id": 24434,
-			            "created_at": "09/03/2010 03:48 PM (GMT)",
-			            "zipcode": "63105",
-			            "longitude": -90.333914,
-			            "id": 93886,
-			            "state": "MO",
-			            "privacy": "Private"
-			        }
-			    ],
-			    "total_entries": 1
-			} */
-	    	$groups_addresses_index = $ca->groups_addresses_index($group->id);
-	    	echo $groups_addresses_index;
+			foreach ($groups_object->groups as $group) {
+				// var_dump($group->id);
+				// echo "<br />ID: {$group->id}<br />";
+				// 24434 = Overflow group
 
-	    	// TAGS
-	    	// Get day, type of group
-	    	$groups_tags_results = $ca->groups_tags_index($group->id);
-	    	echo $groups_tags_results;
+				// ADDRESS -- Get lat/long out of call
+				// Do we ever have more than 1 address, if so FLAG IT!
+				// Do we ever have no address, what do we do?
+				/* {
+				    "total_pages": 1,
+				    "per_page": 20,
+				    "current_page": 1,
+				    "addresses": [
+				        {
+				            "location_type": "Host",
+				            "city": "St. Louis",
+				            "street": "7701 Maryland Ave",
+				            "latitude": 38.651321,
+				            "group_external_id": "",
+				            "updated_at": "09/07/2012 08:29 PM (GMT)",
+				            "street2": "",
+				            "group_id": 24434,
+				            "created_at": "09/03/2010 03:48 PM (GMT)",
+				            "zipcode": "63105",
+				            "longitude": -90.333914,
+				            "id": 93886,
+				            "state": "MO",
+				            "privacy": "Private"
+				        }
+				    ],
+				    "total_entries": 1
+				} */
+		    	$groups_addresses_index = $ca->groups_addresses_index($group->id);
+		    	echo $groups_addresses_index;
 
-	    	// LEADER INFORMATION
-	    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
-	    	// If we don't have one, flag it.
-	    	/* {
-			    "roles": [
-			    	{
-			            "user_type": "User",
-			            "last_engaged": "10/30/2012",
-			            "user_name": "Kevin Frank",
-			            "active": true,
-			            "user_api_url": "https://api.onthecity.org/users/56346",
-			            "created_at": "09/09/2012",
-			            "title": "Leader",
-			            "id": 2516013,
-			            "user_id": 56346
-			        }, */
-	    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
-	    	echo $groups_roles_results;
-		}
+		    	// TAGS
+		    	// Get day, type of group
+		    	$groups_tags_results = $ca->groups_tags_index($group->id);
+		    	echo $groups_tags_results;
+
+		    	// LEADER INFORMATION
+		    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
+		    	// If we don't have one, flag it.
+		    	/* {
+				    "roles": [
+				    	{
+				            "user_type": "User",
+				            "last_engaged": "10/30/2012",
+				            "user_name": "Kevin Frank",
+				            "active": true,
+				            "user_api_url": "https://api.onthecity.org/users/56346",
+				            "created_at": "09/09/2012",
+				            "title": "Leader",
+				            "id": 2516013,
+				            "user_id": 56346
+				        }, */
+		    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
+		    	echo $groups_roles_results;
+			}
+		}			
 	
 ?>
