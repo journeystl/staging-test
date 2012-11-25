@@ -58,13 +58,11 @@
 	            "deletion_scheduled": false
 	        }, */
 		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
-		// echo $groups_index_results;
-
 		$groups_object = json_decode($groups_index_results);
 
 		foreach ($groups_object->groups as $group) {
-			var_dump($group->id);
-			echo "<br />ID: {$group->id}<br />";
+			// var_dump($group->id);
+			// echo "<br />ID: {$group->id}<br />";
 			// 24434 = Overflow group
 
 			// ADDRESS -- Get lat/long out of call
@@ -93,8 +91,8 @@
 			    ],
 			    "total_entries": 1
 			} */
-	    	// $groups_addresses_index = $ca->groups_addresses_index($group->id);
-	    	// echo $groups_addresses_index;
+	    	$groups_addresses_index = $ca->groups_addresses_index($group->id);
+	    	echo $groups_addresses_index;
 
 	    	// TAGS
 	    	// Get day, type of group
