@@ -157,7 +157,7 @@
 											"street" => $group_street,
 											"zip_code" => $group_zip_code,
 											"latitude" => $group_latitude,
-											"longitude" => $group_longitude
+											"longitude" => $group_longitude,
 											"tags" => $group_tags);
 			}
 		}
