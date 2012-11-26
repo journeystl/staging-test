@@ -145,9 +145,9 @@
 
 				$group_tags = array();
 
-				foreach($tags_object->tags as $tag_id => $tag_name) {
+				/* foreach($tags_object->tags as $tag_id => $tag_name) {
 		    		array_push($group_tags, $tag_name);
-		    	}
+		    	} */
 
 				$group_data_array[] = array("name" => $group_name,
 											"nickname" => $group_nickname,
