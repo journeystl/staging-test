@@ -5,6 +5,8 @@
 		//		How to differentiate based on tags?
 		//		Lat/Long too specific to have on site?
 		//		Get campus from group_index or from tags?  Manual in tags but seems to be set in group_index automatically
+		// 		Do we ever have more than 1 address?
+		// 		Do we ever have no address, what do we do?
 
     	require_once(dirname(__FILE__) . '/lib/ca-main.php');
 
@@ -16,7 +18,7 @@
 		$ca->json = true;
 
 		// BASIC INFORMATION
-		// Get name, nickname, campus_name, unlisted (if true, change buttons in popup)
+		// Get name, nickname, campus_name, unlisted
 		/* {
 		    "under_group_id": "2057",
 		    "group_types": [
@@ -76,8 +78,6 @@
 				// 24434 = Overflow group
 
 				// ADDRESS -- Get lat/long out of call
-				// Do we ever have more than 1 address, if so FLAG IT!
-				// Do we ever have no address, what do we do?
 				/* {
 				    "total_pages": 1,
 				    "per_page": 20,
@@ -135,6 +135,7 @@
 		    	// Compile information ...
 		    	$group_name = $group->name;
 				$group_nickname = $group->nickname;
+				$group_campus = $group->campus_name;
 				$group_unlisted_status = $group->unlisted;
 				$group_address_count = $addresses_object->total_entries;
 				$group_street = $addresses_object->addresses[0]->street;
@@ -143,6 +144,7 @@
 
 				$group_data_array[] = array("name" => $group_name,
 											"nickname" => $group_nickname,
+											"campus" => $group_campus,
 											"unlisted" => $group_unlisted_status,
 											"address_count" => $group_address_count,
 											"latitude" => $group_latitude,
