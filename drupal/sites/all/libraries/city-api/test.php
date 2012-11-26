@@ -151,7 +151,7 @@
 		    	}
 
 		    	foreach($roles_object->roles as $leader) {
-		    		$group_leader_results = $ca->groups_users_show($leader->user_id);
+		    		$group_leader_results = $ca->users_show($leader->user_id);
 		    		echo $group_leader_results;
 		    		// array_push($group_leaders, $tag->user_name);
 		    	}
