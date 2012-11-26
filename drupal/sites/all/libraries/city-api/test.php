@@ -104,13 +104,11 @@
 				} */
 		    	$groups_addresses_results = $ca->groups_addresses_index($group->id);
 		    	$addresses_object = json_decode($groups_addresses_results);
-		    	// echo $groups_addresses_index;
 
 		    	// TAGS
 		    	// Get day, type of group
 		    	$groups_tags_results = $ca->groups_tags_index($group->id);
 		    	$tags_object = json_decode($groups_tags_results);
-		    	// echo $groups_tags_results;
 
 		    	// LEADER INFORMATION
 		    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
@@ -130,7 +128,6 @@
 				        }, */
 		    	$groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
 		    	$roles_object = json_decode($groups_roles_results);
-		    	// echo $groups_roles_results;
 
 		    	// Compile information ...
 		    	$group_name = $group->name;
@@ -152,8 +149,48 @@
 
 		    	foreach($roles_object->roles as $leader) {
 		    		$group_leader_results = $ca->users_show($leader->user_id);
-		    		echo $group_leader_results;
-		    		// array_push($group_leaders, $tag->user_name);
+		    		$leader_object = json_decode($group_leader_results);
+
+		    		array_push($group_leaders, $leader_object->email);
+		    		/* {
+					    "last": "Crow",
+					    "type": "User",
+					    "last_engaged": "11/20/2012 02:44 AM (GMT)",
+					    "primary_campus_id": 2093,
+					    "email": "lisacrow22@gmail.com",
+					    "gender": "Female",
+					    "primary_phone": "3145800022",
+					    "external_id_1": null,
+					    "admin_url": "http://journeyon.onthecity.org/admin/users/203051",
+					    "primary_campus_name": "Tower Grove",
+					    "birthdate": "1987-10-14",
+					    "head_of_household": false,
+					    "external_id_2": null,
+					    "last_logged_in": "11/20/2012 02:44 AM (GMT)",
+					    "updated_at": "11/16/2012 10:10 PM (GMT)",
+					    "active": true,
+					    "primary_phone_type": "Mobile",
+					    "external_id_3": null,
+					    "External ID": null,
+					    "created_at": "11/14/2010 02:59 PM (GMT)",
+					    "title": null,
+					    "nickname": "",
+					    "internal_url": "http://journeyon.onthecity.org/users/203051",
+					    "contact_updated_at": "09/27/2012 02:05 PM (GMT)",
+					    "secondary_phone": "",
+					    "staff": null,
+					    "api_url": "https://api.onthecity.org/users/203051",
+					    "first": "Lisa",
+					    "secondary_phone_type": "Home",
+					    "Custom Field 2": null,
+					    "member_since": null,
+					    "id": 203051,
+					    "external_chms_id": null,
+					    "Custom Field 3": null,
+					    "email_bouncing": false,
+					    "middle": "",
+					    "checkin_info": null
+					} */
 		    	}
 
 				$group_data_array[] = array("name" => $group_name,
@@ -165,7 +202,8 @@
 											"zip_code" => $group_zip_code,
 											"latitude" => $group_latitude,
 											"longitude" => $group_longitude,
-											"tags" => $group_tags);
+											"tags" => $group_tags,
+											"leaders" => $group_leaders);
 			}
 		}
 		var_dump($group_data_array);			
