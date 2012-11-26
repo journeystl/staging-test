@@ -144,9 +144,16 @@
 				$group_longitude = $addresses_object->addresses[0]->longitude;
 
 				$group_tags = array();
+				$group_leaders = array();
 
-				foreach($tags_object->tags as $tag) {
+		    	foreach($tags_object->tags as $tag) {
 		    		array_push($group_tags, $tag->name);
+		    	}
+
+		    	foreach($roles_object->roles as $leader) {
+		    		$group_leader_results = $ca->groups_users_show($leader->user_id);
+		    		echo $group_leader_results;
+		    		// array_push($group_leaders, $tag->user_name);
 		    	}
 
 				$group_data_array[] = array("name" => $group_name,
