@@ -110,7 +110,7 @@
 		    	// Get day, type of group
 		    	$groups_tags_results = $ca->groups_tags_index($group->id);
 		    	$tags_object = json_decode($groups_tags_results);
-		    	echo $groups_tags_results;
+		    	// echo $groups_tags_results;
 
 		    	// LEADER INFORMATION
 		    	// Search for title: leader --> NOTE: Leaders, not Leader WTC?
@@ -143,6 +143,12 @@
 				$group_latitude = $addresses_object->addresses[0]->latitude;
 				$group_longitude = $addresses_object->addresses[0]->longitude;
 
+				$group_tags = array();
+
+				foreach($tags_object->tags as $tag_id => $tag_name) {
+		    		array_push($group_tags, $tag_name);
+		    	}
+
 				$group_data_array[] = array("name" => $group_name,
 											"nickname" => $group_nickname,
 											"campus" => $group_campus,
@@ -152,7 +158,7 @@
 											"zip_code" => $group_zip_code,
 											"latitude" => $group_latitude,
 											"longitude" => $group_longitude
-											);
+											"tags" => $group_tags);
 			}
 		}
 		var_dump($group_data_array);			
