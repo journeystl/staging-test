@@ -26,10 +26,10 @@ if (isset($location_ids[1])) {
 					<strong>Services</strong>
 				</div>
 				<div class="four mobile-two columns">
-					
+
 					<?php if ($address_services->field_church_location[$node->language][0]['value'] != null) {
 						print $address_services->field_church_location[$node->language][0]['value'] . '<br>';
-						}	
+						}
 					?>
 					<?php print $address_services->field_church_street[$node->language][0]['value']; ?><br>
 					<?php print $address_services->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_services->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_services->field_church_zipcode[$node->language][0]['value']; ?><br>
@@ -42,7 +42,7 @@ if (isset($location_ids[1])) {
 		           	$content['field_image']['#label_display'] = 'hidden';
 		            ?>
 		            <?php print render($content['group_services']); ?>
-	
+
 		            <?php if (stristr($content['group_services']['#children'], '*')) {
 		            	print "<p class='muted smaller'>* No children's ministry provided during this service.</p>";
 		            } ?>
@@ -59,7 +59,7 @@ if (isset($location_ids[1])) {
 				<div class="four mobile-two columns">
 					<?php if ($address_services->field_church_location[$node->language][1]['value'] != null) {
 						print $address_services->field_church_location[$node->language][1]['value'] . '<br>';
-						}	
+						}
 					?>
 	           		<?php print $address_office->field_church_street[$node->language][0]['value']; ?><br>
 								<?php print $address_office->field_church_city[$node->language][0]['value']; ?>,&#32;<?php print $address_office->field_church_state[$node->language][0]['value']; ?>&#32;<?php print $address_office->field_church_zipcode[$node->language][0]['value']; ?><br>
@@ -76,7 +76,7 @@ if (isset($location_ids[1])) {
 	    </div>
 
 	</div> <!-- end row -->
-	
+
 	<hr class="top hide-for-small">
 	<hr class="bottom show-for-small">
 
@@ -90,6 +90,12 @@ if (isset($location_ids[1])) {
 
 	<div class="row">
 		<?php
+
+			if (isset($_GET['show_schedule'])) {
+				$schedule = jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short');
+			} else {
+				$schedule = '';
+			}
 
 			$view_meet_the_staff = views_get_view('meet_the_staff_churches');
 			$view_meet_the_staff->set_display('block');
@@ -108,6 +114,7 @@ if (isset($location_ids[1])) {
 					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 					<hr class="top double">
 					<h3>Get Involved</h3>
+					' . $schedule . '
 					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 				</div>';
 
