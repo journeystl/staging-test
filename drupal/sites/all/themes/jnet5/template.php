@@ -22,6 +22,7 @@ function jnet5_preprocess(&$vars, $hook) {
 }
 
 function jnet5_preprocess_panels_pane(&$vars) {
+
   $tgpath = '/tg';
   $hrpath = '/hr';
   $wcpath = '/wc';
@@ -30,6 +31,32 @@ function jnet5_preprocess_panels_pane(&$vars) {
 
   $churchselect = '<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Metro East</a></li><li><a href="' . $sipath . '">Southern Illinois</a></li></ul>';
   $vars['content'] = str_replace('[church_select]', $churchselect, $vars['content']);
+
+  foreach ($vars['pane']->access['plugins'] as &$access_rule) {
+    if ($access_rule['not'] = 'FALE') {
+      $access_rule_rule = 'is';
+    } else {
+      $access_rule_rule = 'not';
+    }
+    $access_rule_name = $access_rule['name'];
+    $access_rule_context = $access_rule['context'];
+    $vars['classes_array'][] = 'visibility-' . $access_rule_name . '-' . $access_rule_rule . '-' . $access_rule_context;
+  }
+
+  // if($vars['logged_in']) {
+  //   $logged = "logged-in";
+  //   $vars['classes_array'][] = $logged;
+  // }
+
+  //$access_rule = array_search('logged-in-user' , $vars['pane']['access']);
+
+  //in_array()
+
+  // if($access_rule = 'logged-in-user') {
+  //   $vars['classes_array'][] = $access_rule;
+  // }
+
+
 }
 
 /**

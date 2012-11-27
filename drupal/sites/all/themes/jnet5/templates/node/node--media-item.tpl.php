@@ -5,7 +5,7 @@
  */
 ?>
 
-<?php if (!empty($content['field_speaker'])): ?>
+<?php if (!empty($content['field_speaker'][0]['#markup'])): ?>
 	<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 <?php endif;?>
 
@@ -41,18 +41,18 @@
 <li class="audio" id="audioTab">
 <?php endif;?>
 <?php else:?>
-	
+
   <?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
   <li class="active audio" id="audioTab">
   <?php endif;?>
- <?php endif;?> 
+ <?php endif;?>
   <?php if (isset($content['field_mp3_audio']['#items'][0]['value']) && strlen($content['field_mp3_audio']['#items'][0]['value'])): ?>
     <?php print render($content['field_mp3_audio']); ?>
-    
+
     <a class="button radius secondary" href="<?php print $content['field_mp3_audio']['#items'][0]['value']; ?>">Download Audio</a>
     </li>
   <?php endif;?>
-  
+
   <li id="descriptionTab">
 
   		<strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
@@ -65,7 +65,7 @@
   		<p><?php print $content['field_description'][0]['#markup']; ?></p>
 
   </li>
-  
+
   <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
 	<li id="scriptureTab">
   <?php
@@ -84,7 +84,7 @@
 	?>
   </li>
   <?php endif;?>
-  
+
 </ul>
 
 <p><?php print jnet5_add_this(); ?></p>
