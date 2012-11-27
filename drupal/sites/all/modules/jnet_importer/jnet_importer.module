@@ -54,6 +54,18 @@ function jnet_importer_cron() {
 }
 
 /**
+ * Implements hook_node_load().
+ */
+function jnet_importer_node_load($nodes, $types) {
+  foreach ($nodes as $node) {
+    if ($guid = db_query("SELECT guid FROM {jnet_importer} WHERE nid = :nid", array(':nid' => $node->nid))->fetchField()) {
+      $guid = explode('_', $guid);
+      $node->pb_url = 'http://patchbay.journeyon.net/node/' . $guid[0];
+    }
+  }
+}
+
+/**
  * Implements hook_node_delete().
  */
 function jnet_importer_node_delete($node) {
