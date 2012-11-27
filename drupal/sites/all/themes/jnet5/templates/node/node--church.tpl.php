@@ -92,7 +92,7 @@ if (isset($location_ids[1])) {
 		<?php
 
 			if (isset($_GET['show_schedule'])) {
-				$schedule = jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short');
+				$schedule = '<hr class="top double">' . jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short');
 			} else {
 				$schedule = '';
 			}
@@ -114,8 +114,8 @@ if (isset($location_ids[1])) {
 					' . views_embed_view('event_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
 					<hr class="top double">
 					<h3>Get Involved</h3>
-					' . $schedule . '
 					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
+					' . $schedule . '
 				</div>';
 
 			} else {
@@ -130,6 +130,7 @@ if (isset($location_ids[1])) {
 					' . render(block_get_blocks_by_region('inner_second')) . '
 					<h3>Get Involved</h3>
 					' . views_embed_view('signup_list_church_pages', 'block', $node->field_uid[LANGUAGE_NONE][0]['value']) . '
+					' . $schedule . '
 				</div>';
 			}
 
