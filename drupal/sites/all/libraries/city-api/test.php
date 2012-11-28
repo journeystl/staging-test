@@ -281,7 +281,7 @@
 				var active_info = null;
 				var options = {
 					'zoom': 14,
-					'center': new google.maps.LatLng(40.7563551136864, -73.98548310000001),
+					'center': new google.maps.LatLng(38.559979, -90.31311),
 					'mapTypeId': google.maps.MapTypeId.ROADMAP
 				};
 				var map = new google.maps.Map(document.getElementById("map_canvas"), options);
