@@ -12,6 +12,7 @@
 
     	// To store our data in
     	$group_data_array = array();
+    	$group_data_map_json = array();
 
     	$ca = new CityApi();
     	// $ca->debug = true;
@@ -206,6 +207,21 @@
 											"leaders" => $group_leaders);
 			}
 		}
-		var_dump($group_data_array);			
+
+		$marker_counter = 1;
+		foreach ($group_data_array as $group) {
+			$group_data_map_json[] = array("marker_id" => $marker_counter,
+											"latitude" => $group['latitude'],
+											"longitude" => $group['longitude'],
+											"draggable" => false,
+											"title" => $group['name'],
+											"icon" => "http://demo-ee.com/images/pins/icon_gift.png",
+											"infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>{$group['name']}</div></div>");
+
+			$marker_counter++;
+		}
+
+		print json_encode($group_data_map_json);	
 	
 ?>
