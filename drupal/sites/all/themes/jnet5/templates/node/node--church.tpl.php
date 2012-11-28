@@ -93,7 +93,7 @@ if (isset($location_ids[1])) {
 
 			if (isset($_GET['show_schedule'])) {
 				$schedule = '
-				<div class="six columns">
+				<div class="six columns schedule">
 					<div class="row">' .
 						jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
 					'</div>
