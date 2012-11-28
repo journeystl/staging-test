@@ -12,6 +12,7 @@
 
     	// To store our data in
     	$group_data_array = array();
+    	$group_data_map_json = array();
 
     	$ca = new CityApi();
     	// $ca->debug = true;
@@ -193,7 +194,9 @@
 					} */
 		    	}
 
-				$group_data_array[] = array("name" => $group_name,
+		    	// Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
+		    	if (strlen($group_name) && strlen($group_campus) && ($group_address_count > 0) && strlen($group_latitude) && strlen($group_longitude) && (sizeof($group_tags) > 0) && (sizeof($group_leaders) > 0)) {
+		    		$group_data_array[] = array("name" => $group_name,
 											"nickname" => $group_nickname,
 											"campus" => $group_campus,
 											"unlisted" => $group_unlisted_status,
@@ -204,8 +207,137 @@
 											"longitude" => $group_longitude,
 											"tags" => $group_tags,
 											"leaders" => $group_leaders);
+		    	}
 			}
 		}
-		var_dump($group_data_array);			
-	
+
+		$marker_counter = 1;
+		foreach ($group_data_array as $group) {
+			$group_data_map_json[] = array("marker_id" => $marker_counter,
+											"latitude" => $group['latitude'],
+											"longitude" => $group['longitude'],
+											"draggable" => false,
+											"title" => $group['name'],
+											"icon" => "http://demo-ee.com/images/pins/icon_gift.png",
+											"infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>{$group['name']}</div></div>");
+
+			$marker_counter++;
+		}
 ?>
+<html>
+<head>
+	<title>Testing ...</title>
+	<style type="text/css">
+		.info-windows {
+			width: 144px;
+			height: 106px;
+
+			color: #ffedc8;
+			font: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+			margin: 0px;
+			max-width: none;
+			padding: 0px;
+		}
+
+		.info-windows img { 
+			margin: 0px;
+			padding: 0px;
+		}
+	 
+		.i-box {
+			width:  144px;
+			height: 106px;
+
+			color: #333;
+			max-width: none;	
+		}
+	 
+		.i-str {
+			width: 106px;
+			height: 18px;
+			top: 80px;
+			left: 32px;
+
+			background-color: #fff;
+			
+			margin-bottom: 1px;
+			padding: 6px 2px 2px 4px;
+			position: absolute;
+		}
+
+		#map_canvas { height: 300px }
+	 
+		#map_canvas img { max-width: none; } /* Google Map fix for Twitter bootstrap */
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="http://demo-ee.com/assets/js/google_maps/infobox.js"></script>
+	<script type="text/javascript">
+		(function($) {
+			jQuery.fn.gogMap = function(markers_raw, custom_style) {
+				var markers = [];
+				var infowindows = [];
+				var active_info = null;
+				var options = {
+					'zoom': 14,
+					'center': new google.maps.LatLng(38.559979, -90.31311),
+					'mapTypeId': google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+				for (var m_id in markers_raw) {
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(markers_raw[m_id].latitude, markers_raw[m_id].longitude),
+						id: (markers_raw[m_id].marker_id),
+						map: map,
+						title: markers_raw[m_id].title,
+						icon: markers_raw[m_id].icon
+					});
+					markers.push(marker);
+					var myOptions = {
+						content: "<div>" + markers_raw[m_id].infow + "</div>",
+						disableAutoPan: false,
+						maxWidth: 0,
+						alignBottom: true,
+						pixelOffset: new google.maps.Size(-16, -11),
+						zIndex: null,
+						boxClass: "info-windows",
+						closeBoxURL: "",
+						pane: "floatPane",
+						enableEventPropagation: false,
+						infoBoxClearance: "10px",
+						position: marker.position
+					};
+					var infowindow = new InfoBox(myOptions); // infoWindow w/ infobox.js
+					infowindows[marker.id] = infowindow;
+					google.maps.event.addListener(markers[markers.length - 1], 'click', function() {
+						if (active_info) {
+							infowindows[active_info].close();
+						}
+						active_info = this.id;
+						infowindows[this.id].open(this.map);
+						return false;
+					});
+				}
+				map.setOptions({
+					styles: [{
+						featureType: "all",
+						stylers: custom_style
+					}]
+				});
+			}
+		})(jQuery);
+	</script>
+	<script type="text/javascript">
+	//<![CDATA[
+		$(document).ready(function() {
+			var markers_raw = <?php print json_encode($group_data_map_json); ?>;
+			$().gogMap(markers_raw, [{ gamma: .25 },{ lightness: 0 },{ hue: "#000000" },{ visibility: "simplified" },{ saturation: 0 }]);
+		});
+	//]]>
+	</script>
+</head>
+<body>
+	<div id="map_canvas"></div>
+</body>
+</html>

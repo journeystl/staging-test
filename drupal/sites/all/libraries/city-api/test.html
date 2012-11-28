@@ -1,0 +1,160 @@
+<html>
+<head>
+	<title>Testing ...</title>
+	<style type="text/css">
+		.info-windows {
+			width: 144px;
+			height: 106px;
+
+			color: #ffedc8;
+			font: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+			margin: 0px;
+			max-width: none;
+			padding: 0px;
+		}
+
+		.info-windows img { 
+			margin: 0px;
+			padding: 0px;
+		}
+	 
+		.i-box {
+			width:  144px;
+			height: 106px;
+
+			color: #333;
+			max-width: none;	
+		}
+	 
+		.i-str {
+			width: 106px;
+			height: 18px;
+			top: 80px;
+			left: 32px;
+
+			background-color: #fff;
+			
+			margin-bottom: 1px;
+			padding: 6px 2px 2px 4px;
+			position: absolute;
+		}
+
+		#map_canvas { height: 300px }
+	 
+		#map_canvas img { max-width: none; } /* Google Map fix for Twitter bootstrap */
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="http://demo-ee.com/assets/js/google_maps/infobox.js"></script>
+	<script type="text/javascript">
+		(function($) {
+			jQuery.fn.gogMap = function(markers_raw, custom_style) {
+				var markers = [];
+				var infowindows = [];
+				var active_info = null;
+				var options = {
+					'zoom': 14,
+					'center': new google.maps.LatLng(40.7563551136864, -73.98548310000001),
+					'mapTypeId': google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+				for (var m_id in markers_raw) {
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(markers_raw[m_id].latitude, markers_raw[m_id].longitude),
+						id: (markers_raw[m_id].marker_id),
+						map: map,
+						title: markers_raw[m_id].title,
+						icon: markers_raw[m_id].icon
+					});
+					markers.push(marker);
+					var myOptions = {
+						content: "<div>" + markers_raw[m_id].infow + "</div>",
+						disableAutoPan: false,
+						maxWidth: 0,
+						alignBottom: true,
+						pixelOffset: new google.maps.Size(-16, -11),
+						zIndex: null,
+						boxClass: "info-windows",
+						closeBoxURL: "",
+						pane: "floatPane",
+						enableEventPropagation: false,
+						infoBoxClearance: "10px",
+						position: marker.position
+					};
+					var infowindow = new InfoBox(myOptions); // infoWindow w/ infobox.js
+					infowindows[marker.id] = infowindow;
+					google.maps.event.addListener(markers[markers.length - 1], 'click', function() {
+						if (active_info) {
+							infowindows[active_info].close();
+						}
+						active_info = this.id;
+						infowindows[this.id].open(this.map);
+						return false;
+					});
+				}
+				map.setOptions({
+					styles: [{
+						featureType: "all",
+						stylers: custom_style
+					}]
+				});
+			}
+		})(jQuery);
+	</script>
+	<script type="text/javascript">
+	//<![CDATA[
+		$(document).ready(function() {
+			var markers_raw = [{marker_id : 7,
+				latitude: 40.76488302920635,
+				longitude: -73.97395825319825,
+				draggable: false,
+				title: "Hotel X",
+				icon: "http://demo-ee.com/images/pins/icon_gift.png",
+				infow:"<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>Coffee</div></div>"},{marker_id : 6,
+				latitude: -27.470933094675438,
+				longitude: 153.0235024000001,
+				draggable: false,
+				title: "Brisbane Hotel",
+				icon: "http://demo-ee.com/images/pins/icon_gift.png",
+				infow:"<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>Coffee</div></div>"},{marker_id : 5,
+				latitude: -22.167055301835966,
+				longitude: 123.14181874999997,
+				draggable: false,
+				title: "Test philadelphia Hotel",
+				icon: "http://demo-ee.com/images/pins/icon_gift.png",
+				infow:"<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>Coffee</div></div>"},{marker_id : 4,
+				latitude: -25.38373276111845,
+				longitude: 134.21603749999997,
+				draggable: false,
+				title: "Test hotel",
+				icon: "http://demo-ee.com/images/pins/icon_gift.png",
+				infow:"<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>Coffee</div></div>"},{marker_id : 3,
+				latitude: 40.74026421367863,
+				longitude: -74.00340829999993,
+				draggable: false,
+				title: "Chelsea Pines Inn",
+				icon: "http://demo-ee.com/images/pins/icon_gift.png",
+				infow:"<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>Coffee</div></div>"},{marker_id : 2,
+				latitude: 40.7563551136864,
+				longitude: -73.98548310000001,
+				draggable: false,
+				title: "Casablanca Hotel Times Square",
+				icon: "http://demo-ee.com/images/pins/icon_gift.png",
+				infow:"<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+				<div class='i-str'>Coffee</div></div>"}];
+			
+			$().gogMap(markers_raw, [{ gamma: .25 },{ lightness: 0 },{ hue: "#000000" },{ visibility: "simplified" },{ saturation: 0 }]);
+		});
+	//]]>
+	</script>
+</head>
+<body>
+	<div id="map_canvas"></div>
+</body>
+</html>
+
