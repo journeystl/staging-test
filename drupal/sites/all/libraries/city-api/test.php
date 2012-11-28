@@ -194,7 +194,9 @@
 					} */
 		    	}
 
-				$group_data_array[] = array("name" => $group_name,
+		    	// Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
+		    	if (strlen($group_name) && strlen($group_campus) && ($group_address_count > 0) && strlen($group_latitude) && strlen($group_longitude) && (sizeof($group_tags) > 0) && (sizeof($group_leaders) > 0)) {
+		    		$group_data_array[] = array("name" => $group_name,
 											"nickname" => $group_nickname,
 											"campus" => $group_campus,
 											"unlisted" => $group_unlisted_status,
@@ -205,6 +207,7 @@
 											"longitude" => $group_longitude,
 											"tags" => $group_tags,
 											"leaders" => $group_leaders);
+		    	}
 			}
 		}
 
