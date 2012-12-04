@@ -1080,12 +1080,36 @@ div.timer {
 
 /* schedule - this week */
 
+.schedule:first-child .row {
+	margin-bottom: 30px;
+}
 .schedule h6 {
 	margin-top: 0;
 }
 .schedule ul,
 .schedule ul li {
+	list-style: none;
+	line-height: normal;
+}
+.schedule ul {
+	padding: 0 15px;
+}
+.schedule ul li {
 	margin-left: 0;
 	padding-left: 0;
-	list-style: none;
+}
+
+.schedule .label.secondary a {
+	color: #333;
+	text-decoration: none;
+	font-weight: normal;
+}
+.schedule .label.secondary a:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+#scheduleModal .row {
+	min-height: 175px;
+	line-height: 1.2em;
 }
