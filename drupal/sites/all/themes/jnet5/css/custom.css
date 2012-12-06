@@ -452,9 +452,11 @@ hr.double {
 	content: ":";
 }
 
+/*
 .field-name-field-church-service-time{
 	margin-left: 20px;
 }
+*/
 
 .node-church .office {
 	margin-bottom: 25px;
@@ -1082,6 +1084,7 @@ div.timer {
 
 .schedule .service {
 	margin-bottom: 20px;
+	line-height: 118%;
 }
 
 .schedule h6 {
