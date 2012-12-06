@@ -218,7 +218,7 @@
 											"longitude" => $group['longitude'],
 											"draggable" => false,
 											"title" => $group['name'],
-											"icon" => "http://demo-ee.com/images/pins/icon_gift.png",
+											"icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
 											"infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
 				<div class='i-str'>{$group['name']}</div></div>");
 
