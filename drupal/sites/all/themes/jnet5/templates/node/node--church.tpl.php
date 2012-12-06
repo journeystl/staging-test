@@ -25,43 +25,9 @@ if (isset($_GET['show_schedule'])) {
 	
 	$schedule = '				
 	<div class="six columns schedule">
-		<div class="row">
-
-
-
-
-
-	<div class="twelve columns">
-<hr class="top double" /></div>
-<h3 class="twelve columns">This Weekend <small><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-12-01T00:00:00-06:00">Dec 01, 2012</span></small></h3>
-
-	
-
-	<span class="push-four five columns mobile-two"><span class="muted">Preaching</span><br>
-<strong><a href="http://thejourney.org/leadership/staff/tower-grove#907">Jeremy Bedenbaugh</a></strong><br>
-Encounter Jesus as Revealer <span class="round secondary label"><a href="http://thejourney.org/node/13709">Encounter</a></span> <span class="round secondary label">Luke 2:22-38</span></span>
-	
-
-
-<div class="item-list">      <span class="push-four three columns mobile-two"><a href="http://thejourney.org/leadership/staff/west-county#932"><span class="muted">Worship</span><br>
-<strong>Stephen Miller</strong></a></span>
-    <ul class="pull-nine three columns hide-for-small">          <li class="">  
-          <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-12-01T00:00:00-06:00">Sat</span>. <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-01-01T16:30:00-06:00">4:30 PM</span> (Live)  </li>
-          <li class="">  
-          <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-12-01T00:00:00-06:00">Sat</span>. <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-01-01T18:30:00-06:00">6:30 PM</span> (Live)  </li>
-          <li class="">  
-          <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-12-02T00:00:00-06:00">Sun</span>. <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-01-01T08:30:00-06:00">8:30 AM</span> (Live)  </li>
-          <li class="">  
-          <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-12-02T00:00:00-06:00">Sun</span>. <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-01-01T10:00:00-06:00">10:00 AM</span> (Live)  </li>
-          <li class="">  
-          <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-12-02T00:00:00-06:00">Sun</span>. <span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2012-01-01T11:30:00-06:00">11:30 AM</span> (Live)  </li>
-      </ul></div>
-
-
-	<p class="six columns"><a href="#" class="round button" data-reveal-id="scheduleModal">View More Weekends</a></p>
-
-
-		</div>
+		<div class="row">' .
+		jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
+	  '</div>
 	</div>';
 } else {
 	$schedule_modal = '';

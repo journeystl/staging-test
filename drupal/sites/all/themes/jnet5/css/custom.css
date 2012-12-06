@@ -1080,9 +1080,10 @@ div.timer {
 
 /* schedule - this week */
 
-.schedule:first-child .row {
-	margin-bottom: 30px;
+.schedule .service {
+	margin-bottom: 20px;
 }
+
 .schedule h6 {
 	margin-top: 0;
 }
@@ -1110,6 +1111,5 @@ div.timer {
 }
 
 #scheduleModal .row {
-	min-height: 175px;
 	line-height: 1.2em;
 }
