@@ -341,18 +341,18 @@ function jnet5_get_schedule($campus_id, $type) {
     'long' => 'http://scheduler.pagodabox.com/jorg/weekends/' . $campus_id,
   );
 
-  $last_timestamp = param_get('jnet5_schedule_timestamp_' . $campus_id);
+  $last_timestamp = param_get('jnet5_schedule_timestamp_' . $type . '_' . $campus_id);
 
-  if ($last_timestamp < strtotime("-5 minutes")) { //comment out this line for testing
+  if ($last_timestamp < strtotime("-5 minutes")) {
     $markup = file_get_contents($urls[$type]);
     if (strlen($markup)) {
       param_set('jnet5_schedule_markup_' . $type . '_' . $campus_id, $markup);
-      param_set('jnet5_schedule_timestamp_' . $campus_id, time());
+      param_set('jnet5_schedule_timestamp_' . $type . '_' . $campus_id, time());
       return $markup;
     } else {
       watchdog('jnet5', 'Could not retrieve scheduler info for campus ' . $campus_id . ', type ' . $type . '.');
     }
-  }  //comment out this line for testing
+  }
 
   return param_get('jnet5_schedule_markup_' . $type . '_' . $campus_id);
 }
