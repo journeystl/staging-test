@@ -18,20 +18,25 @@ function jnet_media_nav_block_block_view($delta = '') {
 
   switch ($delta) {
     case 'jnet_media_nav_block':
+      $block['subject'] = '';
+      $block['content'] = '';
+
       // Since we're only ever displaying this on a media node, we can completely and happily
       // break if that's not the case, or if we're missing a media series.
       $menu = menu_get_item();
       if (isset($menu['path']) && $menu['path'] == 'node/%') {
         $node = $menu['page_arguments'][0];
       } else {
-        $block['subject'] = '';
-        $block['content'] = '';
         return $block;
       }
 
       // Get the current media series from the active node.
       $media_series_id = $node->field_series[LANGUAGE_NONE][0]['target_id'];
       $media_item_date = $node->field_sermondate[LANGUAGE_NONE][0]['value'];
+
+      if (!$media_series_id) {
+        return $block;
+      }
 
       // Get 4 'previous' items.
       $query = db_select('field_data_field_series', 's');
