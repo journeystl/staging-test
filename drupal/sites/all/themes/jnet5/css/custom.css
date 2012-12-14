@@ -420,11 +420,21 @@ hr.double {
 .view-id-locations table tr.even,
 .view-id-locations table tr.odd {
 	background-color: #fff;
+	border-bottom: 1px solid #666;
+}
+
+.view-id-locations table tr.views-row-last {
 	border-bottom: none;
 }
-.view-id-locations table tr {
-	border-bottom: 1px solid red;
+
+.view-id-locations table tr td {
+	padding: 40px 0;
 }
+
+.view-id-locations table tr.views-row-last td {
+	padding-bottom: 0;
+}
+
 .view-id-locations table td.views-field-field-building-photo {
 	width: 430px;
 }
