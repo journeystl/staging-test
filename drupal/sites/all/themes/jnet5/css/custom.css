@@ -1132,6 +1132,14 @@ div.timer {
 	line-height: 1.2em;
 }
 
+/* To Break Date on Small screens */
+@media only screen and (max-width: 450px) {
+	.schedule h3 small {
+		display: block;
+		margin: 0.7em 0 .2em;
+	}
+}
+
 /* For scroll links */
 span#this_weekend {
 	position: absolute;
