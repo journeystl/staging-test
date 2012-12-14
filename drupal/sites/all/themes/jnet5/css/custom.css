@@ -422,6 +422,9 @@ hr.double {
 	background-color: #fff;
 	border-bottom: none;
 }
+.view-id-locations table tr {
+	border-bottom: 1px solid red;
+}
 .view-id-locations table td.views-field-field-building-photo {
 	width: 430px;
 }

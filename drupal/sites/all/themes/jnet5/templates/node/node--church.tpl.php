@@ -18,7 +18,7 @@ if (isset($location_ids[1])) {
 // Build Schedule stuff
 if (isset($_GET['show_schedule'])) {
 	$schedule_modal = '				
-	<div id="scheduleModal" class="schedule reveal-modal large">' .
+	<div id="scheduleModal" class="schedule reveal-modal xlarge" style="top: 100px;">' .
 		jnet5_get_schedule($node->field_uid['und'][0]['value'], 'long') .
 	  '<a class="close-reveal-modal">&#215;</a>
 	</div>';
@@ -26,9 +26,9 @@ if (isset($_GET['show_schedule'])) {
 	$schedule = '				
 	<div class="six columns schedule">
 		<div class="row">' .
-		jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
-	  '<div class="twelve columns"><hr class="top double" /></div>
-	  </div>
+			jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
+		'<p class="twelve columns"><a href="#" class="radius medium button" data-reveal-id="scheduleModal">View More Weekends</a></p>
+		</div>
 	</div>';
 } else {
 	$schedule_modal = '';
@@ -118,7 +118,7 @@ $view_meet_the_staff = views_get_view('meet_the_staff_churches');
 $view_meet_the_staff->set_display('block');
 $view_meet_the_staff->execute();
 if (count($view_meet_the_staff->result) > 0) {
-	$meetStaff = $view_meet_the_staff->render();
+	$meetStaff = '<h3>Meet Our Staff</h3>' . $view_meet_the_staff->render();
 } else {
 	$meetStaff = '';
 }
@@ -129,7 +129,7 @@ $view_upcoming_events->set_display('block');
 $view_upcoming_events->set_arguments(array($node->field_uid[LANGUAGE_NONE][0]['value']));
 $view_upcoming_events->execute();
 if (count($view_meet_the_staff->result) > 0) {
-	$upcomingEvents = $view_upcoming_events->render();
+	$upcomingEvents = '<h3>Upcoming Events</h3>' . $view_upcoming_events->render();
 } else {
 	$upcomingEvents = '';
 }
@@ -140,7 +140,7 @@ $view_get_involved->set_display('block');
 $view_get_involved->set_arguments(array($node->field_uid[LANGUAGE_NONE][0]['value']));
 $view_get_involved->execute();
 if (count($view_get_involved->result) > 0) {
-	$getInvolved = $view_get_involved->render();
+	$getInvolved = '<h3>Get Involved</h3>' . $view_get_involved->render();
 } else {
 	$getInvolved = '';
 }	
@@ -148,50 +148,71 @@ if (count($view_get_involved->result) > 0) {
 
 ?>
 
-<div class="row">
 
 <?php if (count($view_meet_the_staff->result) >= 4): ?>
+<div class="row">
 	<div class="six columns hide-for-small">
-		<h3>Meet Our Staff</h3>
 		<?php print $meetStaff; ?>
 	</div>
 	
 	<?php print $schedule; ?>
 	
+	<?php if ($schedule != ''): ?>
+		<div class="six columns">
+			<hr class="top double">
+		</div>
+	<?php endif; ?>
+		
 	<div class="six columns">
-		<h3>Upcoming Events</h3>
 		<?php print $upcomingEvents; ?>
-		
-		<hr class="top double">
-		
-		<h3>Get Involved</h3>
+		<?php if ($upcomingEvents != ''): ?>
+			<hr class="top double">
+		<?php endif; ?>
 		<?php print $getInvolved; ?>
 	</div>
-<?php else: ?>
+<hr class="top">
+
+
+<?php elseif ($schedule == ''): ?>
+<div class="row">
 	<div class="six columns">
-		<h3>Upcoming Events</h3>
+		<?php print $meetStaff; ?>
+	</div>
+	<div class="six columns hide-for-small">
 		<?php print $upcomingEvents; ?>
-		<span class="hide-for-small">
-			<hr class="top double">
-			<h3>Meet Our Staff</h3>
-			<?php print $meetStaff; ?>
-		</span>
+	</div>
+
+	<div class="six columns">
+		<hr class="top double">
+		<?php print $getInvolved; ?>
+	</div>
+</div> <!-- end row -->
+
+
+<?php else: ?>
+<div class="row">
+	<div class="six columns">
+		<?php print $meetStaff; ?>
 	</div>
 
 	<?php print $schedule; ?>
-	
+</div>
+<div class="row">
+	<div class="six columns hide-for-small">
+		<hr class="top double">
+		<?php print $upcomingEvents; ?>
+	</div>
 	<div class="six columns">
-		<h3>Get Involved</h3>
+		<hr class="top double">
 		<?php print $getInvolved; ?>
 	</div>
+</div> <!-- end row -->
 <?php endif; ?>
 
 
 
 
-<hr class="top">
 
-</div> <!-- end row -->
 <!-- END BLOCKS -->
 
 </div> <!-- end node -->
