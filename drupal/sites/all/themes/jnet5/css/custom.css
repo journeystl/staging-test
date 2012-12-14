@@ -455,6 +455,7 @@ hr.double {
 	left: 0px;
 }
 
+
 /* CHURCH PAGES */
 
 .field-name-field-church-service-day{
@@ -764,6 +765,7 @@ p + ul {
 .pane-content ul {
 	margin-left: 15px;
 }
+
 
 
 /* Media Item Nav */
@@ -1128,4 +1130,13 @@ div.timer {
 
 #scheduleModal .row {
 	line-height: 1.2em;
+}
+
+/* For scroll links */
+span#this_weekend {
+	position: absolute;
+	display: block;
+	top: -60px;
+	background-color: transparent;
+	border: 1px none;
 }

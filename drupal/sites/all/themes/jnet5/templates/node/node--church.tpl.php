@@ -25,6 +25,7 @@ if (isset($_GET['show_schedule'])) {
 	
 	$schedule = '				
 	<div class="six columns schedule">
+		<span id="this_weekend"></span>
 		<div class="row">' .
 			jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
 		'<p class="twelve columns"><a href="#" class="radius medium button" data-reveal-id="scheduleModal">View More Weekends</a></p>
