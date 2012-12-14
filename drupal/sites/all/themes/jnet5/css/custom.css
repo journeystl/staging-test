@@ -1087,12 +1087,18 @@ div.timer {
 /* PANEL PANE BY VISIBILITY RULE */
 
 .visibility-role-is-logged-in-user {
-	border-top: solid 20px red;
+	margin-bottom: 5px;
+	padding: 10px;
+	background-color: #ffffcc;
 }
 
 .visibility-role-is-logged-in-user:before {
-	color: red;
+	color: #ffcc00;
 	content: "Only Visible To Logged In Users";
+	text-align: center;
+	width: 100%;
+	display: block;
+	margin: 10px 0;
 }
 
 /* schedule - this week */
