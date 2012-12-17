@@ -1103,6 +1103,10 @@ div.timer {
 
 /* schedule - this week */
 
+.schedule {
+	color: #666;
+}
+
 .schedule .service {
 	margin-bottom: 20px;
 	line-height: 118%;
