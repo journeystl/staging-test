@@ -9,7 +9,7 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 // Get this every X minutes.
 $last_timestamp = param_get('city_api_map_timestamp');
-if ($last_timestamp < strtotime("-5 minutes")) {
+if ($last_timestamp < strtotime("-60 minutes") || isset($_GET['reload']) ) {
 	param_set('city_api_map_timestamp', time());
 
 
