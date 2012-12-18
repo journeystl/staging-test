@@ -556,6 +556,10 @@ hr.double {
 
 /* STORIES PAGE */
 
+body.page-node-13711 .views-field-field-sermondate {
+	display: none;
+}
+
 .view-id-Stories .block-grid.one-up {
 	margin: 0 0 4% 0;
 }
