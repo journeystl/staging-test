@@ -420,8 +420,21 @@ hr.double {
 .view-id-locations table tr.even,
 .view-id-locations table tr.odd {
 	background-color: #fff;
+	border-bottom: 1px solid #666;
+}
+
+.view-id-locations table tr.views-row-last {
 	border-bottom: none;
 }
+
+.view-id-locations table tr td {
+	padding: 40px 0;
+}
+
+.view-id-locations table tr.views-row-last td {
+	padding-bottom: 0;
+}
+
 .view-id-locations table td.views-field-field-building-photo {
 	width: 430px;
 }
@@ -441,6 +454,7 @@ hr.double {
 	top: -48px;
 	left: 0px;
 }
+
 
 /* CHURCH PAGES */
 
@@ -751,6 +765,7 @@ p + ul {
 .pane-content ul {
 	margin-left: 15px;
 }
+
 
 
 /* Media Item Nav */
@@ -1072,12 +1087,18 @@ div.timer {
 /* PANEL PANE BY VISIBILITY RULE */
 
 .visibility-role-is-logged-in-user {
-	border-top: solid 20px red;
+	margin-bottom: 5px;
+	padding: 10px;
+	background-color: #ffffcc;
 }
 
 .visibility-role-is-logged-in-user:before {
-	color: red;
+	color: #ffcc00;
 	content: "Only Visible To Logged In Users";
+	text-align: center;
+	width: 100%;
+	display: block;
+	margin: 10px 0;
 }
 
 /* schedule - this week */
@@ -1115,4 +1136,21 @@ div.timer {
 
 #scheduleModal .row {
 	line-height: 1.2em;
+}
+
+/* To Break Date on Small screens */
+@media only screen and (max-width: 450px) {
+	.schedule h3 small {
+		display: block;
+		margin: 0.7em 0 .2em;
+	}
+}
+
+/* For scroll links */
+span#this_weekend {
+	position: absolute;
+	display: block;
+	top: -60px;
+	background-color: transparent;
+	border: 1px none;
 }
