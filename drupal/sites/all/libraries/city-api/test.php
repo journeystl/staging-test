@@ -1,8 +1,7 @@
 <?php
 
 if (!defined('DRUPAL_ROOT')) {
-  //define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT']);
-  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/jnet5-dev/drupal');
+  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT']);
 }
 $base_url = "http://" . $_SERVER['HTTP_HOST'];
 require_once DRUPAL_ROOT . "/includes/bootstrap.inc";
@@ -351,7 +350,7 @@ if ($last_timestamp < strtotime("-5 minutes")) {
 	<script type="text/javascript">
 	//<![CDATA[
 		$(document).ready(function() {
-			var markers_raw = <?php print json_encode($group_data_map_json); ?>;
+			var markers_raw = <?php print json_encode(	); ?>;
 			$().gogMap(markers_raw, [{ gamma: .25 },{ lightness: 0 },{ hue: "#000000" },{ visibility: "simplified" },{ saturation: 0 }]);
 		});
 	//]]>
