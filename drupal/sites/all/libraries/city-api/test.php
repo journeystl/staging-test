@@ -1,4 +1,18 @@
 <?php
+
+if (!defined('DRUPAL_ROOT')) {
+  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT']);
+}
+$base_url = "http://" . $_SERVER['HTTP_HOST'];
+require_once DRUPAL_ROOT . "/includes/bootstrap.inc";
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+
+// Get this every X minutes.
+$last_timestamp = param_get('city_api_map_timestamp');
+if ($last_timestamp < strtotime("-5 minutes")) {
+	param_set('city_api_map_timestamp', time());
+
+
 		// NEEDS / QUESTIONS:
 		// 		Day it meets -- where is this set?  In tags?
 		//		Leader email address?
@@ -16,7 +30,7 @@
 
     	$ca = new CityApi();
     	// $ca->debug = true;
-		$ca->json = true;
+			$ca->json = true;
 
 		// BASIC INFORMATION
 		// Get name, nickname, campus_name, unlisted
@@ -63,13 +77,13 @@
 	            "default_invitation_custom_message": "Welcome to the Overflow Community Group! Thank you so much for joining. We are looking forward to what God has in store for our community this coming year. We will contact you in the coming weeks to help you find a place in a community group that is a good fit for you. Please let us know if you have any other questions!\r\n",
 	            "deletion_scheduled": false
 	        }, */
-		$groups_index_results = $ca->groups_index(array('group_types' => "CG")); 
+		$groups_index_results = $ca->groups_index(array('group_types' => "CG"));
 		$groups_object = json_decode($groups_index_results);
 
 		for ($i=1; $i<=$groups_object->total_pages; $i++) {
 			// Now that we've called it once to know total pages -- let's walk through all of them, unless we have already done so.
 			if ($i != 1) {
-				$groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i)); 
+				$groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i));
 				$groups_object = json_decode($groups_index_results);
 			}
 
@@ -227,6 +241,11 @@
 
 			$marker_counter++;
 		}
+
+	param_set('city_api_map_json', $group_data_map_json);
+} else {
+	$group_data_map_json = param_get('city_api_map_json');
+}
 ?>
 <html>
 <head>
@@ -243,19 +262,19 @@
 			padding: 0px;
 		}
 
-		.info-windows img { 
+		.info-windows img {
 			margin: 0px;
 			padding: 0px;
 		}
-	 
+
 		.i-box {
 			width:  144px;
 			height: 106px;
 
 			color: #333;
-			max-width: none;	
+			max-width: none;
 		}
-	 
+
 		.i-str {
 			width: 106px;
 			height: 18px;
@@ -263,14 +282,14 @@
 			left: 32px;
 
 			background-color: #fff;
-			
+
 			margin-bottom: 1px;
 			padding: 6px 2px 2px 4px;
 			position: absolute;
 		}
 
 		#map_canvas { height: 300px }
-	 
+
 		#map_canvas img { max-width: none; } /* Google Map fix for Twitter bootstrap */
 	</style>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -342,5 +361,7 @@
 </head>
 <body>
 	<div id="map_canvas"></div>
+
+	<textarea><?php print json_encode($group_data_map_json); ?></textarea>
 </body>
 </html>
