@@ -350,7 +350,7 @@ if ($last_timestamp < strtotime("-5 minutes")) {
 	<script type="text/javascript">
 	//<![CDATA[
 		$(document).ready(function() {
-			var markers_raw = <?php print json_encode(	); ?>;
+			var markers_raw = <?php print json_encode($group_data_map_json); ?>;
 			$().gogMap(markers_raw, [{ gamma: .25 },{ lightness: 0 },{ hue: "#000000" },{ visibility: "simplified" },{ saturation: 0 }]);
 		});
 	//]]>
