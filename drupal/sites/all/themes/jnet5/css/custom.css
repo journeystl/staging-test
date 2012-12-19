@@ -1041,6 +1041,11 @@ div.timer {
 	margin-bottom: 10px;
 }
 
+.node-job-posting ul {
+	list-style-position: outside;
+	margin-left: 3em;
+}
+
 /* JOBS 2 */
 .view-id-jobs_2 thead {
 	border-bottom: 1px solid #666;
