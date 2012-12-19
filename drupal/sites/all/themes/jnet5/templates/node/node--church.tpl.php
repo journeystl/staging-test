@@ -16,25 +16,20 @@ if (isset($location_ids[1])) {
 }
 
 // Build Schedule stuff
-if (isset($_GET['show_schedule'])) {
-	$schedule_modal = '				
-	<div id="scheduleModal" class="schedule reveal-modal xlarge" style="top: 100px;">' .
-		jnet5_get_schedule($node->field_uid['und'][0]['value'], 'long') .
-	  '<a class="close-reveal-modal">&#215;</a>
-	</div>';
-	
-	$schedule = '				
-	<div class="six columns schedule">
-		<span id="this_weekend"></span>
-		<div class="row">' .
-			jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
-		'<p class="twelve columns"><a href="#" class="radius medium button" data-reveal-id="scheduleModal">View More Weekends</a></p>
-		</div>
-	</div>';
-} else {
-	$schedule_modal = '';
-	$schedule = '';
-}
+$schedule_modal = '				
+<div id="scheduleModal" class="schedule reveal-modal xlarge" style="top: 100px;">' .
+	jnet5_get_schedule($node->field_uid['und'][0]['value'], 'long') .
+  '<a class="close-reveal-modal">&#215;</a>
+</div>';
+
+$schedule = '				
+<div class="six columns schedule">
+	<span id="this_weekend"></span>
+	<div class="row">' .
+		jnet5_get_schedule($node->field_uid['und'][0]['value'], 'short') .
+	'<p class="twelve columns"><a href="#" class="radius medium button" data-reveal-id="scheduleModal">View More Weekends</a></p>
+	</div>
+</div>';
 
 print $schedule_modal;
 
