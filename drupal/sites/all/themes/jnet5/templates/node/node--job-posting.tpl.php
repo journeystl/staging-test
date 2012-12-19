@@ -17,10 +17,13 @@
 	</div>
 	<div class="four columns sidebar">
 		<div class="panel">
-			<h5>Status: <?php print $content['field_status']['#items'][0]['value']; ?></h5>
-
-			<h5>Church: <?php print $content['field_church'][0]['#markup']; ?></h5>
-
+			<h5>Details</h5>
+			<?php if ($content['field_status']['#items'][0]['value'] != null): ?>
+				<p><strong>Status:</strong> <?php print $content['field_status']['#items'][0]['value']; ?></p>
+			<?php endif; ?>
+			<?php if ($content['field_church'][0]['#markup'] != null): ?>
+				<p><strong>Church:</strong> <?php print $content['field_church'][0]['#markup']; ?></small></p>
+			<?php endif; ?>
 			 
 			<?php 
 				$items = array();
@@ -30,11 +33,10 @@
 							$items[] = $item['value'];
 						}
 					}
-					if (count($items)) { print "<h5>Team: " . implode($items, ", ") . "</h5>"; }
+					if (count($items)) { print "<p><strong>Team:</strong> " . implode($items, ", ") . "</p>"; }
 				}
 			?>
 
-			<h5>Job Type</h5>
 			<?php 
 				$items = array();
 				foreach ($content['field_job_type']['#items'] as $item) {
@@ -42,7 +44,7 @@
 						$items[] = $item['value'];
 					}
 				}
-				print theme('item_list', array('items' => $items));
+				if (count($items)) { print "<strong>Job Type</strong>" . theme('item_list', array('items' => $items)); }
 			?>
 		</div>
 		<div class="panel">
