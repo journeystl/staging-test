@@ -44,7 +44,11 @@
 						$items[] = $item['value'];
 					}
 				}
-				if (count($items)) { print "<strong>Job Type</strong>" . theme('item_list', array('items' => $items)); }
+				if (count($items) == 1) {
+					print "<p><strong>Job Type:</strong> " . implode($items, "") . "</p>";
+				} else if (count($items)) {
+					print "<strong>Job Type</strong>" . theme('item_list', array('items' => $items));
+				}
 			?>
 		</div>
 		<div class="panel">
