@@ -58,9 +58,16 @@ function jnet_importer_cron() {
  */
 function jnet_importer_node_load($nodes, $types) {
   foreach ($nodes as $node) {
+    // Get Jnet Importer UID if it exists.
     if ($guid = db_query("SELECT guid FROM {jnet_importer} WHERE nid = :nid", array(':nid' => $node->nid))->fetchField()) {
       $guid = explode('_', $guid);
       $node->pb_url = 'http://patchbay.journeyon.net/node/' . $guid[0];
+    }
+
+    // Get Feeds UID if it exists.
+    if ($guid = db_query("SELECT guid FROM {feeds_item} WHERE entity_id = :nid AND entity_type = 'node'", array(':nid' => $node->nid))->fetchField()) {
+      $guid = explode('_', $guid);
+      $node->feeds_pb_url = 'http://patchbay.journeyon.net/node/' . $guid[0];
     }
   }
 }
