@@ -770,6 +770,10 @@ p + ul {
 	margin-left: 15px;
 }
 
+.pane-content ul.button-group {
+	margin-left: 0px;
+}
+
 
 
 /* Media Item Nav */
