@@ -77,6 +77,7 @@
 
   // Show the search bar.
   $('#nav-bar-search').click( function(e) {
+    $('.nav-active-arrow').fadeTo(200, 0);
     searchBar.show();
     searchBar.animate({'top':'0px'}, 200);
     searchBarActive = true;
@@ -86,6 +87,7 @@
   // Hide the search bar when user clicks elsewhere.
   $(window).click(function(e) {
     if (searchBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       searchBar.animate({'top':'-65px'}, 200, function() {
         searchBar.hide();
       });
@@ -95,6 +97,7 @@
   // Hide the search bar when user clicks 'remove'.
   $('#search-bar-close').click(function(e) {
     if (searchBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       searchBar.animate({'top':'-65px'}, 200, function() {
         searchBar.hide();
       });
@@ -121,7 +124,6 @@
 
   var churchesBar = $('#churches-bar');
   var churchesBarActive = false;
-  var topBarNav = $('.top-bar');
 
   // Onload, hide the churches bar...
   churchesBar.hide();
