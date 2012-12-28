@@ -12,6 +12,7 @@
   /**
    * Active nav arrows.
    */
+
   $('.top-bar-wrapper li.active a').after('<div class="nav-active-arrow hide-for-small"></div>');
 
   /**
@@ -120,12 +121,15 @@
 
   var churchesBar = $('#churches-bar');
   var churchesBarActive = false;
+  var topBarNav = $('.top-bar');
 
   // Onload, hide the churches bar...
   churchesBar.hide();
 
   $('#nav-bar-churches').click( function(e) {
     churchesBar.show();
+    $('.nav-active-arrow').fadeTo(200, 0);
+    //$('.nav-active-arrow').animate({top: '-=20px', opacity: '0'},200);
     churchesBar.animate({'top':'0px'}, 200);
     churchesBarActive = true;
     e.stopPropagation();
@@ -134,6 +138,7 @@
   // Hide the churches bar when user clicks elsewhere.
   $(window).click(function(e) {
     if (churchesBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       churchesBar.animate({'top':'-65px'}, 200, function() {
         churchesBar.hide();
       });
@@ -143,6 +148,7 @@
   // Hide the churches bar when user clicks 'remove'.
   $('#churches-bar-close').click(function(e) {
     if (churchesBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       churchesBar.animate({'top':'-65px'}, 200, function() {
         churchesBar.hide();
       });
