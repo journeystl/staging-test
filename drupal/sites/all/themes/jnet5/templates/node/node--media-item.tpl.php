@@ -23,7 +23,7 @@
  <?php endif;?>
   <dd><a href="#description">Description</a></dd>
 <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
-  <dd><a href="#scripture">Scripture</a></dd>
+  <dd class="hide-for-small"><a href="#scripture">Scripture</a></dd>
 <?php endif;?>
 </dl>
 
@@ -67,7 +67,7 @@
   </li>
 
   <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
-	<li id="scriptureTab">
+	<li id="scriptureTab" class="hide-for-small">
   <?php
     if (function_exists('curl_init') && isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])) {
       $key = "IP";
