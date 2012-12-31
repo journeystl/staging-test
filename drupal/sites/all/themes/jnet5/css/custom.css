@@ -967,14 +967,14 @@ body.node-type-promotion-content .content-header {
 }
 
 /*CODE TO FIX BUGHERD ISSUE #393 */
-/*@media only screen and (max-width: 1279px) and (min-width: 768px) {
+@media only screen and (max-width: 1279px) and (min-width: 768px) {
 	.views-field-title h6 {
 		font-size: 60%;
 	}
 	.role-title {
 	font-size: 14px;
 	}
-}*/
+}
 
 
 
