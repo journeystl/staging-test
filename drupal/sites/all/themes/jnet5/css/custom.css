@@ -234,6 +234,7 @@ hr.double {
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left,
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
 	width: 50%;
+	background-size: auto !important;
 }
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
 	background: url(../images/news/arrow-left.png) no-repeat center;
