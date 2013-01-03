@@ -32,6 +32,9 @@ function jnet5_preprocess_panels_pane(&$vars) {
   $churchselect = '<ul><li><a href="' . $tgpath . '">Tower Grove</a></li><li><a href="' . $hrpath . '">Hanley Road</a></li><li><a href="' . $wcpath . '">West County</a></li><li><a href="' . $blpath . '">Metro East</a></li><li><a href="' . $sipath . '">Southern Illinois</a></li></ul>';
   $vars['content'] = str_replace('[church_select]', $churchselect, $vars['content']);
 
+  $thisweekend = '<ul><li><a href="' . $tgpath . '?show_schedule#this_weekend">Tower Grove</a></li><li><a href="' . $hrpath . '?show_schedule#this_weekend">Hanley Road</a></li><li><a href="' . $wcpath . '?show_schedule#this_weekend">West County</a></li><li><a href="' . $blpath . '?show_schedule#this_weekend">Metro East</a></li><li><a href="' . $sipath . '?show_schedule#this_weekend">Southern Illinois</a></li></ul>';
+  $vars['content'] = str_replace('[this_weekend]', $thisweekend, $vars['content']);
+
   foreach ($vars['pane']->access['plugins'] as &$access_rule) {
     if ($access_rule['not'] = 'FALE') {
       $access_rule_rule = 'is';

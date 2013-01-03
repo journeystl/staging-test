@@ -234,6 +234,7 @@ hr.double {
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left,
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
 	width: 50%;
+	background-size: auto !important;
 }
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
 	background: url(../images/news/arrow-left.png) no-repeat center;
@@ -548,6 +549,7 @@ hr.double {
 .image-block-content{
 	padding-right: 10px;
 	padding-left: 10px;
+	padding-bottom: 40px;
 }
 
 .image-block-content h2{
@@ -770,6 +772,10 @@ p + ul {
 	margin-left: 15px;
 }
 
+.pane-content ul.button-group {
+	margin-left: 0px;
+}
+
 
 
 /* Media Item Nav */
@@ -962,6 +968,17 @@ body.node-type-promotion-content .content-header {
 	font-size: 16px;
 }
 
+/*CODE TO FIX BUGHERD ISSUE #393 */
+@media only screen and (max-width: 1279px) and (min-width: 768px) {
+	.views-field-title h6 {
+		font-size: 60%;
+	}
+	.role-title {
+	font-size: 14px;
+	}
+}
+
+
 
 /* MEDIA SERIES */
 
@@ -1041,6 +1058,11 @@ div.timer {
 	margin-bottom: 10px;
 }
 
+.node-job-posting ul {
+	list-style-position: outside;
+	margin-left: 3em;
+}
+
 /* JOBS 2 */
 .view-id-jobs_2 thead {
 	border-bottom: 1px solid #666;
@@ -1106,6 +1128,10 @@ div.timer {
 }
 
 /* schedule - this week */
+
+.schedule {
+	color: #666;
+}
 
 .schedule .service {
 	margin-bottom: 20px;

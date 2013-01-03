@@ -12,6 +12,7 @@
   /**
    * Active nav arrows.
    */
+
   $('.top-bar-wrapper li.active a').after('<div class="nav-active-arrow hide-for-small"></div>');
 
   /**
@@ -76,6 +77,7 @@
 
   // Show the search bar.
   $('#nav-bar-search').click( function(e) {
+    $('.nav-active-arrow').fadeTo(200, 0);
     searchBar.show();
     searchBar.animate({'top':'0px'}, 200);
     searchBarActive = true;
@@ -85,6 +87,7 @@
   // Hide the search bar when user clicks elsewhere.
   $(window).click(function(e) {
     if (searchBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       searchBar.animate({'top':'-65px'}, 200, function() {
         searchBar.hide();
       });
@@ -94,6 +97,7 @@
   // Hide the search bar when user clicks 'remove'.
   $('#search-bar-close').click(function(e) {
     if (searchBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       searchBar.animate({'top':'-65px'}, 200, function() {
         searchBar.hide();
       });
@@ -126,6 +130,8 @@
 
   $('#nav-bar-churches').click( function(e) {
     churchesBar.show();
+    $('.nav-active-arrow').fadeTo(200, 0);
+    //$('.nav-active-arrow').animate({top: '-=20px', opacity: '0'},200);
     churchesBar.animate({'top':'0px'}, 200);
     churchesBarActive = true;
     e.stopPropagation();
@@ -134,6 +140,7 @@
   // Hide the churches bar when user clicks elsewhere.
   $(window).click(function(e) {
     if (churchesBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       churchesBar.animate({'top':'-65px'}, 200, function() {
         churchesBar.hide();
       });
@@ -143,6 +150,7 @@
   // Hide the churches bar when user clicks 'remove'.
   $('#churches-bar-close').click(function(e) {
     if (churchesBarActive) {
+      $('.nav-active-arrow').fadeTo(200, 1);
       churchesBar.animate({'top':'-65px'}, 200, function() {
         churchesBar.hide();
       });
