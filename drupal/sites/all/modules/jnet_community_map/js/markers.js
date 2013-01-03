@@ -38,7 +38,7 @@
     var typeGroups      = ["Any Type", "Mixed (Married & Single)", "Married", "Single"];
 
 
-    var displayGroups = new Array(6);
+    var displayGroups = new Array(churchGroups.length);
 
     for (var i = 0; i < churchGroups.length; i++) {
       displayGroups[i] = new Array(dayGroups.length);
