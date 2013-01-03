@@ -1,0 +1,4 @@
+name = Jnet - Community Map Block
+description = Provides a block that shows community groups on a map.
+package = Jnet
+core = 7.x

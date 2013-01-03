@@ -1,0 +1,176 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+#pageDarken {
+  display: none;
+  position: absolute;
+  background-color: black;
+  opacity: 0.6;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+.emailPopup {
+  display: none;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #d5d6d6;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  background: #f4f3ef;
+  position: fixed;
+  top: 200px;
+  z-index: 20;
+}
+
+.emailPopup a.close {
+  position: absolute;
+  right: -20;
+  top: -20;
+  width: 42px;
+  height: 42px;
+  background: url('close_button.png');
+}
+
+.emailPopup label {
+  width: 100px;
+  margin: 0;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.emailPopup input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.emailPopup input.mailto {
+  display: none;
+}
+
+.emailPopup textarea {
+  resize: vertical;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.emailPopup input[type=submit] {
+  width: auto;
+  background-color: #edefef;
+  color: black;
+  padding: 4 10px;
+  border: 1px solid #d5d6d6;
+  display: block;
+  float: right;
+  margin-bottom: 0;
+
+}
+#joinRequestPopup {
+
+}
+#reportErrorPopup {
+
+}
+.info-windows {
+  min-width: 220px;
+  background: #f4f3ef;
+  color: #ffedc8;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0px;
+  max-width: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid #b8b4ab;
+}
+
+.info-windows h1 {
+  font-size: 15px;
+  margin: 5px 0px;
+  color: #b64414;
+  font-weight: bold;
+}
+
+.info-windows h2 {
+  font-size: 12px;
+  margin: 4px 0px;
+  color: #989898;
+  font-weight: bold;
+}
+
+.info-windows a {
+  background-color: #edefef;
+  height: 20px;
+  font-size: 11px;
+  color: black;
+  padding: 0 10px;
+  text-decoration: none;
+  line-height: 20px;
+  border: 1px solid #d5d6d6;
+  float: left;
+  display: block;
+}
+
+.info-windows a.joinGroup {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-right: 0px;
+}
+
+.info-windows a.reportError {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.dayBox {
+  padding: 0 6px;
+  margin: 5px 70px 10px 0px;
+  border: 1px solid gray;
+  background: #d5d6d6;
+  float: left;
+}
+
+.dayBox span {
+  color: gray;
+  font-size: 12px;
+  padding: 6px 2px;
+  float: left;
+}
+
+.dayBox .activeDay {
+  color: #b64414;
+  font-weight: bold;
+}
+
+.i-box {
+  width:  144px;
+  height: 106px;
+
+  color: #333;
+  max-width: none;
+}
+
+.i-str {
+  width: 106px;
+  height: 18px;
+  top: 80px;
+  left: 32px;
+
+  background-color: #fff;
+
+  margin-bottom: 1px;
+  padding: 6px 2px 2px 4px;
+  position: absolute;
+}
+
+#map_canvas {
+  height: 400px;
+  max-width: 1175px;
+}
+
+select.church-map {
+  width: 200px;
+}
+
+#map_canvas img { max-width: none; } /* Google Map fix for Twitter bootstrap */
