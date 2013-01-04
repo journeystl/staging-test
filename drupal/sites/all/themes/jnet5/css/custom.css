@@ -1167,3 +1167,8 @@ span#this_weekend {
 	background-color: transparent;
 	border: 1px none;
 }
+
+/* Vertical Tabs */
+dl.tabs.vertical dd a {
+	font-size: 18px;
+}
