@@ -23,7 +23,7 @@
  <?php endif;?>
   <dd><a href="#description">Description</a></dd>
 <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
-  <dd><a href="#scripture">Scripture</a></dd>
+  <dd class="hide-for-small"><a href="#scripture">Scripture</a></dd>
 <?php endif;?>
 </dl>
 
@@ -55,19 +55,25 @@
 
   <li id="descriptionTab">
 
-  		<strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
-  		<span>/</span>
-  		<em><?php print $content['field_length'][0]['#markup']; ?></em>
-  		<br>
-  		<a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_reference'][0]['#markup']; ?></a>
+    <?php
+    // Hide misc info from 'stories' media items.
+    if ($node->field_series['und'][0]['target_id'] != '13711') {
+    ?>
 
+      <strong><?php print $content['field_sermondate'][0]['#markup']; ?></strong>
+      <span>/</span>
+      <em><?php print $content['field_length'][0]['#markup']; ?></em>
+      <br>
+      <a href="http://www.esvbible.org/search/?q=<?php print $content['field_scripture_reference'][0]['#markup']; ?>"><?php print $content['field_scripture_reference'][0]['#markup']; ?></a>
 
-  		<p><?php print $content['field_description'][0]['#markup']; ?></p>
+    <?php } ?>
+
+  	<p><?php print $content['field_description'][0]['#markup']; ?></p>
 
   </li>
 
   <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
-	<li id="scriptureTab">
+	<li id="scriptureTab" class="hide-for-small">
   <?php
     if (function_exists('curl_init') && isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])) {
       $key = "IP";

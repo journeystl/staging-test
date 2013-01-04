@@ -234,6 +234,7 @@ hr.double {
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left,
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.right {
 	width: 50%;
+	background-size: auto !important;
 }
 .view-id-new_front_page div.orbit-wrapper div.slider-nav span.left {
 	background: url(../images/news/arrow-left.png) no-repeat center;
@@ -548,6 +549,7 @@ hr.double {
 .image-block-content{
 	padding-right: 10px;
 	padding-left: 10px;
+	padding-bottom: 40px;
 }
 
 .image-block-content h2{
@@ -770,6 +772,10 @@ p + ul {
 	margin-left: 15px;
 }
 
+.pane-content ul.button-group {
+	margin-left: 0px;
+}
+
 
 
 /* Media Item Nav */
@@ -961,6 +967,35 @@ body.node-type-promotion-content .content-header {
 	line-height: 90%;
 	font-size: 16px;
 }
+
+/* Special fixes for medium screen */
+@media only screen and (max-width: 1279px) and (min-width: 768px) {
+	.views-field-title h6 {
+		font-size: 60%;
+	}
+	.role-title {
+	font-size: 14px;
+	}
+
+	.top-bar ul.left-links > li:last-child {
+		width: 36% !important;
+	}
+
+	.view-resources div.three.columns {
+		min-width: 70px;
+	}
+
+	.view-resources div.five.columns {
+		max-width: 100px;
+	}
+
+	.view-resources div.four.columns {
+		max-width: 100px;
+	}
+
+
+}
+
 
 
 /* MEDIA SERIES */

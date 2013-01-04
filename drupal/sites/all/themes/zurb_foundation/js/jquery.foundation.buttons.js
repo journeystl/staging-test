@@ -34,6 +34,13 @@
       $('.button.dropdown ul').removeClass('show-dropdown');
     });
 
+    //CUSTOM FOR CLOSING DROP-DOWNS
+    // $('.button.dropdown').on('mouseleave.fndtn', function () {
+    //   $('.button.dropdown ul').removeClass('show-dropdown');
+    // });
+
+
+
     // Positioning the Flyout List
     var normalButtonHeight  = $('.button.dropdown:not(.large):not(.small):not(.tiny)', this).outerHeight() - 1,
         largeButtonHeight   = $('.button.large.dropdown', this).outerHeight() - 1,
