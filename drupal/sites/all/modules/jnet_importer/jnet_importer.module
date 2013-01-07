@@ -138,6 +138,7 @@ function jnet_importer_import($qty, $debug = FALSE) {
     $node->field_weight['und'][0]['value'] = $object->node->weight;
     $node->field_archive['und'][0]['value'] = $object->node->archive;
     $node->field_signup['und'][0]['value'] = $object->node->signup;
+    $node->field_external_form_id['und'][0]['value'] = $object->node->field_external_form_id[0]->value;
 
     // Set all event fields that aren't in field collections.
     $node->field_event_starting_at['und'][0]['value'] = $object->node->field_starting_at[0]->value;
