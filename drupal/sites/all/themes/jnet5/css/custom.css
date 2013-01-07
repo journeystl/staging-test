@@ -418,6 +418,9 @@ hr.double {
 .view-id-locations table thead {
 	display: none;
 }
+.view-id-locations table tbody {
+	border: none;
+}
 .view-id-locations table tr.even,
 .view-id-locations table tr.odd {
 	background-color: #fff;
@@ -817,6 +820,11 @@ p + ul {
 }
 
 /* Church Thumbnails on /visit*/
+
+.view-visit-church-images {
+	border-bottom: 1px solid #666;
+	padding-bottom: 10px;
+}
 
 #block-views-visit-church-images-block li.views-row h4 {
 	margin-bottom: 0px;
