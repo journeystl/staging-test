@@ -410,6 +410,10 @@ hr.double {
 	border-color: #CC2900 !important;
 }
 
+#footer-bottom ul.nav-bar .menu-mlid-632 span.show-for-small {
+	display: none !important;
+}
+
 /* Locations View */
 .view-id-locations table {
 	width: 100%;
