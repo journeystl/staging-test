@@ -829,6 +829,12 @@ p + ul {
 	min-height: 200px;
 }
 
+@media only screen and (max-width: 767px) {
+	.view-visit-church-images {
+		border-bottom: none;
+	}
+}
+
 #block-views-visit-church-images-block li.views-row h4 {
 	margin-bottom: 0px;
 }
