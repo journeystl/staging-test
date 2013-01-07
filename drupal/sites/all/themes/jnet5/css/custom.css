@@ -823,7 +823,10 @@ p + ul {
 
 .view-visit-church-images {
 	border-bottom: 1px solid #666;
-	padding-bottom: 10px;
+}
+
+.view-visit-church-images .views-row {
+	min-height: 100px;
 }
 
 #block-views-visit-church-images-block li.views-row h4 {
