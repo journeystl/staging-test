@@ -41,5 +41,5 @@
       document.getElementById('pageDarken').style['display'] = 'none';
     });
 
-  });
+
 })(jQuery);

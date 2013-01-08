@@ -173,7 +173,7 @@
           id: (markers_raw[m_id].marker_id),
           map: map,
           title: "Group Name",
-          icon: "circle-icon.png",
+          icon: "/sites/all/modules/jnet_community_map/images/circle-icon.png",
           leaderEmail: "",
           churchIndex: 0,
           dayIndex: [],
