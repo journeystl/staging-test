@@ -99,6 +99,18 @@ html, body {
   font-weight: bold;
 }
 
+/* INACTIVE H1 STYLES */
+
+h1.inactive {
+
+}
+
+/* INACTIVE H2 STYLES */
+
+h2.inactive {
+  display: none;
+}
+
 .info-windows a {
   background-color: #edefef;
   height: 20px;
