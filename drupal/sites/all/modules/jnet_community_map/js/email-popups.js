@@ -1,3 +1,5 @@
+(function ($) {
+
   function pageDarken() {
     document.getElementById('pageDarken').style['width'] = window.innerWidth;
     document.getElementById('pageDarken').style['height'] = window.innerHeight;
@@ -40,6 +42,7 @@
       this.parentNode.style['display'] = 'none';
       document.getElementById('pageDarken').style['display'] = 'none';
     });
+  });
 
 
-  })(jQuery);
+})(jQuery);
