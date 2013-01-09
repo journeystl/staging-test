@@ -1,5 +1,3 @@
-(function ($) {
-
   function pageDarken() {
     document.getElementById('pageDarken').style['width'] = window.innerWidth;
     document.getElementById('pageDarken').style['height'] = window.innerHeight;
@@ -9,7 +7,7 @@
     //pageDarken();
     //document.getElementById('joinRequestPopup').style['display'] = 'block';
 
-    $("#joinRequestPopup").reveal();
+    jQuery("#joinRequestPopup").reveal();
 
     // Set action - GET variables
     var phpScript = "send_email.php";
@@ -36,6 +34,7 @@
     document.getElementById('reportErrorForm').action = action;
   }
 
+(function ($) {
   $(document).ready(function() {
 
     // Position email popups
