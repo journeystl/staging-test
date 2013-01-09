@@ -30,7 +30,7 @@
     document.getElementById('reportErrorForm').action = action;
   }
 
-  jQuery(document).ready(function() {
+  $(document).ready(function() {
 
     // Position email popups
     document.getElementById('joinRequestPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
