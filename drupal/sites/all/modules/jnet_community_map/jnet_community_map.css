@@ -110,6 +110,10 @@ h2.inactive {
   display: none;
 }
 
+.button-group {
+  clear: both;
+}
+
 /*.info-windows a {
   background-color: #edefef;
   height: 20px;
@@ -137,6 +141,7 @@ h2.inactive {
 .dayBox {
   padding: 0 6px;
   margin: 5px 70px 10px 0px;
+
 }
 
 .dayBox span {
