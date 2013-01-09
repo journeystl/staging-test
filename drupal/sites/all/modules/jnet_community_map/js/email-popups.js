@@ -21,8 +21,10 @@
   }
 
   function reportError(leaderEmail, groupID, groupName, groupType, kidFriendly, meetingDays) {
-    pageDarken();
-    document.getElementById('reportErrorPopup').style['display'] = 'block';
+    // pageDarken();
+    // document.getElementById('reportErrorPopup').style['display'] = 'block';
+
+    jQuery("#reportErrorPopup").reveal();
 
     // Set action - GET variables
     var phpScript = "send_email.php";
