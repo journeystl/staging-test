@@ -304,14 +304,14 @@
         "<h2 class='" + churchStatus + "'>Home Church: " + markers_raw[m_id].campus.replace(/^\s+|\s+$/g,'') + "</h2>" +
         "<h2 class='" + typeStatus + "'>Type: " + typeGroups[marker.typeIndex] + " " + kidFriendlyString + "</h2>" +
         "<div class='dayBox'><span class='" + dayChecker(1) +  "'>M</span><span class='" + dayChecker(2) +  "'>T</span><span class='" + dayChecker(3) +  "'>W</span><span class='" + dayChecker(4) +  "'>R</span><span class='" + dayChecker(5) +  "'>F</span><span class='" + dayChecker(6) +  "'>S</span><span class='" + dayChecker(7) +  "'>S</span></div>"+
-        "<a href='#' onclick='joinGroup(\""+
+        "<ul class='button-group radius'><li><a href='#' onclick='joinGroup(\""+
               marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
-              "\")' class='joinGroup'>Request to Join</a>"+
-        "<a href='#' onclick='reportError(\""+
+              "\")' class='joinGroup button radius tiny secondary'>Request to Join</a></li>"+
+        "<li><a href='#' onclick='reportError(\""+
               marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
-              "\")' class='reportError'>Report Incorrect Info</a>";
+              "\")' class='reportError button radius tiny secondary'>Report Incorrect Info</a></li></ul>";
 
         var myOptions = {
           content: "<div>" + markerWindow + "</div>",

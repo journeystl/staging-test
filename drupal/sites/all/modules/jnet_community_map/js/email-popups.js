@@ -6,8 +6,10 @@
     document.getElementById('pageDarken').style['display'] = 'block';
   }
   function joinGroup(leaderEmail, groupID, groupName, groupType, kidFriendly, meetingDays) {
-    pageDarken();
-    document.getElementById('joinRequestPopup').style['display'] = 'block';
+    //pageDarken();
+    //document.getElementById('joinRequestPopup').style['display'] = 'block';
+
+    $("#joinRequestPopup").reveal();
 
     // Set action - GET variables
     var phpScript = "send_email.php";
@@ -35,8 +37,8 @@
   $(document).ready(function() {
 
     // Position email popups
-    document.getElementById('joinRequestPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
-    document.getElementById('reportErrorPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
+    //document.getElementById('joinRequestPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
+    //document.getElementById('reportErrorPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
 
     $('.close').click(function() {
       this.parentNode.style['display'] = 'none';
