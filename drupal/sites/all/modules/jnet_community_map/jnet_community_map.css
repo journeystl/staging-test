@@ -111,7 +111,7 @@ h2.inactive {
   display: none;
 }
 
-.info-windows a {
+/*.info-windows a {
   background-color: #edefef;
   height: 20px;
   font-size: 11px;
@@ -122,9 +122,9 @@ h2.inactive {
   border: 1px solid #d5d6d6;
   float: left;
   display: block;
-}
+}*/
 
-.info-windows a.joinGroup {
+/*.info-windows a.joinGroup {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   border-right: 0px;
@@ -133,7 +133,7 @@ h2.inactive {
 .info-windows a.reportError {
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-}
+}*/
 
 .dayBox {
   padding: 0 6px;
