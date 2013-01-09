@@ -134,23 +134,20 @@ h2.inactive {
   border-bottom-right-radius: 2px;
 }*/
 
-/*.dayBox {
+.dayBox {
   padding: 0 6px;
   margin: 5px 70px 10px 0px;
-  border: 1px solid gray;
-  background: #d5d6d6;
-  float: left;
 }
 
 .dayBox span {
-  color: gray;
+  color: #333;
   font-size: 12px;
   padding: 6px 2px;
   float: left;
-}*/
+}
 
 .dayBox .activeDay {
-  color: #b64414;
+  color: #ff3300;
   font-weight: bold;
 }
 
