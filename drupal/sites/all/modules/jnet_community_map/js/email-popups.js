@@ -1,8 +1,8 @@
-  function pageDarken() {
-    document.getElementById('pageDarken').style['width'] = window.innerWidth;
-    document.getElementById('pageDarken').style['height'] = window.innerHeight;
-    document.getElementById('pageDarken').style['display'] = 'block';
-  }
+  // function pageDarken() {
+  //   document.getElementById('pageDarken').style['width'] = window.innerWidth;
+  //   document.getElementById('pageDarken').style['height'] = window.innerHeight;
+  //   document.getElementById('pageDarken').style['display'] = 'block';
+  // }
   function joinGroup(leaderEmail, groupID, groupName, groupType, kidFriendly, meetingDays) {
     //pageDarken();
     //document.getElementById('joinRequestPopup').style['display'] = 'block';
@@ -36,18 +36,18 @@
     document.getElementById('reportErrorForm').action = action;
   }
 
-(function ($) {
-  $(document).ready(function() {
+// (function ($) {
+//   $(document).ready(function() {
 
-    // Position email popups
-    //document.getElementById('joinRequestPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
-    //document.getElementById('reportErrorPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
+//     // Position email popups
+//     //document.getElementById('joinRequestPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
+//     //document.getElementById('reportErrorPopup').style['marginLeft'] = (window.innerWidth / 2) - 250;
 
-    $('.close').click(function() {
-      this.parentNode.style['display'] = 'none';
-      document.getElementById('pageDarken').style['display'] = 'none';
-    });
-  });
+//     $('.close').click(function() {
+//       this.parentNode.style['display'] = 'none';
+//       document.getElementById('pageDarken').style['display'] = 'none';
+//     });
+//   });
 
 
 })(jQuery);

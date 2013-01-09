@@ -138,7 +138,6 @@ function jnet_community_map_block_view($delta = '') {
       // Add the markup.
       $block['subject'] = '';
       $block['content'] = '
-        <div id="pageDarken"></div>
         <div id="joinRequestPopup" class="emailPopup reveal-modal">
           <a href="#" class="close-reveal-modal">&#215;</a>
           <form id="joinRequestForm"name="contactform" method="post" action="">

@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
-#pageDarken {
+/*#pageDarken {
   display: none;
   position: absolute;
   background-color: black;
@@ -10,7 +10,7 @@ html, body {
   margin: 0;
   padding: 0;
   z-index: 2;
-}
+}*/
 .emailPopup {
   display: none;
   width: 500px;
