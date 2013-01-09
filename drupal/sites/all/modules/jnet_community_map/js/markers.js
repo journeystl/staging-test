@@ -100,6 +100,8 @@
           document.getElementById("select-type").appendChild(option);
         }
 
+        $.foundation.customForms.appendCustomMarkup();
+
         function selectMenu() {
 
           if (active_info) {
