@@ -186,3 +186,16 @@ select.church-map {
 }
 
 #map_canvas img { max-width: none; } /* Google Map fix for Twitter bootstrap */
+
+#map-filters .custom.dropdown {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#map-filters .custom.checkbox {
+  margin-right: 5px;
+}
+
+#map-filters #centerMap {
+  top: -3px;
+}
