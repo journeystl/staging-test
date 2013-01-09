@@ -140,7 +140,7 @@ function jnet_community_map_block_view($delta = '') {
       $block['content'] = '
         <div id="pageDarken"></div>
         <div id="joinRequestPopup" class="emailPopup reveal-modal">
-          <a href="#" class="close close-reveal-modal">&#215;</a>
+          <a href="#" class="close-reveal-modal">&#215;</a>
           <form id="joinRequestForm"name="contactform" method="post" action="">
             <label for="email">Your Email:</label>
             <input type="text" name="email" placeholder="Your Email"></input>
@@ -152,7 +152,7 @@ function jnet_community_map_block_view($delta = '') {
           </form>
         </div>
         <div id="reportErrorPopup" class="emailPopup reveal-modal">
-          <a href="#" class="close close-reveal-modal">&#215;</a>
+          <a href="#" class="close-reveal-modal">&#215;</a>
           <form id="reportErrorForm" name="contactform" method="post" action="">
             <label for="email">Your Email:</label>
             <input type="text" name="email" placeholder="Your Email"></input>
