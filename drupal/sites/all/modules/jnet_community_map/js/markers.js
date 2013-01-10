@@ -217,7 +217,7 @@
         // Use kidFriendly variable later for use with the checkbox
         if (markerTypesString.indexOf("Kid-Friendly") != -1) {
           marker.kidFriendly = true;
-          kidFriendlyString = "Kid-Friendly";
+          kidFriendlyString = ", Kid-Friendly";
         }
 
         if (markerTypesString.indexOf("Single") != -1) {
@@ -305,7 +305,7 @@
         "<h2 class='church-label " + churchStatus + "'>" + markers_raw[m_id].campus.replace(/^\s+|\s+$/g,'') + "</h2>" +
         "<div class='dayBox label radius secondary'><span class='" + dayChecker(1) +  "'>M</span><span class='" + dayChecker(2) +  "'>T</span><span class='" + dayChecker(3) +  "'>W</span><span class='" + dayChecker(4) +  "'>R</span><span class='" + dayChecker(5) +  "'>F</span><span class='" + dayChecker(6) +  "'>S</span><span class='" + dayChecker(7) +  "'>S</span></div>"+
         "<hr>" +
-        "<h2 class='" + typeStatus + "'>" + typeGroups[marker.typeIndex] + ", " + kidFriendlyString + "</h2>" +
+        "<h2 class='" + typeStatus + "'>" + typeGroups[marker.typeIndex] + kidFriendlyString + "</h2>" +
         "<ul class='button-group radius'><li><a href='#' onclick='joinGroup(\""+
               marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
