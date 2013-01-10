@@ -519,6 +519,7 @@ function feeds_ui_mapping_form($form, &$form_state, $importer) {
   }
   $targets = $importer->processor->getMappingTargets();
   $target_options = _feeds_ui_format_options($targets);
+  $legend['targets'] = array();
   foreach ($targets as $k => $target) {
     $legend['targets'][$k]['name']['#markup'] = empty($target['name']) ? $k : $target['name'];
     $legend['targets'][$k]['description']['#markup'] = empty($target['description']) ? '' : $target['description'];
@@ -539,6 +540,9 @@ function feeds_ui_mapping_form($form, &$form_state, $importer) {
     '#tree' => TRUE,
   );
   if (is_array($mappings)) {
+
+    $delta = count($mappings) + 2;
+
     foreach ($mappings as $i => $mapping) {
       if (isset($targets[$mapping['target']])) {
         $form['config'][$i] = feeds_ui_mapping_settings_form($form, $form_state, $i, $mapping, $targets[$mapping['target']]);
@@ -555,7 +559,7 @@ function feeds_ui_mapping_form($form, &$form_state, $importer) {
         '#type' => 'weight',
         '#title' => '',
         '#default_value' => $i,
-        '#delta' => 10,
+        '#delta' => $delta,
         '#attributes' => array(
           'class' => array(
             'feeds-ui-mapping-weight'
@@ -617,7 +621,6 @@ function feeds_ui_mapping_settings_form($form, $form_state, $i, $mapping, $targe
     '#i' => $i,
   );
 
-
   if (isset($form_state['mapping_settings'][$i])) {
     $mapping = $form_state['mapping_settings'][$i] + $mapping;
   }
@@ -678,7 +681,6 @@ function feeds_ui_mapping_settings_form($form, $form_state, $i, $mapping, $targe
           '#src' => 'misc/configure.png',
           '#attributes' => array('alt' => t('Edit')),
           '#op' => 'edit',
-          '#value' => t('Edit'),
         ),
       );
     }
@@ -781,7 +783,7 @@ function feeds_ui_mapping_form_submit($form, &$form_state) {
 
   if (!empty($form_state['values']['remove_flags'])) {
     $remove_flags = array_keys(array_filter($form_state['values']['remove_flags']));
-    
+
     foreach ($remove_flags as $k) {
       unset($mappings[$k]);
       unset($form_state['values']['mapping_weight'][$k]);
@@ -830,7 +832,8 @@ function feeds_ui_mapping_settings_optional_unique_summary($mapping, $target, $f
   if (!empty($target['optional_unique'])) {
     if ($mapping['unique']) {
       return t('Used as <strong>unique</strong>.');
-    } else {
+    }
+    else {
       return t('Not used as unique.');
     }
   }
