@@ -99,6 +99,24 @@ html, body {
   font-family: "myriad-pro-condensed", sans-serif;
 }
 
+.info-windows h2.church-label {
+  float: left;
+  margin-right: 10px;
+  margin-top: 7px;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.info-windows hr {
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: -6px;
+}
+
+.info-windows .button-group {
+  margin-top: 10px;
+}
+
 /* INACTIVE H1 STYLES */
 
 h1.inactive {
