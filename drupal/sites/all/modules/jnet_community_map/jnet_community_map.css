@@ -80,8 +80,7 @@ html, body {
   margin: 0px;
   max-width: none;
   padding: 10px 15px;
-  border-radius: 3px;
-  border: 1px solid #666;
+  border: 2px solid #ccc;
 }
 
 .info-windows h1 {
@@ -89,6 +88,7 @@ html, body {
   margin: 5px 0px;
   color: #ff3300;
   font-weight: bold;
+  font-family: "myriad-pro-condensed", sans-serif;
 }
 
 .info-windows h2 {
@@ -96,6 +96,7 @@ html, body {
   margin: 4px 0px;
   color: #333;
   font-weight: bold;
+  font-family: "myriad-pro-condensed", sans-serif;
 }
 
 /* INACTIVE H1 STYLES */
@@ -204,5 +205,5 @@ select.church-map {
 
 #map-filters #centerMap {
   top: -3px;
-  margin-left: 10px;
+  margin-right: 10px;
 }

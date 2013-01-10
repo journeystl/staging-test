@@ -175,7 +175,7 @@
           id: (markers_raw[m_id].marker_id),
           map: map,
           title: "Group Name",
-          icon: "/sites/all/modules/jnet_community_map/images/group-icon-001.png",
+          icon: "/sites/all/modules/jnet_community_map/images/group-icon-002.png",
           leaderEmail: "",
           churchIndex: 0,
           dayIndex: [],
@@ -252,21 +252,21 @@
           }
         }
 
-        function returnType(idx) {
-          if (idx == 1) {
-            return "Mixed (Married and Single)";
-          }
-          if (idx == 2) {
-            return "Single";
-          }
+        // function returnType(idx) {
+        //   if (idx == 1) {
+        //     return "Mixed (Married and Single)";
+        //   }
+        //   if (idx == 2) {
+        //     return "Single";
+        //   }
 
-          if (idx == 3) {
-            return "Married";
-          }
-          else {
-            return "";
-          }
-        }
+        //   if (idx == 3) {
+        //     return "Married";
+        //   }
+        //   else {
+        //     return "";
+        //   }
+        // }
 
         var daysString = "";
 
@@ -307,11 +307,11 @@
         "<ul class='button-group radius'><li><a href='#' onclick='joinGroup(\""+
               marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
-              "\")' class='joinGroup button radius tiny secondary'>Request to Join</a></li>"+
+              "\")' class='joinGroup button radius tiny'>Request to Join</a></li>"+
         "<li><a href='#' onclick='reportError(\""+
               marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
-              "\")' class='reportError button radius tiny secondary'>Report Incorrect Info</a></li></ul>";
+              "\")' class='reportError button radius tiny'>Report Incorrect Info</a></li></ul>";
 
         var myOptions = {
           content: "<div>" + markerWindow + "</div>",
