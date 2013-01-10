@@ -73,7 +73,7 @@
   </li>
 
   <?php if (isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])): ?>
-	<li id="scriptureTab" class="hide-for-small">
+	<li id="scriptureTab">
   <?php
     if (function_exists('curl_init') && isset($content['field_scripture_reference'][0]['#markup']) && strlen($content['field_scripture_reference'][0]['#markup'])) {
       $key = "IP";

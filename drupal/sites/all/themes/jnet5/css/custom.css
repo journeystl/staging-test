@@ -410,6 +410,10 @@ hr.double {
 	border-color: #CC2900 !important;
 }
 
+#footer-bottom ul.nav-bar .menu-mlid-632 span.show-for-small {
+	display: none !important;
+}
+
 /* Locations View */
 .view-id-locations table {
 	width: 100%;
@@ -417,6 +421,9 @@ hr.double {
 }
 .view-id-locations table thead {
 	display: none;
+}
+.view-id-locations table tbody {
+	border: none;
 }
 .view-id-locations table tr.even,
 .view-id-locations table tr.odd {
@@ -818,6 +825,20 @@ p + ul {
 
 /* Church Thumbnails on /visit*/
 
+.view-visit-church-images {
+	border-bottom: 1px solid #666;
+}
+
+.view-visit-church-images .views-row {
+	min-height: 200px;
+}
+
+@media only screen and (max-width: 767px) {
+	.view-visit-church-images {
+		border-bottom: none;
+	}
+}
+
 #block-views-visit-church-images-block li.views-row h4 {
 	margin-bottom: 0px;
 }
@@ -1201,4 +1222,9 @@ span#this_weekend {
 	top: -60px;
 	background-color: transparent;
 	border: 1px none;
+}
+
+/* Vertical Tabs */
+dl.tabs.vertical dd a {
+	font-size: 18px;
 }

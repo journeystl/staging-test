@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
-#pageDarken {
+/*#pageDarken {
   display: none;
   position: absolute;
   background-color: black;
@@ -10,7 +10,7 @@ html, body {
   margin: 0;
   padding: 0;
   z-index: 2;
-}
+}*/
 .emailPopup {
   display: none;
   width: 500px;
@@ -75,31 +75,47 @@ html, body {
 }
 .info-windows {
   min-width: 220px;
-  background: #f4f3ef;
-  color: #ffedc8;
-  font-family: Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #333;
   margin: 0px;
   max-width: none;
   padding: 10px 15px;
-  border-radius: 5px;
-  border: 2px solid #b8b4ab;
+  border: 2px solid #ccc;
 }
 
 .info-windows h1 {
   font-size: 15px;
   margin: 5px 0px;
-  color: #b64414;
+  color: #ff3300;
   font-weight: bold;
+  font-family: "myriad-pro-condensed", sans-serif;
 }
 
 .info-windows h2 {
   font-size: 12px;
   margin: 4px 0px;
-  color: #989898;
+  color: #333;
   font-weight: bold;
+  font-family: "myriad-pro-condensed", sans-serif;
 }
 
-.info-windows a {
+/* INACTIVE H1 STYLES */
+
+h1.inactive {
+
+}
+
+/* INACTIVE H2 STYLES */
+
+h2.inactive {
+  display: none;
+}
+
+.button-group {
+  clear: both;
+}
+
+/*.info-windows a {
   background-color: #edefef;
   height: 20px;
   font-size: 11px;
@@ -110,9 +126,9 @@ html, body {
   border: 1px solid #d5d6d6;
   float: left;
   display: block;
-}
+}*/
 
-.info-windows a.joinGroup {
+/*.info-windows a.joinGroup {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   border-right: 0px;
@@ -121,25 +137,23 @@ html, body {
 .info-windows a.reportError {
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-}
+}*/
 
 .dayBox {
   padding: 0 6px;
   margin: 5px 70px 10px 0px;
-  border: 1px solid gray;
-  background: #d5d6d6;
-  float: left;
+
 }
 
 .dayBox span {
-  color: gray;
+  color: #999999;
   font-size: 12px;
   padding: 6px 2px;
   float: left;
 }
 
 .dayBox .activeDay {
-  color: #b64414;
+  color: #ff3300;
   font-weight: bold;
 }
 
@@ -174,3 +188,22 @@ select.church-map {
 }
 
 #map_canvas img { max-width: none; } /* Google Map fix for Twitter bootstrap */
+
+#map-filters {
+  border-bottom: 1px solid #666;
+  padding-bottom: 10px;
+}
+
+#map-filters .custom.dropdown {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#map-filters .custom.checkbox {
+  margin-right: 5px;
+}
+
+#map-filters #centerMap {
+  top: -3px;
+  margin-right: 10px;
+}

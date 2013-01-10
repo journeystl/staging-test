@@ -118,6 +118,8 @@ function jnet_community_map_block_view($delta = '') {
         param_set('city_api_map_json', $group_data_map_json);
       } else {
         $group_data_map_json = param_get('city_api_map_json');
+        // print_r($group_data_map_json);
+        // exit();
       }
 
       // Add the map JSON data as a js setting.
@@ -136,9 +138,8 @@ function jnet_community_map_block_view($delta = '') {
       // Add the markup.
       $block['subject'] = '';
       $block['content'] = '
-        <div id="pageDarken"></div>
-        <div id="joinRequestPopup" class="emailPopup">
-          <a href="#" class="close"></a>
+        <div id="joinRequestPopup" class="emailPopup reveal-modal">
+          <a href="#" class="close-reveal-modal">&#215;</a>
           <form id="joinRequestForm"name="contactform" method="post" action="">
             <label for="email">Your Email:</label>
             <input type="text" name="email" placeholder="Your Email"></input>
@@ -149,8 +150,8 @@ function jnet_community_map_block_view($delta = '') {
             <input type="submit" value="Send Message"></input>
           </form>
         </div>
-        <div id="reportErrorPopup" class="emailPopup">
-          <a href="#" class="close"></a>
+        <div id="reportErrorPopup" class="emailPopup reveal-modal">
+          <a href="#" class="close-reveal-modal">&#215;</a>
           <form id="reportErrorForm" name="contactform" method="post" action="">
             <label for="email">Your Email:</label>
             <input type="text" name="email" placeholder="Your Email"></input>
@@ -160,6 +161,8 @@ function jnet_community_map_block_view($delta = '') {
             <input type="submit" value="Send Message"></input>
           </form>
         </div>
+        <form class="custom" id="map-filters">
+        <button id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</button>
         <select id="select-church" class="church-map">
         </select>
         <select id="select-day" class="church-map">
@@ -167,8 +170,8 @@ function jnet_community_map_block_view($delta = '') {
         <select id="select-type" class="church-map">
         </select>
         <input type="checkbox" id = "kidFriendly" name="kid-friendly" value="1">Kid-Friendly</input>
-        <button id="centerMap">Center on My Location</button>
-        <div id="map_canvas" class=""></div>
+        </form>
+        <div id="map_canvas" class="twelve columns"></div>
         ';
       break;
 
