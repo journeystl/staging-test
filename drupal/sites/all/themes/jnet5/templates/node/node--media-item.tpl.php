@@ -5,8 +5,12 @@
  */
 ?>
 
+<?php if (isset($$title)): ?>
+  <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
+<?php endif;?>
+
 <?php if (!empty($content['field_speaker'][0]['#markup'])): ?>
-	<h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
+  <h5>By <?php print $content['field_speaker'][0]['#markup']; ?></h5>
 <?php endif;?>
 
 
