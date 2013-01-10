@@ -5,7 +5,7 @@
  */
 ?>
 
-<?php if (isset($$title)): ?>
+<?php if (isset($title)): ?>
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
 <?php endif;?>
 
