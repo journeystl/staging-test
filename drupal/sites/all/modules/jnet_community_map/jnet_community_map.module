@@ -162,7 +162,7 @@ function jnet_community_map_block_view($delta = '') {
           </form>
         </div>
         <form class="custom" id="map-filters">
-        <button id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</button>
+        <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
         <select id="select-church" class="church-map">
         </select>
         <select id="select-day" class="church-map">
