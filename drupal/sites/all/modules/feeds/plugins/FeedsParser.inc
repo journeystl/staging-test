@@ -96,7 +96,8 @@ abstract class FeedsParser extends FeedsPlugin {
   public function getMappingSources() {
     self::loadMappers();
     $sources = array();
-    feeds_alter('feeds_parser_sources', $sources, feeds_importer($this->id)->config['content_type']);
+    $content_type = feeds_importer($this->id)->config['content_type'];
+    drupal_alter('feeds_parser_sources', $sources, $content_type);
     if (!feeds_importer($this->id)->config['content_type']) {
       return $sources;
     }
@@ -745,7 +746,7 @@ function feeds_to_unixtime($date, $default_value) {
   if (is_numeric($date)) {
     return $date;
   }
-  elseif (is_string($date)) {
+  elseif (is_string($date) && !empty($date)) {
     $date = new FeedsDateTimeElement($date);
     return $date->getValue();
   }
