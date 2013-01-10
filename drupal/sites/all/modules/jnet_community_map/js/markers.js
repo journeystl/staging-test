@@ -35,7 +35,8 @@
 
   var churchGroups    = ["Any Church", "Tower Grove", "Hanley Road", "West County", "Metro East", "Southern Illinois"];
   var dayGroups     = ["Any Day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  var typeGroups      = ["Any Type", "Mixed (Married & Single)", "Married", "Single"];
+  // Removing Married/Single -- var typeGroups      = ["Any Type", "Mixed (Married & Single)", "Married", "Single"];
+  var typeGroups      = ["Any Type", "Mixed (Married & Single)"];
 
 
   var displayGroups = new Array(churchGroups.length);
