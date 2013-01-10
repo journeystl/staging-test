@@ -252,21 +252,21 @@
           }
         }
 
-        // function returnType(idx) {
-        //   if (idx == 1) {
-        //     return "Mixed (Married and Single)";
-        //   }
-        //   if (idx == 2) {
-        //     return "Single";
-        //   }
+        function returnType(idx) {
+          if (idx == 1) {
+            return "Mixed (Married and Single)";
+          }
+          if (idx == 2) {
+            return "Single";
+          }
 
-        //   if (idx == 3) {
-        //     return "Married";
-        //   }
-        //   else {
-        //     return "";
-        //   }
-        // }
+          if (idx == 3) {
+            return "Married";
+          }
+          else {
+            return "";
+          }
+        }
 
         var daysString = "";
 
