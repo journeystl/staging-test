@@ -33,14 +33,20 @@
 
     jQuery("#reportErrorPopup").reveal();
 
-    // Set action - GET variables
-    var phpScript = "send_email.php";
-    var action =
-      //change websupport@thejourney.org to leaderEmail
-      phpScript + "?to=" + "websupport@thejourney.org" + "&id=" + groupID + "&title=" +
-      groupName + "&type=" + groupType + "&kidFriendly=" + kidFriendly + "&days=" + meetingDays + "&subject=Request to Join";
+    jQuery("#edit-leader-email").val(leaderEmail);
+    jQuery("#edit-group-id").val(groupID);
+    jQuery("#edit-group-name").val(groupName);
+    jQuery("#edit-group-kids").val(kidFriendly);
+    jQuery("#edit-group-days").val(meetingDays);
 
-    document.getElementById('reportErrorForm').action = action;
+    // // Set action - GET variables
+    // var phpScript = "send_email.php";
+    // var action =
+    //   //change websupport@thejourney.org to leaderEmail
+    //   phpScript + "?to=" + "websupport@thejourney.org" + "&id=" + groupID + "&title=" +
+    //   groupName + "&type=" + groupType + "&kidFriendly=" + kidFriendly + "&days=" + meetingDays + "&subject=Request to Join";
+
+    // document.getElementById('reportErrorForm').action = action;
   }
 
 // (function ($) {
