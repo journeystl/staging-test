@@ -208,8 +208,14 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
   );
 
   $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => 'Send Message'
+    '#type' => 'button',
+    '#value' => 'Send Message',
+    '#ajax' => array(
+      'callback' => 'jnet_community_map_action_ajax_email',
+      'wrapper' => 'jnet-community-map-action-form',
+      'method' => 'replace',
+      'effect' => 'fade',
+    ),
   );
 
   return $form;
@@ -226,7 +232,7 @@ function jnet_validate_email($element, &$form_state, $form) {
    }
 }
 
-function jnet_community_map_action_form_submit($form, &$form_state) {
+function jnet_community_map_action_ajax_email($form, &$form_state) {
 
   switch ($form['#jnet_form_type']) {
     case 'request':
@@ -248,6 +254,6 @@ function jnet_community_map_action_form_submit($form, &$form_state) {
 
   drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
 
-  $display_message = 'Your email has been sent.';
-  drupal_set_message($display_message);
+  return '<div class="messages"></div>';
+
 }
