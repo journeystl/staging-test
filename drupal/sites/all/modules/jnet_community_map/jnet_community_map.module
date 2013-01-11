@@ -274,7 +274,7 @@ function jnet_validate_email($element, &$form_state, $form) {
 
 function jnet_community_map_join_form_submit($form, &$form_state) {
 
-  $send_form_to = 'syost@journeyon.net,kraigory@gmail.com';
+  $send_form_to = 'syost@journeyon.net,kraig@thecatena.com';
   $params = array(
     'context' => array(
       'subject' => 'Request to Join Community Group',
@@ -291,7 +291,7 @@ function jnet_community_map_join_form_submit($form, &$form_state) {
 
 function jnet_community_map_report_form_submit($form, &$form_state) {
 
-  $send_form_to = 'syost@journeyon.net,kraigory@gmail.com';
+  $send_form_to = 'syost@journeyon.net,kraig@thecatena.com';
   $params = array(
     'context' => array(
       'subject' => 'Incorrect Community Group Info Report',
