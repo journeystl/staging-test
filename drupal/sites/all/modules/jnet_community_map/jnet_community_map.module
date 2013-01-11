@@ -140,11 +140,11 @@ function jnet_community_map_block_view($delta = '') {
       $block['content'] = '
         <div id="joinRequestPopup" class="emailPopup reveal-modal">
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
-          ' . render(drupal_get_form('jnet_community_map_join_form')) . '
+          ' . render(drupal_get_form('jnet_community_map_action_form','join')) . '
         </div>
         <div id="reportErrorPopup" class="emailPopup reveal-modal">
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
-          ' . render(drupal_get_form('jnet_community_map_report_form')) . '
+          ' . render(drupal_get_form('jnet_community_map_action_form','report')) . '
         </div>
         <form class="custom" id="map-filters">
         <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
@@ -167,7 +167,9 @@ function jnet_community_map_block_view($delta = '') {
 /**
  * Implements hook_form().
  */
-function jnet_community_map_join_form($form, &$form_state) {
+function jnet_community_map_action_form($form, &$form_state, $type) {
+
+  $form['#jnet_form_type'] = $type;
 
   $form['email'] = array(
     '#type' => 'textfield',
@@ -215,53 +217,7 @@ function jnet_community_map_join_form($form, &$form_state) {
   return $form;
 }
 
-function jnet_community_map_report_form($form, &$form_state) {
 
-  $form['email'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Your Email:'),
-    '#required' => TRUE,
-    '#element_validate' => array('jnet_validate_email'),
-  );
-
-  $form['message'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Your Message:'),
-    '#required' => TRUE,
-  );
-
-  $form['leader-email'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-  );
-
-  $form['group-id'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-  );
-
-  $form['group-name'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-  );
-
-  $form['group-kids'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-  );
-
-  $form['group-days'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-  );
-
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => 'Send Message'
-  );
-
-  return $form;
-}
 
 /**
  * Email Validator
@@ -272,32 +228,24 @@ function jnet_validate_email($element, &$form_state, $form) {
    }
 }
 
-function jnet_community_map_join_form_submit($form, &$form_state) {
+function jnet_community_map_join_form_ajax_email($form, &$form_state) {
+
+  switch ($form['#jnet_form_type']) {
+    case 'request':
+      $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
+      break;
+    case 'report':
+      $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
+      break;
+  }
 
   $send_form_to = 'syost@journeyon.net,kraig@thecatena.com';
   $params = array(
     'context' => array(
       'subject' => 'Request to Join Community Group',
-      'body' => '<p>A user at thejourney.org has requested more information about joining your community group. Their message is below.</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
+      'body' => '<p>' . $message_header . '</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
     ),
-    'plaintext' => 'A User at thejourney.org has requested more information about joining your community group. Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
-  );
-
-  drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
-
-  $display_message = 'Your email has been sent.';
-  drupal_set_message($display_message);
-}
-
-function jnet_community_map_report_form_submit($form, &$form_state) {
-
-  $send_form_to = 'syost@journeyon.net,kraig@thecatena.com';
-  $params = array(
-    'context' => array(
-      'subject' => 'Incorrect Community Group Info Report',
-      'body' => '<p>A user at thejourney.org has reported incorrect community group info. Their message is below.</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
-    ),
-    'plaintext' => 'A user at thejourney.org has reported incorrect community group info. Their message follows. Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
+    'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
 
   drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
