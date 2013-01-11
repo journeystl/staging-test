@@ -144,8 +144,9 @@ function jnet_community_map_block_view($delta = '') {
         </div>
         <div id="reportErrorPopup" class="emailPopup reveal-modal">
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
-          <div id=
+          <div id="action-form">
           ' . render(drupal_get_form('jnet_community_map_action_form','report')) . '
+          </div>
         </div>
         <form class="custom" id="map-filters">
         <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
