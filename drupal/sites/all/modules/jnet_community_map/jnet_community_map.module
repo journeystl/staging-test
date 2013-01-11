@@ -274,7 +274,7 @@ function jnet_validate_email($element, &$form_state, $form) {
 
 function jnet_community_map_join_form_submit($form, &$form_state) {
 
-  $send_form_to = 'kraig@thecatena.com';
+  $send_form_to = 'websupport@thejourney.org';
   $params = array(
     'context' => array(
       'subject' => 'Request to Join Community Group',
@@ -291,10 +291,10 @@ function jnet_community_map_join_form_submit($form, &$form_state) {
 
 function jnet_community_map_report_form_submit($form, &$form_state) {
 
-  $send_form_to = 'kraig@thecatena.com';
+  $send_form_to = 'websupport@thejourney.org';
   $params = array(
     'context' => array(
-      'subject' => 'Report of Incorrect Community Group Info',
+      'subject' => 'Incorrect Community Group Info Report',
       'body' => '<p>A user at thejourney.org has reported incorrect community group info. Their message is below.</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
     ),
     'plaintext' => 'A user at thejourney.org has reported incorrect community group info. Their message follows. Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
