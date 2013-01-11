@@ -234,7 +234,7 @@ function jnet_validate_email($element, &$form_state, $form) {
 
 function jnet_community_map_action_ajax_email($form, &$form_state) {
 
-  switch ($form_state['#jnet_form_type']) {
+  switch ($form['#jnet_form_type']) {
     case 'request':
       $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
       break;
@@ -254,6 +254,6 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
 
   drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
 
-  return '<div class="messages"></div>';
+  return '<div class="messages">Thanks.</div>';
 
 }
