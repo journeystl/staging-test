@@ -9,14 +9,15 @@
 
     jQuery("#joinRequestPopup").reveal();
 
-    // Set action - GET variables
-    var phpScript = "send_email.php";
-    var action =
-      //change websupport@thejourney.org to leaderEmail
-      phpScript + "?to=" + "websupport@thejourney.org" + "&id=" + groupID + "&title=" +
-      groupName + "&type=" + groupType + "&kidFriendly=" + kidFriendly + "&days=" + meetingDays + "&subject=Request to Join";
 
-    document.getElementById('joinRequestForm').action = action;
+    // // Set action - GET variables
+    // var phpScript = "send_email.php";
+    // var action =
+    //   //change websupport@thejourney.org to leaderEmail
+    //   phpScript + "?to=" + "websupport@thejourney.org" + "&id=" + groupID + "&title=" +
+    //   groupName + "&type=" + groupType + "&kidFriendly=" + kidFriendly + "&days=" + meetingDays + "&subject=Request to Join";
+
+    // document.getElementById('joinRequestForm').action = action;
 
   }
 

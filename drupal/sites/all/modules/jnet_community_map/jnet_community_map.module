@@ -149,6 +149,7 @@ function jnet_community_map_block_view($delta = '') {
             <br />
             <input type="submit" value="Send Message"></input>
           </form>
+          ' . render(drupal_get_form('jnet_community_map_form')) . '
         </div>
         <div id="reportErrorPopup" class="emailPopup reveal-modal">
           <a href="#" class="close-reveal-modal">&#215;</a>
@@ -177,4 +178,76 @@ function jnet_community_map_block_view($delta = '') {
 
   }
   return $block;
+}
+
+/**
+ * Implements hook_form().
+ */
+function jnet_community_map_join_form($form, &$form_state) {
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Your Email:'),
+    '#required' => TRUE,
+    '#element_validate' => array('jnet_validate_email'),
+  );
+
+  $form['message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Your Message:'),
+    '#required' => TRUE,
+  );
+
+  $form['leader-email'] = array(
+    '#type' => 'textfield',
+    '#title' => '',
+  );
+
+  $form['group-id'] = array(
+    '#type' => 'textfield',
+    '#title' => '',
+  );
+
+  $form['group-name'] = array(
+    '#type' => 'textfield',
+    '#title' => '',
+  );
+
+  $form['group-kids'] = array(
+    '#type' => 'textfield',
+    '#title' => '',
+  );
+
+  $form['group-days'] = array(
+    '#type' => 'textfield',
+    '#title' => '',
+  );
+
+  return $form;
+}
+
+/**
+ * Email Validator
+ */
+function jnet_validate_email($element, &$form_state, $form) {
+   if (!valid_email_address($element['#value'])) {
+     form_error($element, t('The email address you entered is invalid.'));
+   }
+}
+
+function jnet_community_map_join_form_submit(&$form, &$form_state) {
+
+  $send_form_to = 'kraig@thecatena.com';
+  $params = array(
+    'context' => array(
+      'subject' => 'Request to Join Community Group',
+      'body' => '<p>A user at thejourney.org has requested more information about joining your community group. Their message is below.</p><p>Email: ' . $form['email'] . '</p><p> ' . $form['message'] . '</p>',
+    ),
+    'plaintext' => 'A User at thejourney.org has requested more information about joining your community group. Email: ' . $form['email'] . '. Message: ' . $form['message'],
+  );
+  drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
+
+  $display_message = 'Your email has been sent.';
+  drupal_set_message($display_message);
+
 }
