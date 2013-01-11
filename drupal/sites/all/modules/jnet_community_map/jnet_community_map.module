@@ -226,7 +226,7 @@ function jnet_validate_email($element, &$form_state, $form) {
    }
 }
 
-function jnet_community_map_join_form_ajax_email($form, &$form_state) {
+function jnet_community_map_join_form_submit($form, &$form_state) {
 
   switch ($form['#jnet_form_type']) {
     case 'request':
@@ -237,7 +237,7 @@ function jnet_community_map_join_form_ajax_email($form, &$form_state) {
       break;
   }
 
-  $send_form_to = 'syost@journeyon.net,kraig@thecatena.com';
+  $send_form_to = 'syost@journeyon.net, kraig@thecatena.com';
   $params = array(
     'context' => array(
       'subject' => 'Request to Join Community Group',
