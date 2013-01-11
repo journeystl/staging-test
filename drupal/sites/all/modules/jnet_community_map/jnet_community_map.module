@@ -139,7 +139,7 @@ function jnet_community_map_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = '
         <div id="joinRequestPopup" class="emailPopup reveal-modal">
-          <a href="#" class="close-reveal-modal">&#215;</a>
+          <a href="javascript:;" class="close-reveal-modal">&#215;</a>
           <form id="joinRequestForm"name="contactform" method="post" action="">
             <label for="email">Your Email:</label>
             <input type="text" name="email" placeholder="Your Email"></input>
@@ -152,7 +152,7 @@ function jnet_community_map_block_view($delta = '') {
           ' . render(drupal_get_form('jnet_community_map_join_form')) . '
         </div>
         <div id="reportErrorPopup" class="emailPopup reveal-modal">
-          <a href="#" class="close-reveal-modal">&#215;</a>
+          <a href="javascript:;" class="close-reveal-modal">&#215;</a>
           <form id="reportErrorForm" name="contactform" method="post" action="">
             <label for="email">Your Email:</label>
             <input type="text" name="email" placeholder="Your Email"></input>
@@ -221,6 +221,11 @@ function jnet_community_map_join_form($form, &$form_state) {
   $form['group-days'] = array(
     '#type' => 'textfield',
     '#title' => '',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Send Message'
   );
 
   return $form;

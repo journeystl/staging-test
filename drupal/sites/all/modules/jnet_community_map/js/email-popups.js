@@ -9,6 +9,12 @@
 
     jQuery("#joinRequestPopup").reveal();
 
+    jQuery("#edit-leader-email").val(leaderEmail);
+    jQuery("#edit-group-id").val(groupID);
+    jQuery("#edit-group-name").val(groupName);
+    jQuery("#edit-group-kids").val(kidFriendly);
+    jQuery("#edit-group-days").val(meetingDays);
+
 
     // // Set action - GET variables
     // var phpScript = "send_email.php";
