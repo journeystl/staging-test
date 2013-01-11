@@ -138,10 +138,13 @@ function jnet_community_map_block_view($delta = '') {
       $block['content'] = '
         <div id="joinRequestPopup" class="emailPopup reveal-modal">
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
+          <div id="action-form">
           ' . render(drupal_get_form('jnet_community_map_action_form','join')) . '
+          </div>
         </div>
         <div id="reportErrorPopup" class="emailPopup reveal-modal">
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
+          <div id=
           ' . render(drupal_get_form('jnet_community_map_action_form','report')) . '
         </div>
         <form class="custom" id="map-filters">
@@ -173,7 +176,6 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
     '#type' => 'textfield',
     '#title' => t('Your Email:'),
     '#required' => TRUE,
-    '#element_validate' => array('jnet_validate_email'),
   );
 
   $form['message'] = array(
@@ -212,7 +214,7 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
     '#value' => 'Send Message',
     '#ajax' => array(
       'callback' => 'jnet_community_map_action_ajax_email',
-      'wrapper' => 'jnet-community-map-action-form',
+      'wrapper' => 'action-form',
       'method' => 'replace',
       'effect' => 'fade',
     ),
@@ -243,6 +245,8 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
       break;
   }
 
+
+
   $send_form_to = 'kraig@thecatena.com';
   $params = array(
     'context' => array(
@@ -252,8 +256,19 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
 
-  drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
+  $result_markup = '';
 
-  return '<div class="messages">Thanks.</div>';
+  if (valid_email_address($form_state['values']['email'])) {
+    drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
+    $result_markup .= '<div>Email Sent</div>';
+
+  } else {
+    $result_markup .= $form;
+    form_set_error('email','This e-mail address is invalid.');
+  }
+
+
+
+  return $result_markup;
 
 }
