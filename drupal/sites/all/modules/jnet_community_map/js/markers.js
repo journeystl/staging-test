@@ -82,7 +82,11 @@
         // Build out select menus based on group arrays
         for (var i = 0; i < churchGroups.length; i++) {
           var option = document.createElement("option");
-          option.text = churchGroups[i];
+          if (i == 0) {
+            option.text = "Select your home church...";
+          } else {
+            option.text = churchGroups[i];
+          }
           option.value = i;
           document.getElementById("select-church").appendChild(option);
         }
