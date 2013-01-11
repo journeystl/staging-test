@@ -17,6 +17,11 @@ function bugherd_init() {
     return;
   }
 
+  // Hide on iPhone / iPod
+  if (preg_match("/(iPhone|iPod)/i", $_SERVER['HTTP_USER_AGENT'])) {
+    return;
+  }
+
   $disable_on_admin = variable_get('bugherd_disable_on_admin', FALSE);
   if (arg(0) == 'admin' && $disable_on_admin) {
     return;
