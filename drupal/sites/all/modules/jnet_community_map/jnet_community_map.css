@@ -225,3 +225,11 @@ select.church-map {
   top: -3px;
   margin-right: 10px;
 }
+
+#edit-leader-email,
+#edit-group-id,
+#edit-group-name,
+#edit-group-kids,
+#edit-group-days {
+  display: none;
+}

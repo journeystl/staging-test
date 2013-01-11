@@ -246,7 +246,7 @@ function jnet_community_map_join_form_submit(&$form, &$form_state) {
   $params = array(
     'context' => array(
       'subject' => 'Request to Join Community Group',
-      'body' => '<p>A user at thejourney.org has requested more information about joining your community group. Their message is below.</p><p>Email: ' . $form['email'] . '</p><p> ' . $form['message'] . '</p>',
+      'body' => '<p>A user at thejourney.org has requested more information about joining your community group. Their message is below.</p><p>Email: ' . $form['email'] . '</p><p> ' . $form['message'] . '</p><p>Group Info:</p><p>Group Name: ' . $form['group-name'] . '</p><p>Group ID: ' . $form['group-id'] . '</p><p>Leader Email: ' . $form['leader-email'] . '</p><p>Group Meeting Day: ' . $form['gorup-days'] . '</p><p>Kid Friendly: ' . $form['group-kids'] . '</p>',
     ),
     'plaintext' => 'A User at thejourney.org has requested more information about joining your community group. Email: ' . $form['email'] . '. Message: ' . $form['message'],
   );
