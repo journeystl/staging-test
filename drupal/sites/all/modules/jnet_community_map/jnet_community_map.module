@@ -12,115 +12,113 @@ function jnet_community_map_block_info() {
 }
 
 /**
+ * Implements hook_cron().
+ */
+function jnet_community_map_cron() {
+  // Get the community map data.
+  // Include the City API library.
+  require_once(DRUPAL_ROOT . '/sites/all/libraries/city-api/lib/ca-main.php');
+
+  // Store our data.
+  $group_data_array = array();
+  $group_data_map_json = array();
+
+  $ca = new CityApi();
+  // $ca->debug = true;
+  $ca->json = true;
+
+  $groups_index_results = $ca->groups_index(array('group_types' => "CG"));
+  $groups_object = json_decode($groups_index_results);
+
+  for ($i=1; $i<=$groups_object->total_pages; $i++) {
+    // Now that we've called it once to know total pages -- let's walk through all of them, unless we have already done so.
+    if ($i != 1) {
+      $groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i));
+      $groups_object = json_decode($groups_index_results);
+    }
+
+    foreach ($groups_object->groups as $group) {
+      $groups_addresses_results = $ca->groups_addresses_index($group->id);
+      $addresses_object = json_decode($groups_addresses_results);
+
+      // TAGS
+      // Get day, type of group
+      $groups_tags_results = $ca->groups_tags_index($group->id);
+      $tags_object = json_decode($groups_tags_results);
+
+      $groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
+      $roles_object = json_decode($groups_roles_results);
+
+      // Compile information ...
+      $group_name = $group->name;
+      $group_nickname = $group->nickname;
+      $group_campus = $group->campus_name;
+      $group_unlisted_status = $group->unlisted;
+      $group_address_count = $addresses_object->total_entries;
+      $group_street = $addresses_object->addresses[0]->street;
+      $group_zip_code = $addresses_object->addresses[0]->zipcode;
+      $group_latitude = $addresses_object->addresses[0]->latitude;
+      $group_longitude = $addresses_object->addresses[0]->longitude;
+
+      $group_tags = array();
+      $group_leaders = array();
+
+      foreach($tags_object->tags as $tag) {
+        array_push($group_tags, $tag->name);
+      }
+
+      foreach($roles_object->roles as $leader) {
+        $group_leader_results = $ca->users_show($leader->user_id);
+        $leader_object = json_decode($group_leader_results);
+
+        array_push($group_leaders, $leader_object->email);
+
+        // Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
+        if (strlen($group_name) && strlen($group_campus) && ($group_address_count > 0) && strlen($group_latitude) && strlen($group_longitude) && (sizeof($group_tags) > 0) && (sizeof($group_leaders) > 0)) {
+          $group_data_array[] = array("name" => $group_name,
+                    "nickname" => $group_nickname,
+                    "campus" => $group_campus,
+                    "unlisted" => $group_unlisted_status,
+                    "address_count" => $group_address_count,
+                    "street" => $group_street,
+                    "zip_code" => $group_zip_code,
+                    "latitude" => $group_latitude,
+                    "longitude" => $group_longitude,
+                    "tags" => $group_tags,
+                    "leaders" => $group_leaders);
+        }
+      }
+    }
+
+    $marker_counter = 1;
+    foreach ($group_data_array as $group) {
+      $group_data_map_json[] = array("marker_id" => $marker_counter,
+                      "latitude" => $group['latitude'],
+                      "longitude" => $group['longitude'],
+                      "draggable" => false,
+                      "title" => $group['name'],
+                      "campus" => $group['campus'],
+                      "leaders" => $group['leaders'],
+                      "tags" => $group['tags'],
+                      "icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
+                      "infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
+        <div class='i-str'>{$group['name']}</div></div>");
+
+      $marker_counter++;
+    }
+  }
+
+  param_set('city_api_map_json', $group_data_map_json);
+}
+
+/**
  * Implements hook_block_view().
  */
 function jnet_community_map_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'jnet_community_map_block':
-      // Get this every X minutes.
-      $last_timestamp = param_get('city_api_map_timestamp');
-      if ($last_timestamp < strtotime("-60 minutes") || isset($_GET['reload'])) {
-        param_set('city_api_map_timestamp', time());
-
-        // Include the City API library.
-        require_once(DRUPAL_ROOT . '/sites/all/libraries/city-api/lib/ca-main.php');
-
-        // Store our data.
-        $group_data_array = array();
-        $group_data_map_json = array();
-
-        $ca = new CityApi();
-        // $ca->debug = true;
-        $ca->json = true;
-
-        $groups_index_results = $ca->groups_index(array('group_types' => "CG"));
-        $groups_object = json_decode($groups_index_results);
-
-        for ($i=1; $i<=$groups_object->total_pages; $i++) {
-          // Now that we've called it once to know total pages -- let's walk through all of them, unless we have already done so.
-          if ($i != 1) {
-            $groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i));
-            $groups_object = json_decode($groups_index_results);
-          }
-
-          foreach ($groups_object->groups as $group) {
-            $groups_addresses_results = $ca->groups_addresses_index($group->id);
-            $addresses_object = json_decode($groups_addresses_results);
-
-            // TAGS
-            // Get day, type of group
-            $groups_tags_results = $ca->groups_tags_index($group->id);
-            $tags_object = json_decode($groups_tags_results);
-
-            $groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
-            $roles_object = json_decode($groups_roles_results);
-
-            // Compile information ...
-            $group_name = $group->name;
-            $group_nickname = $group->nickname;
-            $group_campus = $group->campus_name;
-            $group_unlisted_status = $group->unlisted;
-            $group_address_count = $addresses_object->total_entries;
-            $group_street = $addresses_object->addresses[0]->street;
-            $group_zip_code = $addresses_object->addresses[0]->zipcode;
-            $group_latitude = $addresses_object->addresses[0]->latitude;
-            $group_longitude = $addresses_object->addresses[0]->longitude;
-
-            $group_tags = array();
-            $group_leaders = array();
-
-            foreach($tags_object->tags as $tag) {
-              array_push($group_tags, $tag->name);
-            }
-
-            foreach($roles_object->roles as $leader) {
-              $group_leader_results = $ca->users_show($leader->user_id);
-              $leader_object = json_decode($group_leader_results);
-
-              array_push($group_leaders, $leader_object->email);
-
-              // Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
-              if (strlen($group_name) && strlen($group_campus) && ($group_address_count > 0) && strlen($group_latitude) && strlen($group_longitude) && (sizeof($group_tags) > 0) && (sizeof($group_leaders) > 0)) {
-                $group_data_array[] = array("name" => $group_name,
-                          "nickname" => $group_nickname,
-                          "campus" => $group_campus,
-                          "unlisted" => $group_unlisted_status,
-                          "address_count" => $group_address_count,
-                          "street" => $group_street,
-                          "zip_code" => $group_zip_code,
-                          "latitude" => $group_latitude,
-                          "longitude" => $group_longitude,
-                          "tags" => $group_tags,
-                          "leaders" => $group_leaders);
-              }
-            }
-          }
-
-          $marker_counter = 1;
-          foreach ($group_data_array as $group) {
-            $group_data_map_json[] = array("marker_id" => $marker_counter,
-                            "latitude" => $group['latitude'],
-                            "longitude" => $group['longitude'],
-                            "draggable" => false,
-                            "title" => $group['name'],
-                            "campus" => $group['campus'],
-                            "leaders" => $group['leaders'],
-                            "tags" => $group['tags'],
-                            "icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
-                            "infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
-              <div class='i-str'>{$group['name']}</div></div>");
-
-            $marker_counter++;
-          }
-        }
-
-        param_set('city_api_map_json', $group_data_map_json);
-      } else {
-        $group_data_map_json = param_get('city_api_map_json');
-        // print_r($group_data_map_json);
-        // exit();
-      }
+      $group_data_map_json = param_get('city_api_map_json');
 
       // Add the map JSON data as a js setting.
       drupal_add_js(array('jnet_community_map' => array('data_map_json' => $group_data_map_json)), 'setting');
