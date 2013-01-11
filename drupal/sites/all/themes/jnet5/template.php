@@ -35,15 +35,17 @@ function jnet5_preprocess_panels_pane(&$vars) {
   $thisweekend = '<ul><li><a href="' . $tgpath . '?show_schedule#this_weekend">Tower Grove</a></li><li><a href="' . $hrpath . '?show_schedule#this_weekend">Hanley Road</a></li><li><a href="' . $wcpath . '?show_schedule#this_weekend">West County</a></li><li><a href="' . $blpath . '?show_schedule#this_weekend">Metro East</a></li><li><a href="' . $sipath . '?show_schedule#this_weekend">Southern Illinois</a></li></ul>';
   $vars['content'] = str_replace('[this_weekend]', $thisweekend, $vars['content']);
 
-  foreach ($vars['pane']->access['plugins'] as &$access_rule) {
-    if ($access_rule['not'] = 'FALE') {
-      $access_rule_rule = 'is';
-    } else {
-      $access_rule_rule = 'not';
+  if (isset($vars['pane']->access) && isset($vars['pane']->access['plugins'])) {
+    foreach ($vars['pane']->access['plugins'] as &$access_rule) {
+      if ($access_rule['not'] = 'FALE') {
+        $access_rule_rule = 'is';
+      } else {
+        $access_rule_rule = 'not';
+      }
+      $access_rule_name = $access_rule['name'];
+      $access_rule_context = $access_rule['context'];
+      $vars['classes_array'][] = 'visibility-' . $access_rule_name . '-' . $access_rule_rule . '-' . $access_rule_context;
     }
-    $access_rule_name = $access_rule['name'];
-    $access_rule_context = $access_rule['context'];
-    $vars['classes_array'][] = 'visibility-' . $access_rule_name . '-' . $access_rule_rule . '-' . $access_rule_context;
   }
 
   // if($vars['logged_in']) {
