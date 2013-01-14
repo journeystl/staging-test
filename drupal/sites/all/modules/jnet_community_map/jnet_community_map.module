@@ -251,25 +251,21 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   $send_form_to = 'kraig@thecatena.com';
   $params = array(
     'context' => array(
-      'subject' => 'Request to Join Community Group',
+      'subject' => 'Request to join your commun'ity group - ' . $form_state['values']['email'],
       'body' => '<p>' . $message_header . '</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
     ),
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
 
-  $result_markup = '';
 
   if (valid_email_address($form_state['values']['email'])) {
     drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
-    $result_markup .= '<div>Email Sent</div>';
+    return '<div>Email Sent</div>';
 
   } else {
-    $result_markup .= $form;
+    return $form;
     form_set_error('email','This e-mail address is invalid.');
   }
 
-
-
-  return $result_markup;
 
 }
