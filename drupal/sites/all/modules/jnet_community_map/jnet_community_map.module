@@ -251,8 +251,23 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   $send_form_to = 'kraig@thecatena.com';
   $params = array(
     'context' => array(
-      'subject' => 'Request to Join Community Group',
-      'body' => '<p>' . $message_header . '</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
+      'subject' => 'Request to join your community group - $form_state['values']['email']',
+      'body' => 
+      '<p>' . $message_header . '</p>
+      <p>Leader's Email: ' . $form_state['values']['leader-email'] . '</p>
+      <p></p>
+      <p></p>
+      <p>A person has requested to join your community group via the map at <a href="http://thejourney.org/community">TheJourney.org</a>. Please reply to them within 24 hours.</p>
+      <p></p>
+      <p></p>
+      <p><b>Requestor's email:</b> ' . $form_state['values']['email'] . '</p>
+      <p><b>Requestor's Message:</b> ' . $form_state['values']['message'] . '</p>
+      <p></p>
+      <p></p>
+      <p><b>Your Group's Info</b></p>
+      <p>Name: ' . $form_state['values']['group-name'] . '</p>
+      <p>Meeting Day: ' . $form_state['values']['group-days'] . '</p>
+      <p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
     ),
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
