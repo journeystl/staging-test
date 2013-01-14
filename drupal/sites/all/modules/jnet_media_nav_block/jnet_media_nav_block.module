@@ -46,6 +46,7 @@ function jnet_media_nav_block_block_view($delta = '') {
         ->fields('d', array('field_sermondate_value'))
         ->condition('s.field_series_target_id', $media_series_id)
         ->condition('d.field_sermondate_value', $media_item_date, '<=')
+        ->condition('n.status', 1)
         ->range(0,4)
         ->orderBy('d.field_sermondate_value', 'DESC');
       $result = $query->execute();
@@ -73,6 +74,7 @@ function jnet_media_nav_block_block_view($delta = '') {
         ->condition('s.field_series_target_id', $media_series_id)
         ->condition('d.field_sermondate_value', $media_item_date, '>=')
         ->condition('s.entity_id', array_keys($items_prefix), 'NOT IN')
+        ->condition('n.status', 1)
         ->range(0,$max_range)
         ->orderBy('d.field_sermondate_value', 'ASC');
       $result = $query->execute();
