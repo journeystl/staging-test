@@ -102,19 +102,14 @@ function jnet_community_map_cron() {
                         "leaders" => $group['leaders'],
                         "tags" => $group['tags'],
                         "icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
-                        "infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
-          <div class='i-str'>{$group['name']}</div></div>");
+                        "infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'><div class='i-str'>{$group['name']}</div></div>");
 
         $marker_counter++;
       }
     }
   }
 
-  //param_set('city_api_map_json', $group_data_map_json);
-  print_r($group_data_map_json); exit();
-
-  $file = 'map_data.txt';
-  file_put_contents($file, $group_data_map_json);
+  param_set('city_api_map_json', $group_data_map_json);
 }
 
 /**
@@ -176,7 +171,6 @@ function jnet_community_map_block_view($delta = '') {
  * Implements hook_form().
  */
 function jnet_community_map_action_form($form, &$form_state, $type) {
-
   $form['#jnet_form_type'] = $type;
 
   $form['email'] = array(
@@ -230,8 +224,6 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
   return $form;
 }
 
-
-
 /**
  * Email Validator
  */
@@ -242,7 +234,6 @@ function jnet_validate_email($element, &$form_state, $form) {
 }
 
 function jnet_community_map_action_ajax_email($form, &$form_state) {
-
   switch ($form['#jnet_form_type']) {
     case 'request':
       $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
@@ -251,8 +242,6 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
       break;
   }
-
-
 
   $send_form_to = 'kraig@thecatena.com';
   $params = array(
@@ -263,15 +252,11 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
 
-
   if (valid_email_address($form_state['values']['email'])) {
     drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
     return '<div>Email Sent</div>';
-
   } else {
-    return $form;
     form_set_error('email','This e-mail address is invalid.');
+    return $form;
   }
-
-
 }

@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('DRUPAL_ROOT')) {
-  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT']);
+  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/jnet5-dev/drupal');
 }
 $base_url = "http://" . $_SERVER['HTTP_HOST'];
 require_once DRUPAL_ROOT . "/includes/bootstrap.inc";
@@ -236,8 +236,7 @@ if ($last_timestamp < strtotime("-60 minutes") || isset($_GET['reload']) ) {
 											"leaders" => $group['leaders'],
 											"tags" => $group['tags'],
 											"icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
-											"infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'>\
-				<div class='i-str'>{$group['name']}</div></div>");
+											"infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'><div class='i-str'>{$group['name']}</div></div>");
 
 			$marker_counter++;
 		}
