@@ -56,10 +56,6 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
-  # Rewrite pagoda URL to thejourney.org
-  RewriteCond %{HTTP_HOST} ^jnet5-dev\.pagodabox\.com$ [NC]
-  RewriteRule ^(.*)$ http://thejourney.org/$1 [L,R=301]
-
   # Rewrite journeyon.net and www.journeyon.net to thejourney.org
   RewriteCond %{HTTP_HOST} ^www\.journeyon\.net$ [NC]
   RewriteRule ^(.*)$ http://thejourney.org/$1 [L,R=301]
