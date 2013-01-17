@@ -226,12 +226,12 @@ select.church-map {
   margin-right: 10px;
 }
 
-.field-leader-email,
-.field-group-id,
-.field-group-name,
-.field-group-church,
-.field-group-kids,
-.field-group-days {
+.form-item input.field-leader-email,
+.form-item input.field-group-id,
+.form-item input.field-group-name,
+.form-item input.field-group-church,
+.form-item input.field-group-kids,
+.form-item input.field-group-days {
   display: none;
 }
 
