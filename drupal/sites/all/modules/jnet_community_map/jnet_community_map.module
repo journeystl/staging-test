@@ -254,15 +254,15 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
       'subject' => 'Request to join your community group - ' . $form_state['values']['email'],
       'body' => '<p>' . $message_header . '</p>
         <p>Leader\'s Email: ' . $form_state['values']['leader-email'] . '</p>
-        <p></p>
-        <p></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
         <p>A person has requested to join your community group via the map at <a href="http://thejourney.org/community">TheJourney.org</a>. Please reply to them within 24 hours.</p>
-        <p></p>
-        <p></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
         <p><b>Requestor\'s Email:</b> ' . $form_state['values']['email'] . '</p>
         <p><b>Requestor\'s Message:</b> ' . $form_state['values']['message'] . '</p>
-        <p></p>
-        <p></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
         <p><b>Your Group\'s Info</b></p>
         <p>Name: ' . $form_state['values']['group-name'] . '</p>
         <p>Church: ' . $form_state['values']['group-church'] . '</p>
