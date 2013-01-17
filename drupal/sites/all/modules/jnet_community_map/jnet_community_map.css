@@ -235,7 +235,9 @@ select.church-map {
 #edit-group-id--2,
 #edit-group-name--2,
 #edit-group-kids--2,
-#edit-group-days--2 {
+#edit-group-days--2,
+#edit-group-church,
+#edit-group-church--2 {
   display: none;
 }
 

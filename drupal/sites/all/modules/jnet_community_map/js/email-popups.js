@@ -3,7 +3,7 @@
   //   document.getElementById('pageDarken').style['height'] = window.innerHeight;
   //   document.getElementById('pageDarken').style['display'] = 'block';
   // }
-  function joinGroup(leaderEmail, groupID, groupName, groupType, kidFriendly, meetingDays) {
+  function joinGroup(leaderEmail, groupID, groupName, groupType, kidFriendly, meetingDays, churchName) {
     //pageDarken();
     //document.getElementById('joinRequestPopup').style['display'] = 'block';
 
@@ -14,6 +14,7 @@
     jQuery("#edit-group-name").val(groupName);
     jQuery("#edit-group-kids").val(kidFriendly);
     jQuery("#edit-group-days").val(meetingDays);
+    jQuery("#edit-group-church").val(churchName);
 
 
     // // Set action - GET variables
