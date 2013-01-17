@@ -226,18 +226,12 @@ select.church-map {
   margin-right: 10px;
 }
 
-#edit-leader-email,
-#edit-group-id,
-#edit-group-name,
-#edit-group-kids,
-#edit-group-days,
-#edit-leader-email--2,
-#edit-group-id--2,
-#edit-group-name--2,
-#edit-group-kids--2,
-#edit-group-days--2,
-#edit-group-church,
-#edit-group-church--2 {
+.field-leader-email,
+.field-group-id,
+.field-group-name,
+.field-group-church,
+.field-group-kids,
+.field-group-days {
   display: none;
 }
 

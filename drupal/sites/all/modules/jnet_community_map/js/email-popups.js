@@ -9,12 +9,12 @@
 
     jQuery("#joinRequestPopup").reveal();
 
-    jQuery("#edit-leader-email").val(leaderEmail);
-    jQuery("#edit-group-id").val(groupID);
-    jQuery("#edit-group-name").val(groupName);
-    jQuery("#edit-group-kids").val(kidFriendly);
-    jQuery("#edit-group-days").val(meetingDays);
-    jQuery("#edit-group-church").val(churchName);
+    jQuery(".field-leader-email").val(leaderEmail);
+    jQuery(".field-group-id").val(groupID);
+    jQuery(".field-group-name").val(groupName);
+    jQuery(".field-group-kids").val(kidFriendly);
+    jQuery(".field-group-days").val(meetingDays);
+    jQuery(".field-group-church").val(churchName);
 
 
     // // Set action - GET variables
@@ -34,11 +34,12 @@
 
     jQuery("#reportErrorPopup").reveal();
 
-    jQuery("#edit-leader-email--2").val(leaderEmail);
-    jQuery("#edit-group-id--2").val(groupID);
-    jQuery("#edit-group-name--2").val(groupName);
-    jQuery("#edit-group-kids--2").val(kidFriendly);
-    jQuery("#edit-group-days--2").val(meetingDays);
+    jQuery(".field-leader-email").val(leaderEmail);
+    jQuery(".field-group-id").val(groupID);
+    jQuery(".field-group-name").val(groupName);
+    jQuery(".field-group-kids").val(kidFriendly);
+    jQuery(".field-group-days").val(meetingDays);
+    jQuery(".field-group-church").val(churchName);
 
     // // Set action - GET variables
     // var phpScript = "send_email.php";

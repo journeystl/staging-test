@@ -188,31 +188,49 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
   $form['leader-email'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array(
+      'class' => array('field-leader-email'),
+    ),
   );
 
   $form['group-id'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array(
+      'class' => array('field-group-id'),
+    ),
   );
 
   $form['group-name'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array(
+      'class' => array('field-group-name'),
+    ),
   );
 
   $form['group-church'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array(
+      'class' => array('field-group-church'),
+    ),
   );
 
   $form['group-kids'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array(
+      'class' => array('field-group-kids'),
+    ),
   );
 
   $form['group-days'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array(
+      'class' => array('field-group-days'),
+    ),
   );
 
   $form['submit'] = array(
@@ -241,10 +259,12 @@ function jnet_validate_email($element, &$form_state, $form) {
 function jnet_community_map_action_ajax_email($form, &$form_state) {
   switch ($form['#jnet_form_type']) {
     case 'request':
-      $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
+      $message_header = 'A person has requested to join your community group via the map at <a href="http://thejourney.org/community">TheJourney.org</a>. Please reply to them within 24 hours.';
+      $success_message = '<div>Thank you for requesting to join a community group. Your request has been sent, and you should be contacted within 24 hours.</div><div><input type="button" value="Return To Page" onClick="window.location.reload()"></div>';
       break;
     case 'report':
-      $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
+      $message_header = 'A user at <a href="http://thejourney.org/community">TheJourney.org</a> has reported incorrect community group info. Their message is below.';
+      $success_message = '<div>Thank you for reporting incorrect community group information. Your report has been sent.</div><div><input type="button" value="Return To Page" onClick="window.location.reload()"></div>';
       break;
   }
 
@@ -252,11 +272,11 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   $params = array(
     'context' => array(
       'subject' => 'Request to join your community group - ' . $form_state['values']['email'],
-      'body' => '<p>' . $message_header . '</p>
+      'body' => '
         <p>Leader\'s Email: ' . $form_state['values']['leader-email'] . '</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        <p>A person has requested to join your community group via the map at <a href="http://thejourney.org/community">TheJourney.org</a>. Please reply to them within 24 hours.</p>
+        <p>' . $message_header . '</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p><b>Requestor\'s Email:</b> ' . $form_state['values']['email'] . '</p>
@@ -277,7 +297,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
 
   if (valid_email_address($form_state['values']['email'])) {
     drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
-    return '<div>Thank you for requesting to join a community group. Your request has been sent, and you should be contacted within 24 hours.</div><div><input type="button" value="Return To Page" onClick="window.location.reload()"></div>';
+    return $success_message;
   } else {
     form_set_error('email','This e-mail address is invalid.');
     return $form;
