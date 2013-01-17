@@ -16,6 +16,10 @@
     jQuery(".field-group-days").val(meetingDays);
     jQuery(".field-group-church").val(churchName);
 
+    var type = 'request';
+
+    jQuery('.field-type').val(type);
+
 
     // // Set action - GET variables
     // var phpScript = "send_email.php";
@@ -40,6 +44,10 @@
     jQuery(".field-group-kids").val(kidFriendly);
     jQuery(".field-group-days").val(meetingDays);
     jQuery(".field-group-church").val(churchName);
+
+    var type = 'report';
+
+    jQuery('.field-type').val(type);
 
     // // Set action - GET variables
     // var phpScript = "send_email.php";

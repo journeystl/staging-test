@@ -231,7 +231,8 @@ select.church-map {
 .form-item input.field-group-name,
 .form-item input.field-group-church,
 .form-item input.field-group-kids,
-.form-item input.field-group-days {
+.form-item input.field-group-days,
+.form-item input.field-type {
   display: none;
 }
 
