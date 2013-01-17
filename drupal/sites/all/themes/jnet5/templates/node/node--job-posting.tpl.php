@@ -51,9 +51,6 @@
 				}
 			?>
 
-			<?php
-				dpm($content);
-			?>
 		</div>
 		<div class="panel">
 			<h5>Application Requirements</h5>
