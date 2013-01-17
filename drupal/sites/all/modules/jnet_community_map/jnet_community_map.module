@@ -264,7 +264,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
         <p></p>
         <p></p>
         <p><b>Your Group\'s Info</b></p>
-        <p>Name: ' . $form_state['values']['gorup-name'] . '</p>
+        <p>Name: ' . $form_state['values']['group-name'] . '</p>
         <p>Church: ' . $form_state['values']['group-church'] . '</p>
         <p>Meeting Day: ' . $form_state['values']['group-days'] . '</p>
         <p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
