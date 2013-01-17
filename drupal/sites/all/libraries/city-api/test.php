@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('DRUPAL_ROOT')) {
-  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/jnet5-dev/drupal');
+  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT']);
 }
 $base_url = "http://" . $_SERVER['HTTP_HOST'];
 require_once DRUPAL_ROOT . "/includes/bootstrap.inc";
