@@ -50,6 +50,10 @@
 					print "<strong>Job Type</strong>" . theme('item_list', array('items' => $items));
 				}
 			?>
+			<?php
+				if ($content['field_date_posted']['#items'][0]['value'] != null): ?>
+				<p><strong>Date Posted:</strong> <?php print $content['field_date_posted'][0]['#markup']; ?></p>
+			<?php endif; ?>
 
 		</div>
 		<div class="panel">
