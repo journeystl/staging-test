@@ -212,6 +212,10 @@ select.church-map {
   padding-bottom: 10px;
 }
 
+#map-filters #select-type {
+  display: none;
+}
+
 #map-filters .custom.dropdown {
   display: inline-block;
   margin-right: 10px;

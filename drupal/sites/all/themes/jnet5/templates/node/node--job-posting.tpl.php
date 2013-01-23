@@ -22,7 +22,7 @@
 				<p><strong>Status:</strong> <?php print $content['field_status']['#items'][0]['value']; ?></p>
 			<?php endif; ?>
 			<?php if ($content['field_church'][0]['#markup'] != null): ?>
-				<p><strong>Church:</strong> <?php print $content['field_church'][0]['#markup']; ?></small></p>
+				<p><strong>Church:</strong> <?php print $content['field_church'][0]['#markup']; ?></p>
 			<?php endif; ?>
 
 			<?php
