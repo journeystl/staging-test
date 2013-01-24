@@ -141,7 +141,10 @@ function jnet5_preprocess_page(&$vars) {
     $vars['top_nav'] .= "</ul></div>";
 
     // Add logo.
-    $vars['top_nav'] .= "<div class='two columns'><a class='logo' href='{$GLOBALS['base_path']}'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_main.png'></a></div>";
+    $vars['top_nav'] .= "<div class='two columns'><a class='logo' href='{$GLOBALS['base_path']}'>
+      <img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_main.png'>
+      <div class='logo-tag'>Love God. Connect People. Transform the World.</div>
+    </a></div>";
 
     // Add remaining links.
     $vars['top_nav'] .= "<div class='five columns'><ul class='right-links'>";
