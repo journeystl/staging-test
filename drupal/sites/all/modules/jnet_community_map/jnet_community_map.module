@@ -51,6 +51,7 @@ function jnet_community_map_cron() {
         $roles_object = json_decode($groups_roles_results);
 
         // Compile information ...
+        $group_id = $group->id;
         $group_name = $group->name;
         $group_nickname = $group->nickname;
         $group_campus = $group->campus_name;
@@ -76,27 +77,30 @@ function jnet_community_map_cron() {
 
           // Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
           if (strlen($group_name) && strlen($group_campus) && ($group_address_count > 0) && strlen($group_latitude) && strlen($group_longitude) && (sizeof($group_tags) > 0) && (sizeof($group_leaders) > 0)) {
-            $group_data_array[] = array("name" => $group_name,
-                      "nickname" => $group_nickname,
-                      "campus" => $group_campus,
-                      "unlisted" => $group_unlisted_status,
-                      "address_count" => $group_address_count,
-                      "street" => $group_street,
-                      "zip_code" => $group_zip_code,
-                      "latitude" => $group_latitude,
-                      "longitude" => $group_longitude,
-                      "tags" => $group_tags,
-                      "leaders" => $group_leaders);
+            $group_data_array[$group_id] = array(
+              'id' => $group_id,
+              'name' => $group_name,
+              'nickname' => $group_nickname,
+              'campus' => $group_campus,
+              'unlisted' => $group_unlisted_status,
+              'address_count' => $group_address_count,
+              'street' => $group_street,
+              'zip_code' => $group_zip_code,
+              'latitude' => $group_latitude,
+              'longitude' => $group_longitude,
+              'tags' => $group_tags,
+              'leaders' => $group_leaders,
+            );
           }
         }
       }
 
       $marker_counter = 1;
       foreach ($group_data_array as $group) {
-        $group_data_map_json[] = array("marker_id" => $marker_counter,
+        $group_data_map_json[$group['id']] = array("marker_id" => $marker_counter,
                         "latitude" => $group['latitude'],
                         "longitude" => $group['longitude'],
-                        "draggable" => false,
+                        "draggable" => FALSE,
                         "title" => $group['name'],
                         "campus" => $group['campus'],
                         "leaders" => $group['leaders'],
