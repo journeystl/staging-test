@@ -1,5 +1,28 @@
 <?php
 
+$GLOBALS['jorg_modal_markup'] = '';
+
+//Add markup for Podcast modal
+
+$podcast_modal = '
+  <div id="podcast-modal" class="reveal-modal small">
+    <h2><i class="s-foundicon-rss"></i> Podcasts</h2>
+    <ul class="block-grid two-up">
+      <li><h6>Sermon Audio</h6>
+        <div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/sermon-audio">RSS</a></div>
+        <div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/sermon-audio">iTunes</a></div>
+        </li>
+      <li><h6>Everything Audio</h6>
+        <div><i class="s-foundicon-rss"></i> <a href="http://rss.journeyon.net/everything-audio">RSS</a></div>
+        <div><i class="s-foundicon-rss"></i> <a href="itpc://rss.journeyon.net/everything-audio">iTunes</a></div>
+        </li>
+    </ul>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>';
+
+$GLOBALS['jorg_modal_markup'] .= $podcast_modal;
+
+
 // Use jQuery 1.7 from Google's CDN.
 function jnet5_js_alter(&$javascript) {
   if ($GLOBALS['theme'] == 'jnet5') {
