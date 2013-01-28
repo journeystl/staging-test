@@ -23,6 +23,8 @@ function jnet_community_map_cron() {
   $group_data_array = array();
   $group_data_map_json = array();
 
+  $group_emails = array();
+
   $ca = new CityApi();
   // $ca->debug = true;
   $ca->json = true;
@@ -30,17 +32,33 @@ function jnet_community_map_cron() {
   $groups_index_results = $ca->groups_index(array('group_types' => "CG"));
   $groups_object = json_decode($groups_index_results);
 
+  // DEBUG
+  $debug_folder = date("Y_m_d_H_i_s");
+  if (!is_dir(DRUPAL_ROOT . '/files/city_api_test')) {
+    mkdir(DRUPAL_ROOT . '/files/city_api_test');
+  }
+  if (!is_dir(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder)) {
+    mkdir(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder);
+    file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/groups_index_1', $groups_index_results);
+  }
+
   if (isset($groups_object->total_pages)) {
     for ($i=1; $i<=$groups_object->total_pages; $i++) {
       // Now that we've called it once to know total pages -- let's walk through all of them, unless we have already done so.
       if ($i != 1) {
         $groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i));
         $groups_object = json_decode($groups_index_results);
+
+        // DEBUG
+        file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/groups_index_' . $i, $groups_index_results);
       }
 
       foreach ($groups_object->groups as $group) {
         $groups_addresses_results = $ca->groups_addresses_index($group->id);
         $addresses_object = json_decode($groups_addresses_results);
+
+        // DEBUG
+        file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/groups_addresses_index_' . $group->id, $groups_addresses_results);
 
         // TAGS
         // Get day, type of group
@@ -73,6 +91,9 @@ function jnet_community_map_cron() {
           $group_leader_results = $ca->users_show($leader->user_id);
           $leader_object = json_decode($group_leader_results);
 
+          // DEBUG
+          file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/users_show_' . $leader->user_id, $group_leader_results);
+
           array_push($group_leaders, $leader_object->email);
 
           // Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
@@ -97,16 +118,18 @@ function jnet_community_map_cron() {
 
       $marker_counter = 1;
       foreach ($group_data_array as $group) {
-        $group_data_map_json[$group['id']] = array("marker_id" => $marker_counter,
-                        "latitude" => $group['latitude'],
-                        "longitude" => $group['longitude'],
-                        "draggable" => FALSE,
-                        "title" => $group['name'],
-                        "campus" => $group['campus'],
-                        "leaders" => $group['leaders'],
-                        "tags" => $group['tags'],
-                        "icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
-                        "infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'><div class='i-str'>{$group['name']}</div></div>");
+        $group_data_map_json[$group['id']] = array(
+          'marker_id' => $marker_counter,
+          'latitude' => $group['latitude'],
+          'longitude' => $group['longitude'],
+          'draggable' => FALSE,
+          'title' => $group['name'],
+          'campus' => $group['campus'],
+          'tags' => $group['tags'],
+        );
+
+        // Store the group email separately.
+        $group_emails[$group['id']] = $group['leaders'];
 
         $marker_counter++;
       }
@@ -114,6 +137,7 @@ function jnet_community_map_cron() {
   }
 
   param_set('city_api_map_json', $group_data_map_json);
+  param_set('city_api_map_emails', $group_emails);
 }
 
 /**
@@ -247,7 +271,10 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
       break;
   }
 
+  $group_emails = param_get('city_api_map_emails');
+  //$send_form_to = $group_emails[$form_state['values']['group-id']];
   $send_form_to = 'kraig@thecatena.com';
+
   $params = array(
     'context' => array(
       'subject' => 'Request to join your community group - ' . $form_state['values']['email'],
