@@ -1,16 +1,16 @@
 <?php
 
 if (!defined('DRUPAL_ROOT')) {
-  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/jnet5-dev/drupal');
+  define('DRUPAL_ROOT', $_SERVER['DOCUMENT_ROOT']);
 }
 $base_url = "http://" . $_SERVER['HTTP_HOST'];
 require_once DRUPAL_ROOT . "/includes/bootstrap.inc";
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 // Get this every X minutes.
-$last_timestamp = param_get('city_api_map_timestamp');
+$last_timestamp = param_get('city_api_map_timestamp_test');
 if ($last_timestamp < strtotime("-60 minutes") || isset($_GET['reload']) ) {
-	param_set('city_api_map_timestamp', time());
+	param_set('city_api_map_timestamp_test', time());
 
 
 		// NEEDS / QUESTIONS:
@@ -241,9 +241,9 @@ if ($last_timestamp < strtotime("-60 minutes") || isset($_GET['reload']) ) {
 			$marker_counter++;
 		}
 
-	param_set('city_api_map_json', $group_data_map_json);
+	param_set('city_api_map_json_test', $group_data_map_json);
 } else {
-	$group_data_map_json = param_get('city_api_map_json');
+	$group_data_map_json = param_get('city_api_map_json_test');
 }
 ?>
 <html>

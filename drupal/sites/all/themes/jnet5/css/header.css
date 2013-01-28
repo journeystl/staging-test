@@ -103,10 +103,20 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 	width: 100%;
 	text-align: center;
   padding: 0 10px;
+  overflow: hidden;
 }
 
-.top-bar-wrapper.hide-for-small .top-bar .logo img {
-	margin: 20px auto 0 auto;
+.top-bar-wrapper.hide-for-small .top-bar .logo #nav-bar-logo {
+	margin: 14px auto 0 auto;
+  position: relative;
+  width: 220px;
+}
+.top-bar-wrapper.hide-for-small .top-bar .logo #nav-bar-tag {
+  font-size: 20px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #fff;
+  position: relative;
 }
 
 
