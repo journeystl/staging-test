@@ -155,14 +155,14 @@ function jnet_community_map_block_view($delta = '') {
         </select>
         <select id="select-day" class="church-map">
         </select>
-        <select id="select-type" class="church-map">
-        </select>
         <input type="checkbox" id = "kidFriendly" name="kid-friendly" value="1">Kid-Friendly</input>
         </form>
+        <select id="select-type" class="church-map" style="display:none;">
+        </select>
         <div id="map_canvas" class="twelve columns"></div>
         ';
       break;
-
+      // NOTE: #select-type (above) should go inside the form (below #select-day) if you want it to appear.
   }
   return $block;
 }
