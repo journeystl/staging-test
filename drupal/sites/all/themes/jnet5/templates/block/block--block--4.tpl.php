@@ -24,7 +24,7 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 			if (!empty($node->field_external_form_id[$node->language][0]['value'])) {
 				$form_id = $node->field_external_form_id[$node->language][0]['value'];
 				$signup_btn = '<a href="javascript:;" class="button radius large" data-reveal-id="form-' . $form_id . '">Sign Up</a>';
-				$form_modal = '<div id="form-' . $form_id . '" class="reveal-modal large"><iframe id="wufooForm' . $form_id . '" height="900" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="http://journeyon.wufoo.com/embed/' . $form_id . '/def/embedKey=' . $form_id . '992383&amp;referrer=http%3Awuslashwuslashjourneyon.onthecity.orgwuslashgroupswuslash48277">&lt;a href="http://journeyon.wufoo.com/forms/' . $form_id . '/" title="html form"&gt;Fill out my Wufoo form!&lt;/a&gt;</iframe>
+				$form_modal = '<div id="form-' . $form_id . '" class="reveal-modal large"><iframe id="wufooForm' . $form_id . '" height="700" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="http://journeyon.wufoo.com/embed/' . $form_id . '/def/embedKey=' . $form_id . '992383&amp;referrer=http%3Awuslashwuslashjourneyon.onthecity.orgwuslashgroupswuslash48277">&lt;a href="http://journeyon.wufoo.com/forms/' . $form_id . '/" title="html form"&gt;Fill out my Wufoo form!&lt;/a&gt;</iframe>
 				<a class="close-reveal-modal">&#215;</a></div>';
 				$GLOBALS['jorg_modal_markup'] .= $form_modal;
 				print $signup_btn;
