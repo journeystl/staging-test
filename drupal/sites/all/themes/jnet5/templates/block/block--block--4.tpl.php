@@ -21,7 +21,6 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 	</div> <!--/.eight columns-->
 	<div class="four columns" id="event-rsvp">
 		<?php
-			dpm($node);
 			if (!empty($node->field_external_form_id[$node->language][0]['value'])) {
 				$form_id = $node->field_external_form_id[$node->language][0]['value'];
 				$signup_btn = '<a href="javascript:;" class="button radius large" data-reveal-id="form-' . $form_id . '">Sign Up</a>';
@@ -33,17 +32,6 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 				$rsvp_btn = '<a href="' . render($node->field_short_url[$node->language][0]['value']) . '" class="button radius large">RSVP  <span class="label round">' . count($node->field_event_responses) . '</span></a>';
 				print $rsvp_btn;
 			}
-			// $form_id = $data->field_field_external_form_id['0']['raw']['value'];
-			// if (isset($form_id)) {
-			// print '<a href="#" data-reveal-id="form-' . $form_id . '">Sign Up</a>';
-			// $form_modal = '<div id="form-' . $form_id . '" class="reveal-modal large">
-			// <small>This is a test - ' . $form_id . '</small>
-			// <iframe id="wufooForm' . $form_id . '" height="900" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="http://journeyon.wufoo.com/embed/' . $form_id . '/def/embedKey=' . $form_id . '992383&amp;referrer=http%3Awuslashwuslashjourneyon.onthecity.orgwuslashgroupswuslash48277">&lt;a href="http://journeyon.wufoo.com/forms/' . $form_id . '/" title="html form"&gt;Fill out my Wufoo form!&lt;/a&gt;</iframe>
-			// <a class="close-reveal-modal">&#215;</a>
-			// </div>';
-			// $GLOBALS['jorg_modal_markup'] .= $form_modal;
-			// }
-
 		?>
 
 		<a href="http://maps.google.com?q=<?php print render($node->field_event_address_street[$node->language][0]['value']); ?> <?php print render($node->field_event_address_city[$node->language][0]['value']); ?> <?php print render($node->field_event_address_state[$node->language][0]['value']); ?> <?php print render($node->field_event_address_zip[$node->language][0]['value']); ?>" class="button secondary radius large" id="event-map-btn">Map It</a>
