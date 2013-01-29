@@ -530,5 +530,8 @@ $databases['default']['default'] = array(
 		'host' => $_SERVER['DB1_HOST'],
 		'port' => $_SERVER['DB1_PORT'],
 		'driver' => 'mysql',
-		'prefix' => '', 
+		'prefix' => '',
 );
+
+ini_set('default_socket_timeout', 120);
+$conf['http_request_timeout'] = 120;
