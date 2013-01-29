@@ -1,5 +1,5 @@
 <?php
-
+ 
 /**
  * Implements hook_block_info().
  */
@@ -10,7 +10,7 @@ function jnet_community_map_block_info() {
   );
   return $blocks;
 }
-
+ 
 /**
  * Implements hook_cron().
  */
@@ -18,39 +18,58 @@ function jnet_community_map_cron() {
   // Get the community map data.
   // Include the City API library.
   require_once(DRUPAL_ROOT . '/sites/all/libraries/city-api/lib/ca-main.php');
-
+ 
   // Store our data.
   $group_data_array = array();
   $group_data_map_json = array();
-
+ 
+  $group_emails = array();
+ 
   $ca = new CityApi();
   // $ca->debug = true;
   $ca->json = true;
-
+ 
   $groups_index_results = $ca->groups_index(array('group_types' => "CG"));
   $groups_object = json_decode($groups_index_results);
-
+ 
+  // DEBUG
+  $debug_folder = date("Y_m_d_H_i_s");
+  if (!is_dir(DRUPAL_ROOT . '/files/city_api_test')) {
+    mkdir(DRUPAL_ROOT . '/files/city_api_test');
+  }
+  if (!is_dir(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder)) {
+    mkdir(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder);
+    file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/groups_index_1', $groups_index_results);
+  }
+ 
   if (isset($groups_object->total_pages)) {
     for ($i=1; $i<=$groups_object->total_pages; $i++) {
       // Now that we've called it once to know total pages -- let's walk through all of them, unless we have already done so.
       if ($i != 1) {
         $groups_index_results = $ca->groups_index(array('group_types' => "CG", 'page' => $i));
         $groups_object = json_decode($groups_index_results);
+ 
+        // DEBUG
+        file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/groups_index_' . $i, $groups_index_results);
       }
-
+ 
       foreach ($groups_object->groups as $group) {
         $groups_addresses_results = $ca->groups_addresses_index($group->id);
         $addresses_object = json_decode($groups_addresses_results);
-
+ 
+        // DEBUG
+        file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/groups_addresses_index_' . $group->id, $groups_addresses_results);
+ 
         // TAGS
         // Get day, type of group
         $groups_tags_results = $ca->groups_tags_index($group->id);
         $tags_object = json_decode($groups_tags_results);
-
+ 
         $groups_roles_results = $ca->groups_roles_index($group->id, array('title' => 'Leaders'));
         $roles_object = json_decode($groups_roles_results);
-
+ 
         // Compile information ...
+        $group_id = $group->id;
         $group_name = $group->name;
         $group_nickname = $group->nickname;
         $group_campus = $group->campus_name;
@@ -60,58 +79,67 @@ function jnet_community_map_cron() {
         $group_zip_code = $addresses_object->addresses[0]->zipcode;
         $group_latitude = $addresses_object->addresses[0]->latitude;
         $group_longitude = $addresses_object->addresses[0]->longitude;
-
+ 
         $group_tags = array();
         $group_leaders = array();
-
+ 
         foreach($tags_object->tags as $tag) {
           array_push($group_tags, $tag->name);
         }
-
+ 
         foreach($roles_object->roles as $leader) {
           $group_leader_results = $ca->users_show($leader->user_id);
           $leader_object = json_decode($group_leader_results);
-
+ 
+          // DEBUG
+          file_put_contents(DRUPAL_ROOT . '/files/city_api_test/' . $debug_folder . '/users_show_' . $leader->user_id, $group_leader_results);
+ 
           array_push($group_leaders, $leader_object->email);
-
+ 
           // Only place if we have name, campus, 1 address, latitude, longitude, tags, and leaders
           if (strlen($group_name) && strlen($group_campus) && ($group_address_count > 0) && strlen($group_latitude) && strlen($group_longitude) && (sizeof($group_tags) > 0) && (sizeof($group_leaders) > 0)) {
-            $group_data_array[] = array("name" => $group_name,
-                      "nickname" => $group_nickname,
-                      "campus" => $group_campus,
-                      "unlisted" => $group_unlisted_status,
-                      "address_count" => $group_address_count,
-                      "street" => $group_street,
-                      "zip_code" => $group_zip_code,
-                      "latitude" => $group_latitude,
-                      "longitude" => $group_longitude,
-                      "tags" => $group_tags,
-                      "leaders" => $group_leaders);
+            $group_data_array[$group_id] = array(
+              'id' => $group_id,
+              'name' => $group_name,
+              'nickname' => $group_nickname,
+              'campus' => $group_campus,
+              'unlisted' => $group_unlisted_status,
+              'address_count' => $group_address_count,
+              'street' => $group_street,
+              'zip_code' => $group_zip_code,
+              'latitude' => $group_latitude,
+              'longitude' => $group_longitude,
+              'tags' => $group_tags,
+              'leaders' => $group_leaders,
+            );
           }
         }
       }
-
+ 
       $marker_counter = 1;
       foreach ($group_data_array as $group) {
-        $group_data_map_json[] = array("marker_id" => $marker_counter,
-                        "latitude" => $group['latitude'],
-                        "longitude" => $group['longitude'],
-                        "draggable" => false,
-                        "title" => $group['name'],
-                        "campus" => $group['campus'],
-                        "leaders" => $group['leaders'],
-                        "tags" => $group['tags'],
-                        "icon" => "http://thejourney.org/sites/all/libraries/city-api/icon.png",
-                        "infow" => "<div class='i-box' style='background: transparent url(http://demo-ee.com/images/coffee_top_1.jpg) left top no-repeat;'><div class='i-str'>{$group['name']}</div></div>");
-
+        $group_data_map_json[$group['id']] = array(
+          'marker_id' => $marker_counter,
+          'latitude' => $group['latitude'],
+          'longitude' => $group['longitude'],
+          'draggable' => FALSE,
+          'title' => $group['name'],
+          'campus' => $group['campus'],
+          'tags' => $group['tags'],
+        );
+ 
+        // Store the group email separately.
+        $group_emails[$group['id']] = $group['leaders'];
+ 
         $marker_counter++;
       }
     }
   }
-
+ 
   param_set('city_api_map_json', $group_data_map_json);
+  param_set('city_api_map_emails', $group_emails);
 }
-
+ 
 /**
  * Implements hook_block_view().
  */
@@ -120,10 +148,10 @@ function jnet_community_map_block_view($delta = '') {
   switch ($delta) {
     case 'jnet_community_map_block':
       $group_data_map_json = param_get('city_api_map_json');
-
+ 
       // Add the map JSON data as a js setting.
       drupal_add_js(array('jnet_community_map' => array('data_map_json' => $group_data_map_json)), 'setting');
-
+ 
       // Add all JS files.
       drupal_add_js('https://www.google.com/jsapi');
       drupal_add_js('http://maps.google.com/maps/api/js?sensor=true');
@@ -131,9 +159,9 @@ function jnet_community_map_block_view($delta = '') {
       drupal_add_js(drupal_get_path('module', 'jnet_community_map') . '/js/email-popups.js');
       drupal_add_js(drupal_get_path('module', 'jnet_community_map') . '/js/markers.js');
       drupal_add_js(drupal_get_path('module', 'jnet_community_map') . '/js/jnet_community_map.js');
-
+ 
       drupal_add_css(drupal_get_path('module', 'jnet_community_map') . '/jnet_community_map.css');
-
+ 
       // Add the markup.
       $block['subject'] = '';
       $block['content'] = '
@@ -155,91 +183,56 @@ function jnet_community_map_block_view($delta = '') {
         </select>
         <select id="select-day" class="church-map">
         </select>
-        <select id="select-type" class="church-map">
-        </select>
         <input type="checkbox" id = "kidFriendly" name="kid-friendly" value="1">Kid-Friendly</input>
         </form>
+        <select id="select-type" class="church-map" style="display:none;">
+        </select>
         <div id="map_canvas" class="twelve columns"></div>
         ';
       break;
-
+      // NOTE: #select-type (above) should go inside the form (below #select-day) if you want it to appear.
   }
   return $block;
 }
-
+ 
 /**
  * Implements hook_form().
  */
 function jnet_community_map_action_form($form, &$form_state, $type) {
-  $form['jnet_form_type'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-type'),
-    ),
-
-  );
-
+  $form['#jnet_form_type'] = $type;
+ 
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => t('Your Email:'),
     '#required' => TRUE,
   );
-
+ 
   $form['message'] = array(
     '#type' => 'textarea',
     '#title' => t('Your Message:'),
     '#required' => TRUE,
   );
-
-  $form['leader-email'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-leader-email'),
-    ),
-  );
-
+ 
   $form['group-id'] = array(
     '#type' => 'textfield',
     '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-group-id'),
-    ),
   );
-
+ 
   $form['group-name'] = array(
     '#type' => 'textfield',
     '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-group-name'),
-    ),
   );
-
-  $form['group-church'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-group-church'),
-    ),
-  );
-
+ 
   $form['group-kids'] = array(
     '#type' => 'textfield',
     '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-group-kids'),
-    ),
   );
-
+ 
   $form['group-days'] = array(
     '#type' => 'textfield',
     '#title' => '',
-    '#attributes' => array(
-      'class' => array('field-group-days'),
-    ),
   );
-
+ 
   $form['submit'] = array(
     '#type' => 'button',
     '#value' => 'Send Message',
@@ -250,10 +243,10 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
       'effect' => 'fade',
     ),
   );
-
+ 
   return $form;
 }
-
+ 
 /**
  * Email Validator
  */
@@ -262,50 +255,35 @@ function jnet_validate_email($element, &$form_state, $form) {
      form_error($element, t('The email address you entered is invalid.'));
    }
 }
-
+ 
 function jnet_community_map_action_ajax_email($form, &$form_state) {
-  switch ($form_state['values']['jnet_form_type']) {
+  switch ($form['#jnet_form_type']) {
     case 'request':
-      $message_header = 'A person has requested to join your community group via the map at <a href="http://thejourney.org/community">TheJourney.org</a>. Please reply to them within 24 hours.';
-      $success_message = '<div>Thank you for requesting to join a community group. Your request has been sent, and you should be contacted within 24 hours.</div><div style="margin-top: 30px; text-align: center;"><a href="javascript:;" class="button small radius" onClick="window.location.reload()">Close</a></div>';
+      $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
       break;
     case 'report':
-      $message_header = 'A user at <a href="http://thejourney.org/community">TheJourney.org</a> has reported incorrect community group info. Their message is below.';
-      $success_message = '<div>Thank you for reporting incorrect community group information. Your report has been sent.</div><div style="margin-top: 30px; text-align: center;"><a href="javascript:;" class="button small radius" onClick="window.location.reload()">Close</a></div>';
+      $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
       break;
   }
-
-  $send_form_to = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it';
+ 
+  $group_emails = param_get('city_api_map_emails');
+  //$send_form_to = implode(', ', $group_emails[$form_state['values']['group-id']]);
+  $send_form_to = 'kraig@thecatena.com';
+ 
   $params = array(
     'context' => array(
       'subject' => 'Request to join your community group - ' . $form_state['values']['email'],
-      'body' => '
-        <p>Leader\'s Email: ' . $form_state['values']['leader-email'] . '</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>' . $message_header . '</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p><b>Requestor\'s Email:</b> ' . $form_state['values']['email'] . '</p>
-        <p><b>Requestor\'s Message:</b> ' . $form_state['values']['message'] . '</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p><b>Your Group\'s Info</b></p>
-        <p>Name: ' . $form_state['values']['group-name'] . '</p>
-        <p>Church: ' . $form_state['values']['group-church'] . '</p>
-        <p>Meeting Day: ' . $form_state['values']['group-days'] . '</p>
-        <p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
-
-
+      'body' => '<p>' . $message_header . '</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
     ),
-    'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Church: ' . $form_state['values']['group-church'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '.',
+    'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
-
+ 
   if (valid_email_address($form_state['values']['email'])) {
     drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
-    return $success_message;
+    return '<div>Email Sent</div>';
   } else {
     form_set_error('email','This e-mail address is invalid.');
     return $form;
   }
 }
+

@@ -221,6 +221,15 @@ select.church-map {
   margin-right: 10px;
 }
 
+
+#map-filters .dropdown:last-child {
+  display: none;
+  visibility: hidden;
+}
+/*#map-filters div:nth-child(3) {
+  display: none !important;
+}*/
+
 #map-filters .custom.checkbox {
   margin-right: 5px;
 }

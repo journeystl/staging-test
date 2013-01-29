@@ -102,11 +102,14 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 	display: block;
 	width: 100%;
 	text-align: center;
-  padding: 0 10px;
+  padding: 5px 10px 0;
+  overflow: hidden;
 }
 
-.top-bar-wrapper.hide-for-small .top-bar .logo img {
-	margin: 20px auto 0 auto;
+.top-bar-wrapper.hide-for-small .top-bar .logo #nav-bar-logo {
+	margin: 14px auto 0 auto;
+  position: relative;
+  width: 220px;
 }
 
 

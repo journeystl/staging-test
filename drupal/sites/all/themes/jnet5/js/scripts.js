@@ -12,13 +12,11 @@
   /**
    * Active nav arrows.
    */
-
   $('.top-bar-wrapper li.active a').after('<div class="nav-active-arrow hide-for-small"></div>');
 
   /**
    * Header expand / collapse
    */
-
   var header = $('.top-bar-wrapper.hide-for-small');
   var headerNav = $('nav.top-bar');
   var headerTag = $('#nav-bar-tag');
@@ -28,14 +26,18 @@
 
   function headerCondense() {
     header.stop().animate({height:'40px'}, 200);
-    headerNav.stop().animate({'margin-top':'-15px'}, 200);
+    headerNav.stop().animate({'margin-top':'-13px'}, 200);
+    headerLogo.stop().animate({'top':'-40px'}, 200);
+    headerTag.stop().animate({'top':'-55px'}, 200);
     header.addClass('header-condensed');
     headerCondensed = true;
   }
 
   function headerExpand() {
-    header.stop().animate({height:'66px'}, 200).css('overflow', 'visible');
+    header.stop().animate({height:'66px'}, 200);
     headerNav.stop().animate({'margin-top':'0px'}, 200);
+    headerLogo.stop().animate({'top':'0px'}, 200);
+    headerTag.stop().animate({'top':'0px'}, 200);
     header.removeClass('header-condensed');
     headerCondensed = false;
   }
@@ -68,7 +70,6 @@
   /**
    * Search bar
    */
-
   var searchBar = $('#search-bar');
   var searchBarActive = false;
 
@@ -121,7 +122,6 @@
   /**
    * Churches bar
    */
-
   var churchesBar = $('#churches-bar');
   var churchesBarActive = false;
 
