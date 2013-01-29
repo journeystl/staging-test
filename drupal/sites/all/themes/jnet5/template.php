@@ -157,7 +157,7 @@ function jnet5_preprocess_page(&$vars) {
   $vars['top_nav'] = "<div class='row'><nav class='top-bar'>";
 
     // Add first 3 links.
-    $vars['top_nav'] .= "<div class='four columns'><ul class='left-links'>";
+    $vars['top_nav'] .= "<div class='five columns'><ul class='left-links'>";
     for ($i=0;$i<=2;$i++) {
       $vars['top_nav'] .= "<li class='{$menu_links[$i]['active']}'>" . l($menu_links[$i]['link_title'], $menu_links[$i]['link_path']) . "</li>";
     }
@@ -167,7 +167,7 @@ function jnet5_preprocess_page(&$vars) {
     $vars['top_nav'] .= "<div class='two columns'><a class='logo' href='{$GLOBALS['base_path']}'><img src='{$GLOBALS['base_path']}sites/all/themes/jnet5/images/navigation/logo_main.png'></a></div>";
 
     // Add remaining links.
-    $vars['top_nav'] .= "<div class='four columns'><ul class='right-links'>";
+    $vars['top_nav'] .= "<div class='five columns'><ul class='right-links'>";
     for ($i=3;$i<count($menu_links);$i++) {
       $vars['top_nav'] .= "<li class='{$menu_links[$i]['active']}'>" . l($menu_links[$i]['link_title'], $menu_links[$i]['link_path']) . "</li>";
     }

@@ -102,7 +102,7 @@ body.toolbar .top-bar-wrapper.hide-for-small {
 	display: block;
 	width: 100%;
 	text-align: center;
-  padding: 0 10px;
+  padding: 5px 10px 0;
   overflow: hidden;
 }
 
