@@ -16,13 +16,13 @@ if (isset($location_ids[1])) {
 }
 
 // Build Schedule stuff
-$schedule_modal = '				
+$schedule_modal = '
 <div id="scheduleModal" class="schedule reveal-modal xlarge" style="top: 100px;">' .
 	jnet5_get_schedule($node->field_uid['und'][0]['value'], 'long') .
   '<a class="close-reveal-modal">&#215;</a>
 </div>';
 
-$schedule = '				
+$schedule = '
 <div class="six columns schedule">
 	<span id="this_weekend"></span>
 	<div class="row">' .
@@ -139,7 +139,7 @@ if (count($view_get_involved->result) > 0) {
 	$getInvolved = '<h3>Get Involved</h3>' . $view_get_involved->render();
 } else {
 	$getInvolved = '';
-}	
+}
 
 
 ?>
@@ -150,15 +150,15 @@ if (count($view_get_involved->result) > 0) {
 	<div class="six columns hide-for-small">
 		<?php print $meetStaff; ?>
 	</div>
-	
+
 	<?php print $schedule; ?>
-	
+
 	<?php if ($schedule != ''): ?>
 		<div class="six columns">
 			<hr class="top double">
 		</div>
 	<?php endif; ?>
-		
+
 	<div class="six columns">
 		<?php print $upcomingEvents; ?>
 		<?php if ($upcomingEvents != ''): ?>
@@ -204,10 +204,6 @@ if (count($view_get_involved->result) > 0) {
 	</div>
 </div> <!-- end row -->
 <?php endif; ?>
-
-
-
-
 
 <!-- END BLOCKS -->
 
