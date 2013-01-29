@@ -181,7 +181,7 @@
           map: map,
           title: "Group Name",
           icon: "http://thejourney.org/sites/all/modules/jnet_community_map/images/group-icon-002.png",
-          leaderEmail: "",
+          groupId: m_id,
           churchIndex: 0,
           dayIndex: [],
           typeIndex: 0,
@@ -284,8 +284,6 @@
           }
         }
 
-        if (markers_raw[m_id].leaders[0]) { marker.leaderEmail = markers_raw[m_id].leaders[0]; }
-
         if (markers_raw[m_id].title) { marker.title = markers_raw[m_id].title; }
 
         var titleStatus = "active";
@@ -311,11 +309,11 @@
         "<hr>" +
         "<h2 class='" + typeStatus + "'>" + typeGroups[marker.typeIndex] + kidFriendlyString + "</h2>" +
         "<ul class='button-group radius'><li><a href='javascript:;' onclick='joinGroup(\""+
-              marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
+              m_id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
               "\")' class='joinGroup button radius small'>Request to Join</a></li>"+
         "<li><a href='javascript:;' onclick='reportError(\""+
-              marker.leaderEmail + "\",\"" + marker.id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
+              m_id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\""+ daysString +
               "\")' class='reportError button radius small'>Report Incorrect Info</a></li></ul>";
 

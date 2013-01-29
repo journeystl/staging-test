@@ -213,11 +213,6 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
     '#required' => TRUE,
   );
 
-  $form['leader-email'] = array(
-    '#type' => 'textfield',
-    '#title' => '',
-  );
-
   $form['group-id'] = array(
     '#type' => 'textfield',
     '#title' => '',
@@ -272,7 +267,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   }
 
   $group_emails = param_get('city_api_map_emails');
-  //$send_form_to = $group_emails[$form_state['values']['group-id']];
+  //$send_form_to = implode(', ', $group_emails[$form_state['values']['group-id']]);
   $send_form_to = 'kraig@thecatena.com';
 
   $params = array(
