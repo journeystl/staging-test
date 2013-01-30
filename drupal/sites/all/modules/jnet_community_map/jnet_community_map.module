@@ -216,21 +216,25 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
   $form['group-id'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array('class' => array('form-group-id')),
   );
 
   $form['group-name'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array('class' => array('form-group-name')),
   );
 
   $form['group-kids'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array('class' => array('form-group-kids')),
   );
 
   $form['group-days'] = array(
     '#type' => 'textfield',
     '#title' => '',
+    '#attributes' => array('class' => array('form-group-days')),
   );
 
   $form['submit'] = array(
