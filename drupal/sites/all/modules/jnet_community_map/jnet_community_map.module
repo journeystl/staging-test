@@ -269,7 +269,7 @@ function jnet_validate_email($element, &$form_state, &$form) {
  */
 function jnet_community_map_action_form_validate(&$form, &$form_state) {
   if (!valid_email_address($form_state['values']['email'])) {
-    form_error('email','This e-mail address is invalid.');
+    form_set_error('email','This e-mail address is invalid.');
   }
 }
 
