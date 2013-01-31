@@ -268,7 +268,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   switch ($form_state['values']['jnet-form-type']) {
     case 'join':
       $message_header = 'A user has requested to join your community group via the map at http://thejourney.org/community. Please reply to them within 24 hours.';
-      $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '"" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
+      $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       break;
     case 'report':
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
