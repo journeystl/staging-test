@@ -284,7 +284,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   $params = array(
     'context' => array(
       'subject' => 'Request to join your community group - ' . $form_state['values']['email'],
-      'body' => '<p>' . $message_header . '</p><p><strong>Email:</strong> ' . $form_state['values']['email'] . '</p><p><strong>Message:</strong> ' . $form_state['values']['message'] . '</p><p>&nbsp</p><p><span style=”text-decoration:underline;”>Group Info</span></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Emails: ' . $group_emails . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
+      'body' => '<p>' . $message_header . '</p><p><strong>Email:</strong> ' . $form_state['values']['email'] . '</p><p><strong>Message:</strong> ' . $form_state['values']['message'] . '</p><p>&nbsp;</p><p><span style=”text-decoration:underline;”>Group Info</span></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Emails: ' . $group_emails . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
     ),
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Emails: ' . $group_emails . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
