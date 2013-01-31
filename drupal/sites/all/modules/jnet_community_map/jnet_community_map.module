@@ -265,7 +265,7 @@ function jnet_validate_email($element, &$form_state, $form) {
 }
 
 function jnet_community_map_action_ajax_email($form, &$form_state) {
-  switch ($form['#jnet_form_type']) {
+  switch ($form_state['values']['jnet-form-type']) {
     case 'join':
       $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
       break;
