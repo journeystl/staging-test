@@ -141,12 +141,9 @@ var markers = [];
 
         function binaryFilter(checkBoxID) {
 
-        console.log('foo');
-
           infowindows[active_info].close();
 
           if (document.getElementById(checkBoxID).checked) {
-            console.log('foo');
             for (var i = 0; i < markers.length; i++) {
               if (markers[i].display && !markers[i].kidFriendly) {
                 markers[i].setVisible(false);
@@ -160,8 +157,10 @@ var markers = [];
             }
           }
         }
+        // OLD THAT DOESNT WORK:
+        // document.getElementById("kidFriendly").onclick = function() { binaryFilter("kidFriendly")};
 
-        document.getElementById("kidFriendly").onclick = function() { binaryFilter("kidFriendly")};
+        $('#kidFriendly').on('change', function() {binaryFilter("kidFriendly")});
       });
 
       google.maps.event.addListener(map, "click", function() {
