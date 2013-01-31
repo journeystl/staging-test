@@ -279,7 +279,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
   $group_emails_raw = param_get('city_api_map_emails');
   $group_emails = implode(', ', $group_emails_raw[$form_state['values']['group-id']]);
 
-  $send_form_to = 'kraig@thecatena.com';
+  $send_form_to = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it, syost@journeyon.net';
 
   $params = array(
     'context' => array(
