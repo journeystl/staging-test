@@ -35,7 +35,6 @@ var markers = [];
 
   var churchGroups    = ["Any Church", "Tower Grove", "Hanley Road", "West County", "Metro East", "Southern Illinois"];
   var dayGroups     = ["Any Day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  // Removing Married/Single -- var typeGroups      = ["Any Type", "Mixed (Married & Single)", "Married", "Single"];
   var typeGroups      = ["Any Type", "Mixed (Married & Single)"];
 
 
@@ -142,9 +141,12 @@ var markers = [];
 
         function binaryFilter(checkBoxID) {
 
+        console.log('foo');
+
           infowindows[active_info].close();
 
           if (document.getElementById(checkBoxID).checked) {
+            console.log('foo');
             for (var i = 0; i < markers.length; i++) {
               if (markers[i].display && !markers[i].kidFriendly) {
                 markers[i].setVisible(false);

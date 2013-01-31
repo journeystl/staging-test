@@ -173,8 +173,8 @@ function jnet_community_map_block_view($delta = '') {
           <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
           <select id="select-church" class="church-map"></select>
           <select id="select-day" class="church-map"></select>
-          <input type="checkbox" id="kidFriendly" name="kid-friendly" value="1">Kid-Friendly</input>
-          <select id="select-type" class="church-map" style="display:none;"></select>
+          <input type="checkbox" id="kidFriendly" name="kid-friendly">Kid-Friendly</input>
+          <select id="select-type" class="church-map"></select>
         </form>
         <div id="map_canvas" class="twelve columns"></div>
         ';
