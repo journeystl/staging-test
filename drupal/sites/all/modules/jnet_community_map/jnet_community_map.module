@@ -267,7 +267,7 @@ function jnet_validate_email($element, &$form_state, &$form) {
 /**
  * Implements hook_validate().
  */
-function jnet_community_map_action_form_validate($node, $form, &$form_state) {
+function jnet_community_map_action_form_validate(&$form, &$form_state) {
   if (!valid_email_address($form_state['values']['email'])) {
     form_error('email','This e-mail address is invalid.');
   }
@@ -275,7 +275,7 @@ function jnet_community_map_action_form_validate($node, $form, &$form_state) {
 
 
 
-function jnet_community_map_action_ajax_email($form, &$form_state) {
+function jnet_community_map_action_ajax_email(&$form, &$form_state) {
   switch ($form_state['values']['jnet-form-type']) {
     case 'join':
       $message_header = 'A user has requested to join your community group via the map at http://thejourney.org/community. Please reply to them within 24 hours.';
