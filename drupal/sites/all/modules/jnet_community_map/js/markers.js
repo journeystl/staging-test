@@ -141,7 +141,9 @@ var markers = [];
 
         function binaryFilter(checkBoxID) {
 
-          infowindows[active_info].close();
+          if (active_info) {
+            infowindows[active_info].close();
+          }
 
           if (document.getElementById(checkBoxID).checked) {
             for (var i = 0; i < markers.length; i++) {
