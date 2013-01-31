@@ -5,4 +5,5 @@ function groupAction(groupID, groupName, groupType, kidFriendly, meetingDays, ac
   jQuery(".form-group-kids").val(kidFriendly);
   jQuery(".form-group-days").val(meetingDays);
   jQuery(".form-type").val(actionType);
+  jQuery(".group-name-header").val(groupName);
 }
