@@ -267,10 +267,12 @@ function jnet_validate_email($element, &$form_state, $form) {
 function jnet_community_map_action_ajax_email($form, &$form_state) {
   switch ($form_state['values']['jnet-form-type']) {
     case 'join':
-      $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
+      $message_header = 'A user at thejourney.org has requested to join your community group via the map at <a href="http://thejourney.org/community">TheJourney.org</a>. Please reply to them within 24 hours.';
+      $message_success = '<p>Your request to join the ' . $form_state['values']['group-name'] . 'community group has been sent.</p><a class="button small" style="margin-left: auto; margin-right: auto;" href="javascript:;" onClick="window.location.reload()">Close</a>';
       break;
     case 'report':
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
+      $message_success = '<p>Your report of innacurate information for the ' . $form_state['values']['group-name'] . 'community group has been sent. Thank you for your feedback.</p><a class="button small" style="margin-left: auto; margin-right: auto;" href="javascript:;" onClick="window.location.reload()">Close</a>';
       break;
   }
 
@@ -289,7 +291,7 @@ function jnet_community_map_action_ajax_email($form, &$form_state) {
 
   if (valid_email_address($form_state['values']['email'])) {
     drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
-    return '<div>Email Sent</div>';
+    return $message_success;
   } else {
     form_set_error('email','This e-mail address is invalid.');
     return $form;
