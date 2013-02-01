@@ -292,6 +292,7 @@ var markers = [];
         var titleStatus = "active";
         var churchStatus = "active";
         var typeStatus = "active";
+        var plainChurchName = "";
 
         if (marker.title == 'Group Name') {
           titleStatus = "inactive";
@@ -299,6 +300,9 @@ var markers = [];
 
         if (!markers_raw[m_id].campus) {
           churchStatus = "inactive";
+          plainChurchName = "None"
+        } else {
+          plainChurchName = markers_raw[m_id].campus.replace(/^\s+|\s+$/g,'');
         }
 
         if ((marker.typeIndex == 0) && (!marker.kidFriendly)) {
@@ -313,10 +317,10 @@ var markers = [];
         "<h2 class='" + typeStatus + "'>" + typeGroups[marker.typeIndex] + kidFriendlyString + "</h2>" +
         "<ul class='button-group radius'><li><a href='javascript:;' onclick='groupAction(\""+
               m_id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
-              "\",\"" + marker.kidFriendly + "\",\"" + daysString + "\",\"join\")' class='joinGroup button radius small'>Request to Join</a></li>"+
+              "\",\"" + marker.kidFriendly + "\",\"" + daysString + "\",\"join\",\"" + plainChurchName + "\")' class='joinGroup button radius small'>Request to Join</a></li>"+
         "<li><a href='javascript:;' onclick='groupAction(\""+
               m_id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
-              "\",\"" + marker.kidFriendly + "\",\""+ daysString + "\",\"report\")' class='reportError button radius small'>Report Incorrect Info</a></li></ul>";
+              "\",\"" + marker.kidFriendly + "\",\""+ daysString + "\",\"report\",\"" + plainChurchName + "\")' class='reportError button radius small'>Report Incorrect Info</a></li></ul>";
 
         var myOptions = {
           content: "<div>" + markerWindow + "</div>",

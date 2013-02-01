@@ -228,6 +228,11 @@ function jnet_community_map_action_form($form, &$form_state) {
     '#attributes' => array('class' => array('form-group-days')),
   );
 
+    $form['group-church'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array('class' => array('form-group-church')),
+  );
+
   $form['submit'] = array(
     '#type' => 'button',
     '#value' => 'Send Message',
