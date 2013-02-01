@@ -258,26 +258,49 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
     return $form;
   }
 
-  switch ($form_state['values']['jnet-form-type']) {
-    case 'join':
-      $message_header = 'A user has requested to join your community group via the map at http://thejourney.org/community. Please reply to them within 24 hours.';
-      $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
-      break;
-    case 'report':
-      $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
-      $message_success = '<div style="text-align:center;"><p>Your report of innacurate information for "' . $form_state['values']['group-name'] . '" has been sent. Thank you for your feedback.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
-      break;
-  }
-
-
   $group_emails = param_get('city_api_map_emails');
   //$send_form_to = implode(', ', $group_emails[$form_state['values']['group-id']]);
 
   $group_emails_raw = param_get('city_api_map_emails');
   $group_emails = implode(', ', $group_emails_raw[$form_state['values']['group-id']]);
 
-  $send_form_to = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it, syost@journeyon.net';
+  $report_email = '';
 
+  // REMOVE WHEN DONE TESTING
+  $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it, syost@journeyon.net';
+
+  switch ($form_state['values']['group-church']) {
+    case 'Tower Grove':
+      $report_email = 'communitytg@thejourney.org';
+      break;
+    case 'West County':
+      $report_email = 'communitywc@thejourney.org';
+      break;
+    case 'Southern Illinois':
+      $report_email = 'communitysi@thejourney.org';
+      break;
+    case 'Metro East':
+      $report_email = 'communityme@thejourney.org';
+      break;
+    case 'Hanley Road':
+      $report_email = 'communityhr@thejourney.org';
+      break;
+  }
+
+  switch ($form_state['values']['jnet-form-type']) {
+    case 'join':
+      $message_header = 'A user has requested to join your community group via the map at http://thejourney.org/community. Please reply to them within 24 hours.';
+      $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
+      // SWITCH WHEN DONE TESTING.
+      // $send_form_to = $group_emails;
+      $send_form_to = $send_form_to_testing;
+      break;
+    case 'report':
+      $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
+      $message_success = '<div style="text-align:center;"><p>Your report of innacurate information for "' . $form_state['values']['group-name'] . '" has been sent. Thank you for your feedback.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
+      $send_form_to = $report_email;
+      break;
+  }
 
   $params = array(
     'context' => array(
