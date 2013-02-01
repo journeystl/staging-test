@@ -188,7 +188,7 @@ function jnet_community_map_block_view($delta = '') {
  * Community Group action form.
  */
 function jnet_community_map_action_form($form, &$form_state) {
-  $form['#prefix'] = '<div id="action-form"><span class="label-clone">To: </span><h6 class="group-name-header"></h6>';
+  $form['#prefix'] = '<div id="action-form"><span class="label-clone">To: </span><span class="label-clone group-name-header"></span>';
   $form['#suffix'] = '</div>';
 
   $form['jnet-form-type'] = array(
@@ -264,7 +264,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
   $group_emails_raw = param_get('city_api_map_emails');
   $group_emails = implode(', ', $group_emails_raw[$form_state['values']['group-id']]);
   $itduzzit_email = 'wio6xew7amw8xss.simonyost.19395@duzz.it';
-  $report_emails = $group_emails . ', ' . $itduzzit_email;
+  $request_emails = $group_emails . ', ' . $itduzzit_email;
 
   // REMOVE WHEN DONE TESTING
   $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it';
@@ -295,7 +295,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
       $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       // SWITCH WHEN DONE TESTING.
       // $send_form_to = $group_emails;
-      $send_form_to = $send_form_to_testing;
+      $send_form_to = $request_emails;
       break;
     case 'report':
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
