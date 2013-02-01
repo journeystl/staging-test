@@ -167,26 +167,15 @@ function jnet_community_map_block_view($delta = '') {
       $block['content'] = '
         <div id="joinRequestPopup" class="emailPopup reveal-modal">
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
-          <div id="action-form">
-          ' . render(drupal_get_form('jnet_community_map_action_form','join')) . '
-          </div>
-        </div>
-        <div id="reportErrorPopup" class="emailPopup reveal-modal">
-          <a href="javascript:;" class="close-reveal-modal">&#215;</a>
-          <div id="action-form">
-          ' . render(drupal_get_form('jnet_community_map_action_form','report')) . '
-          </div>
+          ' . render(drupal_get_form('jnet_community_map_action_form')) . '
         </div>
         <form class="custom" id="map-filters">
-        <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
-        <select id="select-church" class="church-map">
-        </select>
-        <select id="select-day" class="church-map">
-        </select>
-        <input type="checkbox" id = "kidFriendly" name="kid-friendly" value="1">Kid-Friendly</input>
+          <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
+          <select id="select-church" class="church-map"></select>
+          <select id="select-day" class="church-map"></select>
+          <input type="checkbox" id="kidFriendly" name="kid-friendly" value="1">Kid-Friendly</input>
+          <select id="select-type" class="church-map"></select>
         </form>
-        <select id="select-type" class="church-map" style="display:none;">
-        </select>
         <div id="map_canvas" class="twelve columns"></div>
         ';
       break;
@@ -196,10 +185,16 @@ function jnet_community_map_block_view($delta = '') {
 }
 
 /**
- * Implements hook_form().
+ * Community Group action form.
  */
-function jnet_community_map_action_form($form, &$form_state, $type) {
-  $form['#jnet_form_type'] = $type;
+function jnet_community_map_action_form($form, &$form_state) {
+  $form['#prefix'] = '<div id="action-form"><h3 class="group-name-header"></h3>';
+  $form['#suffix'] = '</div>';
+
+  $form['jnet-form-type'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array('class' => array('form-type')),
+  );
 
   $form['email'] = array(
     '#type' => 'textfield',
@@ -215,22 +210,22 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
 
   $form['group-id'] = array(
     '#type' => 'textfield',
-    '#title' => '',
+    '#attributes' => array('class' => array('form-group-id')),
   );
 
   $form['group-name'] = array(
     '#type' => 'textfield',
-    '#title' => '',
+    '#attributes' => array('class' => array('form-group-name')),
   );
 
   $form['group-kids'] = array(
     '#type' => 'textfield',
-    '#title' => '',
+    '#attributes' => array('class' => array('form-group-kids')),
   );
 
   $form['group-days'] = array(
     '#type' => 'textfield',
-    '#title' => '',
+    '#attributes' => array('class' => array('form-group-days')),
   );
 
   $form['submit'] = array(
@@ -239,50 +234,55 @@ function jnet_community_map_action_form($form, &$form_state, $type) {
     '#ajax' => array(
       'callback' => 'jnet_community_map_action_ajax_email',
       'wrapper' => 'action-form',
-      'method' => 'replace',
-      'effect' => 'fade',
     ),
   );
 
   return $form;
 }
 
-/**
- * Email Validator
- */
-function jnet_validate_email($element, &$form_state, $form) {
-   if (!valid_email_address($element['#value'])) {
-     form_error($element, t('The email address you entered is invalid.'));
-   }
+function jnet_community_map_action_form_validate(&$form, &$form_state) {
+  if (!valid_email_address($form_state['values']['email'])) {
+    form_set_error('email', 'This e-mail address is invalid.');
+  }
 }
 
-function jnet_community_map_action_ajax_email($form, &$form_state) {
-  switch ($form['#jnet_form_type']) {
-    case 'request':
-      $message_header = 'A user at thejourney.org has requested more information about joining your community group. Their message is below.';
+function jnet_community_map_action_ajax_email(&$form, &$form_state) {
+  // If there were any errors, return the rebuilt form.
+  if (form_get_errors()) {
+    $form_state['rebuild'] = TRUE;
+    return $form;
+  }
+
+  switch ($form_state['values']['jnet-form-type']) {
+    case 'join':
+      $message_header = 'A user has requested to join your community group via the map at http://thejourney.org/community. Please reply to them within 24 hours.';
+      $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       break;
     case 'report':
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
+      $message_success = '<div style="text-align:center;"><p>Your report of innacurate information for "' . $form_state['values']['group-name'] . '" has been sent. Thank you for your feedback.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       break;
   }
 
+<<<<<<< HEAD
   $group_emails = param_get('city_api_map_emails');
   //$send_form_to = implode(', ', $group_emails[$form_state['values']['group-id']]);
-  $send_form_to = 'kraig@thecatena.com,syost@thejourney.org,wio6xew7amw8xss.simonyost.19395@duzz.it';
+
+  $group_emails_raw = param_get('city_api_map_emails');
+  $group_emails = implode(', ', $group_emails_raw[$form_state['values']['group-id']]);
+
+  $send_form_to = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it, syost@journeyon.net';
+
 
   $params = array(
     'context' => array(
       'subject' => 'Request to join your community group - ' . $form_state['values']['email'],
-      'body' => '<p>' . $message_header . '</p><p><b>Email:</b> ' . $form_state['values']['email'] . '</p><p><b>Message:</b> ' . $form_state['values']['message'] . '</p><p></p><p><u>Group Info</u></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Email: ' . $form_state['values']['leader-email'] . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p>',
+      'body' => '<html><body><p>' . $message_header . '</p><p><span style="font-weight:bold;">Email:</span> ' . $form_state['values']['email'] . '</p><p><span style="font-weight:bold;">Message:</span> ' . $form_state['values']['message'] . '</p><p>&nbsp;</p><p><span style="text-decoration:underline;">Your Group\'s Info</span></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Leader Emails: ' . $group_emails . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p></body></html>',
     ),
-    'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Email: ' . $form_state['values']['leader-email'] . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
+    'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Leader Emails: ' . $group_emails . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
 
-  if (valid_email_address($form_state['values']['email'])) {
-    drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
-    return '<div>Email Sent</div>';
-  } else {
-    form_set_error('email','This e-mail address is invalid.');
-    return $form;
-  }
+  drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
+  return $message_success;
 }
+

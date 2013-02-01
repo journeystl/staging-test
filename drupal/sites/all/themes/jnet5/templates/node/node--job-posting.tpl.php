@@ -22,10 +22,10 @@
 				<p><strong>Status:</strong> <?php print $content['field_status']['#items'][0]['value']; ?></p>
 			<?php endif; ?>
 			<?php if ($content['field_church'][0]['#markup'] != null): ?>
-				<p><strong>Church:</strong> <?php print $content['field_church'][0]['#markup']; ?></small></p>
+				<p><strong>Church:</strong> <?php print $content['field_church'][0]['#markup']; ?></p>
 			<?php endif; ?>
-			 
-			<?php 
+
+			<?php
 				$items = array();
 				if (isset($content['field_team']['#items'])) {
 					foreach ($content['field_team']['#items'] as $item) {
@@ -37,7 +37,7 @@
 				}
 			?>
 
-			<?php 
+			<?php
 				$items = array();
 				foreach ($content['field_job_type']['#items'] as $item) {
 					if (isset($item)) {
@@ -50,11 +50,16 @@
 					print "<strong>Job Type</strong>" . theme('item_list', array('items' => $items));
 				}
 			?>
+			<?php
+				if ($content['field_date_posted']['#items'][0]['value'] != null): ?>
+				<p><strong>Date Posted:</strong> <?php print $content['field_date_posted'][0]['#markup']; ?></p>
+			<?php endif; ?>
+
 		</div>
 		<div class="panel">
 			<h5>Application Requirements</h5>
 			<p>To apply for this position, please send the following to <a href="mailto:jobs@journeyon.net">jobs@journeyon.net</a> :</p>
-			<?php 
+			<?php
 				$items = array();
 				foreach ($content['field_application_requirements']['#items'] as $item) {
 					if (isset($item)) {

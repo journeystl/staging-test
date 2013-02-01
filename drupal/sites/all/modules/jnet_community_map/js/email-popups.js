@@ -1,15 +1,9 @@
-function joinGroup(groupID, groupName, groupType, kidFriendly, meetingDays) {
+function groupAction(groupID, groupName, groupType, kidFriendly, meetingDays, actionType) {
   jQuery("#joinRequestPopup").reveal();
-  jQuery("#edit-group-id").val(groupID);
-  jQuery("#edit-group-name").val(groupName);
-  jQuery("#edit-group-kids").val(kidFriendly);
-  jQuery("#edit-group-days").val(meetingDays);
-}
-
-function reportError(groupID, groupName, groupType, kidFriendly, meetingDays) {
-  jQuery("#reportErrorPopup").reveal();
-  jQuery("#edit-group-id--2").val(groupID);
-  jQuery("#edit-group-name--2").val(groupName);
-  jQuery("#edit-group-kids--2").val(kidFriendly);
-  jQuery("#edit-group-days--2").val(meetingDays);
+  jQuery(".form-group-id").val(groupID);
+  jQuery(".form-group-name").val(groupName);
+  jQuery(".form-group-kids").val(kidFriendly);
+  jQuery(".form-group-days").val(meetingDays);
+  jQuery(".form-type").val(actionType);
+  jQuery(".group-name-header").html(groupName);
 }
