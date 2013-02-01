@@ -1,4 +1,4 @@
-function groupAction(groupID, groupName, groupType, kidFriendly, meetingDays, actionType. plainChurchName) {
+function groupAction(groupID, groupName, groupType, kidFriendly, meetingDays, actionType, plainChurchName) {
   jQuery("#joinRequestPopup").reveal();
   jQuery(".form-group-id").val(groupID);
   jQuery(".form-group-name").val(groupName);
