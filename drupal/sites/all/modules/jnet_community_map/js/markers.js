@@ -313,8 +313,8 @@ var markers = [];
         "<h1 class='" + titleStatus + "'>" + marker.title + "</h1>" +
         "<h2 class='church-label " + churchStatus + "'>" + markers_raw[m_id].campus.replace(/^\s+|\s+$/g,'') + "</h2>" +
         "<div class='dayBox label radius secondary'><span class='" + dayChecker(1) +  "'>M</span><span class='" + dayChecker(2) +  "'>T</span><span class='" + dayChecker(3) +  "'>W</span><span class='" + dayChecker(4) +  "'>R</span><span class='" + dayChecker(5) +  "'>F</span><span class='" + dayChecker(6) +  "'>S</span><span class='" + dayChecker(7) +  "'>S</span></div>"+
-        "<hr>" +
-        "<h2 class='" + typeStatus + "'>" + typeGroups[marker.typeIndex] + kidFriendlyString + "</h2>" +
+        // "<hr>" +
+        // "<h2 class='" + typeStatus + "'>" + typeGroups[marker.typeIndex] + kidFriendlyString + "</h2>" +
         "<ul class='button-group radius'><li><a href='javascript:;' onclick='groupAction(\""+
               m_id + "\",\"" + marker.title + "\",\"" + returnType(marker.typeIndex) +
               "\",\"" + marker.kidFriendly + "\",\"" + daysString + "\",\"join\",\"" + plainChurchName + "\")' class='joinGroup button radius small'>Request to Join</a></li>"+
