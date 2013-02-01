@@ -263,8 +263,8 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
 
   $group_emails_raw = param_get('city_api_map_emails');
   $group_emails = implode(', ', $group_emails_raw[$form_state['values']['group-id']]);
-
-  $report_email = '';
+  $itduzzit_email = 'wio6xew7amw8xss.simonyost.19395@duzz.it';
+  $report_emails = $group_emails . ', ' . $itduzzit_email;
 
   // REMOVE WHEN DONE TESTING
   $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it, syost@journeyon.net';
