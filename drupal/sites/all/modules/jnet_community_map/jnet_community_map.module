@@ -298,7 +298,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
       break;
     case 'report':
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
-      $message_subject = 'Incorrect Info Report - '
+      $message_subject = 'Incorrect Info Report - ';
       $message_success = '<div style="text-align:center;"><p>Your report of innacurate information for "' . $form_state['values']['group-name'] . '" has been sent. Thank you for your feedback.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       $send_form_to = $report_email;
       break;
