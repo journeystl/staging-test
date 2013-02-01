@@ -188,7 +188,7 @@ function jnet_community_map_block_view($delta = '') {
  * Community Group action form.
  */
 function jnet_community_map_action_form($form, &$form_state) {
-  $form['#prefix'] = '<div id="action-form"><span class="secondary label">To: </span><h6 class="group-name-header"></h6>';
+  $form['#prefix'] = '<div id="action-form"><span class="label-clone">To: </span><h6 class="group-name-header"></h6>';
   $form['#suffix'] = '</div>';
 
   $form['jnet-form-type'] = array(
