@@ -291,6 +291,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
     case 'join':
       $message_header = 'A user has requested to join your community group via the map at http://thejourney.org/community. Please reply to them within 24 hours.';
       $message_subject = 'Request to join your community group - ';
+      $message_group_id = 'Group ID:' . $form_state['values']['group-id'];
       $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       // SWITCH WHEN DONE TESTING.
       // $send_form_to = $group_emails;
@@ -299,6 +300,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
     case 'report':
       $message_header = 'A user at thejourney.org has reported incorrect community group info. Their message is below.';
       $message_subject = 'Incorrect Info Report - ';
+      $message_group_id = 'City Link: <a href="http://journeyon.onthecity.org/groups/' . $form_state['values']['group-id'] . '">http://journeyon.onthecity.org/groups/' . $form_state['values']['group-id'] . '</a>';
       $message_success = '<div style="text-align:center;"><p>Your report of innacurate information for "' . $form_state['values']['group-name'] . '" has been sent. Thank you for your feedback.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
       $send_form_to = $report_email;
       break;
@@ -307,7 +309,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
   $params = array(
     'context' => array(
       'subject' => $message_subject . $form_state['values']['email'],
-      'body' => '<html><body><p>' . $message_header . '</p><p><span style="font-weight:bold;">Email:</span> ' . $form_state['values']['email'] . '</p><p><span style="font-weight:bold;">Message:</span> ' . $form_state['values']['message'] . '</p><p>&nbsp;</p><p><span style="text-decoration:underline;">Your Group\'s Info</span></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $form_state['values']['group-id'] . '</p><p>Church: ' . $form_state['values']['group-church'] . '</p><p>Leader Emails: ' . $group_emails . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p></body></html>',
+      'body' => '<html><body><p>' . $message_header . '</p><p><span style="font-weight:bold;">Email:</span> ' . $form_state['values']['email'] . '</p><p><span style="font-weight:bold;">Message:</span> ' . $form_state['values']['message'] . '</p><p>&nbsp;</p><p><span style="text-decoration:underline;">Your Group\'s Info</span></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>Group ID: ' . $message_group_id . '</p><p>Church: ' . $form_state['values']['group-church'] . '</p><p>Leader Emails: ' . $group_emails . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p></body></html>',
     ),
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Church: ' . $form_state['values']['group-church'] . '. Leader Emails: ' . $group_emails . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
