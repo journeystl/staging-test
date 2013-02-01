@@ -226,6 +226,10 @@ select.church-map {
   display: none;
   visibility: hidden;
 }
+
+#map-filters .dropdown:first-child {
+  width: 254px !important;
+}
 /*#map-filters div:nth-child(3) {
   display: none !important;
 }*/

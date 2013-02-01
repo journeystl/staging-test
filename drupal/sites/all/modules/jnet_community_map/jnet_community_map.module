@@ -169,7 +169,7 @@ function jnet_community_map_block_view($delta = '') {
           <a href="javascript:;" class="close-reveal-modal">&#215;</a>
           ' . render(drupal_get_form('jnet_community_map_action_form')) . '
         </div>
-        <form class="custom" id="map-filters">
+        <form class="custom medium" id="map-filters">
           <a href="javascript:;" id="centerMap" class="button small secondary radius"><i class="g-foundicon-location" style="margin-right:5px;"></i>Center on My Location</a>
           <select id="select-church" class="church-map"></select>
           <select id="select-day" class="church-map"></select>
@@ -267,7 +267,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
   $report_emails = $group_emails . ', ' . $itduzzit_email;
 
   // REMOVE WHEN DONE TESTING
-  $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it, syost@journeyon.net';
+  $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it';
 
   switch ($form_state['values']['group-church']) {
     case 'Tower Grove':
