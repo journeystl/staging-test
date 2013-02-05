@@ -9,3 +9,19 @@
 .abbr, .acronym { text-transform: uppercase; font-size: 90%; color: #222222; border-bottom: 1px solid #ddd; cursor: help; }
 
 .abbr { text-transform: none; }
+
+/* Needs Roles */
+
+.view-id-need_items .views-row {
+  margin-bottom: 10px;
+}
+
+.view-id-need_items .views-row {
+  top: -3px;
+  left: 40px;
+  min-width: 100px;
+}
+
+.view-id-need_items .views-row .blockquote {
+  padding-top: 0px;
+}
