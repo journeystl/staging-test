@@ -16,7 +16,7 @@
   margin-bottom: 10px;
 }
 
-.view-id-need_items .views-row {
+.view-id-need_items .views-row .button {
   top: -3px;
   left: 40px;
   min-width: 100px;
