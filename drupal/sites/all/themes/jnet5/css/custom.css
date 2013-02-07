@@ -1249,6 +1249,10 @@ dl.tabs.vertical dd a {
   margin-right: 60px;
 }*/
 
+.signup-td {
+	width: 83px;
+}
+
 .view-id-need_items .views-row .blockquote {
   padding-top: 0px;
 }
