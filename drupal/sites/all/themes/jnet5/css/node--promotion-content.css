@@ -10,26 +10,4 @@
 
 .abbr { text-transform: none; }
 
-/* Needs Roles */
 
-.view-id-need_items .views-row {
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  clear: both;
-}
-
-.view-id-need_items .views-row .need-item{
-  width: 200px;
-  float: left;
-}
-
-.view-id-need_items .views-row .button {
-  top: 3px;
-  min-width: 100px;
-  float: right;
-  margin-right: 60px;
-}
-
-.view-id-need_items .views-row .blockquote {
-  padding-top: 0px;
-}

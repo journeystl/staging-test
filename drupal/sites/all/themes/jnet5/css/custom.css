@@ -1237,7 +1237,7 @@ dl.tabs.vertical dd a {
   clear: both;
 }
 
-.view-id-need_items .views-row .need-item{
+/*.view-id-need_items .views-row .need-item{
   width: 200px;
   float: left;
 }
@@ -1247,7 +1247,7 @@ dl.tabs.vertical dd a {
   min-width: 100px;
   float: right;
   margin-right: 60px;
-}
+}*/
 
 .view-id-need_items .views-row .blockquote {
   padding-top: 0px;
