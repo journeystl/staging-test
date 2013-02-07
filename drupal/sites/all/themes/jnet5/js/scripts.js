@@ -168,4 +168,11 @@
    */
    $(document).foundationTopBar();
 
+  /**
+  * WuFoo Form In Iframe
+  */
+  $(.reveal-modal iframe).ready(function(e) {
+    $(.reveal-modal).height(auto);
+  });
+
 });})(jQuery);
