@@ -1,10 +1,12 @@
 
-<span class="need-item three columns"><?php print $fields['field_need_item_description']->content; ?></span>
+<div class="row">
+<div class="need-item eight columns mobile-three"><?php print $fields['field_need_item_description']->content; ?></div>
 <?php
   if (!empty($fields['field_need_item_author_longname']->content)) {
-    $action = '<span class="one column"><a href="javascript:;" class="button tiny radius secondary disabled">' . $fields['field_need_item_author_longname']->content . '</a></span>';
+    $action = '<div class="four columns mobile-one"><a href="javascript:;" class="button tiny radius secondary disabled">' . $fields['field_need_item_author_longname']->content . '</a></div>';
   } else {
-    $action = '<span class="one column"><a href="' . $fields['field_short_url']->content . '" class="button tiny radius">I Can Help!</a></span>';
+    $action = '<div class="four columns mobile-one"><a href="' . $fields['field_short_url']->content . '" class="button tiny radius">I Can Help!</a></div>';
   }
   print $action;
 ?>
+</div>
