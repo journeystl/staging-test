@@ -24,6 +24,7 @@ function jnet_community_map_cron() {
   $group_data_map_json = array();
 
   $group_emails = array();
+  $group_current_tags = array();
 
   $ca = new CityApi();
   // $ca->debug = true;
@@ -130,6 +131,7 @@ function jnet_community_map_cron() {
 
         // Store the group email separately.
         $group_emails[$group['id']] = $group['leaders'];
+        $group_current_tags[$group['id']] = $group['tags'];
 
         $marker_counter++;
       }
@@ -138,6 +140,7 @@ function jnet_community_map_cron() {
 
   param_set('city_api_map_json', $group_data_map_json);
   param_set('city_api_map_emails', $group_emails);
+  param_set('city_api_map_current_tags', $group_current_tags);
 }
 
 /**
@@ -259,6 +262,8 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
   }
 
   $group_emails = param_get('city_api_map_emails');
+  $group_tags = param_get('city_api_map_current_tags');
+  dpm($group_tags);
   //$send_form_to = implode(', ', $group_emails[$form_state['values']['group-id']]);
 
   $group_emails_raw = param_get('city_api_map_emails');
@@ -314,7 +319,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Church: ' . $form_state['values']['group-church'] . '. Leader Emails: ' . $group_emails . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
   );
 
-  drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
+  // drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
   return $message_success;
 }
 
