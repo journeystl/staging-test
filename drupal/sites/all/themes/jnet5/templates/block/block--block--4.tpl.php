@@ -29,7 +29,8 @@ $post_count = ($posts = field_get_items('node', $node, 'field_event_responses'))
 				$GLOBALS['jorg_modal_markup'] .= $form_modal;
 				print $signup_btn;
 			} else {
-				$rsvp_btn = '<a href="' . render($node->field_short_url[$node->language][0]['value']) . '" class="button radius large">RSVP  <span class="label round">' . count($node->field_event_responses) . '</span></a>';
+				$rsvp_count = (isset($node->field_event_responses, $node->field_event_responses['und'])) ? count($node->field_event_responses['und']) : 0;
+				$rsvp_btn = '<a href="' . render($node->field_short_url[$node->language][0]['value']) . '" class="button radius large">RSVP  <span class="label round">' . $rsvp_count . '</span></a>';
 				print $rsvp_btn;
 			}
 		?>
