@@ -17,9 +17,19 @@ function jnet_audiojs_field_field_formatter_info() {
  */
 function jnet_audiojs_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   drupal_add_js(drupal_get_path('module', 'jnet_audiojs_field') . '/audiojs/audio.min.js');
-  drupal_add_js("audiojs.events.ready(function() {
-      var as = audiojs.createAll();
-    });", array('type' => 'inline', 'scope' => 'footer'));
+  drupal_add_js("
+    audiojs.events.ready(function() {
+      var as = audiojs.createAll({
+        useFlash: (function() {
+          var a = document.createElement('audio'),
+            userAgent = navigator.userAgent.toLowerCase(),
+            version = parseFloat((userAgent.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1]);
+          if (/chrome/.test(userAgent)) return true;
+          return !(a.canPlayType && a.canPlayType('audio/mpeg;').replace(/no/, ''));
+        })()
+      });
+    });
+    ", array('type' => 'inline', 'scope' => 'footer'));
 
   $element = array();
 
