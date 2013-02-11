@@ -24,6 +24,7 @@ function jnet_community_map_cron() {
   $group_data_map_json = array();
 
   $group_emails = array();
+  $group_current_tags = array();
 
   $ca = new CityApi();
   // $ca->debug = true;
@@ -130,6 +131,7 @@ function jnet_community_map_cron() {
 
         // Store the group email separately.
         $group_emails[$group['id']] = $group['leaders'];
+        $group_current_tags[$group['id']] = $group['tags'];
 
         $marker_counter++;
       }
@@ -138,6 +140,7 @@ function jnet_community_map_cron() {
 
   param_set('city_api_map_json', $group_data_map_json);
   param_set('city_api_map_emails', $group_emails);
+  param_set('city_api_map_current_tags', $group_current_tags);
 }
 
 /**
@@ -258,17 +261,20 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
     return $form;
   }
 
-  $group_emails = param_get('city_api_map_emails');
-  //$send_form_to = implode(', ', $group_emails[$form_state['values']['group-id']]);
-
+  // Prep email and tag data to munch on and process
   $group_emails_raw = param_get('city_api_map_emails');
   $group_emails = implode(', ', $group_emails_raw[$form_state['values']['group-id']]);
+
+  $group_tags_raw = param_get('city_api_map_current_tags');
+  $group_tags = implode(" ", $group_tags_raw[$form_state['values']['group-id']]);
+
   $itduzzit_email = 'wio6xew7amw8xss.simonyost.19395@duzz.it';
-  $request_emails = $group_emails . ', ' . $itduzzit_email;
 
-  // REMOVE WHEN DONE TESTING
-  $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it';
-
+  // Handle setting $request_emails and $report_emails in the case of "Capacity | Full" existing
+  // as a tag.  While $report_email is used to "Report Incorrect Info", we're using the same
+  // campus email address if it's full.
+  //
+  // After $report_email is set properly -- we will set $request_emails to $report_email
   switch ($form_state['values']['group-church']) {
     case 'Tower Grove':
       $report_email = 'communitytg@thejourney.org';
@@ -286,6 +292,16 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
       $report_email = 'communityhr@thejourney.org';
       break;
   }
+
+  // Capacity | Full Check is true, override $group_emails
+  if (strpos($group_tags, "Capacity | Full") !== false) {
+    $group_emails = $report_email;
+  }
+
+  $request_emails = $group_emails . ', ' . $itduzzit_email;
+
+  // REMOVE WHEN DONE TESTING
+  $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it';
 
   switch ($form_state['values']['jnet-form-type']) {
     case 'join':

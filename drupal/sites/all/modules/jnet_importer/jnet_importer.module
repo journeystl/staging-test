@@ -83,8 +83,11 @@ function jnet_importer_node_delete($node) {
 }
 
 function jnet_importer_import_page($qty) {
+  $start = microtime(TRUE);
+  drupal_set_message("Started importing {$qty} items...");
   jnet_importer_import($qty, TRUE);
-  return 'done.';
+  $time = microtime(TRUE) - $start;
+  return "Finished importing in {$time} seconds.";
 }
 
 function jnet_importer_import($qty, $debug = FALSE) {
@@ -99,206 +102,27 @@ function jnet_importer_import($qty, $debug = FALSE) {
     $file_error = FALSE;
 
     // Calculate hash.
-    $object_hash = md5(serialize($object->node));
+    $node_hash = md5(serialize($object->node));
 
     // Check if it exists.
-    $exists = db_query("SELECT * FROM jnet_importer WHERE guid = :guid", array(':guid' => $object->node->guid))->fetchAssoc();
+    $exists = db_query("SELECT * FROM jnet_importer WHERE guid = :guid", array(':guid' => $node->guid))->fetchAssoc();
     if ($exists) {
-      if ($debug) { dpm("Node {$object->node->title} already exists."); }
+      if ($debug) { drupal_set_message("Node {$node->title} already exists."); }
       // Check if it has changed.
       if ($exists['hash'] == $object_hash) {
-        if ($debug) { dpm("Node {$object->node->title} has NOT changed."); }
+        if ($debug) { drupal_set_message("Node {$node->title} has NOT changed."); }
         continue;
       } else {
-        if ($debug) { dpm("Node {$object->node->title} HAS changed."); }
-        $node = node_load($exists['nid']);
+        if ($debug) { drupal_set_message("Node {$node->title} HAS changed."); }
+
+        // Update existing node.
+        $node = jnet_importer_create_node($object->node, $exists['nid']);
       }
     } else {
-      if ($debug) { dpm("Node {$object->node->title} does NOT exist."); }
-      $node = new stdClass();
-      $node->type = 'promotion_content';
-      node_object_prepare($node);
-      $node->language = LANGUAGE_NONE;
-      $node->uid = 0;
-      node_save($node);
-    }
+      if ($debug) { drupal_set_message("Node {$node->title} does NOT exist."); }
 
-    // Set all fields.
-    $node->title = $object->node->title;
-    $node->body['und'][0]['value'] = $object->node->field_body[0]->value;
-    $node->body['und'][0]['format'] = 'full_html';
-    $node->field_uid['und'][0]['value'] = $object->node->guid;
-    $node->field_type['und'][0]['value'] = $object->node->field_type[0]->value;
-    $node->field_campus_id['und'][0]['value'] = $object->node->campus;
-    $node->field_short_url['und'][0]['value'] = $object->node->field_short_url[0]->value;
-    $node->field_updated_at['und'][0]['value'] = $object->node->field_updated_at[0]->value;
-    $node->field_created_at['und'][0]['value'] = $object->node->field_created_at[0]->value;
-    $node->field_author_nickname['und'][0]['value'] = $object->node->field_author_nickname[0]->value;
-    $node->field_author_longname['und'][0]['value'] = $object->node->field_author_longname[0]->value;
-    $node->field_weight['und'][0]['value'] = $object->node->weight;
-    $node->field_archive['und'][0]['value'] = $object->node->archive;
-    $node->field_signup['und'][0]['value'] = $object->node->signup;
-    $node->field_external_form_id['und'][0]['value'] = $object->node->field_external_form_id[0]->value;
-
-    // Set all event fields that aren't in field collections.
-    $node->field_event_starting_at['und'][0]['value'] = $object->node->field_starting_at[0]->value;
-    $node->field_event_ending_at['und'][0]['value'] = $object->node->field_ending_at[0]->value;
-    $node->field_event_roles['und'][0]['value'] = $object->node->field_event_roles[0]->value;
-    $node->field_event_address_street['und'][0]['value'] = $object->node->field_event_address_street[0]->value;
-    $node->field_event_address_city['und'][0]['value'] = $object->node->field_event_address_city[0]->value;
-    $node->field_event_address_state['und'][0]['value'] = $object->node->field_event_address_state[0]->value;
-    $node->field_event_address_zip['und'][0]['value'] = $object->node->field_event_address_zip[0]->value;
-    $node->field_event_address_latitude['und'][0]['value'] = $object->node->field_event_address_lat[0]->value;
-    $node->field_event_address_longitude['und'][0]['value'] = $object->node->field_event_address_lon[0]->value;
-    $node->field_event_address_loc_type['und'][0]['value'] = $object->node->field_event_address_loc_type[0]->value;
-    $node->field_event_address_id['und'][0]['value'] = $object->node->field_event_address_id[0]->value;
-
-    // Save the poster image.
-    if (isset($object->node->field_poster_image[0]->filepath)) {
-      $file_path = $object->node->field_poster_image[0]->filepath;
-      $file_name = pathinfo($file_path, PATHINFO_BASENAME);
-
-      // Check if image already exists.
-      if ( (isset($node->field_image['und'][0]) && $node->field_image['und'][0]['filename'] != $file_name) || (!isset($node->field_image['und'][0])) )  {
-
-        // If this URI already exists, just use the existing FID.
-        if ($fid = db_query("SELECT fid FROM {file_managed} WHERE uri = :uri", array(':uri' => "public://poster-image/{$file_name}"))->fetchField()) {
-          $node->field_image['und'][0] = array('fid' => $fid);
-        } else {
-
-          // Download the file.
-          if (!$file_data = file_get_contents($file_path)) {
-            $file_error = "Could not download file {$file_name} from node {$object->node->title}.";
-          }
-
-          // Save the data into the files directory.
-          if ($file_data && file_put_contents($file_save_dir . $file_name, $file_data)) {
-            // Create a new file object manually.
-            $file = new stdClass();
-            $file->fid = NULL;
-            $file->uri = "public://poster-image/{$file_name}";
-            $file->filename  = $file_name;
-            $file->filemime  = file_get_mimetype($file->uri);
-            $file->uid       = 1;
-            $file->status    = FILE_STATUS_PERMANENT;
-            $file->timestamp = time();
-            $file->filesize  = filesize($file_save_dir . $file_name);
-
-            // Insert it into the file_managed table.
-            drupal_write_record('file_managed', $file);
-
-            // Attach the file to the node or throw an erorr.
-            if ($file->fid) {
-              $node->field_image['und'][0] = array('fid' => $file->fid);
-            } else {
-              $file_error = "Could not attach file {$file_name} to node {$object->node->title}.";
-            }
-
-          // If we couldn't save the file throw an error.
-          } else {
-            $file_error = "Could not save the file {$file_name} into directory {$file_save_dir} for node {$object->node->title}.";
-          }
-
-        }
-
-      } else {
-        watchdog('jnet_importer', 'Image already exists. Not saving new image for node: %title', array('%title' => $object->node->title));
-      }
-    }
-
-    if ($file_error) {
-      watchdog('jnet_importer', $file_error);
-      mail(WEBSUPPORT_EMAIL, 'Image import issue', $file_error, $mail_headers);
-      // If the node didn't already exist, delete this faulty new node.
-      if (!$exists()) {
-        node_delete($node->nid);
-      }
-      continue;
-    }
-
-    // Save this node.
-    node_save($node);
-
-    /**
-     * Field collections
-     * We map local and remote field names within an array that is keyed with the field collection machine name.
-     * This allows for a simpler method to loop over and create all of the field collections.
-     */
-
-    $field_collections = array(
-      'field_topic_posts' => array(
-        'field_topic_post_created_at' => 'field_topic_post_created_at',
-        'field_topic_post_via_email' => 'field_topic_post_via_email',
-        'field_topic_post_via_mobile' => 'field_topic_post_via_mobile',
-        'field_topic_post_body' => 'field_topic_post_body',
-        'field_topic_post_author_nickname' => 'field_topic_post_author_nick',
-        'field_topic_post_author_longname' => 'field_topic_post_author_long',
-      ),
-      'field_need_responses' => array(
-        'field_need_response_created_at' => 'field_need_response_created_at',
-        'field_need_response_via_email' => 'field_need_response_via_email',
-        'field_need_response_is_an_update' => 'field_need_response_is_update',
-        'field_need_response_body' => 'field_need_response_body',
-        'field_need_response_author_nickn' => 'field_need_response_author_nick',
-        'field_need_response_author_longn' => 'field_need_response_author_long',
-      ),
-      'field_need_items' => array(
-        'field_need_item_updated_at' => 'field_need_item_updated_at',
-        'field_need_item_created_at' => 'field_need_item_created_at',
-        'field_need_item_description' => 'field_need_item_description',
-        'field_need_item_starting_at' => 'field_need_item_starting_at',
-        'field_need_item_author_nickname' => 'field_need_item_author_nick',
-        'field_need_item_author_longname' => 'field_need_item_author_long',
-      ),
-      'field_event_responses' => array(
-        'field_event_response_created_at' => 'field_event_response_created_at',
-        'field_event_response_author_nick' => 'field_event_response_author_nick',
-        'field_event_response_author_long' => 'field_event_response_author_long',
-        'field_event_response_attending' => 'field_event_response_attending',
-        'field_event_response_total' => 'field_event_response_total',
-      ),
-      'field_event_notes' => array(
-        'field_event_note_via_mobile' => 'field_event_note_via_mobile',
-        'field_event_note_via_email' => 'field_event_note_via_email',
-        'field_event_note_updated_at' => 'field_event_note_updated_at',
-        'field_event_note_created_at' => 'field_event_note_created_at',
-        'field_event_note_body' => 'field_event_note_body',
-        'field_event_note_author_nick' => 'field_event_note_author_nick',
-        'field_event_note_author_long' => 'field_event_note_author_long',
-      ),
-      'field_event_items' => array(
-        'field_event_item_title' => 'field_event_item_title',
-        'field_event_item_total_qty' => 'field_event_item_total_qty',
-      ),
-      'field_event_item_responses' => array(
-        'field_event_item_response_qty' => 'field_event_item_resp_qty',
-        'field_event_item_response_title' => 'field_event_item_resp_title',
-        'field_event_item_resp_nick' => 'field_event_item_resp_nick',
-        'field_event_item_resp_longname' => 'field_event_item_resp_longname',
-      ),
-    );
-
-    foreach ($field_collections as $field_name => $mapping) {
-      // Delete existing.
-      _jnet_importer_delete_field_collections($node, $field_name);
-
-      // Add the proper amount of field collections.
-      $tmp_remote_field = reset(array_values($mapping));
-      $tmp_count = count($object->node->{$tmp_remote_field});
-
-      for ($i=0;$i<$tmp_count;$i++) {
-        // Create the new field collection and attach it to the host node.
-        $field_collection_item = entity_create('field_collection_item', array('field_name' => $field_name));
-        $field_collection_item->setHostEntity('node', $node);
-
-        // Map each field.
-        foreach ($mapping as $field_local => $field_remote) {
-          $field_collection_item->{$field_local}['und'][0]['value'] = $object->node->{$field_remote}[$i]->value;
-        }
-      }
-
-      // Save the field collection.
-      $field_collection_item->save();
+      // Create a new node.
+      $node = jnet_importer_create_node($object->node);
     }
 
     // Done. Update our jnet_importer table.
@@ -309,15 +133,221 @@ function jnet_importer_import($qty, $debug = FALSE) {
     );
 
     if ($exists) {
-      if ($debug) { dpm("Updating import record for {$object->node->title}."); }
+      if ($debug) { drupal_set_message("Updating import record for {$object->node->title}."); }
       drupal_write_record('jnet_importer', $record, 'guid');
     } else {
-      if ($debug) { dpm("Adding import record for {$object->node->title}."); }
+      if ($debug) { drupal_set_message("Adding import record for {$object->node->title}."); }
       drupal_write_record('jnet_importer', $record);
     }
   }
 }
 
+/**
+ * Create a node. Depends on the structure supplied by Patchbay.
+ * @param node data to replicate.
+ * @param existing node ID if this item should only be updated.
+ */
+function jnet_importer_create_node($node_data, $nid = NULL) {
+  if ($nid) {
+    $node = node_load($nid);
+  } else {
+    $node = new stdClass();
+    $node->type = 'promotion_content';
+    node_object_prepare($node);
+    $node->language = LANGUAGE_NONE;
+    $node->uid = 0;
+    node_save($node);
+  }
+
+  // Set all fields.
+  $node->title = $node_data->title;
+  $node->body['und'][0]['value'] = $node_data->field_body[0]->value;
+  $node->body['und'][0]['format'] = 'full_html';
+  $node->field_uid['und'][0]['value'] = $node_data->guid;
+  $node->field_type['und'][0]['value'] = $node_data->field_type[0]->value;
+  $node->field_campus_id['und'][0]['value'] = $node_data->campus;
+  $node->field_short_url['und'][0]['value'] = $node_data->field_short_url[0]->value;
+  $node->field_updated_at['und'][0]['value'] = $node_data->field_updated_at[0]->value;
+  $node->field_created_at['und'][0]['value'] = $node_data->field_created_at[0]->value;
+  $node->field_author_nickname['und'][0]['value'] = $node_data->field_author_nickname[0]->value;
+  $node->field_author_longname['und'][0]['value'] = $node_data->field_author_longname[0]->value;
+  $node->field_weight['und'][0]['value'] = $node_data->weight;
+  $node->field_archive['und'][0]['value'] = $node_data->archive;
+  $node->field_signup['und'][0]['value'] = $node_data->signup;
+  $node->field_external_form_id['und'][0]['value'] = $node_data->field_external_form_id[0]->value;
+
+  // Set all event fields that aren't in field collections.
+  $node->field_event_starting_at['und'][0]['value'] = $node_data->field_starting_at[0]->value;
+  $node->field_event_ending_at['und'][0]['value'] = $node_data->field_ending_at[0]->value;
+  $node->field_event_roles['und'][0]['value'] = $node_data->field_event_roles[0]->value;
+  $node->field_event_address_street['und'][0]['value'] = $node_data->field_event_address_street[0]->value;
+  $node->field_event_address_city['und'][0]['value'] = $node_data->field_event_address_city[0]->value;
+  $node->field_event_address_state['und'][0]['value'] = $node_data->field_event_address_state[0]->value;
+  $node->field_event_address_zip['und'][0]['value'] = $node_data->field_event_address_zip[0]->value;
+  $node->field_event_address_latitude['und'][0]['value'] = $node_data->field_event_address_lat[0]->value;
+  $node->field_event_address_longitude['und'][0]['value'] = $node_data->field_event_address_lon[0]->value;
+  $node->field_event_address_loc_type['und'][0]['value'] = $node_data->field_event_address_loc_type[0]->value;
+  $node->field_event_address_id['und'][0]['value'] = $node_data->field_event_address_id[0]->value;
+
+  // Save the poster image.
+  if (isset($node_data->field_poster_image[0]->filepath)) {
+    $file_path = $node_data->field_poster_image[0]->filepath;
+    $file_name = pathinfo($file_path, PATHINFO_BASENAME);
+
+    // Check if image already exists.
+    if ( (isset($node->field_image['und'][0]) && $node->field_image['und'][0]['filename'] != $file_name) || (!isset($node->field_image['und'][0])) )  {
+
+      // If this URI already exists, just use the existing FID.
+      if ($fid = db_query("SELECT fid FROM {file_managed} WHERE uri = :uri", array(':uri' => "public://poster-image/{$file_name}"))->fetchField()) {
+        $node->field_image['und'][0] = array('fid' => $fid);
+      } else {
+
+        // Download the file.
+        if (!$file_data = file_get_contents($file_path)) {
+          $file_error = "Could not download file {$file_name} from node {$node->title}.";
+        }
+
+        // Save the data into the files directory.
+        if ($file_data && file_put_contents($file_save_dir . $file_name, $file_data)) {
+          // Create a new file object manually.
+          $file = new stdClass();
+          $file->fid = NULL;
+          $file->uri = "public://poster-image/{$file_name}";
+          $file->filename  = $file_name;
+          $file->filemime  = file_get_mimetype($file->uri);
+          $file->uid       = 1;
+          $file->status    = FILE_STATUS_PERMANENT;
+          $file->timestamp = time();
+          $file->filesize  = filesize($file_save_dir . $file_name);
+
+          // Insert it into the file_managed table.
+          drupal_write_record('file_managed', $file);
+
+          // Attach the file to the node or throw an erorr.
+          if ($file->fid) {
+            $node->field_image['und'][0] = array('fid' => $file->fid);
+          } else {
+            $file_error = "Could not attach file {$file_name} to node {$node->title}.";
+          }
+
+        // If we couldn't save the file throw an error.
+        } else {
+          $file_error = "Could not save the file {$file_name} into directory {$file_save_dir} for node {$node_data->title}.";
+        }
+
+      }
+
+    } else {
+      watchdog('jnet_importer', 'Image already exists. Not saving new image for node: %title', array('%title' => $node_data->title));
+    }
+  }
+
+  if ($file_error) {
+    watchdog('jnet_importer', $file_error);
+    mail(WEBSUPPORT_EMAIL, 'Image import issue', $file_error, $mail_headers);
+    // If the node didn't already exist, delete this faulty new node.
+    if (!$exists) {
+      node_delete($node->nid);
+    }
+    continue;
+  }
+
+  // Save this node.
+  node_save($node);
+
+  /**
+   * Field collections
+   * We map local and remote field names within an array that is keyed with the field collection machine name.
+   * This allows for a simpler method to loop over and create all of the field collections.
+   */
+
+  $field_collections = array(
+    'field_topic_posts' => array(
+      'field_topic_post_created_at' => 'field_topic_post_created_at',
+      'field_topic_post_via_email' => 'field_topic_post_via_email',
+      'field_topic_post_via_mobile' => 'field_topic_post_via_mobile',
+      'field_topic_post_body' => 'field_topic_post_body',
+      'field_topic_post_author_nickname' => 'field_topic_post_author_nick',
+      'field_topic_post_author_longname' => 'field_topic_post_author_long',
+    ),
+    'field_need_responses' => array(
+      'field_need_response_created_at' => 'field_need_response_created_at',
+      'field_need_response_via_email' => 'field_need_response_via_email',
+      'field_need_response_is_an_update' => 'field_need_response_is_update',
+      'field_need_response_body' => 'field_need_response_body',
+      'field_need_response_author_nickn' => 'field_need_response_author_nick',
+      'field_need_response_author_longn' => 'field_need_response_author_long',
+    ),
+    'field_need_items' => array(
+      'field_need_item_updated_at' => 'field_need_item_updated_at',
+      'field_need_item_created_at' => 'field_need_item_created_at',
+      'field_need_item_description' => 'field_need_item_description',
+      'field_need_item_starting_at' => 'field_need_item_starting_at',
+      'field_need_item_author_nickname' => 'field_need_item_author_nick',
+      'field_need_item_author_longname' => 'field_need_item_author_long',
+    ),
+    'field_event_responses' => array(
+      'field_event_response_created_at' => 'field_event_response_created_at',
+      'field_event_response_author_nick' => 'field_event_response_author_nick',
+      'field_event_response_author_long' => 'field_event_response_author_long',
+      'field_event_response_attending' => 'field_event_response_attending',
+      'field_event_response_total' => 'field_event_response_total',
+    ),
+    'field_event_notes' => array(
+      'field_event_note_via_mobile' => 'field_event_note_via_mobile',
+      'field_event_note_via_email' => 'field_event_note_via_email',
+      'field_event_note_updated_at' => 'field_event_note_updated_at',
+      'field_event_note_created_at' => 'field_event_note_created_at',
+      'field_event_note_body' => 'field_event_note_body',
+      'field_event_note_author_nick' => 'field_event_note_author_nick',
+      'field_event_note_author_long' => 'field_event_note_author_long',
+    ),
+    'field_event_items' => array(
+      'field_event_item_title' => 'field_event_item_title',
+      'field_event_item_total_qty' => 'field_event_item_total_qty',
+    ),
+    'field_event_item_responses' => array(
+      'field_event_item_response_qty' => 'field_event_item_resp_qty',
+      'field_event_item_response_title' => 'field_event_item_resp_title',
+      'field_event_item_resp_nick' => 'field_event_item_resp_nick',
+      'field_event_item_resp_longname' => 'field_event_item_resp_longname',
+    ),
+  );
+
+  foreach ($field_collections as $field_name => $mapping) {
+    // Delete existing.
+    _jnet_importer_delete_field_collections($node, $field_name);
+
+    // Add the proper amount of field collections.
+    $tmp_remote_field = reset(array_values($mapping));
+    $tmp_count = count($node_data->{$tmp_remote_field});
+
+    // Ensure we actually have a value...
+    if (empty($node_data->{$tmp_remote_field}[0]->value)) {
+      continue;
+    }
+
+    for ($i=0;$i<$tmp_count;$i++) {
+      // Create the new field collection and attach it to the host node.
+      $field_collection_item = entity_create('field_collection_item', array('field_name' => $field_name));
+      $field_collection_item->setHostEntity('node', $node);
+
+      // Map each field.
+      foreach ($mapping as $field_local => $field_remote) {
+        $field_collection_item->{$field_local}['und'][]['value'] = $node_data->{$field_remote}[$i]->value;
+      }
+    }
+
+    // Save the field collection.
+    $field_collection_item->save();
+  }
+
+  return $node;
+}
+
+/**
+ * Helper function to delete existing field collection field attached to a node.
+ */
 function _jnet_importer_delete_field_collections(&$node, $field_name) {
   if ($items = field_get_items('node', $node, $field_name)) {
     // Gather field_collection item_id's.
