@@ -674,6 +674,7 @@ body.page-node-13711 .views-field-field-sermondate {
 
 #podcast-modal h2 {
 	font-family: "ltc-bodoni-175", "georgia", serif;
+	max-height: 700px;
 }
 
 #podcast-modal li {
