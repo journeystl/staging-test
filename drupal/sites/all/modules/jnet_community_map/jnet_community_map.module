@@ -300,10 +300,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
     $message_subject_prefix .= 'Capacity Full - ';
   }
 
-  $request_emails = $group_emails . ', ' . $itduzzit_email;
-
-  // REMOVE WHEN DONE TESTING
-  $send_form_to_testing = 'kraig@thecatena.com, wio6xew7amw8xss.simonyost.19395@duzz.it';
+  $request_emails = $group_emails;
 
   switch ($form_state['values']['jnet-form-type']) {
     case 'join':
@@ -311,8 +308,6 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
       $message_subject = $message_subject_prefix . 'Request to join your community group - ';
       $message_group_id = 'Group ID: ' . $form_state['values']['group-id'];
       $message_success = '<div style="text-align:center;"><p>Your request to join "' . $form_state['values']['group-name'] . '" has been sent.</p><a class="button radius small" href="javascript:;" onClick="window.location.reload()">Close</a>';
-      // SWITCH WHEN DONE TESTING.
-      // $send_form_to = $group_emails;
       $send_form_to = $request_emails;
       break;
     case 'report':
@@ -330,6 +325,7 @@ function jnet_community_map_action_ajax_email(&$form, &$form_state) {
       'body' => '<html><body><p>' . $message_header . '</p><p><span style="font-weight:bold;">Email:</span> ' . $form_state['values']['email'] . '</p><p><span style="font-weight:bold;">Message:</span> ' . $form_state['values']['message'] . '</p><p>&nbsp;</p><p><span style="text-decoration:underline;">Your Group\'s Info</span></p><p>Group Name: ' . $form_state['values']['group-name'] . '</p><p>' . $message_group_id . '</p><p>Church: ' . $form_state['values']['group-church'] . '</p><p>Leader Emails: ' . $group_emails . '</p><p>Group Meeting Day: ' . $form_state['values']['group-days'] . '</p><p>Kid Friendly: ' . $form_state['values']['group-kids'] . '</p></body></html>',
     ),
     'plaintext' => $message_header . ' Email: ' . $form_state['values']['email'] . '. Message: ' . $form_state['values']['message'] . '. Group Name: ' . $form_state['values']['group-name'] . '. Group ID: ' . $form_state['values']['group-id'] . '. Church: ' . $form_state['values']['group-church'] . '. Leader Emails: ' . $group_emails . '. Group Meeting Day: ' . $form_state['values']['group-days'] . '. Kid Friendly: ' . $form_state['values']['group-kids'] . '',
+    'bcc' => $itduzzit_email,
   );
 
   drupal_mail('mimemail', 'key', $send_form_to, language_default(), $params);
