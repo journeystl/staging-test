@@ -59,13 +59,13 @@ function jnet_importer_cron() {
 function jnet_importer_node_load($nodes, $types) {
   foreach ($nodes as $node) {
     // Get Jnet Importer UID if it exists.
-    if ($guid = db_query("SELECT guid FROM {jnet_importer} WHERE nid = :nid", array(':nid' => $node->nid))->fetchField()) {
+    if ($guid = db_query("SELECT guid FROM {jnet_importer} WHERE nid = {$node->nid}")->fetchField()) {
       $guid = explode('_', $guid);
       $node->pb_url = 'http://patchbay.journeyon.net/node/' . $guid[0];
     }
 
     // Get Feeds UID if it exists.
-    if ($guid = db_query("SELECT guid FROM {feeds_item} WHERE entity_id = :nid AND entity_type = 'node'", array(':nid' => $node->nid))->fetchField()) {
+    if ($guid = db_query("SELECT guid FROM {feeds_item} WHERE entity_id = {$node->nid} AND entity_type = 'node'")->fetchField()) {
       $guid = explode('_', $guid);
       $node->feeds_pb_url = 'http://patchbay.journeyon.net/node/' . $guid[0];
     }
@@ -99,27 +99,25 @@ function jnet_importer_import($qty, $debug = FALSE) {
   $mail_headers = 'From: noreply@thejourney.org' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
   foreach ($data as $object) {
-    $file_error = FALSE;
-
     // Calculate hash.
     $node_hash = md5(serialize($object->node));
 
     // Check if it exists.
-    $exists = db_query("SELECT * FROM jnet_importer WHERE guid = :guid", array(':guid' => $node->guid))->fetchAssoc();
+    $exists = db_query("SELECT * FROM jnet_importer WHERE guid = '{$object->node->guid}'")->fetchAssoc();
     if ($exists) {
-      if ($debug) { drupal_set_message("Node {$node->title} already exists."); }
+      if ($debug) { drupal_set_message("Node {$object->node->title} already exists."); }
       // Check if it has changed.
-      if ($exists['hash'] == $object_hash) {
-        if ($debug) { drupal_set_message("Node {$node->title} has NOT changed."); }
+      if ($exists['hash'] == $node_hash) {
+        if ($debug) { drupal_set_message("Node {$object->node->title} has NOT changed."); }
         continue;
       } else {
-        if ($debug) { drupal_set_message("Node {$node->title} HAS changed."); }
+        if ($debug) { drupal_set_message("Node {$object->node->title} HAS changed."); }
 
         // Update existing node.
         $node = jnet_importer_create_node($object->node, $exists['nid']);
       }
     } else {
-      if ($debug) { drupal_set_message("Node {$node->title} does NOT exist."); }
+      if ($debug) { drupal_set_message("Node {$object->node->title} does NOT exist."); }
 
       // Create a new node.
       $node = jnet_importer_create_node($object->node);
@@ -129,7 +127,7 @@ function jnet_importer_import($qty, $debug = FALSE) {
     $record = array(
       'guid' => $object->node->guid,
       'nid' => $node->nid,
-      'hash' => $object_hash,
+      'hash' => $node_hash,
     );
 
     if ($exists) {
@@ -148,6 +146,8 @@ function jnet_importer_import($qty, $debug = FALSE) {
  * @param existing node ID if this item should only be updated.
  */
 function jnet_importer_create_node($node_data, $nid = NULL) {
+  $file_error = FALSE;
+
   if ($nid) {
     $node = node_load($nid);
   } else {
