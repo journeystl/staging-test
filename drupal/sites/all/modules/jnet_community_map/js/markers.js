@@ -248,6 +248,7 @@ var markers = [];
           displayGroups[marker.churchIndex][marker.dayIndex[i]][0].push(marker);
           displayGroups[0][0][marker.typeIndex].push(marker);
           displayGroups[marker.churchIndex][0][0].push(marker);
+          // ORIGINAL LINE, CAUSED JS ERROR WHEN MULTIPLE DAYS SELECTED
           // displayGroups[0][marker.dayIndex][0].push(marker);
           displayGroups[0][marker.dayIndex[i]][0].push(marker);
 
