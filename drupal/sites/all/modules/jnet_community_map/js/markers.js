@@ -212,7 +212,8 @@ var markers = [];
 
         var markerTypesString = "";
 
-        for (var i = 3; i < markers_raw[m_id].tags.length; i++) {
+        // WAS var i = 3, but changed to 0 which will hopefully fix kid friendly bug
+        for (var i = 0; i < markers_raw[m_id].tags.length; i++) {
           if (markers_raw[m_id].tags[i]) {
             var markerType = markers_raw[m_id].tags[i].split('| ');
             markerTypesString += markerType[1];
